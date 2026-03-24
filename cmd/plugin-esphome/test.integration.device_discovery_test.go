@@ -10,7 +10,7 @@ import (
 	"time"
 
 	domain "github.com/slidebolt/sb-domain"
-	managersdk "github.com/slidebolt/sb-manager-sdk"
+	testkit "github.com/slidebolt/sb-testkit"
 
 	"github.com/slidebolt/plugin-esphome/app"
 	mdns "github.com/slidebolt/plugin-esphome/internal/mdns"
@@ -28,7 +28,7 @@ import (
 func TestDeviceDiscovery_Physical_Integration(t *testing.T) {
 	apiKey := loadEnvLocal(t, "ESPHOME_API_KEY")
 
-	env := managersdk.NewTestEnv(t)
+	env := testkit.NewTestEnv(t)
 	env.Start("messenger")
 	env.Start("storage")
 

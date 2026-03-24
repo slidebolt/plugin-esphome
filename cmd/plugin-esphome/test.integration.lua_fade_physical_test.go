@@ -11,7 +11,7 @@ import (
 
 	"github.com/slidebolt/plugin-esphome/app"
 	domain "github.com/slidebolt/sb-domain"
-	managersdk "github.com/slidebolt/sb-manager-sdk"
+	testkit "github.com/slidebolt/sb-testkit"
 	messenger "github.com/slidebolt/sb-messenger-sdk"
 	storage "github.com/slidebolt/sb-storage-sdk"
 )
@@ -40,7 +40,7 @@ func TestLuaFade_Physical_Integration(t *testing.T) {
 		t.Skip("ESPHOME_API_KEY not set — add it to .env.local or the environment")
 	}
 
-	env := managersdk.NewTestEnv(t)
+	env := testkit.NewTestEnv(t)
 	env.Start("messenger")
 	env.Start("storage")
 	env.Start("sb-script")

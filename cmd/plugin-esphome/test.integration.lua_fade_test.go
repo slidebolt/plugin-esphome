@@ -9,7 +9,7 @@ import (
 	"time"
 
 	mdns "github.com/slidebolt/plugin-esphome/internal/mdns"
-	managersdk "github.com/slidebolt/sb-manager-sdk"
+	testkit "github.com/slidebolt/sb-testkit"
 	messenger "github.com/slidebolt/sb-messenger-sdk"
 )
 
@@ -20,7 +20,7 @@ import (
 //
 // Run: go test -tags integration -v -run TestLuaFade_RealESPHomeLights_Integration ./cmd/plugin-esphome/
 func TestLuaFade_RealESPHomeLights_Integration(t *testing.T) {
-	env := managersdk.NewTestEnv(t)
+	env := testkit.NewTestEnv(t)
 	env.Start("messenger")
 	env.Start("storage")
 	env.Start("sb-script")

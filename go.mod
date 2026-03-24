@@ -10,7 +10,7 @@ require (
 	github.com/mycontroller-org/esphome_api v1.3.0
 	github.com/slidebolt/sb-contract v1.0.0
 	github.com/slidebolt/sb-domain v1.0.0
-	github.com/slidebolt/sb-manager-sdk v1.0.0
+	github.com/slidebolt/sb-testkit v1.0.0
 	github.com/slidebolt/sb-messenger-sdk v1.0.0
 	github.com/slidebolt/sb-runtime v1.0.0
 	github.com/slidebolt/sb-script v1.0.0

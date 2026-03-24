@@ -10,7 +10,7 @@ import (
 	"time"
 
 	domain "github.com/slidebolt/sb-domain"
-	managersdk "github.com/slidebolt/sb-manager-sdk"
+	testkit "github.com/slidebolt/sb-testkit"
 	messenger "github.com/slidebolt/sb-messenger-sdk"
 	sbscript "github.com/slidebolt/sb-script/server"
 	storage "github.com/slidebolt/sb-storage-sdk"
@@ -35,7 +35,7 @@ func TestLuaRainbow_Physical_Integration(t *testing.T) {
 	os.Setenv("ESPHOME_API_KEY", apiKey)
 	t.Cleanup(func() { os.Unsetenv("ESPHOME_API_KEY") })
 
-	env := managersdk.NewTestEnv(t)
+	env := testkit.NewTestEnv(t)
 	env.Start("messenger")
 	env.Start("storage")
 

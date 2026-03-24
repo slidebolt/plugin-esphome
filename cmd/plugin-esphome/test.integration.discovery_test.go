@@ -24,7 +24,7 @@ import (
 	"github.com/slidebolt/plugin-esphome/app"
 	mdns "github.com/slidebolt/plugin-esphome/internal/mdns"
 	domain "github.com/slidebolt/sb-domain"
-	managersdk "github.com/slidebolt/sb-manager-sdk"
+	testkit "github.com/slidebolt/sb-testkit"
 	storage "github.com/slidebolt/sb-storage-sdk"
 	"google.golang.org/protobuf/proto"
 )
@@ -476,7 +476,7 @@ func TestMDNSDiscovery_MultipleServices_Integration(t *testing.T) {
 // This device is interesting because it's a specialized device (garage door opener) rather than a simple switch
 func TestESPHomeDevice_RATGDO_Integration(t *testing.T) {
 	// Setup test environment with storage
-	env := managersdk.NewTestEnv(t)
+	env := testkit.NewTestEnv(t)
 	env.Start("storage")
 	store := env.Storage()
 
@@ -757,7 +757,7 @@ func connectAndFetchEntitiesRATGDO(t *testing.T, device *mdns.Device, store stor
 // and fetches their entity lists, then creates real entities in storage.
 func TestESPHomeDevice_ConnectAndFetchEntities_Integration(t *testing.T) {
 	// Setup test environment with storage
-	env := managersdk.NewTestEnv(t)
+	env := testkit.NewTestEnv(t)
 	env.Start("storage")
 	store := env.Storage()
 
@@ -1171,7 +1171,7 @@ func createTextSensorEntity(t *testing.T, store storage.Storage, device *mdns.De
 // TestESPHomeEntity_Query_Integration tests querying entities from storage
 func TestESPHomeEntity_Query_Integration(t *testing.T) {
 	// Setup test environment
-	env := managersdk.NewTestEnv(t)
+	env := testkit.NewTestEnv(t)
 	env.Start("storage")
 	store := env.Storage()
 
@@ -1236,7 +1236,7 @@ func TestESPHomeEntity_Query_Integration(t *testing.T) {
 // This performs a full round-trip: connect -> list entities -> send command -> receive state update
 func TestESPHomeDevice_ControlLight_Integration(t *testing.T) {
 	// Setup test environment with storage
-	env := managersdk.NewTestEnv(t)
+	env := testkit.NewTestEnv(t)
 	env.Start("storage")
 	store := env.Storage()
 

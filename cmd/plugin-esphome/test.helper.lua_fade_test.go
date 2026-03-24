@@ -10,7 +10,7 @@ import (
 
 	"github.com/slidebolt/plugin-esphome/app"
 	domain "github.com/slidebolt/sb-domain"
-	managersdk "github.com/slidebolt/sb-manager-sdk"
+	testkit "github.com/slidebolt/sb-testkit"
 	messenger "github.com/slidebolt/sb-messenger-sdk"
 	scriptserver "github.com/slidebolt/sb-script/server"
 	storage "github.com/slidebolt/sb-storage-sdk"
@@ -18,7 +18,7 @@ import (
 
 // startScript starts the sb-script engine against the given TestEnv's
 // messenger and storage. Registers cleanup via t.Cleanup.
-func startScript(t *testing.T, env *managersdk.TestEnv) {
+func startScript(t *testing.T, env *testkit.TestEnv) {
 	t.Helper()
 	scriptMsg, err := messenger.Connect(map[string]json.RawMessage{
 		"messenger": env.MessengerPayload(),
@@ -112,7 +112,7 @@ func seedLight(t *testing.T, store storage.Storage, deviceID, entityID, name str
 // No real hardware required — entities are seeded directly into storage,
 // exactly as connectAndRegister would populate them after mDNS discovery.
 func TestLuaFade_ESPHomeLights(t *testing.T) {
-	env := managersdk.NewTestEnv(t)
+	env := testkit.NewTestEnv(t)
 	env.Start("messenger")
 	env.Start("storage")
 	startScript(t, env)
@@ -212,7 +212,7 @@ func TestLuaFade_ESPHomeLights(t *testing.T) {
 // TestLuaFade_StopHaltsCommands proves StopScript ends the fade — no further
 // brightness commands arrive after the stop call.
 func TestLuaFade_StopHaltsCommands(t *testing.T) {
-	env := managersdk.NewTestEnv(t)
+	env := testkit.NewTestEnv(t)
 	env.Start("messenger")
 	env.Start("storage")
 	startScript(t, env)
@@ -274,7 +274,7 @@ func TestLuaFade_StopHaltsCommands(t *testing.T) {
 // TestLuaFade_NewDevicePickedUp proves that adding a new ESPHome light after
 // StartScript is picked up on the next timer tick via QueryService.Find.
 func TestLuaFade_NewDevicePickedUp(t *testing.T) {
-	env := managersdk.NewTestEnv(t)
+	env := testkit.NewTestEnv(t)
 	env.Start("messenger")
 	env.Start("storage")
 	startScript(t, env)

@@ -27,7 +27,7 @@ import (
 	"time"
 
 	domain "github.com/slidebolt/sb-domain"
-	managersdk "github.com/slidebolt/sb-manager-sdk"
+	testkit "github.com/slidebolt/sb-testkit"
 	messenger "github.com/slidebolt/sb-messenger-sdk"
 
 	"github.com/slidebolt/plugin-esphome/app"
@@ -70,7 +70,7 @@ func TestIsolation_BadDeviceHangsRegistration(t *testing.T) {
 		// No TXTRecords → HasAPIKey() == false → open API (no handshake key needed)
 	}
 
-	env := managersdk.NewTestEnv(t)
+	env := testkit.NewTestEnv(t)
 	env.Start("messenger")
 	env.Start("storage")
 	store := env.Storage()
@@ -96,7 +96,7 @@ func TestIsolation_BadDeviceHangsRegistration(t *testing.T) {
 func TestIsolation_ConcurrentSavesBurstNATS(t *testing.T) {
 	const numSaves = 35
 
-	env := managersdk.NewTestEnv(t)
+	env := testkit.NewTestEnv(t)
 	env.Start("messenger")
 	env.Start("storage")
 	store := env.Storage()
@@ -140,7 +140,7 @@ func TestIsolation_ConcurrentSavesBurstNATS(t *testing.T) {
 // syntax — `>` must be the last token). The server silently closed the connection.
 // The fix is to use `*` per-token: "plugin-esphome.*.*.command.light_set_rgb".
 func TestIsolation_SubscribeThenSave(t *testing.T) {
-	env := managersdk.NewTestEnv(t)
+	env := testkit.NewTestEnv(t)
 	env.Start("messenger")
 	env.Start("storage")
 	store := env.Storage()
