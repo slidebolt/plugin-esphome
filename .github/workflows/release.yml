@@ -8,6 +8,10 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
+    env:
+      GOPRIVATE: github.com/slidebolt/*
+      GONOSUMDB: github.com/slidebolt/*
+      GONOSUMCHECK: github.com/slidebolt/*
     permissions:
       contents: write
     strategy:
@@ -20,6 +24,9 @@ jobs:
             goarch: arm64
     steps:
       - uses: actions/checkout@v4
+
+      - name: Configure private repos
+        run: git config --global url."https://\${{ secrets.GH_PAT }}@github.com/".insteadOf "https://github.com/"
       - uses: actions/setup-go@v5
         with:
           go-version-file: go.mod
