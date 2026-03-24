@@ -141,13 +141,13 @@ github.com/slidebolt/sb-messenger-sdk v1.0.2 h1:pBUjRbSJxblemTu/OWb7fgs3jr2T/LH9
 github.com/slidebolt/sb-messenger-sdk v1.0.2/go.mod h1:yJxHiUgqcO/TUj9yiPkVyTwrN0/3BBy6HD17TdWPCEA=
 github.com/slidebolt/sb-runtime v1.0.2 h1:/E3/esIoDjzPhtyOhPtZaJCOXiIxZ1OdqFcJ6eqhFag=
 github.com/slidebolt/sb-runtime v1.0.2/go.mod h1:cEdqVwPa05iCS8Ilnww3j7nhyj9SDU6YmRycb8OUqVQ=
-github.com/slidebolt/sb-script v1.0.2 h1:xYwSIn5baSAMDjL6kZJ3F3B8/tFBp1gSR3paGBFk5Cg=
+github.com/slidebolt/sb-script v1.0.2 h1:e9TQOetNYx3CsxYhV+ueY76oKTDES0kPHF79EVqkHck=
 github.com/slidebolt/sb-script v1.0.2/go.mod h1:KFwZRIUXpIMwEfL7FcaYqVtah744PZkZyCiaZqF5h9s=
 github.com/slidebolt/sb-storage-sdk v1.0.2 h1:EWXpr6jurjas42XCar+CYed4kSc5y1NQn73/Cxijn9s=
 github.com/slidebolt/sb-storage-sdk v1.0.2/go.mod h1:0rwsfUNMzhnp/unyUPFaoiNTMTzvZrvETOetRI8QU1w=
 github.com/slidebolt/sb-storage-server v1.0.2 h1:PGV1WdjRPgR/u031nGJcpNEht+u150fqsvpsSVLCZGo=
 github.com/slidebolt/sb-storage-server v1.0.2/go.mod h1:4/uC1mW0hhM9z8f9w+RyDJVtZtqNjVcc6T2wxpENvn4=
-github.com/slidebolt/sb-testkit v1.0.2 h1:ZwWTSnTqaPEfnCp6j0+uG4kNlF4PfJd8H0lva2As/as=
+github.com/slidebolt/sb-testkit v1.0.2 h1:G3uJBIHKWtzK83TQbxk7sQZwgLhMWBE+XhNWpGpZOHc=
 github.com/slidebolt/sb-testkit v1.0.2/go.mod h1:ZWGseEYvWJZiW9mSWAPPQgI/Gr0ujauF+1Z1gt05J3M=
 github.com/slidebolt/sb-virtual v1.0.2 h1:ppz7lpiGbluh3rrWP6wS6+wYSgZ4ak2PLmwAhDcrt2U=
 github.com/slidebolt/sb-virtual v1.0.2/go.mod h1:IruelfMhM7CIrY/fZVUsq4DPKQw1ym3cH5hff0009+8=
