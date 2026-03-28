@@ -36,12 +36,70 @@ type entityRef struct {
 }
 
 type deviceConn struct {
-	send    func(proto.Message) error
-	address string // TCP address (host:port) for trace logging
+	send             func(proto.Message) error
+	close            func() error
+	markDisconnected func(error)
+	address          string // TCP address (host:port) for trace logging
 }
 
 type DeviceConfig struct {
 	APIKey string `json:"apiKey,omitempty"`
+}
+
+type esphomeClient interface {
+	Send(proto.Message) error
+	Ping() error
+	Close() error
+}
+
+type managedDevice struct {
+	mu        sync.RWMutex
+	dev       *internalmdns.Device
+	reconnect chan struct{}
+}
+
+func newManagedDevice(dev *internalmdns.Device) *managedDevice {
+	return &managedDevice{
+		dev:       cloneDevice(dev),
+		reconnect: make(chan struct{}, 1),
+	}
+}
+
+func (d *managedDevice) update(dev *internalmdns.Device) {
+	d.mu.Lock()
+	d.dev = cloneDevice(dev)
+	d.mu.Unlock()
+	d.requestReconnect()
+}
+
+func (d *managedDevice) snapshot() *internalmdns.Device {
+	d.mu.RLock()
+	defer d.mu.RUnlock()
+	return cloneDevice(d.dev)
+}
+
+func (d *managedDevice) requestReconnect() {
+	select {
+	case d.reconnect <- struct{}{}:
+	default:
+	}
+}
+
+func cloneDevice(dev *internalmdns.Device) *internalmdns.Device {
+	if dev == nil {
+		return nil
+	}
+	clone := *dev
+	if len(dev.Addresses) > 0 {
+		clone.Addresses = append([]string(nil), dev.Addresses...)
+	}
+	if len(dev.TXTRecords) > 0 {
+		clone.TXTRecords = make(map[string]string, len(dev.TXTRecords))
+		for k, v := range dev.TXTRecords {
+			clone.TXTRecords[k] = v
+		}
+	}
+	return &clone
 }
 
 type App struct {
@@ -50,12 +108,15 @@ type App struct {
 	cmds  *messenger.Commands
 	subs  []messenger.Subscription
 
-	discovery        *internalmdns.Discovery
-	ctx              context.Context
-	cancel           context.CancelFunc
-	connectedDevices sync.Map
-	devices          sync.Map
-	trace            bool
+	discovery       *internalmdns.Discovery
+	ctx             context.Context
+	cancel          context.CancelFunc
+	deviceManagers  sync.Map
+	devices         sync.Map
+	trace           bool
+	clientFactory   func(address, encKey string, handler func(proto.Message)) (esphomeClient, error)
+	sleep           func(time.Duration)
+	startDeviceLoop func(*managedDevice)
 }
 
 // tracef logs a message when trace mode is enabled (ESPHOME_TRACE=1).
@@ -65,7 +126,14 @@ func (a *App) tracef(format string, args ...any) {
 	}
 }
 
-func New() *App { return &App{} }
+func New() *App {
+	app := &App{}
+	app.clientFactory = func(address, encKey string, handler func(proto.Message)) (esphomeClient, error) {
+		return espclient.GetClient(PluginID, address, encKey, 10*time.Second, handler)
+	}
+	app.sleep = time.Sleep
+	return app
+}
 
 func (a *App) Hello() contract.HelloResponse {
 	return contract.HelloResponse{
@@ -152,11 +220,25 @@ func (a *App) OnDeviceFound(dev *internalmdns.Device) {
 }
 
 func (a *App) onDeviceFound(dev *internalmdns.Device) {
-	if _, already := a.connectedDevices.LoadOrStore(dev.Name, struct{}{}); already {
+	if existing, ok := a.deviceManagers.Load(dev.Name); ok {
+		existing.(*managedDevice).update(dev)
+		a.tracef("refreshed discovery for %s addr=%s port=%d", dev.Name, dev.GetAddress(), dev.GetAPIPort())
 		return
 	}
+
+	md := newManagedDevice(dev)
+	actual, loaded := a.deviceManagers.LoadOrStore(dev.Name, md)
+	if loaded {
+		actual.(*managedDevice).update(dev)
+		return
+	}
+
 	log.Printf("plugin-esphome: discovered %s - connecting", dev.Name)
-	go a.connectAndRegister(a.ctx, dev)
+	if a.startDeviceLoop != nil {
+		a.startDeviceLoop(md)
+		return
+	}
+	go a.runDeviceLoop(a.ctx, md)
 }
 
 func (a *App) resolveAPIKey(dev *internalmdns.Device) string {
@@ -180,9 +262,47 @@ func (a *App) resolveAPIKey(dev *internalmdns.Device) string {
 	return ""
 }
 
-func (a *App) connectAndRegister(ctx context.Context, dev *internalmdns.Device) {
-	defer a.connectedDevices.Delete(dev.Name)
+func (a *App) runDeviceLoop(ctx context.Context, md *managedDevice) {
+	backoff := time.Second
+	for {
+		dev := md.snapshot()
+		if dev == nil {
+			if !a.waitForReconnect(ctx, md, backoff) {
+				return
+			}
+			continue
+		}
 
+		if err := a.connectAndRegister(ctx, md, dev); err != nil && ctx.Err() == nil {
+			log.Printf("plugin-esphome: device %s disconnected: %v", dev.Name, err)
+		}
+		if ctx.Err() != nil {
+			return
+		}
+		if !a.waitForReconnect(ctx, md, backoff) {
+			return
+		}
+		if backoff < 30*time.Second {
+			backoff *= 2
+		}
+	}
+}
+
+func (a *App) waitForReconnect(ctx context.Context, md *managedDevice, delay time.Duration) bool {
+	timer := time.NewTimer(delay)
+	defer timer.Stop()
+
+	select {
+	case <-ctx.Done():
+		return false
+	case <-md.reconnect:
+		return true
+	case <-timer.C:
+		return true
+	}
+}
+
+func (a *App) connectAndRegister(ctx context.Context, md *managedDevice, dev *internalmdns.Device) error {
 	address := fmt.Sprintf("%s:%d", dev.GetAddress(), dev.GetAPIPort())
 	encKey := a.resolveAPIKey(dev)
 
@@ -215,10 +335,9 @@ func (a *App) connectAndRegister(ctx context.Context, dev *internalmdns.Device) 
 		}
 	}
 
-	espClient, err := espclient.GetClient(PluginID, address, encKey, 10*time.Second, handler)
+	espClient, err := a.clientFactory(address, encKey, handler)
 	if err != nil {
-		log.Printf("plugin-esphome: connect %s (%s): %v", dev.Name, address, err)
-		return
+		return fmt.Errorf("connect %s (%s): %w", dev.Name, address, err)
 	}
 	defer espClient.Close()
 
@@ -227,39 +346,42 @@ func (a *App) connectAndRegister(ctx context.Context, dev *internalmdns.Device) 
 		ApiVersionMajor: 1,
 		ApiVersionMinor: 9,
 	}); err != nil {
-		log.Printf("plugin-esphome: hello %s: %v", dev.Name, err)
-		return
+		return fmt.Errorf("hello %s: %w", dev.Name, err)
 	}
-	time.Sleep(200 * time.Millisecond)
+	a.sleep(200 * time.Millisecond)
 
 	if err := espClient.Send(&api.ConnectRequest{}); err != nil {
-		log.Printf("plugin-esphome: connect-req %s: %v", dev.Name, err)
-		return
+		return fmt.Errorf("connect-req %s: %w", dev.Name, err)
 	}
-	time.Sleep(200 * time.Millisecond)
+	a.sleep(200 * time.Millisecond)
 
 	if err := espClient.Send(&api.ListEntitiesRequest{}); err != nil {
-		log.Printf("plugin-esphome: list-entities %s: %v", dev.Name, err)
-		return
+		return fmt.Errorf("list-entities %s: %w", dev.Name, err)
 	}
 
 	select {
 	case <-listingDone:
 	case <-time.After(5 * time.Second):
-		log.Printf("plugin-esphome: timeout waiting for entity list from %s", dev.Name)
-		return
+		return fmt.Errorf("timeout waiting for entity list from %s", dev.Name)
 	case <-ctx.Done():
-		return
+		return nil
 	}
 
 	log.Printf("plugin-esphome: %s - registered %d entities", dev.Name, created)
 
-	a.devices.Store(dev.Name, &deviceConn{send: espClient.Send, address: address})
+	a.devices.Store(dev.Name, &deviceConn{
+		send:    espClient.Send,
+		close:   espClient.Close,
+		address: address,
+		markDisconnected: func(err error) {
+			a.markDeviceDisconnected(dev.Name, err)
+			md.requestReconnect()
+		},
+	})
 	defer a.devices.Delete(dev.Name)
 
 	if err := espClient.Send(&api.SubscribeStatesRequest{}); err != nil {
-		log.Printf("plugin-esphome: subscribe-states %s: %v", dev.Name, err)
-		return
+		return fmt.Errorf("subscribe-states %s: %w", dev.Name, err)
 	}
 
 	ping := time.NewTicker(25 * time.Second)
@@ -267,13 +389,25 @@ func (a *App) connectAndRegister(ctx context.Context, dev *internalmdns.Device) 
 	for {
 		select {
 		case <-ctx.Done():
-			return
+			return nil
 		case <-ping.C:
-			if err := espClient.Send(&api.PingRequest{}); err != nil {
-				log.Printf("plugin-esphome: ping %s failed, will reconnect: %v", dev.Name, err)
-				return
+			if err := espClient.Ping(); err != nil {
+				return fmt.Errorf("ping %s failed: %w", dev.Name, err)
 			}
 		}
+	}
+}
+
+func (a *App) markDeviceDisconnected(deviceID string, err error) {
+	if v, ok := a.devices.LoadAndDelete(deviceID); ok {
+		devConn := v.(*deviceConn)
+		a.tracef("mark disconnected device=%s addr=%s err=%v", deviceID, devConn.address, err)
+		if devConn.close != nil {
+			_ = devConn.close()
+		}
+	}
+	if v, ok := a.deviceManagers.Load(deviceID); ok {
+		v.(*managedDevice).requestReconnect()
 	}
 }
 
@@ -619,6 +753,9 @@ func (a *App) handleCommand(addr messenger.Address, cmd any) {
 	v, ok := a.devices.Load(addr.DeviceID)
 	if !ok {
 		log.Printf("plugin-esphome: no device connection for %s (device may be offline)", addr.Key())
+		if v, ok := a.deviceManagers.Load(addr.DeviceID); ok {
+			v.(*managedDevice).requestReconnect()
+		}
 		return
 	}
 	devConn := v.(*deviceConn)
@@ -815,6 +952,9 @@ func (a *App) handleCommand(addr messenger.Address, cmd any) {
 
 	if err := ec.send(req); err != nil {
 		log.Printf("plugin-esphome: send command %T to %s (%s): %v", cmd, addr.Key(), devConn.address, err)
+		if devConn.markDisconnected != nil {
+			devConn.markDisconnected(err)
+		}
 	} else {
 		a.tracef("command sent ok key=%s addr=%s cmd=%T", addr.Key(), devConn.address, cmd)
 	}

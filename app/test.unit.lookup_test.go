@@ -2,13 +2,17 @@ package app
 
 import (
 	"encoding/json"
+	"errors"
 	"reflect"
 	"testing"
+	"time"
 
 	"github.com/mycontroller-org/esphome_api/pkg/api"
 	internalmdns "github.com/slidebolt/plugin-esphome/internal/mdns"
 	domain "github.com/slidebolt/sb-domain"
+	messenger "github.com/slidebolt/sb-messenger-sdk"
 	storage "github.com/slidebolt/sb-storage-sdk"
+	"google.golang.org/protobuf/proto"
 )
 
 type fakeStore struct {
@@ -254,5 +258,81 @@ func TestResolveAPIKeyPersistsFallbackToPrivate(t *testing.T) {
 	}
 	if cfg.APIKey != "env-secret" {
 		t.Fatalf("private api key = %q, want env-secret", cfg.APIKey)
+	}
+}
+
+func TestOnDeviceFoundStartsOneManagedLoopPerDevice(t *testing.T) {
+	app := New()
+
+	started := 0
+	var managed *managedDevice
+	app.startDeviceLoop = func(md *managedDevice) {
+		started++
+		managed = md
+	}
+
+	app.onDeviceFound(&internalmdns.Device{
+		Name:      "basement-edison",
+		Addresses: []string{"10.0.0.10"},
+		Port:      6053,
+	})
+	app.onDeviceFound(&internalmdns.Device{
+		Name:      "basement-edison",
+		Addresses: []string{"10.0.0.11"},
+		Port:      7000,
+	})
+
+	if started != 1 {
+		t.Fatalf("managed loop starts = %d, want 1", started)
+	}
+	if managed == nil {
+		t.Fatal("expected managed device to be created")
+	}
+	got := managed.snapshot()
+	if got == nil {
+		t.Fatal("expected managed device snapshot")
+	}
+	if got.GetAddress() != "10.0.0.11" {
+		t.Fatalf("managed device address = %q, want 10.0.0.11", got.GetAddress())
+	}
+	if got.GetAPIPort() != 7000 {
+		t.Fatalf("managed device port = %d, want 7000", got.GetAPIPort())
+	}
+}
+
+func TestHandleCommandSendFailureDropsActiveConnectionAndRequestsReconnect(t *testing.T) {
+	app := New()
+	md := newManagedDevice(&internalmdns.Device{Name: "basement-edison"})
+	app.deviceManagers.Store("basement-edison", md)
+
+	closeCalls := 0
+	app.devices.Store("basement-edison", &deviceConn{
+		send: func(proto.Message) error { return errors.New("broken pipe") },
+		close: func() error {
+			closeCalls++
+			return nil
+		},
+		address: "10.0.0.10:6053",
+		markDisconnected: func(err error) {
+			app.markDeviceDisconnected("basement-edison", err)
+		},
+	})
+
+	app.handleCommand(
+		messenger.Address{Plugin: PluginID, DeviceID: "basement-edison", EntityID: "basement-edison_42"},
+		domain.LightSetBrightness{Brightness: 128},
+	)
+
+	if _, ok := app.devices.Load("basement-edison"); ok {
+		t.Fatal("expected active device connection to be removed after send failure")
+	}
+	if closeCalls != 1 {
+		t.Fatalf("close calls = %d, want 1", closeCalls)
+	}
+
+	select {
+	case <-md.reconnect:
+	case <-time.After(100 * time.Millisecond):
+		t.Fatal("expected reconnect to be requested after send failure")
 	}
 }
