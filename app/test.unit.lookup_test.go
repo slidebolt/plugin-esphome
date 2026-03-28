@@ -99,6 +99,49 @@ func TestEntityFromMsgLightIncludesPersistentColorCapabilities(t *testing.T) {
 	}
 }
 
+func TestEntityFromMsgLightColorTempOnlyOmitsRGBCommand(t *testing.T) {
+	entity, _, ok := EntityFromMsg("edison-light", &api.ListEntitiesLightResponse{
+		Key:                 7,
+		Name:                "Edison Light",
+		SupportedColorModes: []api.ColorMode{api.ColorMode_COLOR_MODE_COLOR_TEMPERATURE},
+	})
+	if !ok {
+		t.Fatal("EntityFromMsg should accept ListEntitiesLightResponse")
+	}
+	wantCommands := []string{"light_turn_on", "light_turn_off", "light_set_brightness", "light_set_color_temp"}
+	if !reflect.DeepEqual(entity.Commands, wantCommands) {
+		t.Fatalf("commands = %v, want %v", entity.Commands, wantCommands)
+	}
+	light, ok := entity.State.(domain.Light)
+	if !ok {
+		t.Fatalf("state type = %T, want domain.Light", entity.State)
+	}
+	if light.ColorMode != "color_temp" {
+		t.Fatalf("state.colorMode = %q, want color_temp", light.ColorMode)
+	}
+}
+
+func TestLightStateFromResponseColorTempDoesNotBackfillRGB(t *testing.T) {
+	light := lightStateFromResponse(&api.LightStateResponse{
+		State:            true,
+		Brightness:       0.5,
+		ColorMode:        api.ColorMode_COLOR_MODE_COLOR_TEMPERATURE,
+		Red:              1,
+		Green:            0.75,
+		Blue:             0.5,
+		ColorTemperature: 370,
+	})
+	if light.ColorMode != "color_temp" {
+		t.Fatalf("colorMode = %q, want color_temp", light.ColorMode)
+	}
+	if len(light.RGB) != 0 || len(light.RGBW) != 0 || len(light.RGBWW) != 0 {
+		t.Fatalf("unexpected color payload in %+v", light)
+	}
+	if light.Temperature != 370 {
+		t.Fatalf("temperature = %d, want 370", light.Temperature)
+	}
+}
+
 func TestApplyStateUpdatePersistsFullLightState(t *testing.T) {
 	entity := domain.Entity{
 		ID:       "tv-light_42",

@@ -300,8 +300,11 @@ func EntityFromMsg(devName string, msg proto.Message) (domain.Entity, uint32, bo
 		}, resp.Key, true
 	case *api.ListEntitiesLightResponse:
 		cmds := []string{"light_turn_on", "light_turn_off", "light_set_brightness"}
-		if len(resp.SupportedColorModes) > 0 {
-			cmds = append(cmds, "light_set_color_temp", "light_set_rgb")
+		if supportsColorTemperature(resp.SupportedColorModes) {
+			cmds = append(cmds, "light_set_color_temp")
+		}
+		if supportsRGB(resp.SupportedColorModes) {
+			cmds = append(cmds, "light_set_rgb")
 		}
 		state := domain.Light{Power: false}
 		for _, mode := range resp.SupportedColorModes {
@@ -496,6 +499,25 @@ func normalizeColorMode(mode api.ColorMode) string {
 	}
 }
 
+func supportsColorTemperature(modes []api.ColorMode) bool {
+	for _, mode := range modes {
+		switch normalizeColorMode(mode) {
+		case "color_temp", "cold_warm_white":
+			return true
+		}
+	}
+	return false
+}
+
+func supportsRGB(modes []api.ColorMode) bool {
+	for _, mode := range modes {
+		if strings.HasPrefix(normalizeColorMode(mode), "rgb") {
+			return true
+		}
+	}
+	return false
+}
+
 func scaleTo255(v float32) int {
 	n := int(v * 255)
 	if n < 0 {
@@ -525,7 +547,7 @@ func lightStateFromResponse(resp *api.LightStateResponse) domain.Light {
 		ColorMode:  normalizeColorMode(resp.ColorMode),
 	}
 
-	if mode := state.ColorMode; strings.HasPrefix(mode, "rgb") || resp.Red > 0 || resp.Green > 0 || resp.Blue > 0 {
+	if mode := state.ColorMode; strings.HasPrefix(mode, "rgb") {
 		rgb := []int{scaleTo255(resp.Red), scaleTo255(resp.Green), scaleTo255(resp.Blue)}
 		switch mode {
 		case "rgbw":
