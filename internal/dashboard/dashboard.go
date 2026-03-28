@@ -6,6 +6,7 @@ package dashboard
 
 import (
 	"context"
+	"crypto/tls"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -13,7 +14,6 @@ import (
 	"net/http/cookiejar"
 	"net/url"
 	"os"
-	"regexp"
 	"strings"
 	"time"
 )
@@ -25,6 +25,7 @@ type Config struct {
 	URL      string // base URL, e.g. https://esp.example.com
 	Username string
 	Password string
+	Insecure bool // skip TLS certificate verification (useful for LAN IPs with hostname certs)
 }
 
 // ConfigFromEnv reads dashboard config from environment variables:
@@ -32,11 +33,13 @@ type Config struct {
 //	ESPHOME_DASHBOARD_URL
 //	ESPHOME_DASHBOARD_USER
 //	ESPHOME_DASHBOARD_PASSWORD
+//	ESPHOME_DASHBOARD_INSECURE  (set to "1" to skip TLS certificate verification)
 func ConfigFromEnv() Config {
 	return Config{
 		URL:      os.Getenv("ESPHOME_DASHBOARD_URL"),
 		Username: os.Getenv("ESPHOME_DASHBOARD_USER"),
 		Password: os.Getenv("ESPHOME_DASHBOARD_PASSWORD"),
+		Insecure: os.Getenv("ESPHOME_DASHBOARD_INSECURE") == "1",
 	}
 }
 
@@ -75,9 +78,16 @@ func NewClient(cfg Config, timeout time.Duration) *Client {
 // Returns only devices that have a non-empty IP address.
 func (c *Client) Fetch(ctx context.Context) ([]Device, error) {
 	jar, _ := cookiejar.New(nil)
+	transport := http.DefaultTransport
+	if c.cfg.Insecure {
+		transport = &http.Transport{
+			TLSClientConfig: &tls.Config{InsecureSkipVerify: true}, //nolint:gosec // intentional for LAN use
+		}
+	}
 	hc := &http.Client{
-		Jar:     jar,
-		Timeout: c.timeout,
+		Jar:       jar,
+		Timeout:   c.timeout,
+		Transport: transport,
 		CheckRedirect: func(req *http.Request, via []*http.Request) error {
 			return http.ErrUseLastResponse // handle redirects manually
 		},
@@ -97,8 +107,6 @@ func (c *Client) Fetch(ctx context.Context) ([]Device, error) {
 }
 
 // getXSRF fetches the login page and extracts the _xsrf token from the cookie.
-var xsrfCookieRe = regexp.MustCompile(`_xsrf=([^;]+)`)
-
 func (c *Client) getXSRF(ctx context.Context, hc *http.Client, base string) (string, error) {
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, base+"/login", nil)
 	if err != nil {
