@@ -17,6 +17,7 @@ import (
 	"github.com/mycontroller-org/esphome_api/pkg/api"
 	espclient "github.com/mycontroller-org/esphome_api/pkg/client"
 	espmodel "github.com/mycontroller-org/esphome_api/pkg/types"
+	"github.com/slidebolt/plugin-esphome/internal/dashboard"
 	internalmdns "github.com/slidebolt/plugin-esphome/internal/mdns"
 	contract "github.com/slidebolt/sb-contract"
 	domain "github.com/slidebolt/sb-domain"
@@ -186,6 +187,7 @@ func (a *App) OnStart(deps map[string]json.RawMessage) (json.RawMessage, error) 
 	a.cancel = cancel
 
 	go func() {
+		a.seedFromDashboard(ctx)
 		a.bootstrapCachedDevices()
 		devices, err := disc.Discover(ctx)
 		if err != nil {
@@ -267,6 +269,36 @@ func (a *App) resolveAPIKey(dev *internalmdns.Device) string {
 		return key
 	}
 	return ""
+}
+
+// seedFromDashboard fetches device addresses from the ESPHome dashboard API
+// (if configured via ESPHOME_DASHBOARD_URL/USER/PASSWORD) and persists them
+// as lastKnownAddress in each device's private config. This runs before
+// bootstrapCachedDevices so that all known devices connect immediately on
+// startup without waiting for mDNS re-announcement.
+//
+// It is intentionally non-blocking: any error is logged and startup continues.
+// To add periodic polling, call seedFromDashboard on a ticker in a goroutine.
+func (a *App) seedFromDashboard(ctx context.Context) {
+	cfg := dashboard.ConfigFromEnv()
+	if !cfg.Valid() {
+		return
+	}
+	client := dashboard.NewClient(cfg, 0)
+	devices, err := client.Fetch(ctx)
+	if err != nil {
+		log.Printf("plugin-esphome: dashboard seed failed (continuing with cached/mDNS): %v", err)
+		return
+	}
+	seeded := 0
+	for _, d := range devices {
+		a.updateDeviceConfig(d.Name, func(cfg *DeviceConfig) {
+			cfg.LastKnownAddress = d.Address
+			cfg.LastKnownPort = d.Port
+		})
+		seeded++
+	}
+	log.Printf("plugin-esphome: seeded %d device addresses from dashboard", seeded)
 }
 
 func (a *App) bootstrapCachedDevices() {
