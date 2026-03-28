@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"github.com/mycontroller-org/esphome_api/pkg/api"
+	espmodel "github.com/mycontroller-org/esphome_api/pkg/types"
 	internalmdns "github.com/slidebolt/plugin-esphome/internal/mdns"
 	domain "github.com/slidebolt/sb-domain"
 	messenger "github.com/slidebolt/sb-messenger-sdk"
@@ -258,6 +259,85 @@ func TestResolveAPIKeyPersistsFallbackToPrivate(t *testing.T) {
 	}
 	if cfg.APIKey != "env-secret" {
 		t.Fatalf("private api key = %q, want env-secret", cfg.APIKey)
+	}
+}
+
+func TestResolveAPIKeyUsesStoredPrivateConfigWithoutMDNSEncryptionFlag(t *testing.T) {
+	store := &fakeStore{
+		private: map[string]json.RawMessage{},
+	}
+	raw, _ := json.Marshal(DeviceConfig{
+		APIKey:           "stored-secret",
+		LastKnownAddress: "10.0.0.20",
+		LastKnownPort:    6053,
+	})
+	store.private["plugin-esphome.basement-edison"] = raw
+
+	app := &App{store: store}
+	got := app.resolveAPIKey(&internalmdns.Device{Name: "basement-edison"})
+	if got != "stored-secret" {
+		t.Fatalf("resolveAPIKey = %q, want stored-secret", got)
+	}
+}
+
+func TestRememberDevicePersistsLastKnownEndpoint(t *testing.T) {
+	store := &fakeStore{}
+	app := &App{store: store}
+
+	app.rememberDevice(&internalmdns.Device{
+		Name:      "basement-edison",
+		Addresses: []string{"10.0.0.30"},
+		Port:      7000,
+		TXTRecords: map[string]string{
+			"mac": "AA:BB:CC:DD:EE:FF",
+		},
+	})
+
+	cfg, ok := app.loadDeviceConfig("basement-edison")
+	if !ok {
+		t.Fatal("expected cached device config to be stored")
+	}
+	if cfg.LastKnownAddress != "10.0.0.30" {
+		t.Fatalf("lastKnownAddress = %q, want 10.0.0.30", cfg.LastKnownAddress)
+	}
+	if cfg.LastKnownPort != 7000 {
+		t.Fatalf("lastKnownPort = %d, want 7000", cfg.LastKnownPort)
+	}
+	if cfg.MAC != "aa:bb:cc:dd:ee:ff" {
+		t.Fatalf("mac = %q, want aa:bb:cc:dd:ee:ff", cfg.MAC)
+	}
+	if cfg.LastSeenAt == "" {
+		t.Fatal("expected lastSeenAt to be recorded")
+	}
+}
+
+func TestVerifyConnectedDeviceRejectsMACMismatch(t *testing.T) {
+	store := &fakeStore{}
+	app := &App{store: store}
+	app.updateDeviceConfig("basement-edison", func(cfg *DeviceConfig) {
+		cfg.MAC = "aa:bb:cc:dd:ee:ff"
+		cfg.LastKnownAddress = "10.0.0.40"
+		cfg.LastKnownPort = 6053
+	})
+
+	err := app.verifyConnectedDevice(
+		&internalmdns.Device{Name: "basement-edison"},
+		&espmodel.DeviceInfo{Name: "basement-edison", MacAddress: "11:22:33:44:55:66"},
+	)
+	if err == nil {
+		t.Fatal("expected identity mismatch error")
+	}
+
+	app.forgetDeviceAddress("basement-edison")
+	cfg, ok := app.loadDeviceConfig("basement-edison")
+	if !ok {
+		t.Fatal("expected private config to still exist")
+	}
+	if cfg.LastKnownAddress != "" || cfg.LastKnownPort != 0 || cfg.LastSeenAt != "" {
+		t.Fatalf("expected cached endpoint to be cleared, got %+v", cfg)
+	}
+	if cfg.MAC != "aa:bb:cc:dd:ee:ff" {
+		t.Fatalf("expected mac to be retained, got %q", cfg.MAC)
 	}
 }
 

@@ -16,6 +16,7 @@ import (
 
 	"github.com/mycontroller-org/esphome_api/pkg/api"
 	espclient "github.com/mycontroller-org/esphome_api/pkg/client"
+	espmodel "github.com/mycontroller-org/esphome_api/pkg/types"
 	internalmdns "github.com/slidebolt/plugin-esphome/internal/mdns"
 	contract "github.com/slidebolt/sb-contract"
 	domain "github.com/slidebolt/sb-domain"
@@ -43,12 +44,17 @@ type deviceConn struct {
 }
 
 type DeviceConfig struct {
-	APIKey string `json:"apiKey,omitempty"`
+	APIKey           string `json:"apiKey,omitempty"`
+	LastKnownAddress string `json:"lastKnownAddress,omitempty"`
+	LastKnownPort    int    `json:"lastKnownPort,omitempty"`
+	LastSeenAt       string `json:"lastSeenAt,omitempty"`
+	MAC              string `json:"mac,omitempty"`
 }
 
 type esphomeClient interface {
 	Send(proto.Message) error
 	Ping() error
+	DeviceInfo() (*espmodel.DeviceInfo, error)
 	Close() error
 }
 
@@ -180,6 +186,7 @@ func (a *App) OnStart(deps map[string]json.RawMessage) (json.RawMessage, error) 
 	a.cancel = cancel
 
 	go func() {
+		a.bootstrapCachedDevices()
 		devices, err := disc.Discover(ctx)
 		if err != nil {
 			log.Printf("plugin-esphome: initial probe error: %v", err)
@@ -220,6 +227,7 @@ func (a *App) OnDeviceFound(dev *internalmdns.Device) {
 }
 
 func (a *App) onDeviceFound(dev *internalmdns.Device) {
+	a.rememberDevice(dev)
 	if existing, ok := a.deviceManagers.Load(dev.Name); ok {
 		existing.(*managedDevice).update(dev)
 		a.tracef("refreshed discovery for %s addr=%s port=%d", dev.Name, dev.GetAddress(), dev.GetAPIPort())
@@ -242,9 +250,6 @@ func (a *App) onDeviceFound(dev *internalmdns.Device) {
 }
 
 func (a *App) resolveAPIKey(dev *internalmdns.Device) string {
-	if !dev.HasAPIKey() {
-		return ""
-	}
 	devKey := domain.DeviceKey{Plugin: PluginID, ID: dev.Name}
 	if raw, err := a.store.GetPrivate(devKey); err == nil && len(raw) > 0 {
 		var cfg DeviceConfig
@@ -252,14 +257,108 @@ func (a *App) resolveAPIKey(dev *internalmdns.Device) string {
 			return strings.TrimSpace(cfg.APIKey)
 		}
 	}
+	if !dev.HasAPIKey() {
+		return ""
+	}
 	if key := os.Getenv("ESPHOME_API_KEY"); key != "" {
-		data, _ := json.Marshal(DeviceConfig{APIKey: key})
-		if err := a.store.SetPrivate(devKey, data); err != nil {
-			log.Printf("plugin-esphome: persist api key for %s: %v", dev.Name, err)
-		}
+		a.updateDeviceConfig(dev.Name, func(cfg *DeviceConfig) {
+			cfg.APIKey = key
+		})
 		return key
 	}
 	return ""
+}
+
+func (a *App) bootstrapCachedDevices() {
+	entries, err := a.store.Search(PluginID + ".*")
+	if err != nil {
+		log.Printf("plugin-esphome: bootstrap cached devices search: %v", err)
+		return
+	}
+
+	seen := make(map[string]struct{})
+	for _, entry := range entries {
+		var entity domain.Entity
+		if err := json.Unmarshal(entry.Data, &entity); err != nil {
+			continue
+		}
+		if entity.DeviceID == "" {
+			continue
+		}
+		if _, ok := seen[entity.DeviceID]; ok {
+			continue
+		}
+		seen[entity.DeviceID] = struct{}{}
+
+		cfg, ok := a.loadDeviceConfig(entity.DeviceID)
+		if !ok || strings.TrimSpace(cfg.LastKnownAddress) == "" {
+			continue
+		}
+		port := cfg.LastKnownPort
+		if port == 0 {
+			port = 6053
+		}
+		dev := &internalmdns.Device{
+			Name:      entity.DeviceID,
+			Addresses: []string{strings.TrimSpace(cfg.LastKnownAddress)},
+			Port:      port,
+		}
+		if strings.TrimSpace(cfg.MAC) != "" {
+			dev.TXTRecords = map[string]string{"mac": cfg.MAC}
+		}
+		a.tracef("bootstrap cached device %s addr=%s port=%d", dev.Name, dev.GetAddress(), dev.GetAPIPort())
+		a.onDeviceFound(dev)
+	}
+}
+
+func (a *App) loadDeviceConfig(deviceID string) (DeviceConfig, bool) {
+	if a.store == nil {
+		return DeviceConfig{}, false
+	}
+	raw, err := a.store.GetPrivate(domain.DeviceKey{Plugin: PluginID, ID: deviceID})
+	if err != nil || len(raw) == 0 {
+		return DeviceConfig{}, false
+	}
+	var cfg DeviceConfig
+	if err := json.Unmarshal(raw, &cfg); err != nil {
+		return DeviceConfig{}, false
+	}
+	return cfg, true
+}
+
+func (a *App) updateDeviceConfig(deviceID string, mutate func(*DeviceConfig)) {
+	if a.store == nil {
+		return
+	}
+	cfg, _ := a.loadDeviceConfig(deviceID)
+	mutate(&cfg)
+	data, err := json.Marshal(cfg)
+	if err != nil {
+		log.Printf("plugin-esphome: marshal private config for %s: %v", deviceID, err)
+		return
+	}
+	if err := a.store.SetPrivate(domain.DeviceKey{Plugin: PluginID, ID: deviceID}, data); err != nil {
+		log.Printf("plugin-esphome: persist private config for %s: %v", deviceID, err)
+	}
+}
+
+func (a *App) rememberDevice(dev *internalmdns.Device) {
+	if dev == nil || strings.TrimSpace(dev.Name) == "" {
+		return
+	}
+	address := strings.TrimSpace(dev.GetAddress())
+	port := dev.GetAPIPort()
+	mac := normalizeMAC(dev.ParseMAC())
+	a.updateDeviceConfig(dev.Name, func(cfg *DeviceConfig) {
+		if address != "" {
+			cfg.LastKnownAddress = address
+			cfg.LastKnownPort = port
+			cfg.LastSeenAt = time.Now().UTC().Format(time.RFC3339Nano)
+		}
+		if mac != "" {
+			cfg.MAC = mac
+		}
+	})
 }
 
 func (a *App) runDeviceLoop(ctx context.Context, md *managedDevice) {
@@ -355,6 +454,16 @@ func (a *App) connectAndRegister(ctx context.Context, md *managedDevice, dev *in
 	}
 	a.sleep(200 * time.Millisecond)
 
+	info, err := espClient.DeviceInfo()
+	if err != nil {
+		return fmt.Errorf("device-info %s: %w", dev.Name, err)
+	}
+	if err := a.verifyConnectedDevice(dev, info); err != nil {
+		a.forgetDeviceAddress(dev.Name)
+		return err
+	}
+	a.rememberVerifiedDevice(dev, info)
+
 	if err := espClient.Send(&api.ListEntitiesRequest{}); err != nil {
 		return fmt.Errorf("list-entities %s: %w", dev.Name, err)
 	}
@@ -396,6 +505,52 @@ func (a *App) connectAndRegister(ctx context.Context, md *managedDevice, dev *in
 			}
 		}
 	}
+}
+
+func normalizeMAC(mac string) string {
+	return strings.ToLower(strings.ReplaceAll(strings.TrimSpace(mac), "-", ":"))
+}
+
+func (a *App) verifyConnectedDevice(dev *internalmdns.Device, info *espmodel.DeviceInfo) error {
+	expectedName := strings.TrimSpace(dev.Name)
+	actualName := strings.TrimSpace(info.Name)
+	expectedMAC := normalizeMAC(dev.ParseMAC())
+	if cfg, ok := a.loadDeviceConfig(dev.Name); ok && strings.TrimSpace(cfg.MAC) != "" {
+		expectedMAC = normalizeMAC(cfg.MAC)
+	}
+	actualMAC := normalizeMAC(info.MacAddress)
+
+	if expectedMAC != "" && actualMAC != "" && expectedMAC != actualMAC {
+		return fmt.Errorf("identity mismatch for %s: expected mac %s, got %s", dev.Name, expectedMAC, actualMAC)
+	}
+	if expectedName != "" && actualName != "" && expectedName != actualName {
+		return fmt.Errorf("identity mismatch for %s: expected name %s, got %s", dev.Name, expectedName, actualName)
+	}
+	return nil
+}
+
+func (a *App) rememberVerifiedDevice(dev *internalmdns.Device, info *espmodel.DeviceInfo) {
+	address := strings.TrimSpace(dev.GetAddress())
+	port := dev.GetAPIPort()
+	actualMAC := normalizeMAC(info.MacAddress)
+	a.updateDeviceConfig(dev.Name, func(cfg *DeviceConfig) {
+		if address != "" {
+			cfg.LastKnownAddress = address
+			cfg.LastKnownPort = port
+			cfg.LastSeenAt = time.Now().UTC().Format(time.RFC3339Nano)
+		}
+		if actualMAC != "" {
+			cfg.MAC = actualMAC
+		}
+	})
+}
+
+func (a *App) forgetDeviceAddress(deviceID string) {
+	a.updateDeviceConfig(deviceID, func(cfg *DeviceConfig) {
+		cfg.LastKnownAddress = ""
+		cfg.LastKnownPort = 0
+		cfg.LastSeenAt = ""
+	})
 }
 
 func (a *App) markDeviceDisconnected(deviceID string, err error) {
