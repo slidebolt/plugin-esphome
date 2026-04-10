@@ -6,12 +6,14 @@ package app
 import (
 	"context"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"log"
 	"os"
 	"strconv"
 	"strings"
 	"sync"
+	"sync/atomic"
 	"time"
 
 	"github.com/mycontroller-org/esphome_api/pkg/api"
@@ -21,6 +23,7 @@ import (
 	internalmdns "github.com/slidebolt/plugin-esphome/internal/mdns"
 	contract "github.com/slidebolt/sb-contract"
 	domain "github.com/slidebolt/sb-domain"
+	logging "github.com/slidebolt/sb-logging-sdk"
 	messenger "github.com/slidebolt/sb-messenger-sdk"
 	storage "github.com/slidebolt/sb-storage-sdk"
 	"google.golang.org/protobuf/proto"
@@ -42,6 +45,22 @@ type deviceConn struct {
 	close            func() error
 	markDisconnected func(error)
 	address          string // TCP address (host:port) for trace logging
+}
+
+type deviceStatus struct {
+	mu                 sync.Mutex
+	Connected          bool   `json:"connected"`
+	LastConnectedAt    string `json:"lastConnectedAt,omitempty"`
+	LastDisconnectedAt string `json:"lastDisconnectedAt,omitempty"`
+	LastMessageAt      string `json:"lastMessageAt,omitempty"`
+	LastError          string `json:"lastError,omitempty"`
+	Reconnects         uint64 `json:"reconnects"`
+	CommandsReceived   uint64 `json:"commandsReceived"`
+	CommandsSent       uint64 `json:"commandsSent"`
+	CommandsFailed     uint64 `json:"commandsFailed"`
+	CommandsDropped    uint64 `json:"commandsDropped"`
+	StateUpdates       uint64 `json:"stateUpdates"`
+	lastSavedAt        time.Time
 }
 
 type DeviceConfig struct {
@@ -110,20 +129,33 @@ func cloneDevice(dev *internalmdns.Device) *internalmdns.Device {
 }
 
 type App struct {
-	msg   messenger.Messenger
-	store storage.Storage
-	cmds  *messenger.Commands
-	subs  []messenger.Subscription
+	msg    messenger.Messenger
+	store  storage.Storage
+	cmds   *messenger.Commands
+	subs   []messenger.Subscription
+	logger logging.Store
 
 	discovery       *internalmdns.Discovery
 	ctx             context.Context
 	cancel          context.CancelFunc
 	deviceManagers  sync.Map
 	devices         sync.Map
+	deviceStatuses  sync.Map
 	trace           bool
 	clientFactory   func(address, encKey string, handler func(proto.Message)) (esphomeClient, error)
+	connectTimeout  time.Duration
 	sleep           func(time.Duration)
 	startDeviceLoop func(*managedDevice)
+	wg              sync.WaitGroup
+	traceMu         sync.Mutex
+	pendingTraces   map[string]pendingTrace
+}
+
+var logSequence uint64
+
+type pendingTrace struct {
+	id        string
+	expiresAt time.Time
 }
 
 // tracef logs a message when trace mode is enabled (ESPHOME_TRACE=1).
@@ -134,12 +166,35 @@ func (a *App) tracef(format string, args ...any) {
 }
 
 func New() *App {
-	app := &App{}
+	return NewWithLogger(nil)
+}
+
+func NewWithLogger(logger logging.Store) *App {
+	app := &App{
+		logger:        logger,
+		pendingTraces: map[string]pendingTrace{},
+	}
 	app.clientFactory = func(address, encKey string, handler func(proto.Message)) (esphomeClient, error) {
 		return espclient.GetClient(PluginID, address, encKey, 10*time.Second, handler)
 	}
+	app.connectTimeout = 15 * time.Second
 	app.sleep = time.Sleep
 	return app
+}
+
+func closeClientBounded(client esphomeClient, timeout time.Duration) {
+	if client == nil {
+		return
+	}
+	done := make(chan struct{}, 1)
+	go func() {
+		_ = client.Close()
+		close(done)
+	}()
+	select {
+	case <-done:
+	case <-time.After(timeout):
+	}
 }
 
 func (a *App) Hello() contract.HelloResponse {
@@ -168,9 +223,16 @@ func (a *App) OnStart(deps map[string]json.RawMessage) (json.RawMessage, error) 
 		return nil, fmt.Errorf("connect storage: %w", err)
 	}
 	a.store = storeClient
+	if a.logger == nil {
+		if logger, err := logging.Connect(deps); err == nil {
+			a.logger = logger
+		} else {
+			log.Printf("plugin-esphome: logging connect failed: %v", err)
+		}
+	}
 
 	a.cmds = messenger.NewCommands(msg, domain.LookupCommand)
-	sub, err := a.cmds.Receive(PluginID+".>", a.handleCommand)
+	sub, err := a.cmds.ReceiveMessage(PluginID+".>", a.handleCommandMessage)
 	if err != nil {
 		return nil, fmt.Errorf("subscribe commands: %w", err)
 	}
@@ -186,7 +248,9 @@ func (a *App) OnStart(deps map[string]json.RawMessage) (json.RawMessage, error) 
 	a.ctx = ctx
 	a.cancel = cancel
 
+	a.wg.Add(1)
 	go func() {
+		defer a.wg.Done()
 		a.seedFromDashboard(ctx)
 		a.bootstrapCachedDevices()
 		devices, err := disc.Discover(ctx)
@@ -212,6 +276,22 @@ func (a *App) OnShutdown() error {
 	if a.discovery != nil {
 		a.discovery.Stop()
 	}
+	a.devices.Range(func(_, value any) bool {
+		devConn := value.(*deviceConn)
+		if devConn.close != nil {
+			done := make(chan struct{}, 1)
+			go func() {
+				_ = devConn.close()
+				close(done)
+			}()
+			select {
+			case <-done:
+			case <-time.After(2 * time.Second):
+			}
+		}
+		return true
+	})
+	a.wg.Wait()
 	for _, sub := range a.subs {
 		sub.Unsubscribe()
 	}
@@ -248,6 +328,7 @@ func (a *App) onDeviceFound(dev *internalmdns.Device) {
 		a.startDeviceLoop(md)
 		return
 	}
+	a.wg.Add(1)
 	go a.runDeviceLoop(a.ctx, md)
 }
 
@@ -394,6 +475,7 @@ func (a *App) rememberDevice(dev *internalmdns.Device) {
 }
 
 func (a *App) runDeviceLoop(ctx context.Context, md *managedDevice) {
+	defer a.wg.Done()
 	backoff := time.Second
 	for {
 		dev := md.snapshot()
@@ -436,6 +518,7 @@ func (a *App) waitForReconnect(ctx context.Context, md *managedDevice, delay tim
 func (a *App) connectAndRegister(ctx context.Context, md *managedDevice, dev *internalmdns.Device) error {
 	address := fmt.Sprintf("%s:%d", dev.GetAddress(), dev.GetAPIPort())
 	encKey := a.resolveAPIKey(dev)
+	a.recordDeviceConnecting(dev.Name, address)
 
 	listingDone := make(chan struct{}, 1)
 	listingPhase := true
@@ -466,37 +549,68 @@ func (a *App) connectAndRegister(ctx context.Context, md *managedDevice, dev *in
 		}
 	}
 
-	espClient, err := a.clientFactory(address, encKey, handler)
-	if err != nil {
+	type connectResult struct {
+		client esphomeClient
+		err    error
+	}
+	connectCh := make(chan connectResult, 1)
+	go func() {
+		client, err := a.clientFactory(address, encKey, handler)
+		connectCh <- connectResult{client: client, err: err}
+	}()
+
+	timeout := a.connectTimeout
+	if timeout <= 0 {
+		timeout = 15 * time.Second
+	}
+
+	var espClient esphomeClient
+	select {
+	case <-ctx.Done():
+		return nil
+	case result := <-connectCh:
+		if result.err != nil {
+			a.recordDeviceConnectionFailed(dev.Name, address, result.err, 0)
+			return fmt.Errorf("connect %s (%s): %w", dev.Name, address, result.err)
+		}
+		espClient = result.client
+	case <-time.After(timeout):
+		err := fmt.Errorf("timed out waiting for client handshake after %v", timeout)
+		a.recordDeviceConnectionFailed(dev.Name, address, err, 0)
 		return fmt.Errorf("connect %s (%s): %w", dev.Name, address, err)
 	}
-	defer espClient.Close()
+	defer closeClientBounded(espClient, 2*time.Second)
 
 	if err := espClient.Send(&api.HelloRequest{
 		ClientInfo:      "slidebolt-esphome-plugin",
 		ApiVersionMajor: 1,
 		ApiVersionMinor: 9,
 	}); err != nil {
+		a.recordDeviceConnectionFailed(dev.Name, address, err, 0)
 		return fmt.Errorf("hello %s: %w", dev.Name, err)
 	}
 	a.sleep(200 * time.Millisecond)
 
 	if err := espClient.Send(&api.ConnectRequest{}); err != nil {
+		a.recordDeviceConnectionFailed(dev.Name, address, err, 0)
 		return fmt.Errorf("connect-req %s: %w", dev.Name, err)
 	}
 	a.sleep(200 * time.Millisecond)
 
 	info, err := espClient.DeviceInfo()
 	if err != nil {
+		a.recordDeviceConnectionFailed(dev.Name, address, err, 0)
 		return fmt.Errorf("device-info %s: %w", dev.Name, err)
 	}
 	if err := a.verifyConnectedDevice(dev, info); err != nil {
 		a.forgetDeviceAddress(dev.Name)
+		a.recordDeviceConnectionFailed(dev.Name, address, err, 0)
 		return err
 	}
 	a.rememberVerifiedDevice(dev, info)
 
 	if err := espClient.Send(&api.ListEntitiesRequest{}); err != nil {
+		a.recordDeviceConnectionFailed(dev.Name, address, err, 0)
 		return fmt.Errorf("list-entities %s: %w", dev.Name, err)
 	}
 
@@ -519,9 +633,11 @@ func (a *App) connectAndRegister(ctx context.Context, md *managedDevice, dev *in
 			md.requestReconnect()
 		},
 	})
+	a.recordDeviceConnectionOpened(dev.Name, address, created)
 	defer a.devices.Delete(dev.Name)
 
 	if err := espClient.Send(&api.SubscribeStatesRequest{}); err != nil {
+		a.recordDeviceConnectionClosed(dev.Name, address, err)
 		return fmt.Errorf("subscribe-states %s: %w", dev.Name, err)
 	}
 
@@ -533,6 +649,7 @@ func (a *App) connectAndRegister(ctx context.Context, md *managedDevice, dev *in
 			return nil
 		case <-ping.C:
 			if err := espClient.Ping(); err != nil {
+				a.recordDeviceConnectionClosed(dev.Name, address, err)
 				return fmt.Errorf("ping %s failed: %w", dev.Name, err)
 			}
 		}
@@ -540,12 +657,36 @@ func (a *App) connectAndRegister(ctx context.Context, md *managedDevice, dev *in
 }
 
 func normalizeMAC(mac string) string {
-	return strings.ToLower(strings.ReplaceAll(strings.TrimSpace(mac), "-", ":"))
+	mac = strings.ToLower(strings.TrimSpace(mac))
+	if mac == "" {
+		return ""
+	}
+	var hex strings.Builder
+	hex.Grow(len(mac))
+	for _, r := range mac {
+		switch {
+		case r >= '0' && r <= '9':
+			hex.WriteRune(r)
+		case r >= 'a' && r <= 'f':
+			hex.WriteRune(r)
+		}
+	}
+	compacted := hex.String()
+	if len(compacted) != 12 {
+		return compacted
+	}
+	var normalized strings.Builder
+	normalized.Grow(17)
+	for i := 0; i < len(compacted); i += 2 {
+		if i > 0 {
+			normalized.WriteByte(':')
+		}
+		normalized.WriteString(compacted[i : i+2])
+	}
+	return normalized.String()
 }
 
 func (a *App) verifyConnectedDevice(dev *internalmdns.Device, info *espmodel.DeviceInfo) error {
-	expectedName := strings.TrimSpace(dev.Name)
-	actualName := strings.TrimSpace(info.Name)
 	expectedMAC := normalizeMAC(dev.ParseMAC())
 	if cfg, ok := a.loadDeviceConfig(dev.Name); ok && strings.TrimSpace(cfg.MAC) != "" {
 		expectedMAC = normalizeMAC(cfg.MAC)
@@ -554,9 +695,6 @@ func (a *App) verifyConnectedDevice(dev *internalmdns.Device, info *espmodel.Dev
 
 	if expectedMAC != "" && actualMAC != "" && expectedMAC != actualMAC {
 		return fmt.Errorf("identity mismatch for %s: expected mac %s, got %s", dev.Name, expectedMAC, actualMAC)
-	}
-	if expectedName != "" && actualName != "" && expectedName != actualName {
-		return fmt.Errorf("identity mismatch for %s: expected name %s, got %s", dev.Name, expectedName, actualName)
 	}
 	return nil
 }
@@ -589,6 +727,7 @@ func (a *App) markDeviceDisconnected(deviceID string, err error) {
 	if v, ok := a.devices.LoadAndDelete(deviceID); ok {
 		devConn := v.(*deviceConn)
 		a.tracef("mark disconnected device=%s addr=%s err=%v", deviceID, devConn.address, err)
+		a.recordDeviceConnectionClosed(deviceID, devConn.address, err)
 		if devConn.close != nil {
 			_ = devConn.close()
 		}
@@ -596,6 +735,207 @@ func (a *App) markDeviceDisconnected(deviceID string, err error) {
 	if v, ok := a.deviceManagers.Load(deviceID); ok {
 		v.(*managedDevice).requestReconnect()
 	}
+}
+
+func (a *App) getDeviceStatus(deviceID string) *deviceStatus {
+	if a == nil || deviceID == "" {
+		return nil
+	}
+	actual, _ := a.deviceStatuses.LoadOrStore(deviceID, &deviceStatus{})
+	return actual.(*deviceStatus)
+}
+
+func (a *App) recordDeviceConnecting(deviceID, address string) {
+	a.appendDeviceLog("device.connection.connecting", "info", "ESPHome device connection starting", deviceID, "", map[string]any{
+		"address": address,
+	})
+}
+
+func (a *App) recordDeviceConnectionOpened(deviceID, address string, entityCount int) {
+	status := a.getDeviceStatus(deviceID)
+	now := time.Now().UTC()
+	var reconnects uint64
+	if status != nil {
+		status.mu.Lock()
+		if status.LastConnectedAt != "" || status.LastDisconnectedAt != "" {
+			status.Reconnects++
+		}
+		status.Connected = true
+		status.LastConnectedAt = now.Format(time.RFC3339Nano)
+		status.LastError = ""
+		reconnects = status.Reconnects
+		status.mu.Unlock()
+	}
+	a.saveDeviceStatus(deviceID, true)
+	a.appendDeviceLog("device.connection.opened", "info", "ESPHome device connection opened", deviceID, "", map[string]any{
+		"address":    address,
+		"entities":   entityCount,
+		"reconnects": reconnects,
+		"connected":  true,
+		"status_key": deviceStatusKey(deviceID).Key(),
+	})
+}
+
+func (a *App) recordDeviceConnectionFailed(deviceID, address string, err error, backoff time.Duration) {
+	status := a.getDeviceStatus(deviceID)
+	now := time.Now().UTC()
+	errText := errorString(err)
+	if status != nil {
+		status.mu.Lock()
+		status.Connected = false
+		status.LastDisconnectedAt = now.Format(time.RFC3339Nano)
+		status.LastError = errText
+		status.mu.Unlock()
+	}
+	a.saveDeviceStatus(deviceID, true)
+	a.appendDeviceLog("device.connection.failed", "warn", "ESPHome device connection failed", deviceID, "", map[string]any{
+		"address":    address,
+		"error":      errText,
+		"backoff_ms": backoff.Milliseconds(),
+		"status_key": deviceStatusKey(deviceID).Key(),
+	})
+}
+
+func (a *App) recordDeviceConnectionClosed(deviceID, address string, err error) {
+	status := a.getDeviceStatus(deviceID)
+	now := time.Now().UTC()
+	errText := errorString(err)
+	if status != nil {
+		status.mu.Lock()
+		status.Connected = false
+		status.LastDisconnectedAt = now.Format(time.RFC3339Nano)
+		status.LastError = errText
+		status.mu.Unlock()
+	}
+	a.saveDeviceStatus(deviceID, true)
+	a.appendDeviceLog("device.connection.closed", "warn", "ESPHome device connection closed", deviceID, "", map[string]any{
+		"address":    address,
+		"error":      errText,
+		"status_key": deviceStatusKey(deviceID).Key(),
+	})
+}
+
+func (a *App) recordDeviceCommandReceived(deviceID string) {
+	if status := a.getDeviceStatus(deviceID); status != nil {
+		status.mu.Lock()
+		status.CommandsReceived++
+		status.mu.Unlock()
+	}
+}
+
+func (a *App) recordDeviceCommandSent(addr messenger.Address, cmd any, traceID, address string) {
+	if status := a.getDeviceStatus(addr.DeviceID); status != nil {
+		status.mu.Lock()
+		status.CommandsSent++
+		status.mu.Unlock()
+	}
+	a.saveDeviceStatus(addr.DeviceID, false)
+	a.appendLog("device.command.sent", "info", "command sent to ESPHome device", addr, cmd, traceID, map[string]any{
+		"address":    address,
+		"status_key": deviceStatusKey(addr.DeviceID).Key(),
+	})
+}
+
+func (a *App) recordDeviceCommandFailed(addr messenger.Address, cmd any, traceID, address string, err error) {
+	if status := a.getDeviceStatus(addr.DeviceID); status != nil {
+		status.mu.Lock()
+		status.CommandsFailed++
+		status.LastError = errorString(err)
+		status.mu.Unlock()
+	}
+	a.saveDeviceStatus(addr.DeviceID, true)
+	a.appendLog("device.command.failed", "warn", "command send to ESPHome device failed", addr, cmd, traceID, map[string]any{
+		"address":    address,
+		"error":      errorString(err),
+		"status_key": deviceStatusKey(addr.DeviceID).Key(),
+	})
+}
+
+func (a *App) recordDeviceCommandDropped(addr messenger.Address, cmd any, traceID, reason string) {
+	if status := a.getDeviceStatus(addr.DeviceID); status != nil {
+		status.mu.Lock()
+		status.CommandsDropped++
+		status.LastError = reason
+		status.mu.Unlock()
+	}
+	a.saveDeviceStatus(addr.DeviceID, true)
+	a.appendLog("device.command.dropped", "warn", "command dropped before ESPHome send", addr, cmd, traceID, map[string]any{
+		"reason":     reason,
+		"status_key": deviceStatusKey(addr.DeviceID).Key(),
+	})
+}
+
+func (a *App) recordDeviceStateReceived(deviceID, entityKey, traceID string, messageType any) {
+	status := a.getDeviceStatus(deviceID)
+	now := time.Now().UTC()
+	if status != nil {
+		status.mu.Lock()
+		status.StateUpdates++
+		status.LastMessageAt = now.Format(time.RFC3339Nano)
+		status.mu.Unlock()
+	}
+	a.saveDeviceStatus(deviceID, false)
+	a.appendDeviceLog("device.state.received", "info", "state received from ESPHome device", deviceID, traceID, map[string]any{
+		"entity":       entityKey,
+		"message_type": messageType,
+		"status_key":   deviceStatusKey(deviceID).Key(),
+	})
+}
+
+func (a *App) saveDeviceStatus(deviceID string, force bool) {
+	if a == nil || a.store == nil || deviceID == "" {
+		return
+	}
+	status := a.getDeviceStatus(deviceID)
+	if status == nil {
+		return
+	}
+	status.mu.Lock()
+	now := time.Now().UTC()
+	if !force && !status.lastSavedAt.IsZero() && now.Sub(status.lastSavedAt) < time.Second {
+		status.mu.Unlock()
+		return
+	}
+	status.lastSavedAt = now
+	state := map[string]any{
+		"connected":          status.Connected,
+		"lastConnectedAt":    status.LastConnectedAt,
+		"lastDisconnectedAt": status.LastDisconnectedAt,
+		"lastMessageAt":      status.LastMessageAt,
+		"lastError":          status.LastError,
+		"reconnects":         status.Reconnects,
+		"commandsReceived":   status.CommandsReceived,
+		"commandsSent":       status.CommandsSent,
+		"commandsFailed":     status.CommandsFailed,
+		"commandsDropped":    status.CommandsDropped,
+		"stateUpdates":       status.StateUpdates,
+	}
+	status.mu.Unlock()
+	entity := domain.Entity{
+		ID:       "connection",
+		Plugin:   PluginID,
+		DeviceID: deviceID,
+		Type:     "diagnostic",
+		Name:     "ESPHome Connection",
+		Labels: map[string][]string{
+			"DeviceClass": []string{"Diagnostic"},
+		},
+		State: state,
+	}
+	if err := a.store.Save(entity); err != nil {
+		log.Printf("plugin-esphome: save device status %s: %v", deviceID, err)
+	}
+}
+
+func deviceStatusKey(deviceID string) domain.EntityKey {
+	return domain.EntityKey{Plugin: PluginID, DeviceID: deviceID, ID: "connection"}
+}
+
+func errorString(err error) string {
+	if err == nil {
+		return ""
+	}
+	return err.Error()
 }
 
 func EntityFromMsg(devName string, msg proto.Message) (domain.Entity, uint32, bool) {
@@ -702,26 +1042,36 @@ func EntityFromMsg(devName string, msg proto.Message) (domain.Entity, uint32, bo
 func (a *App) applyStateUpdate(devName string, msg proto.Message) {
 	var espKey uint32
 	var newState any
+	logData := map[string]any{
+		"message_type": fmt.Sprintf("%T", msg),
+	}
 
 	switch resp := msg.(type) {
 	case *api.BinarySensorStateResponse:
 		espKey = resp.Key
 		newState = domain.BinarySensor{On: resp.State}
+		logData["state_on"] = resp.State
 	case *api.SwitchStateResponse:
 		espKey = resp.Key
 		newState = domain.Switch{Power: resp.State}
+		logData["state_power"] = resp.State
 	case *api.LightStateResponse:
 		espKey = resp.Key
 		newState = lightStateFromResponse(resp)
+		logData["state_power"] = resp.State
+		logData["state_brightness"] = scaleTo255(resp.Brightness)
 	case *api.FanStateResponse:
 		espKey = resp.Key
 		newState = domain.Fan{Power: resp.State}
+		logData["state_power"] = resp.State
 	case *api.CoverStateResponse:
 		espKey = resp.Key
 		newState = domain.Cover{Position: int(resp.Position * 100)}
+		logData["state_position"] = int(resp.Position * 100)
 	case *api.LockStateResponse:
 		espKey = resp.Key
 		newState = domain.Lock{Locked: resp.State == api.LockState_LOCK_STATE_LOCKED}
+		logData["state_locked"] = resp.State == api.LockState_LOCK_STATE_LOCKED
 	case *api.SensorStateResponse:
 		espKey = resp.Key
 		info, ok := a.lookupEntityByESPKey(devName, espKey)
@@ -802,10 +1152,23 @@ func (a *App) applyStateUpdate(devName string, msg proto.Message) {
 		return
 	}
 	entity.State = newState
+	traceID := a.traceIDForStateUpdate(entity.Key())
+	headers := messenger.WithOrigin(messenger.WithTraceID(nil, traceID), PluginID, entity.Key(), "state.changed")
 	a.tracef("state update dev=%s entity=%s msg=%T state=%+v", devName, info.id, msg, newState)
-	if err := a.store.Save(entity); err != nil {
+	if err := a.saveEntityWithHeaders(entity, headers); err != nil {
 		log.Printf("plugin-esphome: update state %s: %v", info.id, err)
+		return
 	}
+	a.recordDeviceStateReceived(devName, entity.Key(), traceID, logData["message_type"])
+	a.appendEntityLog("state.updated", "info", "state updated from ESPHome", entity.Key(), "state.changed", traceID, map[string]any{
+		"message_type":     logData["message_type"],
+		"entity_type":      entity.Type,
+		"state_on":         logData["state_on"],
+		"state_power":      logData["state_power"],
+		"state_position":   logData["state_position"],
+		"state_locked":     logData["state_locked"],
+		"state_brightness": logData["state_brightness"],
+	})
 }
 
 func normalizeColorMode(mode api.ColorMode) string {
@@ -937,9 +1300,24 @@ func (a *App) lookupEntityByESPKey(devName string, espKey uint32) (entityRef, bo
 }
 
 func (a *App) handleCommand(addr messenger.Address, cmd any) {
+	a.handleCommandWithTrace(addr, cmd, "")
+}
+
+func (a *App) handleCommandMessage(addr messenger.Address, cmd any, msg *messenger.Message) {
+	traceID := ""
+	if msg != nil {
+		traceID = messenger.TraceID(msg.Headers)
+	}
+	a.handleCommandWithTrace(addr, cmd, traceID)
+}
+
+func (a *App) handleCommandWithTrace(addr messenger.Address, cmd any, traceID string) {
+	a.appendLog("command.received", "info", "received command", addr, cmd, traceID, nil)
+	a.recordDeviceCommandReceived(addr.DeviceID)
 	v, ok := a.devices.Load(addr.DeviceID)
 	if !ok {
 		log.Printf("plugin-esphome: no device connection for %s (device may be offline)", addr.Key())
+		a.recordDeviceCommandDropped(addr, cmd, traceID, "no active ESPHome connection")
 		if v, ok := a.deviceManagers.Load(addr.DeviceID); ok {
 			v.(*managedDevice).requestReconnect()
 		}
@@ -949,6 +1327,7 @@ func (a *App) handleCommand(addr messenger.Address, cmd any) {
 	espKey, ok := lookupESPKey(addr.EntityID)
 	if !ok {
 		log.Printf("plugin-esphome: invalid entity key %s (missing ESPHome suffix)", addr.Key())
+		a.recordDeviceCommandDropped(addr, cmd, traceID, "invalid entity key; missing ESPHome suffix")
 		return
 	}
 	ec := entityConn{send: devConn.send, espKey: espKey}
@@ -1075,6 +1454,7 @@ func (a *App) handleCommand(addr messenger.Address, cmd any) {
 		req = lr
 	case domain.LightSetXY:
 		log.Printf("plugin-esphome: light %s set_xy not supported by ESPHome native API", addr.Key())
+		a.recordDeviceCommandDropped(addr, cmd, traceID, "unsupported ESPHome native API command")
 		return
 	case domain.SwitchTurnOn:
 		req = &api.SwitchCommandRequest{Key: ec.espKey, State: true}
@@ -1082,6 +1462,7 @@ func (a *App) handleCommand(addr messenger.Address, cmd any) {
 		req = &api.SwitchCommandRequest{Key: ec.espKey, State: false}
 	case domain.SwitchToggle:
 		log.Printf("plugin-esphome: switch %s toggle (not supported natively, use turn_on/turn_off)", addr.Key())
+		a.recordDeviceCommandDropped(addr, cmd, traceID, "unsupported ESPHome native API command")
 		return
 	case domain.FanTurnOn:
 		req = &api.FanCommandRequest{Key: ec.espKey, HasState: true, State: true}
@@ -1122,6 +1503,7 @@ func (a *App) handleCommand(addr messenger.Address, cmd any) {
 		req = &api.SelectCommandRequest{Key: ec.espKey, State: c.Option}
 	case domain.TextSetValue:
 		log.Printf("plugin-esphome: text %s set_value not supported in API v1.3", addr.Key())
+		a.recordDeviceCommandDropped(addr, cmd, traceID, "unsupported ESPHome native API command")
 		return
 	case domain.ClimateSetMode:
 		mode := domainModeToESPHome(c.HVACMode)
@@ -1133,18 +1515,60 @@ func (a *App) handleCommand(addr messenger.Address, cmd any) {
 		}
 	default:
 		log.Printf("plugin-esphome: unknown command %T for %s", cmd, addr.Key())
+		a.recordDeviceCommandDropped(addr, cmd, traceID, "unknown command")
 		return
 	}
 	a.tracef("command send key=%s addr=%s cmd=%T req=%+v", addr.Key(), devConn.address, cmd, req)
 
 	if err := ec.send(req); err != nil {
 		log.Printf("plugin-esphome: send command %T to %s (%s): %v", cmd, addr.Key(), devConn.address, err)
+		a.recordDeviceCommandFailed(addr, cmd, traceID, devConn.address, err)
 		if devConn.markDisconnected != nil {
 			devConn.markDisconnected(err)
 		}
 	} else {
+		a.recordDeviceCommandSent(addr, cmd, traceID, devConn.address)
+		a.rememberPendingTrace(addr.Key(), traceID)
 		a.tracef("command sent ok key=%s addr=%s cmd=%T", addr.Key(), devConn.address, cmd)
 	}
+}
+
+func (a *App) rememberPendingTrace(entityKey, traceID string) {
+	if a == nil || traceID == "" || entityKey == "" {
+		return
+	}
+	a.traceMu.Lock()
+	defer a.traceMu.Unlock()
+	if a.pendingTraces == nil {
+		a.pendingTraces = map[string]pendingTrace{}
+	}
+	now := time.Now().UTC()
+	for key, pending := range a.pendingTraces {
+		if !pending.expiresAt.After(now) {
+			delete(a.pendingTraces, key)
+		}
+	}
+	a.pendingTraces[entityKey] = pendingTrace{
+		id:        traceID,
+		expiresAt: now.Add(5 * time.Second),
+	}
+}
+
+func (a *App) traceIDForStateUpdate(entityKey string) string {
+	if a != nil && entityKey != "" {
+		a.traceMu.Lock()
+		defer a.traceMu.Unlock()
+		now := time.Now().UTC()
+		for key, pending := range a.pendingTraces {
+			if !pending.expiresAt.After(now) {
+				delete(a.pendingTraces, key)
+			}
+		}
+		if pending, ok := a.pendingTraces[entityKey]; ok {
+			return pending.id
+		}
+	}
+	return fmt.Sprintf("%s-state-%d", PluginID, atomic.AddUint64(&logSequence, 1))
 }
 
 func hsToRGB(hue, sat float64) (r, g, b float32) {
@@ -1189,4 +1613,108 @@ func domainModeToESPHome(mode string) api.ClimateMode {
 	default:
 		return api.ClimateMode_CLIMATE_MODE_OFF
 	}
+}
+
+func (a *App) appendLog(kind, level, message string, addr messenger.Address, cmd any, traceID string, data map[string]any) {
+	if a == nil || a.logger == nil {
+		return
+	}
+	action := ""
+	if named, ok := cmd.(interface{ ActionName() string }); ok {
+		action = named.ActionName()
+	}
+	event := logging.Event{
+		ID:      fmt.Sprintf("%s-%d", PluginID, atomic.AddUint64(&logSequence, 1)),
+		TS:      time.Now().UTC(),
+		Source:  PluginID,
+		Kind:    kind,
+		Level:   level,
+		Message: message,
+		Plugin:  addr.Plugin,
+		Device:  addr.DeviceID,
+		Entity:  addr.Key(),
+		Action:  action,
+		TraceID: traceID,
+		Data:    data,
+	}
+	if err := a.logger.Append(context.Background(), event); err != nil {
+		log.Printf("plugin-esphome: append log failed: %v", err)
+	}
+}
+
+func (a *App) appendEntityLog(kind, level, message, entityKey, action, traceID string, data map[string]any) {
+	if a == nil || a.logger == nil {
+		return
+	}
+	event := logging.Event{
+		ID:      fmt.Sprintf("%s-log-%d", PluginID, atomic.AddUint64(&logSequence, 1)),
+		TS:      time.Now().UTC(),
+		Source:  PluginID,
+		Kind:    kind,
+		Level:   level,
+		Message: message,
+		Entity:  entityKey,
+		Action:  action,
+		TraceID: traceID,
+		Data:    data,
+	}
+	if err := a.logger.Append(context.Background(), event); err != nil {
+		log.Printf("plugin-esphome: append entity log failed: %v", err)
+	}
+}
+
+func (a *App) appendDeviceLog(kind, level, message, deviceID, traceID string, data map[string]any) {
+	if a == nil || a.logger == nil {
+		return
+	}
+	event := logging.Event{
+		ID:      fmt.Sprintf("%s-device-%d", PluginID, atomic.AddUint64(&logSequence, 1)),
+		TS:      time.Now().UTC(),
+		Source:  PluginID,
+		Kind:    kind,
+		Level:   level,
+		Message: message,
+		Plugin:  PluginID,
+		Device:  deviceID,
+		TraceID: traceID,
+		Data:    data,
+	}
+	if err := a.logger.Append(context.Background(), event); err != nil {
+		log.Printf("plugin-esphome: append device log failed: %v", err)
+	}
+}
+
+func (a *App) saveEntityWithHeaders(entity domain.Entity, headers messenger.Headers) error {
+	if a == nil {
+		return nil
+	}
+	if a.msg == nil {
+		return a.store.Save(entity)
+	}
+	data, err := json.Marshal(entity)
+	if err != nil {
+		return err
+	}
+	reqBody, _ := json.Marshal(map[string]any{
+		"key":  entity.Key(),
+		"data": json.RawMessage(data),
+	})
+	respMsg, err := a.msg.RequestWithHeaders("storage.save", reqBody, headers, 5*time.Second)
+	if err != nil {
+		return err
+	}
+	var resp struct {
+		OK    bool   `json:"ok"`
+		Error string `json:"error,omitempty"`
+	}
+	if err := json.Unmarshal(respMsg.Data, &resp); err != nil {
+		return err
+	}
+	if !resp.OK {
+		if resp.Error == "" {
+			resp.Error = "storage save failed"
+		}
+		return errors.New(resp.Error)
+	}
+	return nil
 }

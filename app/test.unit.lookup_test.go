@@ -1,9 +1,12 @@
 package app
 
 import (
+	"context"
 	"encoding/json"
 	"errors"
 	"reflect"
+	"strings"
+	"sync"
 	"testing"
 	"time"
 
@@ -17,6 +20,7 @@ import (
 )
 
 type fakeStore struct {
+	mu      sync.RWMutex
 	entries []storage.Entry
 	data    map[string]json.RawMessage
 	private map[string]json.RawMessage
@@ -27,6 +31,8 @@ func (f *fakeStore) Save(v storage.Keyed) error {
 	if err != nil {
 		return err
 	}
+	f.mu.Lock()
+	defer f.mu.Unlock()
 	if f.data == nil {
 		f.data = make(map[string]json.RawMessage)
 	}
@@ -34,6 +40,8 @@ func (f *fakeStore) Save(v storage.Keyed) error {
 	return nil
 }
 func (f *fakeStore) Get(key storage.Keyed) (json.RawMessage, error) {
+	f.mu.RLock()
+	defer f.mu.RUnlock()
 	if f.data == nil {
 		return nil, nil
 	}
@@ -49,6 +57,8 @@ func (f *fakeStore) ReadFile(target storage.StorageTarget, key storage.Keyed) (j
 }
 func (f *fakeStore) DeleteFile(target storage.StorageTarget, key storage.Keyed) error { return nil }
 func (f *fakeStore) SetPrivate(key storage.Keyed, data json.RawMessage) error {
+	f.mu.Lock()
+	defer f.mu.Unlock()
 	if f.private == nil {
 		f.private = make(map[string]json.RawMessage)
 	}
@@ -56,6 +66,8 @@ func (f *fakeStore) SetPrivate(key storage.Keyed, data json.RawMessage) error {
 	return nil
 }
 func (f *fakeStore) GetPrivate(key storage.Keyed) (json.RawMessage, error) {
+	f.mu.RLock()
+	defer f.mu.RUnlock()
 	if f.private == nil {
 		return nil, nil
 	}
@@ -341,6 +353,22 @@ func TestVerifyConnectedDeviceRejectsMACMismatch(t *testing.T) {
 	}
 }
 
+func TestVerifyConnectedDeviceAcceptsEquivalentMACFormats(t *testing.T) {
+	store := &fakeStore{}
+	app := &App{store: store}
+	app.updateDeviceConfig("basement-edison", func(cfg *DeviceConfig) {
+		cfg.MAC = "7cf666735a3a"
+	})
+
+	err := app.verifyConnectedDevice(
+		&internalmdns.Device{Name: "basement-edison"},
+		&espmodel.DeviceInfo{Name: "basement-edison", MacAddress: "7c:f6:66:73:5a:3a"},
+	)
+	if err != nil {
+		t.Fatalf("expected equivalent MAC formats to match, got %v", err)
+	}
+}
+
 func TestOnDeviceFoundStartsOneManagedLoopPerDevice(t *testing.T) {
 	app := New()
 
@@ -414,5 +442,41 @@ func TestHandleCommandSendFailureDropsActiveConnectionAndRequestsReconnect(t *te
 	case <-md.reconnect:
 	case <-time.After(100 * time.Millisecond):
 		t.Fatal("expected reconnect to be requested after send failure")
+	}
+}
+
+func TestConnectAndRegisterTimesOutHungClientFactory(t *testing.T) {
+	store := &fakeStore{}
+	app := New()
+	app.store = store
+	app.connectTimeout = 50 * time.Millisecond
+
+	release := make(chan struct{})
+	app.clientFactory = func(address, encKey string, handler func(proto.Message)) (esphomeClient, error) {
+		<-release
+		return nil, errors.New("unblocked")
+	}
+
+	start := time.Now()
+	err := app.connectAndRegister(
+		context.Background(),
+		newManagedDevice(&internalmdns.Device{Name: "switch-basement-track"}),
+		&internalmdns.Device{
+			Name:       "switch-basement-track",
+			Addresses:  []string{"192.0.2.10"},
+			Port:       6053,
+			TXTRecords: map[string]string{"api_encryption": "1"},
+		},
+	)
+	close(release)
+
+	if err == nil {
+		t.Fatal("expected connectAndRegister to time out")
+	}
+	if got := err.Error(); !strings.Contains(got, "timed out waiting for client handshake") {
+		t.Fatalf("unexpected error: %v", err)
+	}
+	if elapsed := time.Since(start); elapsed > 500*time.Millisecond {
+		t.Fatalf("connectAndRegister took %v, want under 500ms", elapsed)
 	}
 }

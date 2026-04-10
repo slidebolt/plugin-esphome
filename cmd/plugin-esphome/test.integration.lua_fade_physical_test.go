@@ -101,6 +101,7 @@ stable:
 	if len(lights) < 3 {
 		t.Skipf("only %d light(s) registered — need at least 3 dimmable lights to run fade test (hardware may be unavailable)", len(lights))
 	}
+	saveESPHomeLightQuery(t, store, "esphome_lights")
 
 	// Subscribe to state.changed.plugin-esphome.> — these are published by
 	// the storage server whenever the plugin writes updated brightness back.
@@ -146,8 +147,8 @@ drained:
 	saveScriptDefinition(t, store, "esphome_physical_fade", loadLua(t, "test.integration.lua_fade_physical.lua"))
 
 	startResp := integScriptAPI(t, msg, "script.start", map[string]string{
-		"name":  "esphome_physical_fade",
-		"query": "?plugin=" + app.PluginID + "&type=light",
+		"name":     "esphome_physical_fade",
+		"queryRef": "esphome_lights",
 	})
 	if !startResp.OK {
 		t.Fatalf("script.start: %s", startResp.Error)
@@ -183,7 +184,7 @@ drained:
 	}
 done:
 	integScriptAPI(t, msg, "script.stop", map[string]string{
-		"name": "esphome_physical_fade", "query": "?plugin=" + app.PluginID + "&type=light",
+		"name": "esphome_physical_fade", "queryRef": "esphome_lights",
 	})
 
 	// Assert each light received enough readings and that brightness increased

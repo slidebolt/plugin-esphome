@@ -13,8 +13,6 @@ import (
 	testkit "github.com/slidebolt/sb-testkit"
 	messenger "github.com/slidebolt/sb-messenger-sdk"
 	sbscript "github.com/slidebolt/sb-script/server"
-	storage "github.com/slidebolt/sb-storage-sdk"
-
 	"github.com/slidebolt/plugin-esphome/app"
 	mdns "github.com/slidebolt/plugin-esphome/internal/mdns"
 )
@@ -121,6 +119,7 @@ proceed:
 		t.Fatal("no light entities found on any device")
 	}
 	t.Logf("registered %d light(s) with persistent connections", len(lightKeys))
+	saveESPHomeLightQuery(t, store, "esphome_lights")
 
 	// --- Step 4: start sb-script on its own connection ---
 	scriptConn, err := messenger.Connect(map[string]json.RawMessage{
@@ -165,8 +164,8 @@ proceed:
 	saveScriptDefinition(t, store, "esphome_rainbow", loadLua(t, "test.integration.lua_rainbow.lua"))
 
 	startResp := integScriptAPI(t, scriptConn, "script.start", map[string]string{
-		"name":  "esphome_rainbow",
-		"query": "?plugin=" + app.PluginID + "&type=light",
+		"name":     "esphome_rainbow",
+		"queryRef": "esphome_lights",
 	})
 	if !startResp.OK {
 		t.Fatalf("script.start: %s", startResp.Error)
@@ -190,7 +189,7 @@ proceed:
 	}
 done:
 	integScriptAPI(t, scriptConn, "script.stop", map[string]string{
-		"name": "esphome_rainbow", "query": "?plugin=" + app.PluginID + "&type=light",
+		"name": "esphome_rainbow", "queryRef": "esphome_lights",
 	})
 
 	// --- Assert: first reading is orange (255,165,0); green channel rises ---

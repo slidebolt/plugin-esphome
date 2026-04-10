@@ -42,3 +42,4 @@ build/
 
 # Local/hardware-specific tests
 test.local.*
+!.env.example

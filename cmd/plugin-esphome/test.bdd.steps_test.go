@@ -248,7 +248,7 @@ func (c *bddCtx) aClimateEntity(key, name, hvacMode string, temperature int) err
 	return c.saveEntity(domain.Entity{
 		ID: id, Plugin: plug, DeviceID: dev,
 		Type: "climate", Name: name,
-		State: domain.Climate{HVACMode: hvacMode, Temperature: temperature},
+		State: domain.Climate{HVACMode: hvacMode, Temperature: float64(temperature)},
 	})
 }
 
@@ -260,7 +260,7 @@ func (c *bddCtx) aClimateEntityFull(key, name, hvacMode string, temperature int,
 	return c.saveEntity(domain.Entity{
 		ID: id, Plugin: plug, DeviceID: dev,
 		Type: "climate", Name: name,
-		State: domain.Climate{HVACMode: hvacMode, Temperature: temperature, TemperatureUnit: unit},
+		State: domain.Climate{HVACMode: hvacMode, Temperature: float64(temperature), TemperatureUnit: unit},
 	})
 }
 
@@ -433,7 +433,7 @@ func (c *bddCtx) updateClimate(key, hvacMode string, temperature int) error {
 	return c.saveEntity(domain.Entity{
 		ID: id, Plugin: plug, DeviceID: dev,
 		Type:  "climate",
-		State: domain.Climate{HVACMode: hvacMode, Temperature: temperature},
+		State: domain.Climate{HVACMode: hvacMode, Temperature: float64(temperature)},
 	})
 }
 
@@ -575,7 +575,7 @@ func (c *bddCtx) lightTemperatureIs(expected int) error {
 	if !ok {
 		return fmt.Errorf("state type: got %T, want domain.Light", c.lastEntity.State)
 	}
-	if st.Temperature != float64(expected) {
+	if st.Temperature != expected {
 		return fmt.Errorf("light.Temperature: got %v, want %v", st.Temperature, expected)
 	}
 	return nil

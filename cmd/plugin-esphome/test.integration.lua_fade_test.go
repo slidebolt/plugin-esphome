@@ -64,6 +64,7 @@ func TestLuaFade_RealESPHomeLights_Integration(t *testing.T) {
 	for _, l := range allLights {
 		t.Logf("  %s (%s)", l.name, l.entityKey)
 	}
+	saveESPHomeLightQuery(t, store, "esphome_lights")
 
 	// Subscribe to light_set_brightness on all discovered lights before starting.
 	type brightCmd struct {
@@ -94,8 +95,8 @@ func TestLuaFade_RealESPHomeLights_Integration(t *testing.T) {
 
 	// Start the script targeting all plugin-esphome lights.
 	startResp := integScriptAPI(t, msg, "script.start", map[string]string{
-		"name":  "esphome_fade",
-		"query": "?type=light",
+		"name":     "esphome_fade",
+		"queryRef": "esphome_lights",
 	})
 	if !startResp.OK {
 		t.Fatalf("script.start: %s", startResp.Error)
@@ -132,7 +133,7 @@ func TestLuaFade_RealESPHomeLights_Integration(t *testing.T) {
 
 	// Stop the script.
 	integScriptAPI(t, msg, "script.stop", map[string]string{
-		"name": "esphome_fade", "query": "?type=light",
+		"name": "esphome_fade", "queryRef": "esphome_lights",
 	})
 
 	// Assert: each light must have received at least wantSteps brightness values
