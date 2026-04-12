@@ -1,0 +1,5 @@
+ok  	github.com/slidebolt/plugin-esphome/app	0.005s
+ok  	github.com/slidebolt/plugin-esphome/internal/dashboard	0.005s
+?   	github.com/slidebolt/plugin-esphome/internal/mdns	[no test files]
+?   	github.com/slidebolt/plugin-esphome/internal/translate	[no test files]
+ok  	github.com/slidebolt/plugin-esphome/cmd/plugin-esphome	0.099s

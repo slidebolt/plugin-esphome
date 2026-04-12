@@ -1,0 +1,12 @@
+=== RUN   TestLuaFade_ESPHomeLights
+    test.helper.lua_fade_test.go:195: timeout: collected 0/8 readings
+--- FAIL: TestLuaFade_ESPHomeLights (1.01s)
+=== RUN   TestLuaFade_StopHaltsCommands
+    test.helper.lua_fade_test.go:256: only 0 commands arrived before stop
+--- FAIL: TestLuaFade_StopHaltsCommands (0.51s)
+=== RUN   TestLuaFade_NewDevicePickedUp
+    test.helper.lua_fade_test.go:314: first light never received a command
+--- FAIL: TestLuaFade_NewDevicePickedUp (0.51s)
+FAIL
+FAIL	github.com/slidebolt/plugin-esphome/cmd/plugin-esphome	2.029s
+FAIL

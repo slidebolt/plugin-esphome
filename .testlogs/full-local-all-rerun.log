@@ -1,0 +1,698 @@
+ok  	github.com/slidebolt/plugin-esphome/app	0.005s
+?   	github.com/slidebolt/plugin-esphome/cmd/edison-test	[no test files]
+2026/03/30 11:44:41 plugin-esphome: started, listening for devices via mDNS
+2026/03/30 11:44:41 plugin-esphome: discovered switch_basement_edison - connecting
+2026/03/30 11:44:41 plugin-esphome: discovered alex_room_switch - connecting
+2026/03/30 11:44:41 plugin-esphome: discovered switch_basement_office - connecting
+2026/03/30 11:44:41 plugin-esphome: discovered basement-26-office-01 - connecting
+2026/03/30 11:44:41 plugin-esphome: discovered basement-17-tv-center-right - connecting
+2026/03/30 11:44:41 plugin-esphome: discovered basement-27-office-02 - connecting
+2026/03/30 11:44:41 plugin-esphome: discovered basement-28-office-03 - connecting
+2026/03/30 11:44:41 plugin-esphome: discovered basement-10-edison-03 - connecting
+2026/03/30 11:44:41 plugin-esphome: discovered basement-06-movieroom-back-01 - connecting
+2026/03/30 11:44:42 plugin-esphome: basement-06-movieroom-back-01 - registered 1 entities
+2026/03/30 11:44:42 plugin-esphome: basement-27-office-02 - registered 1 entities
+2026/03/30 11:44:42 plugin-esphome: basement-26-office-01 - registered 1 entities
+2026/03/30 11:44:42 plugin-esphome: basement-10-edison-03 - registered 1 entities
+2026/03/30 11:44:42 plugin-esphome: basement-28-office-03 - registered 1 entities
+2026/03/30 11:44:42 plugin-esphome: basement-17-tv-center-right - registered 1 entities
+2026/03/30 11:44:42 plugin-esphome: switch_basement_edison - registered 8 entities
+2026/03/30 11:44:42 plugin-esphome: switch_basement_office - registered 8 entities
+2026/03/30 11:44:42 plugin-esphome: alex_room_switch - registered 11 entities
+2026/03/30 11:44:42 plugin-esphome: initial probe found 3 device(s)
+2026/03/30 11:44:42 plugin-esphome: persist private config for switch_basement_office: storage: storage.save: nats: connection closed
+2026/03/30 11:44:42 plugin-esphome: persist private config for switch_basement_edison: storage: storage.save: nats: connection closed
+2026/03/30 11:44:42 plugin-esphome: persist private config for alex_room_switch: storage: storage.save: nats: connection closed
+--- FAIL: TestConnectionStability (16.00s)
+    test.local.connection_stability_test.go:63: target: switch_basement_edison  addr=192.168.88.84  port=6053
+    test.local.connection_stability_test.go:82: connect: dial tcp 192.168.88.84:6053: i/o timeout
+--- FAIL: TestConnectionTrace (9.64s)
+    test.local.connection_trace_test.go:45: mDNS found 7 device(s):
+    test.local.connection_trace_test.go:47:   switch_basement_edison  addr=192.168.88.84  port=6053  encrypted=true
+    test.local.connection_trace_test.go:47:   switch_basement_office  addr=192.168.88.99  port=6053  encrypted=true
+    test.local.connection_trace_test.go:47:   alex_room_switch  addr=192.168.88.113  port=6053  encrypted=true
+    test.local.connection_trace_test.go:47:   basement-28-office-03  addr=192.168.88.45  port=6053  encrypted=true
+    test.local.connection_trace_test.go:47:   basement-26-office-01  addr=192.168.88.42  port=6053  encrypted=true
+    test.local.connection_trace_test.go:47:   basement-06-movieroom-back-01  addr=192.168.88.11  port=6053  encrypted=true
+    test.local.connection_trace_test.go:47:   basement-27-office-02  addr=192.168.88.43  port=6053  encrypted=true
+    test.local.connection_trace_test.go:75: target device: switch_basement_edison  addr=192.168.88.84  port=6053  encrypted=true
+    test.local.connection_trace_test.go:101: ── step 1: GetClient (TCP connect + noise handshake)
+    test.local.connection_trace_test.go:105: GetClient failed after 3.641s: read tcp 192.168.88.250:57114->192.168.88.84:6053: read: connection reset by peer
+2026/03/30 11:46:00 plugin-esphome: trace logging enabled
+2026/03/30 11:46:00 plugin-esphome: started, listening for devices via mDNS
+2026/03/30 11:46:00 plugin-esphome: discovered alex_room_switch - connecting
+2026/03/30 11:46:00 plugin-esphome: discovered basement-06-movieroom-back-01 - connecting
+2026/03/30 11:46:00 plugin-esphome: discovered basement-10-edison-03 - connecting
+2026/03/30 11:46:00 plugin-esphome: discovered basement-17-tv-center-right - connecting
+2026/03/30 11:46:00 plugin-esphome: discovered basement-26-office-01 - connecting
+2026/03/30 11:46:00 plugin-esphome: discovered basement-27-office-02 - connecting
+2026/03/30 11:46:00 plugin-esphome: discovered basement-28-office-03 - connecting
+2026/03/30 11:46:00 plugin-esphome: discovered switch_basement_edison - connecting
+2026/03/30 11:46:00 plugin-esphome: discovered switch_basement_office - connecting
+2026/03/30 11:46:01 plugin-esphome: basement-27-office-02 - registered 1 entities
+2026/03/30 11:46:01 plugin-esphome: basement-28-office-03 - registered 1 entities
+2026/03/30 11:46:01 plugin-esphome: [trace] state update dev=basement-27-office-02 entity=basement-27-office-02_1221826122 msg=*api.LightStateResponse state={Power:true Brightness:150 ColorMode:rgb RGB:[0 5 255] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:370 White:255 Effect:}
+2026/03/30 11:46:01 plugin-esphome: [trace] state update dev=basement-28-office-03 entity=basement-28-office-03_3821584384 msg=*api.LightStateResponse state={Power:true Brightness:150 ColorMode:rgb RGB:[0 5 255] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:370 White:255 Effect:}
+2026/03/30 11:46:01 plugin-esphome: basement-26-office-01 - registered 1 entities
+2026/03/30 11:46:01 plugin-esphome: basement-10-edison-03 - registered 1 entities
+2026/03/30 11:46:01 plugin-esphome: basement-06-movieroom-back-01 - registered 1 entities
+2026/03/30 11:46:01 plugin-esphome: [trace] state update dev=basement-26-office-01 entity=basement-26-office-01_3962872896 msg=*api.LightStateResponse state={Power:true Brightness:150 ColorMode:rgb RGB:[0 5 255] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:370 White:255 Effect:}
+2026/03/30 11:46:01 plugin-esphome: [trace] state update dev=basement-06-movieroom-back-01 entity=basement-06-movieroom-back-01_1680551347 msg=*api.LightStateResponse state={Power:true Brightness:150 ColorMode:rgb RGB:[0 5 255] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:153 White:255 Effect:}
+2026/03/30 11:46:01 plugin-esphome: basement-17-tv-center-right - registered 1 entities
+2026/03/30 11:46:01 plugin-esphome: [trace] state update dev=basement-10-edison-03 entity=basement-10-edison-03_3359852625 msg=*api.LightStateResponse state={Power:true Brightness:150 ColorMode:cold_warm_white RGB:[] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:370 White:255 Effect:}
+2026/03/30 11:46:01 plugin-esphome: [trace] state update dev=basement-17-tv-center-right entity=basement-17-tv-center-right_3785994789 msg=*api.LightStateResponse state={Power:true Brightness:150 ColorMode:rgb RGB:[0 5 255] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:153 White:255 Effect:}
+2026/03/30 11:46:01 plugin-esphome: alex_room_switch - registered 11 entities
+2026/03/30 11:46:01 plugin-esphome: switch_basement_edison - registered 8 entities
+2026/03/30 11:46:01 plugin-esphome: [trace] state update dev=switch_basement_edison entity=switch_basement_edison_1805240098 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:46:01 plugin-esphome: [trace] state update dev=switch_basement_edison entity=switch_basement_edison_1496264397 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:46:01 plugin-esphome: [trace] state update dev=switch_basement_edison entity=switch_basement_edison_322047543 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:46:01 plugin-esphome: [trace] state update dev=switch_basement_edison entity=switch_basement_edison_3060779987 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:46:01 plugin-esphome: [trace] state update dev=switch_basement_edison entity=switch_basement_edison_2387054064 msg=*api.SwitchStateResponse state={Power:true}
+2026/03/30 11:46:01 plugin-esphome: [trace] state update dev=switch_basement_edison entity=switch_basement_edison_3477607426 msg=*api.SwitchStateResponse state={Power:false}
+2026/03/30 11:46:01 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_3430626415 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:46:01 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_1972958575 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:46:01 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_4085851028 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:46:01 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_1377879859 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:46:01 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_3536995996 msg=*api.LightStateResponse state={Power:true Brightness:254 ColorMode:on_off RGB:[] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:0 White:255 Effect:}
+2026/03/30 11:46:01 plugin-esphome: switch_basement_office - registered 8 entities
+2026/03/30 11:46:01 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_1244120623 msg=*api.LightStateResponse state={Power:true Brightness:254 ColorMode:on_off RGB:[] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:0 White:255 Effect:}
+2026/03/30 11:46:01 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_1244120620 msg=*api.LightStateResponse state={Power:true Brightness:254 ColorMode:on_off RGB:[] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:0 White:255 Effect:}
+2026/03/30 11:46:01 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_1244120621 msg=*api.LightStateResponse state={Power:true Brightness:254 ColorMode:on_off RGB:[] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:0 White:255 Effect:}
+2026/03/30 11:46:01 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_1244120618 msg=*api.LightStateResponse state={Power:true Brightness:254 ColorMode:on_off RGB:[] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:0 White:255 Effect:}
+2026/03/30 11:46:01 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_100946040 msg=*api.SwitchStateResponse state={Power:true}
+2026/03/30 11:46:01 plugin-esphome: [trace] state update dev=switch_basement_office entity=switch_basement_office_2686519914 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:46:01 plugin-esphome: [trace] state update dev=switch_basement_office entity=switch_basement_office_1243485573 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:46:01 plugin-esphome: [trace] state update dev=switch_basement_office entity=switch_basement_office_3413872047 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:46:01 plugin-esphome: [trace] state update dev=switch_basement_office entity=switch_basement_office_3349744299 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:46:01 plugin-esphome: [trace] state update dev=switch_basement_office entity=switch_basement_office_2823101305 msg=*api.SwitchStateResponse state={Power:true}
+2026/03/30 11:46:01 plugin-esphome: [trace] state update dev=switch_basement_office entity=switch_basement_office_703927066 msg=*api.SwitchStateResponse state={Power:false}
+2026/03/30 11:46:01 plugin-esphome: initial probe found 9 device(s)
+2026/03/30 11:46:01 plugin-esphome: persist private config for basement-10-edison-03: storage: storage.save: nats: connection closed
+2026/03/30 11:46:01 plugin-esphome: [trace] refreshed discovery for basement-10-edison-03 addr=192.168.88.46 port=6053
+2026/03/30 11:46:01 plugin-esphome: persist private config for basement-06-movieroom-back-01: storage: storage.save: nats: connection closed
+2026/03/30 11:46:01 plugin-esphome: [trace] refreshed discovery for basement-06-movieroom-back-01 addr=192.168.88.11 port=6053
+2026/03/30 11:46:01 plugin-esphome: persist private config for basement-17-tv-center-right: storage: storage.save: nats: connection closed
+2026/03/30 11:46:01 plugin-esphome: [trace] refreshed discovery for basement-17-tv-center-right addr=192.168.88.116 port=6053
+2026/03/30 11:46:01 plugin-esphome: persist private config for basement-26-office-01: storage: storage.save: nats: connection closed
+2026/03/30 11:46:01 plugin-esphome: [trace] refreshed discovery for basement-26-office-01 addr=192.168.88.42 port=6053
+2026/03/30 11:46:01 plugin-esphome: persist private config for basement-27-office-02: storage: storage.save: nats: connection closed
+2026/03/30 11:46:01 plugin-esphome: [trace] refreshed discovery for basement-27-office-02 addr=192.168.88.43 port=6053
+2026/03/30 11:46:01 plugin-esphome: persist private config for basement-28-office-03: storage: storage.save: nats: connection closed
+2026/03/30 11:46:01 plugin-esphome: [trace] refreshed discovery for basement-28-office-03 addr=192.168.88.45 port=6053
+2026/03/30 11:46:01 plugin-esphome: persist private config for alex_room_switch: storage: storage.save: nats: connection closed
+2026/03/30 11:46:01 plugin-esphome: [trace] refreshed discovery for alex_room_switch addr=192.168.88.113 port=6053
+2026/03/30 11:46:01 plugin-esphome: persist private config for switch_basement_office: storage: storage.save: nats: connection closed
+2026/03/30 11:46:01 plugin-esphome: [trace] refreshed discovery for switch_basement_office addr=192.168.88.99 port=6053
+2026/03/30 11:46:01 plugin-esphome: persist private config for switch_basement_edison: storage: storage.save: nats: connection closed
+2026/03/30 11:46:01 plugin-esphome: [trace] refreshed discovery for switch_basement_edison addr=192.168.88.84 port=6053
+2026/03/30 11:46:12 plugin-esphome: trace logging enabled
+2026/03/30 11:46:12 plugin-esphome: started, listening for devices via mDNS
+2026/03/30 11:46:12 plugin-esphome: discovered alex_room_switch - connecting
+2026/03/30 11:46:12 plugin-esphome: discovered basement-06-movieroom-back-01 - connecting
+2026/03/30 11:46:12 plugin-esphome: discovered basement-10-edison-03 - connecting
+2026/03/30 11:46:12 plugin-esphome: discovered basement-17-tv-center-right - connecting
+2026/03/30 11:46:12 plugin-esphome: discovered basement-26-office-01 - connecting
+2026/03/30 11:46:12 plugin-esphome: discovered basement-27-office-02 - connecting
+2026/03/30 11:46:12 plugin-esphome: discovered basement-28-office-03 - connecting
+2026/03/30 11:46:12 plugin-esphome: discovered switch_basement_edison - connecting
+2026/03/30 11:46:12 plugin-esphome: discovered switch_basement_office - connecting
+2026/03/30 11:46:13 plugin-esphome: basement-10-edison-03 - registered 1 entities
+2026/03/30 11:46:13 plugin-esphome: basement-06-movieroom-back-01 - registered 1 entities
+2026/03/30 11:46:13 plugin-esphome: basement-27-office-02 - registered 1 entities
+2026/03/30 11:46:13 plugin-esphome: basement-28-office-03 - registered 1 entities
+2026/03/30 11:46:13 plugin-esphome: [trace] state update dev=basement-27-office-02 entity=basement-27-office-02_1221826122 msg=*api.LightStateResponse state={Power:true Brightness:150 ColorMode:rgb RGB:[0 5 255] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:370 White:255 Effect:}
+2026/03/30 11:46:13 plugin-esphome: [trace] state update dev=basement-06-movieroom-back-01 entity=basement-06-movieroom-back-01_1680551347 msg=*api.LightStateResponse state={Power:true Brightness:150 ColorMode:rgb RGB:[0 5 255] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:153 White:255 Effect:}
+2026/03/30 11:46:13 plugin-esphome: [trace] state update dev=basement-10-edison-03 entity=basement-10-edison-03_3359852625 msg=*api.LightStateResponse state={Power:true Brightness:150 ColorMode:cold_warm_white RGB:[] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:370 White:255 Effect:}
+2026/03/30 11:46:13 plugin-esphome: [trace] state update dev=basement-28-office-03 entity=basement-28-office-03_3821584384 msg=*api.LightStateResponse state={Power:true Brightness:150 ColorMode:rgb RGB:[0 5 255] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:370 White:255 Effect:}
+2026/03/30 11:46:13 plugin-esphome: basement-26-office-01 - registered 1 entities
+2026/03/30 11:46:13 plugin-esphome: basement-17-tv-center-right - registered 1 entities
+2026/03/30 11:46:13 plugin-esphome: [trace] state update dev=basement-26-office-01 entity=basement-26-office-01_3962872896 msg=*api.LightStateResponse state={Power:true Brightness:150 ColorMode:rgb RGB:[0 5 255] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:370 White:255 Effect:}
+2026/03/30 11:46:13 plugin-esphome: [trace] state update dev=basement-17-tv-center-right entity=basement-17-tv-center-right_3785994789 msg=*api.LightStateResponse state={Power:true Brightness:150 ColorMode:rgb RGB:[0 5 255] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:153 White:255 Effect:}
+2026/03/30 11:46:13 plugin-esphome: switch_basement_edison - registered 8 entities
+2026/03/30 11:46:13 plugin-esphome: [trace] state update dev=switch_basement_edison entity=switch_basement_edison_1805240098 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:46:13 plugin-esphome: [trace] state update dev=switch_basement_edison entity=switch_basement_edison_1496264397 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:46:13 plugin-esphome: [trace] state update dev=switch_basement_edison entity=switch_basement_edison_322047543 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:46:13 plugin-esphome: alex_room_switch - registered 11 entities
+2026/03/30 11:46:13 plugin-esphome: [trace] state update dev=switch_basement_edison entity=switch_basement_edison_3060779987 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:46:13 plugin-esphome: [trace] state update dev=switch_basement_edison entity=switch_basement_edison_2387054064 msg=*api.SwitchStateResponse state={Power:true}
+2026/03/30 11:46:13 plugin-esphome: [trace] state update dev=switch_basement_edison entity=switch_basement_edison_3477607426 msg=*api.SwitchStateResponse state={Power:false}
+2026/03/30 11:46:13 plugin-esphome: switch_basement_office - registered 8 entities
+2026/03/30 11:46:13 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_3430626415 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:46:13 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_1972958575 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:46:13 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_4085851028 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:46:13 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_1377879859 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:46:13 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_3536995996 msg=*api.LightStateResponse state={Power:true Brightness:254 ColorMode:on_off RGB:[] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:0 White:255 Effect:}
+2026/03/30 11:46:13 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_1244120623 msg=*api.LightStateResponse state={Power:true Brightness:254 ColorMode:on_off RGB:[] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:0 White:255 Effect:}
+2026/03/30 11:46:13 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_1244120620 msg=*api.LightStateResponse state={Power:true Brightness:254 ColorMode:on_off RGB:[] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:0 White:255 Effect:}
+2026/03/30 11:46:13 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_1244120621 msg=*api.LightStateResponse state={Power:true Brightness:254 ColorMode:on_off RGB:[] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:0 White:255 Effect:}
+2026/03/30 11:46:13 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_1244120618 msg=*api.LightStateResponse state={Power:true Brightness:254 ColorMode:on_off RGB:[] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:0 White:255 Effect:}
+2026/03/30 11:46:13 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_100946040 msg=*api.SwitchStateResponse state={Power:true}
+2026/03/30 11:46:13 plugin-esphome: [trace] state update dev=switch_basement_office entity=switch_basement_office_2686519914 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:46:13 plugin-esphome: [trace] state update dev=switch_basement_office entity=switch_basement_office_1243485573 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:46:13 plugin-esphome: [trace] state update dev=switch_basement_office entity=switch_basement_office_3413872047 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:46:13 plugin-esphome: [trace] state update dev=switch_basement_office entity=switch_basement_office_3349744299 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:46:13 plugin-esphome: [trace] state update dev=switch_basement_office entity=switch_basement_office_2823101305 msg=*api.SwitchStateResponse state={Power:true}
+2026/03/30 11:46:13 plugin-esphome: [trace] state update dev=switch_basement_office entity=switch_basement_office_703927066 msg=*api.SwitchStateResponse state={Power:false}
+2026/03/30 11:46:13 plugin-esphome: initial probe found 7 device(s)
+2026/03/30 11:46:13 plugin-esphome: persist private config for alex_room_switch: storage: storage.save: nats: connection closed
+2026/03/30 11:46:13 plugin-esphome: [trace] refreshed discovery for alex_room_switch addr=192.168.88.113 port=6053
+2026/03/30 11:46:13 plugin-esphome: persist private config for switch_basement_office: storage: storage.save: nats: connection closed
+2026/03/30 11:46:13 plugin-esphome: [trace] refreshed discovery for switch_basement_office addr=192.168.88.99 port=6053
+2026/03/30 11:46:13 plugin-esphome: persist private config for switch_basement_edison: storage: storage.save: nats: connection closed
+2026/03/30 11:46:13 plugin-esphome: [trace] refreshed discovery for switch_basement_edison addr=192.168.88.84 port=6053
+2026/03/30 11:46:13 plugin-esphome: persist private config for basement-06-movieroom-back-01: storage: storage.save: nats: connection closed
+2026/03/30 11:46:13 plugin-esphome: [trace] refreshed discovery for basement-06-movieroom-back-01 addr=192.168.88.11 port=6053
+2026/03/30 11:46:13 plugin-esphome: persist private config for basement-28-office-03: storage: storage.save: nats: connection closed
+2026/03/30 11:46:13 plugin-esphome: [trace] refreshed discovery for basement-28-office-03 addr=192.168.88.45 port=6053
+2026/03/30 11:46:13 plugin-esphome: persist private config for basement-26-office-01: storage: storage.save: nats: connection closed
+2026/03/30 11:46:13 plugin-esphome: [trace] refreshed discovery for basement-26-office-01 addr=192.168.88.42 port=6053
+2026/03/30 11:46:13 plugin-esphome: persist private config for basement-27-office-02: storage: storage.save: nats: connection closed
+2026/03/30 11:46:13 plugin-esphome: [trace] refreshed discovery for basement-27-office-02 addr=192.168.88.43 port=6053
+2026/03/30 11:47:05 plugin-esphome: trace logging enabled
+2026/03/30 11:47:05 plugin-esphome: started, listening for devices via mDNS
+2026/03/30 11:47:05 plugin-esphome: discovered alex_room_switch - connecting
+2026/03/30 11:47:05 plugin-esphome: discovered basement-06-movieroom-back-01 - connecting
+2026/03/30 11:47:05 plugin-esphome: discovered basement-10-edison-03 - connecting
+2026/03/30 11:47:05 plugin-esphome: discovered basement-17-tv-center-right - connecting
+2026/03/30 11:47:05 plugin-esphome: discovered basement-26-office-01 - connecting
+2026/03/30 11:47:05 plugin-esphome: discovered basement-27-office-02 - connecting
+2026/03/30 11:47:05 plugin-esphome: discovered basement-28-office-03 - connecting
+2026/03/30 11:47:05 plugin-esphome: discovered switch_basement_edison - connecting
+2026/03/30 11:47:05 plugin-esphome: discovered switch_basement_office - connecting
+2026/03/30 11:47:06 plugin-esphome: basement-27-office-02 - registered 1 entities
+2026/03/30 11:47:06 plugin-esphome: basement-26-office-01 - registered 1 entities
+2026/03/30 11:47:06 plugin-esphome: [trace] state update dev=basement-27-office-02 entity=basement-27-office-02_1221826122 msg=*api.LightStateResponse state={Power:true Brightness:150 ColorMode:rgb RGB:[0 5 255] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:370 White:255 Effect:}
+2026/03/30 11:47:06 plugin-esphome: [trace] state update dev=basement-26-office-01 entity=basement-26-office-01_3962872896 msg=*api.LightStateResponse state={Power:true Brightness:150 ColorMode:rgb RGB:[0 5 255] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:370 White:255 Effect:}
+2026/03/30 11:47:06 plugin-esphome: basement-06-movieroom-back-01 - registered 1 entities
+2026/03/30 11:47:06 plugin-esphome: basement-28-office-03 - registered 1 entities
+2026/03/30 11:47:06 plugin-esphome: [trace] state update dev=basement-06-movieroom-back-01 entity=basement-06-movieroom-back-01_1680551347 msg=*api.LightStateResponse state={Power:true Brightness:150 ColorMode:rgb RGB:[0 5 255] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:153 White:255 Effect:}
+2026/03/30 11:47:06 plugin-esphome: [trace] state update dev=basement-28-office-03 entity=basement-28-office-03_3821584384 msg=*api.LightStateResponse state={Power:true Brightness:150 ColorMode:rgb RGB:[0 5 255] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:370 White:255 Effect:}
+2026/03/30 11:47:06 plugin-esphome: basement-17-tv-center-right - registered 1 entities
+2026/03/30 11:47:06 plugin-esphome: basement-10-edison-03 - registered 1 entities
+2026/03/30 11:47:06 plugin-esphome: [trace] state update dev=basement-17-tv-center-right entity=basement-17-tv-center-right_3785994789 msg=*api.LightStateResponse state={Power:true Brightness:150 ColorMode:rgb RGB:[0 5 255] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:153 White:255 Effect:}
+2026/03/30 11:47:06 plugin-esphome: [trace] state update dev=basement-10-edison-03 entity=basement-10-edison-03_3359852625 msg=*api.LightStateResponse state={Power:true Brightness:150 ColorMode:cold_warm_white RGB:[] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:370 White:255 Effect:}
+2026/03/30 11:47:06 plugin-esphome: alex_room_switch - registered 11 entities
+2026/03/30 11:47:06 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_3430626415 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:47:06 plugin-esphome: switch_basement_office - registered 8 entities
+2026/03/30 11:47:06 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_1972958575 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:47:06 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_4085851028 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:47:06 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_1377879859 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:47:06 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_3536995996 msg=*api.LightStateResponse state={Power:true Brightness:254 ColorMode:on_off RGB:[] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:0 White:255 Effect:}
+2026/03/30 11:47:06 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_1244120623 msg=*api.LightStateResponse state={Power:true Brightness:254 ColorMode:on_off RGB:[] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:0 White:255 Effect:}
+2026/03/30 11:47:06 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_1244120620 msg=*api.LightStateResponse state={Power:true Brightness:254 ColorMode:on_off RGB:[] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:0 White:255 Effect:}
+2026/03/30 11:47:06 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_1244120621 msg=*api.LightStateResponse state={Power:true Brightness:254 ColorMode:on_off RGB:[] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:0 White:255 Effect:}
+2026/03/30 11:47:06 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_1244120618 msg=*api.LightStateResponse state={Power:true Brightness:254 ColorMode:on_off RGB:[] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:0 White:255 Effect:}
+2026/03/30 11:47:06 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_100946040 msg=*api.SwitchStateResponse state={Power:true}
+2026/03/30 11:47:06 plugin-esphome: [trace] state update dev=switch_basement_office entity=switch_basement_office_2686519914 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:47:06 plugin-esphome: [trace] state update dev=switch_basement_office entity=switch_basement_office_1243485573 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:47:06 plugin-esphome: [trace] state update dev=switch_basement_office entity=switch_basement_office_3413872047 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:47:06 plugin-esphome: [trace] state update dev=switch_basement_office entity=switch_basement_office_3349744299 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:47:06 plugin-esphome: [trace] state update dev=switch_basement_office entity=switch_basement_office_2823101305 msg=*api.SwitchStateResponse state={Power:true}
+2026/03/30 11:47:06 plugin-esphome: [trace] state update dev=switch_basement_office entity=switch_basement_office_703927066 msg=*api.SwitchStateResponse state={Power:false}
+2026/03/30 11:47:06 plugin-esphome: switch_basement_edison - registered 8 entities
+2026/03/30 11:47:06 plugin-esphome: [trace] state update dev=switch_basement_edison entity=switch_basement_edison_1805240098 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:47:06 plugin-esphome: [trace] state update dev=switch_basement_edison entity=switch_basement_edison_1496264397 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:47:06 plugin-esphome: [trace] state update dev=switch_basement_edison entity=switch_basement_edison_322047543 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:47:06 plugin-esphome: [trace] state update dev=switch_basement_edison entity=switch_basement_edison_3060779987 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:47:06 plugin-esphome: [trace] state update dev=switch_basement_edison entity=switch_basement_edison_2387054064 msg=*api.SwitchStateResponse state={Power:true}
+2026/03/30 11:47:06 plugin-esphome: [trace] state update dev=switch_basement_edison entity=switch_basement_edison_3477607426 msg=*api.SwitchStateResponse state={Power:false}
+2026/03/30 11:47:06 plugin-esphome: [trace] command recv key=plugin-esphome.basement-06-movieroom-back-01.basement-06-movieroom-back-01_1680551347 device=basement-06-movieroom-back-01 entity=basement-06-movieroom-back-01_1680551347 addr=192.168.88.11:6053 cmd=domain.LightSetRGB payload={R:255 G:0 B:0 Brightness:38 Transition:0x315bd7c82038}
+2026/03/30 11:47:06 plugin-esphome: [trace] command send key=plugin-esphome.basement-06-movieroom-back-01.basement-06-movieroom-back-01_1680551347 addr=192.168.88.11:6053 cmd=domain.LightSetRGB req=key:1680551347  has_state:true  state:true  has_brightness:true  brightness:0.1496063  has_rgb:true  red:1  has_transition_length:true  transition_length:10000
+2026/03/30 11:47:06 plugin-esphome: [trace] command sent ok key=plugin-esphome.basement-06-movieroom-back-01.basement-06-movieroom-back-01_1680551347 addr=192.168.88.11:6053 cmd=domain.LightSetRGB
+2026/03/30 11:47:06 plugin-esphome: [trace] command recv key=plugin-esphome.basement-17-tv-center-right.basement-17-tv-center-right_3785994789 device=basement-17-tv-center-right entity=basement-17-tv-center-right_3785994789 addr=192.168.88.116:6053 cmd=domain.LightSetRGB payload={R:255 G:0 B:0 Brightness:38 Transition:0x315bd7c82078}
+2026/03/30 11:47:06 plugin-esphome: [trace] command send key=plugin-esphome.basement-17-tv-center-right.basement-17-tv-center-right_3785994789 addr=192.168.88.116:6053 cmd=domain.LightSetRGB req=key:3785994789  has_state:true  state:true  has_brightness:true  brightness:0.1496063  has_rgb:true  red:1  has_transition_length:true  transition_length:10000
+2026/03/30 11:47:06 plugin-esphome: [trace] command sent ok key=plugin-esphome.basement-17-tv-center-right.basement-17-tv-center-right_3785994789 addr=192.168.88.116:6053 cmd=domain.LightSetRGB
+2026/03/30 11:47:07 plugin-esphome: [trace] state update dev=basement-06-movieroom-back-01 entity=basement-06-movieroom-back-01_1680551347 msg=*api.LightStateResponse state={Power:true Brightness:38 ColorMode:rgb RGB:[255 0 0] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:153 White:255 Effect:}
+2026/03/30 11:47:07 plugin-esphome: [trace] state update dev=basement-17-tv-center-right entity=basement-17-tv-center-right_3785994789 msg=*api.LightStateResponse state={Power:true Brightness:38 ColorMode:rgb RGB:[255 0 0] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:153 White:255 Effect:}
+2026/03/30 11:47:07 plugin-esphome: [trace] command recv key=plugin-esphome.basement-06-movieroom-back-01.basement-06-movieroom-back-01_1680551347 device=basement-06-movieroom-back-01 entity=basement-06-movieroom-back-01_1680551347 addr=192.168.88.11:6053 cmd=domain.LightTurnOff payload={Transition:<nil>}
+2026/03/30 11:47:07 plugin-esphome: [trace] command send key=plugin-esphome.basement-06-movieroom-back-01.basement-06-movieroom-back-01_1680551347 addr=192.168.88.11:6053 cmd=domain.LightTurnOff req=key:1680551347  has_state:true
+2026/03/30 11:47:07 plugin-esphome: [trace] command sent ok key=plugin-esphome.basement-06-movieroom-back-01.basement-06-movieroom-back-01_1680551347 addr=192.168.88.11:6053 cmd=domain.LightTurnOff
+2026/03/30 11:47:07 plugin-esphome: [trace] command recv key=plugin-esphome.basement-17-tv-center-right.basement-17-tv-center-right_3785994789 device=basement-17-tv-center-right entity=basement-17-tv-center-right_3785994789 addr=192.168.88.116:6053 cmd=domain.LightTurnOff payload={Transition:<nil>}
+2026/03/30 11:47:07 plugin-esphome: [trace] command send key=plugin-esphome.basement-17-tv-center-right.basement-17-tv-center-right_3785994789 addr=192.168.88.116:6053 cmd=domain.LightTurnOff req=key:3785994789  has_state:true
+2026/03/30 11:47:07 plugin-esphome: [trace] command sent ok key=plugin-esphome.basement-17-tv-center-right.basement-17-tv-center-right_3785994789 addr=192.168.88.116:6053 cmd=domain.LightTurnOff
+2026/03/30 11:47:07 plugin-esphome: [trace] state update dev=basement-06-movieroom-back-01 entity=basement-06-movieroom-back-01_1680551347 msg=*api.LightStateResponse state={Power:false Brightness:38 ColorMode:rgb RGB:[255 0 0] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:153 White:255 Effect:}
+2026/03/30 11:47:07 plugin-esphome: [trace] state update dev=basement-17-tv-center-right entity=basement-17-tv-center-right_3785994789 msg=*api.LightStateResponse state={Power:false Brightness:38 ColorMode:rgb RGB:[255 0 0] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:153 White:255 Effect:}
+2026/03/30 11:47:07 plugin-esphome: initial probe found 9 device(s)
+2026/03/30 11:47:07 plugin-esphome: persist private config for switch_basement_edison: storage: storage.save: nats: connection closed
+2026/03/30 11:47:07 plugin-esphome: [trace] refreshed discovery for switch_basement_edison addr=192.168.88.84 port=6053
+2026/03/30 11:47:07 plugin-esphome: persist private config for basement-27-office-02: storage: storage.save: nats: connection closed
+2026/03/30 11:47:07 plugin-esphome: [trace] refreshed discovery for basement-27-office-02 addr=192.168.88.43 port=6053
+2026/03/30 11:47:07 plugin-esphome: persist private config for basement-28-office-03: storage: storage.save: nats: connection closed
+2026/03/30 11:47:07 plugin-esphome: [trace] refreshed discovery for basement-28-office-03 addr=192.168.88.45 port=6053
+2026/03/30 11:47:07 plugin-esphome: persist private config for basement-26-office-01: storage: storage.save: nats: connection closed
+2026/03/30 11:47:07 plugin-esphome: [trace] refreshed discovery for basement-26-office-01 addr=192.168.88.42 port=6053
+2026/03/30 11:47:07 plugin-esphome: persist private config for basement-17-tv-center-right: storage: storage.save: nats: connection closed
+2026/03/30 11:47:07 plugin-esphome: [trace] refreshed discovery for basement-17-tv-center-right addr=192.168.88.116 port=6053
+2026/03/30 11:47:07 plugin-esphome: persist private config for basement-06-movieroom-back-01: storage: storage.save: nats: connection closed
+2026/03/30 11:47:07 plugin-esphome: [trace] refreshed discovery for basement-06-movieroom-back-01 addr=192.168.88.11 port=6053
+2026/03/30 11:47:07 plugin-esphome: persist private config for basement-10-edison-03: storage: storage.save: nats: connection closed
+2026/03/30 11:47:07 plugin-esphome: [trace] refreshed discovery for basement-10-edison-03 addr=192.168.88.46 port=6053
+2026/03/30 11:47:07 plugin-esphome: persist private config for alex_room_switch: storage: storage.save: nats: connection closed
+2026/03/30 11:47:07 plugin-esphome: [trace] refreshed discovery for alex_room_switch addr=192.168.88.113 port=6053
+2026/03/30 11:47:07 plugin-esphome: persist private config for switch_basement_office: storage: storage.save: nats: connection closed
+2026/03/30 11:47:07 plugin-esphome: [trace] refreshed discovery for switch_basement_office addr=192.168.88.99 port=6053
+2026/03/30 11:48:00 plugin-esphome: trace logging enabled
+2026/03/30 11:48:00 plugin-esphome: started, listening for devices via mDNS
+2026/03/30 11:48:00 plugin-esphome: discovered alex_room_switch - connecting
+2026/03/30 11:48:00 plugin-esphome: discovered basement-06-movieroom-back-01 - connecting
+2026/03/30 11:48:00 plugin-esphome: discovered basement-10-edison-03 - connecting
+2026/03/30 11:48:00 plugin-esphome: discovered basement-17-tv-center-right - connecting
+2026/03/30 11:48:00 plugin-esphome: discovered basement-26-office-01 - connecting
+2026/03/30 11:48:00 plugin-esphome: discovered basement-27-office-02 - connecting
+2026/03/30 11:48:00 plugin-esphome: discovered basement-28-office-03 - connecting
+2026/03/30 11:48:00 plugin-esphome: discovered switch_basement_edison - connecting
+2026/03/30 11:48:00 plugin-esphome: discovered switch_basement_office - connecting
+2026/03/30 11:48:00 plugin-esphome: basement-26-office-01 - registered 1 entities
+2026/03/30 11:48:00 plugin-esphome: basement-10-edison-03 - registered 1 entities
+2026/03/30 11:48:00 plugin-esphome: [trace] state update dev=basement-26-office-01 entity=basement-26-office-01_3962872896 msg=*api.LightStateResponse state={Power:true Brightness:150 ColorMode:rgb RGB:[0 5 255] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:370 White:255 Effect:}
+2026/03/30 11:48:00 plugin-esphome: basement-27-office-02 - registered 1 entities
+2026/03/30 11:48:00 plugin-esphome: basement-28-office-03 - registered 1 entities
+2026/03/30 11:48:00 plugin-esphome: basement-06-movieroom-back-01 - registered 1 entities
+2026/03/30 11:48:00 plugin-esphome: [trace] state update dev=basement-10-edison-03 entity=basement-10-edison-03_3359852625 msg=*api.LightStateResponse state={Power:true Brightness:150 ColorMode:cold_warm_white RGB:[] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:370 White:255 Effect:}
+2026/03/30 11:48:00 plugin-esphome: basement-17-tv-center-right - registered 1 entities
+2026/03/30 11:48:00 plugin-esphome: [trace] state update dev=basement-27-office-02 entity=basement-27-office-02_1221826122 msg=*api.LightStateResponse state={Power:true Brightness:150 ColorMode:rgb RGB:[0 5 255] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:370 White:255 Effect:}
+2026/03/30 11:48:00 plugin-esphome: [trace] state update dev=basement-06-movieroom-back-01 entity=basement-06-movieroom-back-01_1680551347 msg=*api.LightStateResponse state={Power:false Brightness:38 ColorMode:rgb RGB:[255 0 0] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:153 White:255 Effect:}
+2026/03/30 11:48:00 plugin-esphome: [trace] state update dev=basement-28-office-03 entity=basement-28-office-03_3821584384 msg=*api.LightStateResponse state={Power:true Brightness:150 ColorMode:rgb RGB:[0 5 255] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:370 White:255 Effect:}
+2026/03/30 11:48:00 plugin-esphome: [trace] state update dev=basement-17-tv-center-right entity=basement-17-tv-center-right_3785994789 msg=*api.LightStateResponse state={Power:false Brightness:38 ColorMode:rgb RGB:[255 0 0] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:153 White:255 Effect:}
+2026/03/30 11:48:01 plugin-esphome: switch_basement_office - registered 8 entities
+2026/03/30 11:48:01 plugin-esphome: [trace] state update dev=switch_basement_office entity=switch_basement_office_2686519914 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:48:01 plugin-esphome: [trace] state update dev=switch_basement_office entity=switch_basement_office_1243485573 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:48:01 plugin-esphome: [trace] state update dev=switch_basement_office entity=switch_basement_office_3413872047 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:48:01 plugin-esphome: [trace] state update dev=switch_basement_office entity=switch_basement_office_3349744299 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:48:01 plugin-esphome: [trace] state update dev=switch_basement_office entity=switch_basement_office_2823101305 msg=*api.SwitchStateResponse state={Power:true}
+2026/03/30 11:48:01 plugin-esphome: [trace] state update dev=switch_basement_office entity=switch_basement_office_703927066 msg=*api.SwitchStateResponse state={Power:false}
+2026/03/30 11:48:01 plugin-esphome: switch_basement_edison - registered 8 entities
+2026/03/30 11:48:01 plugin-esphome: alex_room_switch - registered 11 entities
+2026/03/30 11:48:01 plugin-esphome: [trace] state update dev=switch_basement_edison entity=switch_basement_edison_1805240098 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:48:01 plugin-esphome: [trace] state update dev=switch_basement_edison entity=switch_basement_edison_1496264397 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:48:01 plugin-esphome: [trace] state update dev=switch_basement_edison entity=switch_basement_edison_322047543 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:48:01 plugin-esphome: [trace] state update dev=switch_basement_edison entity=switch_basement_edison_3060779987 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:48:01 plugin-esphome: [trace] state update dev=switch_basement_edison entity=switch_basement_edison_2387054064 msg=*api.SwitchStateResponse state={Power:true}
+2026/03/30 11:48:01 plugin-esphome: [trace] state update dev=switch_basement_edison entity=switch_basement_edison_3477607426 msg=*api.SwitchStateResponse state={Power:false}
+2026/03/30 11:48:01 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_3430626415 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:48:01 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_1972958575 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:48:01 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_4085851028 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:48:01 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_1377879859 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:48:01 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_3536995996 msg=*api.LightStateResponse state={Power:true Brightness:254 ColorMode:on_off RGB:[] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:0 White:255 Effect:}
+2026/03/30 11:48:01 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_1244120623 msg=*api.LightStateResponse state={Power:true Brightness:254 ColorMode:on_off RGB:[] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:0 White:255 Effect:}
+2026/03/30 11:48:01 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_1244120620 msg=*api.LightStateResponse state={Power:true Brightness:254 ColorMode:on_off RGB:[] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:0 White:255 Effect:}
+2026/03/30 11:48:01 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_1244120621 msg=*api.LightStateResponse state={Power:true Brightness:254 ColorMode:on_off RGB:[] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:0 White:255 Effect:}
+2026/03/30 11:48:01 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_1244120618 msg=*api.LightStateResponse state={Power:true Brightness:254 ColorMode:on_off RGB:[] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:0 White:255 Effect:}
+2026/03/30 11:48:01 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_100946040 msg=*api.SwitchStateResponse state={Power:true}
+2026/03/30 11:48:01 plugin-esphome: [trace] command recv key=plugin-esphome.basement-06-movieroom-back-01.basement-06-movieroom-back-01_1680551347 device=basement-06-movieroom-back-01 entity=basement-06-movieroom-back-01_1680551347 addr=192.168.88.11:6053 cmd=domain.LightSetRGB payload={R:255 G:0 B:0 Brightness:38 Transition:0x315bd78b61b8}
+2026/03/30 11:48:01 plugin-esphome: [trace] command send key=plugin-esphome.basement-06-movieroom-back-01.basement-06-movieroom-back-01_1680551347 addr=192.168.88.11:6053 cmd=domain.LightSetRGB req=key:1680551347  has_state:true  state:true  has_brightness:true  brightness:0.1496063  has_rgb:true  red:1  has_transition_length:true  transition_length:10000
+2026/03/30 11:48:01 plugin-esphome: [trace] command sent ok key=plugin-esphome.basement-06-movieroom-back-01.basement-06-movieroom-back-01_1680551347 addr=192.168.88.11:6053 cmd=domain.LightSetRGB
+2026/03/30 11:48:01 plugin-esphome: [trace] state update dev=basement-06-movieroom-back-01 entity=basement-06-movieroom-back-01_1680551347 msg=*api.LightStateResponse state={Power:true Brightness:38 ColorMode:rgb RGB:[255 0 0] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:153 White:255 Effect:}
+2026/03/30 11:48:01 plugin-esphome: [trace] command recv key=plugin-esphome.basement-06-movieroom-back-01.basement-06-movieroom-back-01_1680551347 device=basement-06-movieroom-back-01 entity=basement-06-movieroom-back-01_1680551347 addr=192.168.88.11:6053 cmd=domain.LightSetRGB payload={R:255 G:0 B:0 Brightness:38 Transition:0x315bd78b6a30}
+2026/03/30 11:48:01 plugin-esphome: [trace] command send key=plugin-esphome.basement-06-movieroom-back-01.basement-06-movieroom-back-01_1680551347 addr=192.168.88.11:6053 cmd=domain.LightSetRGB req=key:1680551347  has_state:true  state:true  has_brightness:true  brightness:0.1496063  has_rgb:true  red:1  has_transition_length:true  transition_length:10000
+2026/03/30 11:48:01 plugin-esphome: [trace] command sent ok key=plugin-esphome.basement-06-movieroom-back-01.basement-06-movieroom-back-01_1680551347 addr=192.168.88.11:6053 cmd=domain.LightSetRGB
+2026/03/30 11:48:01 plugin-esphome: [trace] command recv key=plugin-esphome.basement-17-tv-center-right.basement-17-tv-center-right_3785994789 device=basement-17-tv-center-right entity=basement-17-tv-center-right_3785994789 addr=192.168.88.116:6053 cmd=domain.LightSetRGB payload={R:255 G:0 B:0 Brightness:38 Transition:0x315bd78b6ad0}
+2026/03/30 11:48:01 plugin-esphome: [trace] command send key=plugin-esphome.basement-17-tv-center-right.basement-17-tv-center-right_3785994789 addr=192.168.88.116:6053 cmd=domain.LightSetRGB req=key:3785994789  has_state:true  state:true  has_brightness:true  brightness:0.1496063  has_rgb:true  red:1  has_transition_length:true  transition_length:10000
+2026/03/30 11:48:01 plugin-esphome: [trace] command sent ok key=plugin-esphome.basement-17-tv-center-right.basement-17-tv-center-right_3785994789 addr=192.168.88.116:6053 cmd=domain.LightSetRGB
+2026/03/30 11:48:01 plugin-esphome: [trace] state update dev=basement-17-tv-center-right entity=basement-17-tv-center-right_3785994789 msg=*api.LightStateResponse state={Power:true Brightness:38 ColorMode:rgb RGB:[255 0 0] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:153 White:255 Effect:}
+2026/03/30 11:48:01 plugin-esphome: [trace] state update dev=basement-06-movieroom-back-01 entity=basement-06-movieroom-back-01_1680551347 msg=*api.LightStateResponse state={Power:true Brightness:38 ColorMode:rgb RGB:[255 0 0] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:153 White:255 Effect:}
+2026/03/30 11:48:02 plugin-esphome: [trace] command recv key=plugin-esphome.basement-06-movieroom-back-01.basement-06-movieroom-back-01_1680551347 device=basement-06-movieroom-back-01 entity=basement-06-movieroom-back-01_1680551347 addr=192.168.88.11:6053 cmd=domain.LightTurnOff payload={Transition:<nil>}
+2026/03/30 11:48:02 plugin-esphome: [trace] command send key=plugin-esphome.basement-06-movieroom-back-01.basement-06-movieroom-back-01_1680551347 addr=192.168.88.11:6053 cmd=domain.LightTurnOff req=key:1680551347  has_state:true
+2026/03/30 11:48:02 plugin-esphome: [trace] command sent ok key=plugin-esphome.basement-06-movieroom-back-01.basement-06-movieroom-back-01_1680551347 addr=192.168.88.11:6053 cmd=domain.LightTurnOff
+2026/03/30 11:48:02 plugin-esphome: [trace] command recv key=plugin-esphome.basement-17-tv-center-right.basement-17-tv-center-right_3785994789 device=basement-17-tv-center-right entity=basement-17-tv-center-right_3785994789 addr=192.168.88.116:6053 cmd=domain.LightTurnOff payload={Transition:<nil>}
+2026/03/30 11:48:02 plugin-esphome: [trace] command send key=plugin-esphome.basement-17-tv-center-right.basement-17-tv-center-right_3785994789 addr=192.168.88.116:6053 cmd=domain.LightTurnOff req=key:3785994789  has_state:true
+2026/03/30 11:48:02 plugin-esphome: [trace] command sent ok key=plugin-esphome.basement-17-tv-center-right.basement-17-tv-center-right_3785994789 addr=192.168.88.116:6053 cmd=domain.LightTurnOff
+2026/03/30 11:48:02 plugin-esphome: [trace] state update dev=basement-06-movieroom-back-01 entity=basement-06-movieroom-back-01_1680551347 msg=*api.LightStateResponse state={Power:false Brightness:38 ColorMode:rgb RGB:[255 0 0] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:153 White:255 Effect:}
+2026/03/30 11:48:02 plugin-esphome: [trace] state update dev=basement-17-tv-center-right entity=basement-17-tv-center-right_3785994789 msg=*api.LightStateResponse state={Power:false Brightness:38 ColorMode:rgb RGB:[255 0 0] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:153 White:255 Effect:}
+2026/03/30 11:48:02 plugin-esphome: initial probe found 9 device(s)
+2026/03/30 11:48:02 plugin-esphome: persist private config for alex_room_switch: storage: storage.save: nats: connection closed
+2026/03/30 11:48:02 plugin-esphome: [trace] refreshed discovery for alex_room_switch addr=192.168.88.113 port=6053
+2026/03/30 11:48:02 plugin-esphome: persist private config for switch_basement_edison: storage: storage.save: nats: connection closed
+2026/03/30 11:48:02 plugin-esphome: [trace] refreshed discovery for switch_basement_edison addr=192.168.88.84 port=6053
+2026/03/30 11:48:02 plugin-esphome: persist private config for switch_basement_office: storage: storage.save: nats: connection closed
+2026/03/30 11:48:02 plugin-esphome: [trace] refreshed discovery for switch_basement_office addr=192.168.88.99 port=6053
+2026/03/30 11:48:02 plugin-esphome: persist private config for basement-27-office-02: storage: storage.save: nats: connection closed
+2026/03/30 11:48:02 plugin-esphome: [trace] refreshed discovery for basement-27-office-02 addr=192.168.88.43 port=6053
+2026/03/30 11:48:02 plugin-esphome: persist private config for basement-28-office-03: storage: storage.save: nats: connection closed
+2026/03/30 11:48:02 plugin-esphome: [trace] refreshed discovery for basement-28-office-03 addr=192.168.88.45 port=6053
+2026/03/30 11:48:02 plugin-esphome: persist private config for basement-26-office-01: storage: storage.save: nats: connection closed
+2026/03/30 11:48:02 plugin-esphome: [trace] refreshed discovery for basement-26-office-01 addr=192.168.88.42 port=6053
+2026/03/30 11:48:02 plugin-esphome: persist private config for basement-10-edison-03: storage: storage.save: nats: connection closed
+2026/03/30 11:48:02 plugin-esphome: [trace] refreshed discovery for basement-10-edison-03 addr=192.168.88.46 port=6053
+2026/03/30 11:48:02 plugin-esphome: persist private config for basement-06-movieroom-back-01: storage: storage.save: nats: connection closed
+2026/03/30 11:48:02 plugin-esphome: [trace] refreshed discovery for basement-06-movieroom-back-01 addr=192.168.88.11 port=6053
+2026/03/30 11:48:02 plugin-esphome: persist private config for basement-17-tv-center-right: storage: storage.save: nats: connection closed
+2026/03/30 11:48:02 plugin-esphome: [trace] refreshed discovery for basement-17-tv-center-right addr=192.168.88.116 port=6053
+panic: test timed out after 4m0s
+	running tests:
+		TestLocal_MovieTime_TargetedDevices (33s)
+
+goroutine 1761 [running]:
+testing.(*M).startAlarm.func1()
+	/snap/go/11103/src/testing/testing.go:2802 +0x34b
+created by time.goFunc
+	/snap/go/11103/src/time/sleep.go:215 +0x2d
+
+goroutine 1 [chan receive]:
+testing.(*T).Run(0x315bd7802248, {0x14ee10a?, 0x315bd7765b30?}, 0x152d070)
+	/snap/go/11103/src/testing/testing.go:2109 +0x4e5
+testing.runTests.func1(0x315bd7802248)
+	/snap/go/11103/src/testing/testing.go:2585 +0x37
+testing.tRunner(0x315bd7802248, 0x315bd7765c58)
+	/snap/go/11103/src/testing/testing.go:2036 +0xea
+testing.runTests({0x14ee150, 0x23}, {0x150bf0c, 0x36}, 0x315bd772fcc8, {0x2146b80, 0x3f, 0x3f}, {0xc26ac838e2f34c8e, 0x37e1a28662, ...})
+	/snap/go/11103/src/testing/testing.go:2583 +0x505
+testing.(*M).Run(0x315bd7751900)
+	/snap/go/11103/src/testing/testing.go:2443 +0x6ac
+main.main()
+	_testmain.go:170 +0x9b
+
+goroutine 8 [select]:
+github.com/blevesearch/bleve_index_api.AnalysisWorker(...)
+	/home/gavin/go/pkg/mod/github.com/blevesearch/bleve_index_api@v1.2.11/analysis.go:46
+created by github.com/blevesearch/bleve_index_api.NewAnalysisQueue in goroutine 1
+	/home/gavin/go/pkg/mod/github.com/blevesearch/bleve_index_api@v1.2.11/analysis.go:38 +0xa5
+
+goroutine 9 [select]:
+github.com/blevesearch/bleve_index_api.AnalysisWorker(...)
+	/home/gavin/go/pkg/mod/github.com/blevesearch/bleve_index_api@v1.2.11/analysis.go:46
+created by github.com/blevesearch/bleve_index_api.NewAnalysisQueue in goroutine 1
+	/home/gavin/go/pkg/mod/github.com/blevesearch/bleve_index_api@v1.2.11/analysis.go:38 +0xa5
+
+goroutine 10 [select]:
+github.com/blevesearch/bleve_index_api.AnalysisWorker(...)
+	/home/gavin/go/pkg/mod/github.com/blevesearch/bleve_index_api@v1.2.11/analysis.go:46
+created by github.com/blevesearch/bleve_index_api.NewAnalysisQueue in goroutine 1
+	/home/gavin/go/pkg/mod/github.com/blevesearch/bleve_index_api@v1.2.11/analysis.go:38 +0xa5
+
+goroutine 11 [select]:
+github.com/blevesearch/bleve_index_api.AnalysisWorker(...)
+	/home/gavin/go/pkg/mod/github.com/blevesearch/bleve_index_api@v1.2.11/analysis.go:46
+created by github.com/blevesearch/bleve_index_api.NewAnalysisQueue in goroutine 1
+	/home/gavin/go/pkg/mod/github.com/blevesearch/bleve_index_api@v1.2.11/analysis.go:38 +0xa5
+
+goroutine 1775 [select]:
+github.com/slidebolt/plugin-esphome/internal/mdns.(*Discovery).Discover(0x315bd7754280, {0x154a058, 0x315bd7d000f0})
+	/home/gavin/work/sb/clean/plugin-esphome/internal/mdns/discovery.go:183 +0x3e5
+github.com/slidebolt/plugin-esphome/cmd/plugin-esphome.setupGroupTestWithOptions(0x315bd7b94008, {{0x0, 0x0, 0x0}, 0x0, 0x2cb417800, 0x4, 0x59682f00, 0x37e11d600, 0x0})
+	/home/gavin/work/sb/clean/plugin-esphome/cmd/plugin-esphome/test.local.group_test.go:87 +0x335
+github.com/slidebolt/plugin-esphome/cmd/plugin-esphome.setupGroupTest(...)
+	/home/gavin/work/sb/clean/plugin-esphome/cmd/plugin-esphome/test.local.group_test.go:37
+github.com/slidebolt/plugin-esphome/cmd/plugin-esphome.TestLocal_MovieTime_TargetedDevices(0x315bd7b94008)
+	/home/gavin/work/sb/clean/plugin-esphome/cmd/plugin-esphome/test.local.group_test.go:672 +0x46
+testing.tRunner(0x315bd7b94008, 0x152d070)
+	/snap/go/11103/src/testing/testing.go:2036 +0xea
+created by testing.(*T).Run in goroutine 1
+	/snap/go/11103/src/testing/testing.go:2101 +0x4c5
+
+goroutine 14 [syscall, 3 minutes]:
+os/signal.signal_recv()
+	/snap/go/11103/src/runtime/sigqueue.go:152 +0x98
+os/signal.loop()
+	/snap/go/11103/src/os/signal/signal_unix.go:23 +0x13
+created by os/signal.Notify.func1.1 in goroutine 12
+	/snap/go/11103/src/os/signal/signal.go:152 +0x1f
+
+goroutine 816 [sync.Cond.Wait]:
+sync.runtime_notifyListWait(0x315bd7afe150, 0x2)
+	/snap/go/11103/src/runtime/sema.go:617 +0x1b3
+sync.(*Cond).Wait(0x315bd789e008?)
+	/snap/go/11103/src/sync/cond.go:71 +0x73
+github.com/nats-io/nats-server/v2/server.(*client).writeLoop(0x315bd789e008)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/client.go:1295 +0x1f1
+github.com/nats-io/nats-server/v2/server.(*Server).createClientEx.func2()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:3546 +0x17
+github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine.func1()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4078 +0x32
+created by github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine in goroutine 1858
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4076 +0x129
+
+goroutine 1859 [IO wait]:
+internal/poll.runtime_pollWait(0x7b835fdc9a00, 0x72)
+	/snap/go/11103/src/runtime/netpoll.go:351 +0x85
+internal/poll.(*pollDesc).wait(0x315bd7a38200?, 0x315bd7e38000?, 0x0)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:84 +0x27
+internal/poll.(*pollDesc).waitRead(...)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:89
+internal/poll.(*FD).Read(0x315bd7a38200, {0x315bd7e38000, 0x8000, 0x8000})
+	/snap/go/11103/src/internal/poll/fd_unix.go:165 +0x2ae
+net.(*netFD).Read(0x315bd7a38200, {0x315bd7e38000?, 0xa00315bd7854f20?, 0x48d24c?})
+	/snap/go/11103/src/net/fd_posix.go:68 +0x25
+net.(*conn).Read(0x315bd770e198, {0x315bd7e38000?, 0x14432e0?, 0xae2601?})
+	/snap/go/11103/src/net/net.go:196 +0x45
+github.com/nats-io/nats%2ego.(*natsReader).Read(0x315bd7c2e0c0)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:2197 +0x7f
+github.com/nats-io/nats%2ego.(*Conn).readLoop(0x315bd7a96a08)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:3407 +0xef
+created by github.com/nats-io/nats%2ego.(*Conn).processConnectInit in goroutine 1775
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:2632 +0x2b3
+
+goroutine 817 [IO wait]:
+internal/poll.runtime_pollWait(0x7b835c31f400, 0x72)
+	/snap/go/11103/src/runtime/netpoll.go:351 +0x85
+internal/poll.(*pollDesc).wait(0x315bd7754200?, 0x315bd7664000?, 0x0)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:84 +0x27
+internal/poll.(*pollDesc).waitRead(...)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:89
+internal/poll.(*FD).Read(0x315bd7754200, {0x315bd7664000, 0x80, 0x80})
+	/snap/go/11103/src/internal/poll/fd_unix.go:165 +0x2ae
+net.(*netFD).Read(0x315bd7754200, {0x315bd7664000?, 0x315bd7ac0d10?, 0x492729?})
+	/snap/go/11103/src/net/fd_posix.go:68 +0x25
+net.(*conn).Read(0x315bd7408088, {0x315bd7664000?, 0x214ffc0?, 0x100?})
+	/snap/go/11103/src/net/net.go:196 +0x45
+github.com/nats-io/nats-server/v2/server.(*client).readLoop(0x315bd789fb08, {0x0, 0x0, 0x0})
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/client.go:1426 +0x65d
+github.com/nats-io/nats-server/v2/server.(*Server).createClientEx.func1()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:3543 +0x25
+github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine.func1()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4078 +0x32
+created by github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine in goroutine 1585
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4076 +0x129
+
+goroutine 1792 [IO wait]:
+internal/poll.runtime_pollWait(0x7b835fdc9800, 0x72)
+	/snap/go/11103/src/runtime/netpoll.go:351 +0x85
+internal/poll.(*pollDesc).wait(0x315bd7a38000?, 0x426d37?, 0x0)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:84 +0x27
+internal/poll.(*pollDesc).waitRead(...)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:89
+internal/poll.(*FD).Accept(0x315bd7a38000)
+	/snap/go/11103/src/internal/poll/fd_unix.go:613 +0x28c
+net.(*netFD).accept(0x315bd7a38000)
+	/snap/go/11103/src/net/fd_unix.go:150 +0x29
+net.(*TCPListener).accept(0x315bd7c2e000)
+	/snap/go/11103/src/net/tcpsock_posix.go:159 +0x1b
+net.(*TCPListener).Accept(0x315bd7c2e000)
+	/snap/go/11103/src/net/tcpsock.go:387 +0x30
+github.com/nats-io/nats-server/v2/server.(*Server).acceptConnections(0x315bd7437008, {0x1547a40, 0x315bd7c2e000}, {0x14c3f08, 0x6}, 0x315bd7e0a570, 0x315bd7e0a580)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:2893 +0x63
+created by github.com/nats-io/nats-server/v2/server.(*Server).AcceptLoop in goroutine 1775
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:2842 +0x845
+
+goroutine 1758 [select]:
+github.com/grandcat/zeroconf.(*client).mainloop(0x315bd7a34300, {0x154a058, 0x315bd7b4d4f0}, 0x315bd77b1880)
+	/home/gavin/go/pkg/mod/github.com/grandcat/zeroconf@v1.0.0/client.go:196 +0x2c9
+created by github.com/grandcat/zeroconf.(*Resolver).Browse in goroutine 1757
+	/home/gavin/go/pkg/mod/github.com/grandcat/zeroconf@v1.0.0/client.go:92 +0x267
+
+goroutine 1777 [select]:
+github.com/nats-io/nats-server/v2/server.(*Server).startRateLimitLogExpiration.func1()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4713 +0x11d
+github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine.func1()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4078 +0x32
+created by github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine in goroutine 1775
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4076 +0x129
+
+goroutine 1790 [select]:
+github.com/nats-io/nats-server/v2/server.(*Server).startGWReplyMapExpiration.func1()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/gateway.go:3381 +0xfe
+github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine.func1()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4078 +0x32
+created by github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine in goroutine 1775
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4076 +0x129
+
+goroutine 1793 [sync.Cond.Wait]:
+sync.runtime_notifyListWait(0x315bd7c2e090, 0x0)
+	/snap/go/11103/src/runtime/sema.go:617 +0x1b3
+sync.(*Cond).Wait(0x315bd79f57d0?)
+	/snap/go/11103/src/sync/cond.go:71 +0x73
+github.com/nats-io/nats%2ego.(*asyncCallbacksHandler).asyncCBDispatcher(0x315bd7b4a1a0)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:3332 +0x5a
+created by github.com/nats-io/nats%2ego.Options.Connect in goroutine 1775
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:1789 +0x3ae
+
+goroutine 1896 [IO wait]:
+internal/poll.runtime_pollWait(0x7b835c31f600, 0x72)
+	/snap/go/11103/src/runtime/netpoll.go:351 +0x85
+internal/poll.(*pollDesc).wait(0x315bd77b1780?, 0x7b835cbadfe0?, 0x0)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:84 +0x27
+internal/poll.(*pollDesc).waitRead(...)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:89
+internal/poll.(*FD).RawRead(0x315bd77b1780, 0x315bd7b4d9f0)
+	/snap/go/11103/src/internal/poll/fd_unix.go:710 +0x125
+net.(*rawConn).Read(0x315bd75020d8, 0x0?)
+	/snap/go/11103/src/net/rawconn.go:44 +0x36
+golang.org/x/net/internal/socket.(*Conn).recvMsg(0x315bd7b4bd00, 0x315bd771ede0, 0x0)
+	/home/gavin/go/pkg/mod/golang.org/x/net@v0.50.0/internal/socket/rawconn_msg.go:27 +0x125
+golang.org/x/net/internal/socket.(*Conn).RecvMsg(...)
+	/home/gavin/go/pkg/mod/golang.org/x/net@v0.50.0/internal/socket/socket.go:248
+golang.org/x/net/ipv4.(*payloadHandler).ReadFrom(0x315bd7b4d460, {0x315bd79c0000, 0x10000, 0x10000})
+	/home/gavin/go/pkg/mod/golang.org/x/net@v0.50.0/ipv4/payload_cmsg.go:31 +0x205
+github.com/grandcat/zeroconf.(*client).recv.func2({0x315bd79c0000?, 0x315bd79dff18?, 0x103?})
+	/home/gavin/go/pkg/mod/github.com/grandcat/zeroconf@v1.0.0/client.go:329 +0x2e
+github.com/grandcat/zeroconf.(*client).recv(0x0?, {0x154a058, 0x315bd7b4d4f0}, {0x148ce20?, 0x315bd7b4d450?}, 0x315bd7ac8ee0)
+	/home/gavin/go/pkg/mod/github.com/grandcat/zeroconf@v1.0.0/client.go:348 +0x14e
+created by github.com/grandcat/zeroconf.(*client).mainloop in goroutine 1758
+	/home/gavin/go/pkg/mod/github.com/grandcat/zeroconf@v1.0.0/client.go:186 +0x113
+
+goroutine 1843 [select]:
+github.com/nats-io/nats-server/v2/server.(*Server).internalSendLoop(0x315bd7437008, 0x315bd777e580?)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/events.go:524 +0x29f
+created by github.com/nats-io/nats-server/v2/server.(*Server).setSystemAccount in goroutine 1775
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:1881 +0x436
+
+goroutine 1897 [IO wait]:
+internal/poll.runtime_pollWait(0x7b835c31fe00, 0x72)
+	/snap/go/11103/src/runtime/netpoll.go:351 +0x85
+internal/poll.(*pollDesc).wait(0x315bd77b1800?, 0x7b83a6a925e0?, 0x0)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:84 +0x27
+internal/poll.(*pollDesc).waitRead(...)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:89
+internal/poll.(*FD).RawRead(0x315bd77b1800, 0x315bd75a3a40)
+	/snap/go/11103/src/internal/poll/fd_unix.go:710 +0x125
+net.(*rawConn).Read(0x315bd75020e8, 0x0?)
+	/snap/go/11103/src/net/rawconn.go:44 +0x36
+golang.org/x/net/internal/socket.(*Conn).recvMsg(0x315bd7b4bd20, 0x315bd78b5500, 0x0)
+	/home/gavin/go/pkg/mod/golang.org/x/net@v0.50.0/internal/socket/rawconn_msg.go:27 +0x125
+golang.org/x/net/internal/socket.(*Conn).RecvMsg(...)
+	/home/gavin/go/pkg/mod/golang.org/x/net@v0.50.0/internal/socket/socket.go:248
+golang.org/x/net/ipv6.(*payloadHandler).ReadFrom(0x315bd7b4d4b0, {0x315bd796a000, 0x10000, 0x10000})
+	/home/gavin/go/pkg/mod/golang.org/x/net@v0.50.0/ipv6/payload_cmsg.go:31 +0x254
+github.com/grandcat/zeroconf.(*client).recv.func1({0x315bd796a000?, 0x315bd79e0f18?, 0x103?})
+	/home/gavin/go/pkg/mod/github.com/grandcat/zeroconf@v1.0.0/client.go:324 +0x2e
+github.com/grandcat/zeroconf.(*client).recv(0x315bd79f07d0?, {0x154a058, 0x315bd7b4d4f0}, {0x1490dc0?, 0x315bd7b4d4a0?}, 0x315bd7ac8ee0)
+	/home/gavin/go/pkg/mod/github.com/grandcat/zeroconf@v1.0.0/client.go:348 +0x14e
+created by github.com/grandcat/zeroconf.(*client).mainloop in goroutine 1758
+	/home/gavin/go/pkg/mod/github.com/grandcat/zeroconf@v1.0.0/client.go:189 +0x1da
+
+goroutine 1842 [select]:
+github.com/nats-io/nats-server/v2/server.(*sendq).internalLoop(0x315bd7a720c0)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/sendq.go:65 +0x245
+github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine.func1()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4078 +0x32
+created by github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine in goroutine 1775
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4076 +0x129
+
+goroutine 1844 [select]:
+github.com/nats-io/nats-server/v2/server.(*Server).internalReceiveLoop(0x315bd7437008, 0x315bd77b0300)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/events.go:478 +0xb7
+created by github.com/nats-io/nats-server/v2/server.(*Server).setSystemAccount in goroutine 1775
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:1884 +0x48d
+
+goroutine 1874 [sync.Cond.Wait]:
+sync.runtime_notifyListWait(0x315bd7afe190, 0x3)
+	/snap/go/11103/src/runtime/sema.go:617 +0x1b3
+sync.(*Cond).Wait(0x315bd789fb08?)
+	/snap/go/11103/src/sync/cond.go:71 +0x73
+github.com/nats-io/nats-server/v2/server.(*client).writeLoop(0x315bd789fb08)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/client.go:1295 +0x1f1
+github.com/nats-io/nats-server/v2/server.(*Server).createClientEx.func2()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:3546 +0x17
+github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine.func1()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4078 +0x32
+created by github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine in goroutine 1585
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4076 +0x129
+
+goroutine 815 [IO wait]:
+internal/poll.runtime_pollWait(0x7b835c111400, 0x72)
+	/snap/go/11103/src/runtime/netpoll.go:351 +0x85
+internal/poll.(*pollDesc).wait(0x315bd7a38280?, 0x315bd77c2300?, 0x0)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:84 +0x27
+internal/poll.(*pollDesc).waitRead(...)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:89
+internal/poll.(*FD).Read(0x315bd7a38280, {0x315bd77c2300, 0x100, 0x100})
+	/snap/go/11103/src/internal/poll/fd_unix.go:165 +0x2ae
+net.(*netFD).Read(0x315bd7a38280, {0x315bd77c2300?, 0x315bd79e8d10?, 0x492729?})
+	/snap/go/11103/src/net/fd_posix.go:68 +0x25
+net.(*conn).Read(0x315bd75021e0, {0x315bd77c2300?, 0x214ffc0?, 0x200?})
+	/snap/go/11103/src/net/net.go:196 +0x45
+github.com/nats-io/nats-server/v2/server.(*client).readLoop(0x315bd789e008, {0x0, 0x0, 0x0})
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/client.go:1426 +0x65d
+github.com/nats-io/nats-server/v2/server.(*Server).createClientEx.func1()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:3543 +0x25
+github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine.func1()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4078 +0x32
+created by github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine in goroutine 1858
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4076 +0x129
+
+goroutine 1776 [select]:
+github.com/nats-io/nats-server/v2/server.(*Server).handleSignals.func1()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/signal.go:47 +0x9a
+created by github.com/nats-io/nats-server/v2/server.(*Server).handleSignals in goroutine 1775
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/signal.go:45 +0x106
+
+goroutine 1791 [select]:
+github.com/nats-io/nats-server/v2/server.(*Server).delayedAPIResponder(0x315bd7437008)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/jetstream_api.go:1152 +0x1a5
+github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine.func1()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4078 +0x32
+created by github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine in goroutine 1775
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4076 +0x129
+
+goroutine 1860 [chan receive]:
+github.com/nats-io/nats%2ego.(*Conn).flusher(0x315bd7a96a08)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:3849 +0xe9
+created by github.com/nats-io/nats%2ego.(*Conn).processConnectInit in goroutine 1775
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:2633 +0x2f9
+
+goroutine 1845 [select]:
+github.com/nats-io/nats-server/v2/server.(*Server).internalReceiveLoop(0x315bd7437008, 0x315bd77b0380)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/events.go:478 +0xb7
+created by github.com/nats-io/nats-server/v2/server.(*Server).setSystemAccount in goroutine 1775
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:1886 +0x4e6
+
+goroutine 1861 [sync.Cond.Wait]:
+sync.runtime_notifyListWait(0x315bd7c2e210, 0x0)
+	/snap/go/11103/src/runtime/sema.go:617 +0x1b3
+sync.(*Cond).Wait(0x315bd78527d0?)
+	/snap/go/11103/src/sync/cond.go:71 +0x73
+github.com/nats-io/nats%2ego.(*asyncCallbacksHandler).asyncCBDispatcher(0x315bd7b4a280)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:3332 +0x5a
+created by github.com/nats-io/nats%2ego.Options.Connect in goroutine 1775
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:1789 +0x3ae
+
+goroutine 1862 [IO wait]:
+internal/poll.runtime_pollWait(0x7b835fdc9200, 0x72)
+	/snap/go/11103/src/runtime/netpoll.go:351 +0x85
+internal/poll.(*pollDesc).wait(0x315bd7a38380?, 0x315bd7e48000?, 0x0)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:84 +0x27
+internal/poll.(*pollDesc).waitRead(...)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:89
+internal/poll.(*FD).Read(0x315bd7a38380, {0x315bd7e48000, 0x8000, 0x8000})
+	/snap/go/11103/src/internal/poll/fd_unix.go:165 +0x2ae
+net.(*netFD).Read(0x315bd7a38380, {0x315bd7e48000?, 0xa00315bd7854720?, 0x48d24c?})
+	/snap/go/11103/src/net/fd_posix.go:68 +0x25
+net.(*conn).Read(0x315bd75021f0, {0x315bd7e48000?, 0x14432e0?, 0x1?})
+	/snap/go/11103/src/net/net.go:196 +0x45
+github.com/nats-io/nats%2ego.(*natsReader).Read(0x315bd7c2e240)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:2197 +0x7f
+github.com/nats-io/nats%2ego.(*Conn).readLoop(0x315bd7a97108)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:3407 +0xef
+created by github.com/nats-io/nats%2ego.(*Conn).processConnectInit in goroutine 1775
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:2632 +0x2b3
+
+goroutine 1863 [chan receive]:
+github.com/nats-io/nats%2ego.(*Conn).flusher(0x315bd7a97108)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:3849 +0xe9
+created by github.com/nats-io/nats%2ego.(*Conn).processConnectInit in goroutine 1775
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:2633 +0x2f9
+
+goroutine 1864 [sync.Cond.Wait]:
+sync.runtime_notifyListWait(0x315bd7c2e3d0, 0x0)
+	/snap/go/11103/src/runtime/sema.go:617 +0x1b3
+sync.(*Cond).Wait(0x1256700?)
+	/snap/go/11103/src/sync/cond.go:71 +0x73
+github.com/nats-io/nats%2ego.(*Conn).waitForMsgs(0x315bd7a97108, 0x315bd75e00f0)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:3451 +0xc8
+created by github.com/nats-io/nats%2ego.(*Conn).subscribeLocked in goroutine 1775
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:4810 +0x419
+FAIL	github.com/slidebolt/plugin-esphome/cmd/plugin-esphome	240.017s
+ok  	github.com/slidebolt/plugin-esphome/internal/dashboard	0.006s
+?   	github.com/slidebolt/plugin-esphome/internal/mdns	[no test files]
+?   	github.com/slidebolt/plugin-esphome/internal/translate	[no test files]
+FAIL

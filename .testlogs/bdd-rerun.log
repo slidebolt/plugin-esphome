@@ -1,0 +1,1375 @@
+=== RUN   TestLookupESPKey
+--- PASS: TestLookupESPKey (0.00s)
+=== RUN   TestEntityFromMsgLightIncludesPersistentColorCapabilities
+--- PASS: TestEntityFromMsgLightIncludesPersistentColorCapabilities (0.00s)
+=== RUN   TestEntityFromMsgLightColorTempOnlyOmitsRGBCommand
+--- PASS: TestEntityFromMsgLightColorTempOnlyOmitsRGBCommand (0.00s)
+=== RUN   TestLightStateFromResponseColorTempDoesNotBackfillRGB
+--- PASS: TestLightStateFromResponseColorTempDoesNotBackfillRGB (0.00s)
+=== RUN   TestApplyStateUpdatePersistsFullLightState
+--- PASS: TestApplyStateUpdatePersistsFullLightState (0.00s)
+=== RUN   TestLookupEntityByESPKeyFromStorage
+--- PASS: TestLookupEntityByESPKeyFromStorage (0.00s)
+=== RUN   TestResolveAPIKeyPersistsFallbackToPrivate
+--- PASS: TestResolveAPIKeyPersistsFallbackToPrivate (0.00s)
+=== RUN   TestResolveAPIKeyUsesStoredPrivateConfigWithoutMDNSEncryptionFlag
+--- PASS: TestResolveAPIKeyUsesStoredPrivateConfigWithoutMDNSEncryptionFlag (0.00s)
+=== RUN   TestRememberDevicePersistsLastKnownEndpoint
+--- PASS: TestRememberDevicePersistsLastKnownEndpoint (0.00s)
+=== RUN   TestVerifyConnectedDeviceRejectsMACMismatch
+--- PASS: TestVerifyConnectedDeviceRejectsMACMismatch (0.00s)
+=== RUN   TestOnDeviceFoundStartsOneManagedLoopPerDevice
+2026/03/30 10:05:46 plugin-esphome: discovered basement-edison - connecting
+--- PASS: TestOnDeviceFoundStartsOneManagedLoopPerDevice (0.00s)
+=== RUN   TestHandleCommandSendFailureDropsActiveConnectionAndRequestsReconnect
+2026/03/30 10:05:46 plugin-esphome: send command domain.LightSetBrightness to plugin-esphome.basement-edison.basement-edison_42 (10.0.0.10:6053): broken pipe
+--- PASS: TestHandleCommandSendFailureDropsActiveConnectionAndRequestsReconnect (0.00s)
+=== RUN   TestHelloManifest
+--- PASS: TestHelloManifest (0.00s)
+PASS
+ok  	github.com/slidebolt/plugin-esphome/app	0.006s
+?   	github.com/slidebolt/plugin-esphome/cmd/edison-test	[no test files]
+=== RUN   TestBDDFeatures
+[1;37mFeature:[0m Binary Sensor Entity
+=== RUN   TestBDDFeatures/Create_with_default_state
+
+  [1;37mScenario:[0m Create with default state                                                      [1;30m# features/binary_sensor.feature:5[0m
+    [32mGiven[0m [32ma binary_sensor entity "test.dev1.motion001" named "Motion Sensor" with on false[0m [1;30m# test.bdd.steps_test.go:1330 -> *bddCtx[0m
+    [32mWhen[0m [32mI retrieve "test.dev1.motion001"[0m                                                  [1;30m# test.bdd.steps_test.go:1365 -> *bddCtx[0m
+    [32mThen[0m [32mthe entity type is "binary_sensor"[0m                                                [1;30m# test.bdd.steps_test.go:1370 -> *bddCtx[0m
+    [32mAnd[0m [32mthe binary sensor is off[0m                                                           [1;30m# test.bdd.steps_test.go:1385 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/State_fields_hydrate_correctly_including_device_class
+
+  [1;37mScenario:[0m State fields hydrate correctly including device class                                             [1;30m# features/binary_sensor.feature:11[0m
+    [32mGiven[0m [32ma binary_sensor entity "test.dev1.door001" named "Door Sensor" with on true and device_class "door"[0m [1;30m# test.bdd.steps_test.go:1331 -> *bddCtx[0m
+    [32mWhen[0m [32mI retrieve "test.dev1.door001"[0m                                                                       [1;30m# test.bdd.steps_test.go:1365 -> *bddCtx[0m
+    [32mThen[0m [32mthe binary sensor is on[0m                                                                              [1;30m# test.bdd.steps_test.go:1385 -> *bddCtx[0m
+    [32mAnd[0m [32mthe binary sensor device_class is "door"[0m                                                              [1;30m# test.bdd.steps_test.go:1386 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Query_by_type
+
+  [1;37mScenario:[0m Query by type                                                                [1;30m# features/binary_sensor.feature:17[0m
+    [32mGiven[0m [32ma binary_sensor entity "test.dev1.motion002" named "Hall Motion" with on false[0m [1;30m# test.bdd.steps_test.go:1330 -> *bddCtx[0m
+    [32mAnd[0m [32ma sensor entity "test.dev1.temp001" named "Temp" with value "20" and unit "°C"[0m   [1;30m# test.bdd.steps_test.go:1326 -> *bddCtx[0m
+    [32mWhen[0m [32mI query where "type" equals "binary_sensor"[0m                                     [1;30m# test.bdd.steps_test.go:1409 -> *bddCtx[0m
+    [32mThen[0m [32mthe results include "test.dev1.motion002"[0m                                       [1;30m# test.bdd.steps_test.go:1415 -> *bddCtx[0m
+    [32mAnd[0m [32mthe results do not include "test.dev1.temp001"[0m                                   [1;30m# test.bdd.steps_test.go:1416 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Query_by_on_state
+
+  [1;37mScenario:[0m Query by on state                                                     [1;30m# features/binary_sensor.feature:24[0m
+    [32mGiven[0m [32ma binary_sensor entity "test.dev1.bsOn" named "Active" with on true[0m     [1;30m# test.bdd.steps_test.go:1330 -> *bddCtx[0m
+    [32mAnd[0m [32ma binary_sensor entity "test.dev1.bsOff" named "Inactive" with on false[0m   [1;30m# test.bdd.steps_test.go:1330 -> *bddCtx[0m
+    [32mWhen[0m [32mI query where "type" equals "binary_sensor" and "state.on" equals "true"[0m [1;30m# test.bdd.steps_test.go:1410 -> *bddCtx[0m
+    [32mThen[0m [32mI get 1 result[0m                                                           [1;30m# test.bdd.steps_test.go:1414 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Delete_removes_entity
+
+  [1;37mScenario:[0m Delete removes entity                                               [1;30m# features/binary_sensor.feature:30[0m
+    [32mGiven[0m [32ma binary_sensor entity "test.dev1.bsDel" named "Sensor" with on false[0m [1;30m# test.bdd.steps_test.go:1330 -> *bddCtx[0m
+    [32mWhen[0m [32mI delete "test.dev1.bsDel"[0m                                             [1;30m# test.bdd.steps_test.go:1366 -> *bddCtx[0m
+    [32mThen[0m [32mretrieving "test.dev1.bsDel" should fail[0m                               [1;30m# test.bdd.steps_test.go:1367 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Raw_payload_decodes_to_canonical_state
+
+  [1;37mScenario:[0m Raw payload decodes to canonical state        [1;30m# features/binary_sensor.feature:35[0m
+    [32mWhen[0m [32mI decode a "binary_sensor" payload '{"on":true}'[0m [1;30m# test.bdd.steps_test.go:1425 -> *bddCtx[0m
+    [32mThen[0m [32mthe binary sensor is on[0m                          [1;30m# test.bdd.steps_test.go:1385 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Raw_discovery_data_is_stored_internally_and_hidden_from_queries
+
+  [1;37mScenario:[0m Raw discovery data is stored internally and hidden from queries                                                             [1;30m# features/binary_sensor.feature:39[0m
+    [32mGiven[0m [32ma binary_sensor entity "test.dev1.motion001" named "Motion Sensor" with on false[0m                                              [1;30m# test.bdd.steps_test.go:1330 -> *bddCtx[0m
+    [32mAnd[0m [32mI write internal data for "test.dev1.motion001" with payload '{"stateTopic":"zigbee2mqtt/motion/state","deviceClass":"motion"}'[0m [1;30m# test.bdd.steps_test.go:1419 -> *bddCtx[0m
+    [32mWhen[0m [32mI read internal data for "test.dev1.motion001"[0m                                                                                 [1;30m# test.bdd.steps_test.go:1420 -> *bddCtx[0m
+    [32mThen[0m [32mthe internal data matches '{"stateTopic":"zigbee2mqtt/motion/state","deviceClass":"motion"}'[0m                                   [1;30m# test.bdd.steps_test.go:1421 -> *bddCtx[0m
+    [32mAnd[0m [32mquerying type "binary_sensor" returns only state entities[0m                                                                       [1;30m# test.bdd.steps_test.go:1422 -> *bddCtx[0m
+
+[1;37mFeature:[0m Button Entity
+=== RUN   TestBDDFeatures/Create_with_default_state#01
+
+  [1;37mScenario:[0m Create with default state                                        [1;30m# features/button.feature:5[0m
+    [32mGiven[0m [32ma button entity "test.dev1.btn001" named "Doorbell" with presses 0[0m [1;30m# test.bdd.steps_test.go:1338 -> *bddCtx[0m
+    [32mWhen[0m [32mI retrieve "test.dev1.btn001"[0m                                       [1;30m# test.bdd.steps_test.go:1365 -> *bddCtx[0m
+    [32mThen[0m [32mthe entity type is "button"[0m                                         [1;30m# test.bdd.steps_test.go:1370 -> *bddCtx[0m
+    [32mAnd[0m [32mthe button presses is 0[0m                                              [1;30m# test.bdd.steps_test.go:1389 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/State_fields_hydrate_correctly
+
+  [1;37mScenario:[0m State fields hydrate correctly                                       [1;30m# features/button.feature:11[0m
+    [32mGiven[0m [32ma button entity "test.dev1.btn002" named "Panic Button" with presses 5[0m [1;30m# test.bdd.steps_test.go:1338 -> *bddCtx[0m
+    [32mWhen[0m [32mI retrieve "test.dev1.btn002"[0m                                           [1;30m# test.bdd.steps_test.go:1365 -> *bddCtx[0m
+    [32mThen[0m [32mthe button presses is 5[0m                                                 [1;30m# test.bdd.steps_test.go:1389 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Query_by_type#01
+
+  [1;37mScenario:[0m Query by type                                                        [1;30m# features/button.feature:16[0m
+    [32mGiven[0m [32ma button entity "test.dev1.btn003" named "Reset Button" with presses 0[0m [1;30m# test.bdd.steps_test.go:1338 -> *bddCtx[0m
+    [32mAnd[0m [32ma switch entity "test.dev1.sw001" named "Switch" with power off[0m          [1;30m# test.bdd.steps_test.go:1314 -> *bddCtx[0m
+    [32mWhen[0m [32mI query where "type" equals "button"[0m                                    [1;30m# test.bdd.steps_test.go:1409 -> *bddCtx[0m
+    [32mThen[0m [32mthe results include "test.dev1.btn003"[0m                                  [1;30m# test.bdd.steps_test.go:1415 -> *bddCtx[0m
+    [32mAnd[0m [32mthe results do not include "test.dev1.sw001"[0m                             [1;30m# test.bdd.steps_test.go:1416 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Update_is_reflected_on_retrieval
+
+  [1;37mScenario:[0m Update is reflected on retrieval                               [1;30m# features/button.feature:23[0m
+    [32mGiven[0m [32ma button entity "test.dev1.btnUpd" named "Button" with presses 0[0m [1;30m# test.bdd.steps_test.go:1338 -> *bddCtx[0m
+    [32mAnd[0m [32mI update button "test.dev1.btnUpd" to presses 3[0m                    [1;30m# test.bdd.steps_test.go:1359 -> *bddCtx[0m
+    [32mWhen[0m [32mI retrieve "test.dev1.btnUpd"[0m                                     [1;30m# test.bdd.steps_test.go:1365 -> *bddCtx[0m
+    [32mThen[0m [32mthe button presses is 3[0m                                           [1;30m# test.bdd.steps_test.go:1389 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Delete_removes_entity#01
+
+  [1;37mScenario:[0m Delete removes entity                                          [1;30m# features/button.feature:29[0m
+    [32mGiven[0m [32ma button entity "test.dev1.btnDel" named "Button" with presses 0[0m [1;30m# test.bdd.steps_test.go:1338 -> *bddCtx[0m
+    [32mWhen[0m [32mI delete "test.dev1.btnDel"[0m                                       [1;30m# test.bdd.steps_test.go:1366 -> *bddCtx[0m
+    [32mThen[0m [32mretrieving "test.dev1.btnDel" should fail[0m                         [1;30m# test.bdd.steps_test.go:1367 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/button_press_command_is_dispatched
+
+  [1;37mScenario:[0m button_press command is dispatched         [1;30m# features/button.feature:34[0m
+    [32mGiven[0m [32ma command listener on "test.>"[0m               [1;30m# test.bdd.steps_test.go:1395 -> *bddCtx[0m
+    [32mWhen[0m [32mI send "button_press" to "test.dev1.btn001"[0m   [1;30m# test.bdd.steps_test.go:1396 -> *bddCtx[0m
+    [32mThen[0m [32mthe received command action is "button_press"[0m [1;30m# test.bdd.steps_test.go:1405 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Raw_payload_decodes_to_canonical_state#01
+
+  [1;37mScenario:[0m Raw payload decodes to canonical state   [1;30m# features/button.feature:39[0m
+    [32mWhen[0m [32mI decode a "button" payload '{"presses":3}'[0m [1;30m# test.bdd.steps_test.go:1425 -> *bddCtx[0m
+    [32mThen[0m [32mthe button presses is 3[0m                     [1;30m# test.bdd.steps_test.go:1389 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Raw_discovery_data_is_stored_internally_and_hidden_from_queries#01
+
+  [1;37mScenario:[0m Raw discovery data is stored internally and hidden from queries                                                  [1;30m# features/button.feature:43[0m
+    [32mGiven[0m [32ma button entity "test.dev1.btn001" named "Doorbell" with presses 0[0m                                                 [1;30m# test.bdd.steps_test.go:1338 -> *bddCtx[0m
+    [32mAnd[0m [32mI write internal data for "test.dev1.btn001" with payload '{"commandTopic":"zigbee2mqtt/btn/set","payload":"PRESS"}'[0m [1;30m# test.bdd.steps_test.go:1419 -> *bddCtx[0m
+    [32mWhen[0m [32mI read internal data for "test.dev1.btn001"[0m                                                                         [1;30m# test.bdd.steps_test.go:1420 -> *bddCtx[0m
+    [32mThen[0m [32mthe internal data matches '{"commandTopic":"zigbee2mqtt/btn/set","payload":"PRESS"}'[0m                                [1;30m# test.bdd.steps_test.go:1421 -> *bddCtx[0m
+    [32mAnd[0m [32mquerying type "button" returns only state entities[0m                                                                   [1;30m# test.bdd.steps_test.go:1422 -> *bddCtx[0m
+
+[1;37mFeature:[0m Climate Entity
+=== RUN   TestBDDFeatures/Create_with_default_state#02
+
+  [1;37mScenario:[0m Create with default state                                                                     [1;30m# features/climate.feature:4[0m
+    [32mGiven[0m [32ma climate entity "test.dev1.hvac001" named "Living Room AC" with hvac_mode "off" temperature 22[0m [1;30m# test.bdd.steps_test.go:1334 -> *bddCtx[0m
+    [32mWhen[0m [32mI retrieve "test.dev1.hvac001"[0m                                                                   [1;30m# test.bdd.steps_test.go:1365 -> *bddCtx[0m
+    [32mThen[0m [32mthe entity type is "climate"[0m                                                                     [1;30m# test.bdd.steps_test.go:1370 -> *bddCtx[0m
+    [32mAnd[0m [32mthe climate hvac_mode is "off"[0m                                                                    [1;30m# test.bdd.steps_test.go:1387 -> *bddCtx[0m
+    [32mAnd[0m [32mthe climate temperature is 22[0m                                                                     [1;30m# test.bdd.steps_test.go:1388 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/State_fields_hydrate_correctly#01
+
+  [1;37mScenario:[0m State fields hydrate correctly                                                                      [1;30m# features/climate.feature:11[0m
+    [32mGiven[0m [32ma climate entity "test.dev1.hvac002" named "Bedroom AC" with hvac_mode "cool" temperature 20 unit "C"[0m [1;30m# test.bdd.steps_test.go:1335 -> *bddCtx[0m
+    [32mWhen[0m [32mI retrieve "test.dev1.hvac002"[0m                                                                         [1;30m# test.bdd.steps_test.go:1365 -> *bddCtx[0m
+    [32mThen[0m [32mthe climate hvac_mode is "cool"[0m                                                                        [1;30m# test.bdd.steps_test.go:1387 -> *bddCtx[0m
+    [32mAnd[0m [32mthe climate temperature is 20[0m                                                                           [1;30m# test.bdd.steps_test.go:1388 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Query_by_type#02
+
+  [1;37mScenario:[0m Query by type                                                                            [1;30m# features/climate.feature:17[0m
+    [32mGiven[0m [32ma climate entity "test.dev1.hvac003" named "Office AC" with hvac_mode "off" temperature 22[0m [1;30m# test.bdd.steps_test.go:1334 -> *bddCtx[0m
+    [32mAnd[0m [32ma sensor entity "test.dev1.temp001" named "Temp" with value "22" and unit "°C"[0m               [1;30m# test.bdd.steps_test.go:1326 -> *bddCtx[0m
+    [32mWhen[0m [32mI query where "type" equals "climate"[0m                                                       [1;30m# test.bdd.steps_test.go:1409 -> *bddCtx[0m
+    [32mThen[0m [32mthe results include "test.dev1.hvac003"[0m                                                     [1;30m# test.bdd.steps_test.go:1415 -> *bddCtx[0m
+    [32mAnd[0m [32mthe results do not include "test.dev1.temp001"[0m                                               [1;30m# test.bdd.steps_test.go:1416 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Query_by_hvac_mode
+
+  [1;37mScenario:[0m Query by hvac mode                                                                       [1;30m# features/climate.feature:24[0m
+    [32mGiven[0m [32ma climate entity "test.dev1.hvacCool" named "Cooling" with hvac_mode "cool" temperature 20[0m [1;30m# test.bdd.steps_test.go:1334 -> *bddCtx[0m
+    [32mAnd[0m [32ma climate entity "test.dev1.hvacOff" named "Off Unit" with hvac_mode "off" temperature 22[0m    [1;30m# test.bdd.steps_test.go:1334 -> *bddCtx[0m
+    [32mWhen[0m [32mI query where "type" equals "climate" and "state.hvacMode" equals "cool"[0m                    [1;30m# test.bdd.steps_test.go:1410 -> *bddCtx[0m
+    [32mThen[0m [32mI get 1 result[0m                                                                              [1;30m# test.bdd.steps_test.go:1414 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Update_is_reflected_on_retrieval#01
+
+  [1;37mScenario:[0m Update is reflected on retrieval                                                       [1;30m# features/climate.feature:30[0m
+    [32mGiven[0m [32ma climate entity "test.dev1.hvacUpd" named "Climate" with hvac_mode "off" temperature 22[0m [1;30m# test.bdd.steps_test.go:1334 -> *bddCtx[0m
+    [32mAnd[0m [32mI update climate "test.dev1.hvacUpd" to hvac_mode "heat" temperature 24[0m                    [1;30m# test.bdd.steps_test.go:1358 -> *bddCtx[0m
+    [32mWhen[0m [32mI retrieve "test.dev1.hvacUpd"[0m                                                            [1;30m# test.bdd.steps_test.go:1365 -> *bddCtx[0m
+    [32mThen[0m [32mthe climate hvac_mode is "heat"[0m                                                           [1;30m# test.bdd.steps_test.go:1387 -> *bddCtx[0m
+    [32mAnd[0m [32mthe climate temperature is 24[0m                                                              [1;30m# test.bdd.steps_test.go:1388 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Delete_removes_entity#02
+
+  [1;37mScenario:[0m Delete removes entity                                                                  [1;30m# features/climate.feature:37[0m
+    [32mGiven[0m [32ma climate entity "test.dev1.hvacDel" named "Climate" with hvac_mode "off" temperature 22[0m [1;30m# test.bdd.steps_test.go:1334 -> *bddCtx[0m
+    [32mWhen[0m [32mI delete "test.dev1.hvacDel"[0m                                                              [1;30m# test.bdd.steps_test.go:1366 -> *bddCtx[0m
+    [32mThen[0m [32mretrieving "test.dev1.hvacDel" should fail[0m                                                [1;30m# test.bdd.steps_test.go:1367 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/climate_set_mode_command_is_dispatched
+
+  [1;37mScenario:[0m climate_set_mode command is dispatched         [1;30m# features/climate.feature:42[0m
+    [32mGiven[0m [32ma command listener on "test.>"[0m                   [1;30m# test.bdd.steps_test.go:1395 -> *bddCtx[0m
+    [32mWhen[0m [32mI send "climate_set_mode" to "test.dev1.hvac001"[0m  [1;30m# test.bdd.steps_test.go:1396 -> *bddCtx[0m
+    [32mThen[0m [32mthe received command action is "climate_set_mode"[0m [1;30m# test.bdd.steps_test.go:1405 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/climate_set_temperature_command_is_dispatched
+
+  [1;37mScenario:[0m climate_set_temperature command is dispatched         [1;30m# features/climate.feature:47[0m
+    [32mGiven[0m [32ma command listener on "test.>"[0m                          [1;30m# test.bdd.steps_test.go:1395 -> *bddCtx[0m
+    [32mWhen[0m [32mI send "climate_set_temperature" to "test.dev1.hvac001"[0m  [1;30m# test.bdd.steps_test.go:1396 -> *bddCtx[0m
+    [32mThen[0m [32mthe received command action is "climate_set_temperature"[0m [1;30m# test.bdd.steps_test.go:1405 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Raw_payload_decodes_to_canonical_state#02
+
+  [1;37mScenario:[0m Raw payload decodes to canonical state                           [1;30m# features/climate.feature:52[0m
+    [32mWhen[0m [32mI decode a "climate" payload '{"hvacMode":"cool","temperature":20}'[0m [1;30m# test.bdd.steps_test.go:1425 -> *bddCtx[0m
+    [32mThen[0m [32mthe climate hvac_mode is "cool"[0m                                     [1;30m# test.bdd.steps_test.go:1387 -> *bddCtx[0m
+    [32mAnd[0m [32mthe climate temperature is 20[0m                                        [1;30m# test.bdd.steps_test.go:1388 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/climate_set_mode_encodes_to_wire_format
+
+  [1;37mScenario:[0m climate_set_mode encodes to wire format                     [1;30m# features/climate.feature:57[0m
+    [32mWhen[0m [32mI encode "climate_set_mode" command with '{"hvacMode":"cool"}'[0m [1;30m# test.bdd.steps_test.go:1426 -> *bddCtx[0m
+    [32mThen[0m [32mthe wire payload field "hvacMode" equals "cool"[0m                [1;30m# test.bdd.steps_test.go:1428 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Raw_discovery_data_is_stored_internally_and_hidden_from_queries#02
+
+  [1;37mScenario:[0m Raw discovery data is stored internally and hidden from queries                                                                                             [1;30m# features/climate.feature:61[0m
+    [32mGiven[0m [32ma climate entity "test.dev1.hvac001" named "Living Room AC" with hvac_mode "off" temperature 22[0m                                                               [1;30m# test.bdd.steps_test.go:1334 -> *bddCtx[0m
+    [32mAnd[0m [32mI write internal data for "test.dev1.hvac001" with payload '{"modeCommandTopic":"zigbee2mqtt/ac/mode/set","temperatureCommandTopic":"zigbee2mqtt/ac/temp/set"}'[0m [1;30m# test.bdd.steps_test.go:1419 -> *bddCtx[0m
+    [32mWhen[0m [32mI read internal data for "test.dev1.hvac001"[0m                                                                                                                   [1;30m# test.bdd.steps_test.go:1420 -> *bddCtx[0m
+    [32mThen[0m [32mthe internal data matches '{"modeCommandTopic":"zigbee2mqtt/ac/mode/set","temperatureCommandTopic":"zigbee2mqtt/ac/temp/set"}'[0m                                 [1;30m# test.bdd.steps_test.go:1421 -> *bddCtx[0m
+    [32mAnd[0m [32mquerying type "climate" returns only state entities[0m                                                                                                             [1;30m# test.bdd.steps_test.go:1422 -> *bddCtx[0m
+
+[1;37mFeature:[0m Cover Entity
+=== RUN   TestBDDFeatures/Create_with_default_state#03
+
+  [1;37mScenario:[0m Create with default state                                        [1;30m# features/cover.feature:4[0m
+    [32mGiven[0m [32ma cover entity "test.dev1.cover001" named "Blinds" with position 0[0m [1;30m# test.bdd.steps_test.go:1317 -> *bddCtx[0m
+    [32mWhen[0m [32mI retrieve "test.dev1.cover001"[0m                                     [1;30m# test.bdd.steps_test.go:1365 -> *bddCtx[0m
+    [32mThen[0m [32mthe entity type is "cover"[0m                                          [1;30m# test.bdd.steps_test.go:1370 -> *bddCtx[0m
+    [32mAnd[0m [32mthe cover position is 0[0m                                              [1;30m# test.bdd.steps_test.go:1378 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/State_fields_hydrate_correctly#02
+
+  [1;37mScenario:[0m State fields hydrate correctly                                          [1;30m# features/cover.feature:10[0m
+    [32mGiven[0m [32ma cover entity "test.dev1.cover002" named "Roller Shade" with position 75[0m [1;30m# test.bdd.steps_test.go:1317 -> *bddCtx[0m
+    [32mWhen[0m [32mI retrieve "test.dev1.cover002"[0m                                            [1;30m# test.bdd.steps_test.go:1365 -> *bddCtx[0m
+    [32mThen[0m [32mthe cover position is 75[0m                                                   [1;30m# test.bdd.steps_test.go:1378 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Query_by_type#03
+
+  [1;37mScenario:[0m Query by type                                                     [1;30m# features/cover.feature:15[0m
+    [32mGiven[0m [32ma cover entity "test.dev1.cover003" named "Curtain" with position 0[0m [1;30m# test.bdd.steps_test.go:1317 -> *bddCtx[0m
+    [32mAnd[0m [32ma switch entity "test.dev1.sw001" named "Switch" with power off[0m       [1;30m# test.bdd.steps_test.go:1314 -> *bddCtx[0m
+    [32mWhen[0m [32mI query where "type" equals "cover"[0m                                  [1;30m# test.bdd.steps_test.go:1409 -> *bddCtx[0m
+    [32mThen[0m [32mthe results include "test.dev1.cover003"[0m                             [1;30m# test.bdd.steps_test.go:1415 -> *bddCtx[0m
+    [32mAnd[0m [32mthe results do not include "test.dev1.sw001"[0m                          [1;30m# test.bdd.steps_test.go:1416 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Query_by_position
+
+  [1;37mScenario:[0m Query by position                                                     [1;30m# features/cover.feature:22[0m
+    [32mGiven[0m [32ma cover entity "test.dev1.coverOpen" named "Open" with position 80[0m      [1;30m# test.bdd.steps_test.go:1317 -> *bddCtx[0m
+    [32mAnd[0m [32ma cover entity "test.dev1.coverClosed" named "Closed" with position 10[0m    [1;30m# test.bdd.steps_test.go:1317 -> *bddCtx[0m
+    [32mWhen[0m [32mI query where "type" equals "cover" and "state.position" greater than 50[0m [1;30m# test.bdd.steps_test.go:1411 -> *bddCtx[0m
+    [32mThen[0m [32mI get 1 result[0m                                                           [1;30m# test.bdd.steps_test.go:1414 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Update_is_reflected_on_retrieval#02
+
+  [1;37mScenario:[0m Update is reflected on retrieval                                [1;30m# features/cover.feature:28[0m
+    [32mGiven[0m [32ma cover entity "test.dev1.coverUpd" named "Cover" with position 0[0m [1;30m# test.bdd.steps_test.go:1317 -> *bddCtx[0m
+    [32mAnd[0m [32mI update cover "test.dev1.coverUpd" to position 50[0m                  [1;30m# test.bdd.steps_test.go:1354 -> *bddCtx[0m
+    [32mWhen[0m [32mI retrieve "test.dev1.coverUpd"[0m                                    [1;30m# test.bdd.steps_test.go:1365 -> *bddCtx[0m
+    [32mThen[0m [32mthe cover position is 50[0m                                           [1;30m# test.bdd.steps_test.go:1378 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Delete_removes_entity#03
+
+  [1;37mScenario:[0m Delete removes entity                                           [1;30m# features/cover.feature:34[0m
+    [32mGiven[0m [32ma cover entity "test.dev1.coverDel" named "Cover" with position 0[0m [1;30m# test.bdd.steps_test.go:1317 -> *bddCtx[0m
+    [32mWhen[0m [32mI delete "test.dev1.coverDel"[0m                                      [1;30m# test.bdd.steps_test.go:1366 -> *bddCtx[0m
+    [32mThen[0m [32mretrieving "test.dev1.coverDel" should fail[0m                        [1;30m# test.bdd.steps_test.go:1367 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/cover_open_command_is_dispatched
+
+  [1;37mScenario:[0m cover_open command is dispatched         [1;30m# features/cover.feature:39[0m
+    [32mGiven[0m [32ma command listener on "test.>"[0m             [1;30m# test.bdd.steps_test.go:1395 -> *bddCtx[0m
+    [32mWhen[0m [32mI send "cover_open" to "test.dev1.cover001"[0m [1;30m# test.bdd.steps_test.go:1396 -> *bddCtx[0m
+    [32mThen[0m [32mthe received command action is "cover_open"[0m [1;30m# test.bdd.steps_test.go:1405 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/cover_close_command_is_dispatched
+
+  [1;37mScenario:[0m cover_close command is dispatched         [1;30m# features/cover.feature:44[0m
+    [32mGiven[0m [32ma command listener on "test.>"[0m              [1;30m# test.bdd.steps_test.go:1395 -> *bddCtx[0m
+    [32mWhen[0m [32mI send "cover_close" to "test.dev1.cover001"[0m [1;30m# test.bdd.steps_test.go:1396 -> *bddCtx[0m
+    [32mThen[0m [32mthe received command action is "cover_close"[0m [1;30m# test.bdd.steps_test.go:1405 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/cover_set_position_command_is_dispatched
+
+  [1;37mScenario:[0m cover_set_position command is dispatched                          [1;30m# features/cover.feature:49[0m
+    [32mGiven[0m [32ma command listener on "test.>"[0m                                      [1;30m# test.bdd.steps_test.go:1395 -> *bddCtx[0m
+    [32mWhen[0m [32mI send "cover_set_position" with position 45 to "test.dev1.cover001"[0m [1;30m# test.bdd.steps_test.go:1400 -> *bddCtx[0m
+    [32mThen[0m [32mthe received command action is "cover_set_position"[0m                  [1;30m# test.bdd.steps_test.go:1405 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Raw_payload_decodes_to_canonical_state#03
+
+  [1;37mScenario:[0m Raw payload decodes to canonical state    [1;30m# features/cover.feature:54[0m
+    [32mWhen[0m [32mI decode a "cover" payload '{"position":75}'[0m [1;30m# test.bdd.steps_test.go:1425 -> *bddCtx[0m
+    [32mThen[0m [32mthe cover position is 75[0m                     [1;30m# test.bdd.steps_test.go:1378 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/cover_set_position_encodes_to_wire_format
+
+  [1;37mScenario:[0m cover_set_position encodes to wire format                 [1;30m# features/cover.feature:58[0m
+    [32mWhen[0m [32mI encode "cover_set_position" command with '{"position":75}'[0m [1;30m# test.bdd.steps_test.go:1426 -> *bddCtx[0m
+    [32mThen[0m [32mthe wire payload field "position" equals 75[0m                  [1;30m# test.bdd.steps_test.go:1427 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Raw_discovery_data_is_stored_internally_and_hidden_from_queries#03
+
+  [1;37mScenario:[0m Raw discovery data is stored internally and hidden from queries                                                                          [1;30m# features/cover.feature:62[0m
+    [32mGiven[0m [32ma cover entity "test.dev1.cover001" named "Blinds" with position 0[0m                                                                         [1;30m# test.bdd.steps_test.go:1317 -> *bddCtx[0m
+    [32mAnd[0m [32mI write internal data for "test.dev1.cover001" with payload '{"commandTopic":"zigbee2mqtt/blind/set","positionOpen":100,"positionClosed":0}'[0m [1;30m# test.bdd.steps_test.go:1419 -> *bddCtx[0m
+    [32mWhen[0m [32mI read internal data for "test.dev1.cover001"[0m                                                                                               [1;30m# test.bdd.steps_test.go:1420 -> *bddCtx[0m
+    [32mThen[0m [32mthe internal data matches '{"commandTopic":"zigbee2mqtt/blind/set","positionOpen":100,"positionClosed":0}'[0m                                  [1;30m# test.bdd.steps_test.go:1421 -> *bddCtx[0m
+    [32mAnd[0m [32mquerying type "cover" returns only state entities[0m                                                                                            [1;30m# test.bdd.steps_test.go:1422 -> *bddCtx[0m
+
+[1;37mFeature:[0m ESPHome Device Discovery via mDNS
+=== RUN   TestBDDFeatures/Discover_ESPHome_devices_on_the_network
+
+  [1;37mBackground:[0m
+    [32mGiven[0m [32mthe mDNS discovery service is configured[0m     [1;30m# test.bdd.discovery_steps_test.go:24 -> *bddCtx[0m
+
+  [1;37mScenario:[0m Discover ESPHome devices on the network    [1;30m# features/discovery.feature:8[0m
+    [32mWhen[0m [32mI start mDNS discovery[0m                        [1;30m# test.bdd.discovery_steps_test.go:27 -> *bddCtx[0m
+    [32mAnd[0m [32mI wait for discovery to complete[0m               [1;30m# test.bdd.discovery_steps_test.go:28 -> *bddCtx[0m
+    [32mThen[0m [32mI should receive a list of discovered devices[0m [1;30m# test.bdd.discovery_steps_test.go:29 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/ESPHome_device_has_required_fields
+
+  [1;37mScenario:[0m ESPHome device has required fields                                    [1;30m# features/discovery.feature:13[0m
+    [32mGiven[0m [32man ESPHome device is advertising on the network with name "test-device"[0m [1;30m# test.bdd.discovery_steps_test.go:33 -> *bddCtx[0m
+    [32mAnd[0m [32mthe device has address "192.168.1.100"[0m                                    [1;30m# test.bdd.discovery_steps_test.go:35 -> *bddCtx[0m
+    [32mAnd[0m [32mthe device has port 6053[0m                                                  [1;30m# test.bdd.discovery_steps_test.go:36 -> *bddCtx[0m
+    [32mWhen[0m [32mI discover devices[0m                                                       [1;30m# test.bdd.discovery_steps_test.go:30 -> *bddCtx[0m
+    [32mThen[0m [32mthe discovered device "test-device" should have:[0m                         [1;30m# test.bdd.discovery_steps_test.go:39 -> *bddCtx[0m
+      | [36mfield[0m   | [36mvalue[0m         |
+      | [36mname[0m    | [36mtest-device[0m   |
+      | [36maddress[0m | [36m192.168.1.100[0m |
+      | [36mport[0m    | [36m6053[0m          |
+=== RUN   TestBDDFeatures/ESPHome_device_provides_TXT_records
+
+  [1;37mScenario:[0m ESPHome device provides TXT records         [1;30m# features/discovery.feature:24[0m
+    [32mGiven[0m [32man ESPHome device is advertising with:[0m        [1;30m# test.bdd.discovery_steps_test.go:34 -> *bddCtx[0m
+      | [36mtxt_key[0m        | [36mtxt_value[0m    |
+      | [36mversion[0m        | [36m2023.12.0[0m    |
+      | [36mmac[0m            | [36mA1B2C3D4E5F6[0m |
+      | [36mboard[0m          | [36mesp32dev[0m     |
+      | [36mapi_encryption[0m | [36m0[0m            |
+    [32mWhen[0m [32mI discover devices[0m                             [1;30m# test.bdd.discovery_steps_test.go:30 -> *bddCtx[0m
+    [32mThen[0m [32mthe discovered device should have TXT records:[0m [1;30m# test.bdd.discovery_steps_test.go:40 -> *bddCtx[0m
+      | [36mversion[0m        | [36m2023.12.0[0m    |
+      | [36mmac[0m            | [36mA1B2C3D4E5F6[0m |
+      | [36mboard[0m          | [36mesp32dev[0m     |
+      | [36mapi_encryption[0m | [36m0[0m            |
+=== RUN   TestBDDFeatures/Parse_device_metadata_from_TXT_records
+
+  [1;37mScenario:[0m Parse device metadata from TXT records [1;30m# features/discovery.feature:38[0m
+    [32mGiven[0m [32man ESPHome device is advertising with:[0m   [1;30m# test.bdd.discovery_steps_test.go:34 -> *bddCtx[0m
+      | [36mtxt_key[0m | [36mtxt_value[0m    |
+      | [36mversion[0m | [36m2023.12.0[0m    |
+      | [36mmac[0m     | [36mA1B2C3D4E5F6[0m |
+      | [36mboard[0m   | [36mesp32dev[0m     |
+    [32mWhen[0m [32mI discover devices[0m                        [1;30m# test.bdd.discovery_steps_test.go:30 -> *bddCtx[0m
+    [32mThen[0m [32mthe device version should be "2023.12.0"[0m  [1;30m# test.bdd.discovery_steps_test.go:41 -> *bddCtx[0m
+    [32mAnd[0m [32mthe device MAC should be "A1B2C3D4E5F6"[0m    [1;30m# test.bdd.discovery_steps_test.go:42 -> *bddCtx[0m
+    [32mAnd[0m [32mthe device board should be "esp32dev"[0m      [1;30m# test.bdd.discovery_steps_test.go:43 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Detect_API_encryption_requirement
+
+  [1;37mScenario:[0m Detect API encryption requirement      [1;30m# features/discovery.feature:49[0m
+    [32mGiven[0m [32man ESPHome device is advertising with:[0m   [1;30m# test.bdd.discovery_steps_test.go:34 -> *bddCtx[0m
+      | [36mtxt_key[0m        | [36mtxt_value[0m |
+      | [36mapi_encryption[0m | [36m1[0m         |
+    [32mWhen[0m [32mI discover devices[0m                        [1;30m# test.bdd.discovery_steps_test.go:30 -> *bddCtx[0m
+    [32mThen[0m [32mthe device should require API key[0m         [1;30m# test.bdd.discovery_steps_test.go:44 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Device_without_API_encryption
+
+  [1;37mScenario:[0m Device without API encryption          [1;30m# features/discovery.feature:56[0m
+    [32mGiven[0m [32man ESPHome device is advertising with:[0m   [1;30m# test.bdd.discovery_steps_test.go:34 -> *bddCtx[0m
+      | [36mtxt_key[0m        | [36mtxt_value[0m |
+      | [36mapi_encryption[0m | [36m0[0m         |
+    [32mWhen[0m [32mI discover devices[0m                        [1;30m# test.bdd.discovery_steps_test.go:30 -> *bddCtx[0m
+    [32mThen[0m [32mthe device should not require API key[0m     [1;30m# test.bdd.discovery_steps_test.go:45 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Multiple_ESPHome_devices_discovered
+
+  [1;37mScenario:[0m Multiple ESPHome devices discovered                                          [1;30m# features/discovery.feature:63[0m
+    [32mGiven[0m [32man ESPHome device is advertising on the network with name "living-room-sensor"[0m [1;30m# test.bdd.discovery_steps_test.go:33 -> *bddCtx[0m
+    [32mAnd[0m [32man ESPHome device is advertising on the network with name "kitchen-light"[0m        [1;30m# test.bdd.discovery_steps_test.go:33 -> *bddCtx[0m
+    [32mAnd[0m [32man ESPHome device is advertising on the network with name "bedroom-climate"[0m      [1;30m# test.bdd.discovery_steps_test.go:33 -> *bddCtx[0m
+    [32mWhen[0m [32mI discover devices[0m                                                              [1;30m# test.bdd.discovery_steps_test.go:30 -> *bddCtx[0m
+    [32mThen[0m [32mI should have 3 discovered devices[0m                                              [1;30m# test.bdd.discovery_steps_test.go:46 -> *bddCtx[0m
+    [32mAnd[0m [32mthe discovered devices should include:[0m                                           [1;30m# test.bdd.discovery_steps_test.go:47 -> *bddCtx[0m
+      | [36mliving-room-sensor[0m |
+      | [36mkitchen-light[0m      |
+      | [36mbedroom-climate[0m    |
+=== RUN   TestBDDFeatures/Device_address_resolution
+
+  [1;37mScenario:[0m Device address resolution              [1;30m# features/discovery.feature:74[0m
+    [32mGiven[0m [32man ESPHome device is advertising with:[0m   [1;30m# test.bdd.discovery_steps_test.go:34 -> *bddCtx[0m
+      | [36mfield[0m     | [36mvalue[0m                     |
+      | [36mhostname[0m  | [36mesphome-test.local[0m        |
+      | [36maddresses[0m | [36m192.168.1.50,192.168.1.51[0m |
+    [32mWhen[0m [32mI discover devices[0m                        [1;30m# test.bdd.discovery_steps_test.go:30 -> *bddCtx[0m
+    [32mThen[0m [32mthe device should have 2 addresses[0m        [1;30m# test.bdd.discovery_steps_test.go:48 -> *bddCtx[0m
+    [32mAnd[0m [32mthe first address should be "192.168.1.50"[0m [1;30m# test.bdd.discovery_steps_test.go:49 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Continuous_discovery_updates_device_list
+
+  [1;37mScenario:[0m Continuous discovery updates device list                           [1;30m# features/discovery.feature:83[0m
+    [32mGiven[0m [32man ESPHome device is advertising on the network with name "device-1"[0m [1;30m# test.bdd.discovery_steps_test.go:33 -> *bddCtx[0m
+    [32mWhen[0m [32mI start continuous discovery[0m                                          [1;30m# test.bdd.discovery_steps_test.go:52 -> *bddCtx[0m
+    [32mAnd[0m [32mI wait for 2 seconds[0m                                                   [1;30m# test.bdd.discovery_steps_test.go:53 -> *bddCtx[0m
+    [32mThen[0m [32mthe device "device-1" should be in the cache[0m                          [1;30m# test.bdd.discovery_steps_test.go:54 -> *bddCtx[0m
+    [32mWhen[0m [32ma new ESPHome device "device-2" appears on the network[0m                [1;30m# test.bdd.discovery_steps_test.go:55 -> *bddCtx[0m
+    [32mAnd[0m [32mI wait for 2 seconds[0m                                                   [1;30m# test.bdd.discovery_steps_test.go:53 -> *bddCtx[0m
+    [32mThen[0m [32mthe device "device-2" should be in the cache[0m                          [1;30m# test.bdd.discovery_steps_test.go:54 -> *bddCtx[0m
+    [32mAnd[0m [32mI should have 2 devices in the cache[0m                                   [1;30m# test.bdd.discovery_steps_test.go:56 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Stale_device_detection
+
+  [1;37mScenario:[0m Stale device detection                        [1;30m# features/discovery.feature:93[0m
+    [32mGiven[0m [32man ESPHome device was discovered 10 minutes ago[0m [1;30m# test.bdd.discovery_steps_test.go:59 -> *bddCtx[0m
+    [32mWhen[0m [32mI check for stale devices[0m                        [1;30m# test.bdd.discovery_steps_test.go:60 -> *bddCtx[0m
+    [32mThen[0m [32mthe device should be marked as stale[0m             [1;30m# test.bdd.discovery_steps_test.go:61 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Stop_discovery_service
+
+  [1;37mScenario:[0m Stop discovery service                 [1;30m# features/discovery.feature:98[0m
+    [32mGiven[0m [32mthe mDNS discovery service is running[0m    [1;30m# test.bdd.discovery_steps_test.go:64 -> *bddCtx[0m
+    [32mWhen[0m [32mI stop the discovery service[0m              [1;30m# test.bdd.discovery_steps_test.go:65 -> *bddCtx[0m
+    [32mThen[0m [32mthe discovery service should be stopped[0m   [1;30m# test.bdd.discovery_steps_test.go:66 -> *bddCtx[0m
+    [32mAnd[0m [32mno new devices should be discovered[0m        [1;30m# test.bdd.discovery_steps_test.go:67 -> *bddCtx[0m
+
+[1;37mFeature:[0m Fan Entity
+=== RUN   TestBDDFeatures/Create_with_default_state#04
+
+  [1;37mScenario:[0m Create with default state                                                         [1;30m# features/fan.feature:4[0m
+    [32mGiven[0m [32ma fan entity "test.dev1.fan001" named "Ceiling Fan" with power off and percentage 0[0m [1;30m# test.bdd.steps_test.go:1323 -> *bddCtx[0m
+    [32mWhen[0m [32mI retrieve "test.dev1.fan001"[0m                                                        [1;30m# test.bdd.steps_test.go:1365 -> *bddCtx[0m
+    [32mThen[0m [32mthe entity type is "fan"[0m                                                             [1;30m# test.bdd.steps_test.go:1370 -> *bddCtx[0m
+    [32mAnd[0m [32mthe fan power is off[0m                                                                  [1;30m# test.bdd.steps_test.go:1380 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/State_fields_hydrate_correctly#03
+
+  [1;37mScenario:[0m State fields hydrate correctly                                                  [1;30m# features/fan.feature:10[0m
+    [32mGiven[0m [32ma fan entity "test.dev1.fan002" named "Tower Fan" with power on and percentage 75[0m [1;30m# test.bdd.steps_test.go:1323 -> *bddCtx[0m
+    [32mWhen[0m [32mI retrieve "test.dev1.fan002"[0m                                                      [1;30m# test.bdd.steps_test.go:1365 -> *bddCtx[0m
+    [32mThen[0m [32mthe fan power is on[0m                                                                [1;30m# test.bdd.steps_test.go:1380 -> *bddCtx[0m
+    [32mAnd[0m [32mthe fan percentage is 75[0m                                                            [1;30m# test.bdd.steps_test.go:1381 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Query_by_type#04
+
+  [1;37mScenario:[0m Query by type                                                                 [1;30m# features/fan.feature:16[0m
+    [32mGiven[0m [32ma fan entity "test.dev1.fan003" named "Box Fan" with power off and percentage 0[0m [1;30m# test.bdd.steps_test.go:1323 -> *bddCtx[0m
+    [32mAnd[0m [32ma switch entity "test.dev1.sw001" named "Switch" with power off[0m                   [1;30m# test.bdd.steps_test.go:1314 -> *bddCtx[0m
+    [32mWhen[0m [32mI query where "type" equals "fan"[0m                                                [1;30m# test.bdd.steps_test.go:1409 -> *bddCtx[0m
+    [32mThen[0m [32mthe results include "test.dev1.fan003"[0m                                           [1;30m# test.bdd.steps_test.go:1415 -> *bddCtx[0m
+    [32mAnd[0m [32mthe results do not include "test.dev1.sw001"[0m                                      [1;30m# test.bdd.steps_test.go:1416 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Query_by_power_state
+
+  [1;37mScenario:[0m Query by power state                                                        [1;30m# features/fan.feature:23[0m
+    [32mGiven[0m [32ma fan entity "test.dev1.fanOn" named "Fan On" with power on and percentage 50[0m [1;30m# test.bdd.steps_test.go:1323 -> *bddCtx[0m
+    [32mAnd[0m [32ma fan entity "test.dev1.fanOff" named "Fan Off" with power off and percentage 0[0m [1;30m# test.bdd.steps_test.go:1323 -> *bddCtx[0m
+    [32mWhen[0m [32mI query where "type" equals "fan" and "state.power" equals "true"[0m              [1;30m# test.bdd.steps_test.go:1410 -> *bddCtx[0m
+    [32mThen[0m [32mI get 1 result[0m                                                                 [1;30m# test.bdd.steps_test.go:1414 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Query_by_percentage
+
+  [1;37mScenario:[0m Query by percentage                                                         [1;30m# features/fan.feature:29[0m
+    [32mGiven[0m [32ma fan entity "test.dev1.fanFast" named "Fast" with power on and percentage 80[0m [1;30m# test.bdd.steps_test.go:1323 -> *bddCtx[0m
+    [32mAnd[0m [32ma fan entity "test.dev1.fanSlow" named "Slow" with power on and percentage 30[0m   [1;30m# test.bdd.steps_test.go:1323 -> *bddCtx[0m
+    [32mWhen[0m [32mI query where "type" equals "fan" and "state.percentage" greater than 50[0m       [1;30m# test.bdd.steps_test.go:1411 -> *bddCtx[0m
+    [32mThen[0m [32mI get 1 result[0m                                                                 [1;30m# test.bdd.steps_test.go:1414 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Update_is_reflected_on_retrieval#03
+
+  [1;37mScenario:[0m Update is reflected on retrieval                                          [1;30m# features/fan.feature:35[0m
+    [32mGiven[0m [32ma fan entity "test.dev1.fanUpd" named "Fan" with power off and percentage 0[0m [1;30m# test.bdd.steps_test.go:1323 -> *bddCtx[0m
+    [32mAnd[0m [32mI update fan "test.dev1.fanUpd" to power on and percentage 60[0m                 [1;30m# test.bdd.steps_test.go:1356 -> *bddCtx[0m
+    [32mWhen[0m [32mI retrieve "test.dev1.fanUpd"[0m                                                [1;30m# test.bdd.steps_test.go:1365 -> *bddCtx[0m
+    [32mThen[0m [32mthe fan power is on[0m                                                          [1;30m# test.bdd.steps_test.go:1380 -> *bddCtx[0m
+    [32mAnd[0m [32mthe fan percentage is 60[0m                                                      [1;30m# test.bdd.steps_test.go:1381 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Delete_removes_entity#04
+
+  [1;37mScenario:[0m Delete removes entity                                                     [1;30m# features/fan.feature:42[0m
+    [32mGiven[0m [32ma fan entity "test.dev1.fanDel" named "Fan" with power off and percentage 0[0m [1;30m# test.bdd.steps_test.go:1323 -> *bddCtx[0m
+    [32mWhen[0m [32mI delete "test.dev1.fanDel"[0m                                                  [1;30m# test.bdd.steps_test.go:1366 -> *bddCtx[0m
+    [32mThen[0m [32mretrieving "test.dev1.fanDel" should fail[0m                                    [1;30m# test.bdd.steps_test.go:1367 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/fan_turn_on_command_is_dispatched
+
+  [1;37mScenario:[0m fan_turn_on command is dispatched         [1;30m# features/fan.feature:47[0m
+    [32mGiven[0m [32ma command listener on "test.>"[0m              [1;30m# test.bdd.steps_test.go:1395 -> *bddCtx[0m
+    [32mWhen[0m [32mI send "fan_turn_on" to "test.dev1.fan001"[0m   [1;30m# test.bdd.steps_test.go:1396 -> *bddCtx[0m
+    [32mThen[0m [32mthe received command action is "fan_turn_on"[0m [1;30m# test.bdd.steps_test.go:1405 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/fan_turn_off_command_is_dispatched
+
+  [1;37mScenario:[0m fan_turn_off command is dispatched         [1;30m# features/fan.feature:52[0m
+    [32mGiven[0m [32ma command listener on "test.>"[0m               [1;30m# test.bdd.steps_test.go:1395 -> *bddCtx[0m
+    [32mWhen[0m [32mI send "fan_turn_off" to "test.dev1.fan001"[0m   [1;30m# test.bdd.steps_test.go:1396 -> *bddCtx[0m
+    [32mThen[0m [32mthe received command action is "fan_turn_off"[0m [1;30m# test.bdd.steps_test.go:1405 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/fan_set_speed_command_is_dispatched
+
+  [1;37mScenario:[0m fan_set_speed command is dispatched                          [1;30m# features/fan.feature:57[0m
+    [32mGiven[0m [32ma command listener on "test.>"[0m                                 [1;30m# test.bdd.steps_test.go:1395 -> *bddCtx[0m
+    [32mWhen[0m [32mI send "fan_set_speed" with percentage 50 to "test.dev1.fan001"[0m [1;30m# test.bdd.steps_test.go:1401 -> *bddCtx[0m
+    [32mThen[0m [32mthe received command action is "fan_set_speed"[0m                  [1;30m# test.bdd.steps_test.go:1405 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Raw_payload_decodes_to_canonical_state#04
+
+  [1;37mScenario:[0m Raw payload decodes to canonical state                 [1;30m# features/fan.feature:62[0m
+    [32mWhen[0m [32mI decode a "fan" payload '{"power":true,"percentage":75}'[0m [1;30m# test.bdd.steps_test.go:1425 -> *bddCtx[0m
+    [32mThen[0m [32mthe fan power is on[0m                                       [1;30m# test.bdd.steps_test.go:1380 -> *bddCtx[0m
+    [32mAnd[0m [32mthe fan percentage is 75[0m                                   [1;30m# test.bdd.steps_test.go:1381 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/fan_set_speed_encodes_to_wire_format
+
+  [1;37mScenario:[0m fan_set_speed encodes to wire format                   [1;30m# features/fan.feature:67[0m
+    [32mWhen[0m [32mI encode "fan_set_speed" command with '{"percentage":50}'[0m [1;30m# test.bdd.steps_test.go:1426 -> *bddCtx[0m
+    [32mThen[0m [32mthe wire payload field "percentage" equals 50[0m             [1;30m# test.bdd.steps_test.go:1427 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Raw_discovery_data_is_stored_internally_and_hidden_from_queries#04
+
+  [1;37mScenario:[0m Raw discovery data is stored internally and hidden from queries                                                                 [1;30m# features/fan.feature:71[0m
+    [32mGiven[0m [32ma fan entity "test.dev1.fan001" named "Ceiling Fan" with power off and percentage 0[0m                                               [1;30m# test.bdd.steps_test.go:1323 -> *bddCtx[0m
+    [32mAnd[0m [32mI write internal data for "test.dev1.fan001" with payload '{"commandTopic":"zigbee2mqtt/fan/set","speedRange":{"min":0,"max":100}}'[0m [1;30m# test.bdd.steps_test.go:1419 -> *bddCtx[0m
+    [32mWhen[0m [32mI read internal data for "test.dev1.fan001"[0m                                                                                        [1;30m# test.bdd.steps_test.go:1420 -> *bddCtx[0m
+    [32mThen[0m [32mthe internal data matches '{"commandTopic":"zigbee2mqtt/fan/set","speedRange":{"min":0,"max":100}}'[0m                                [1;30m# test.bdd.steps_test.go:1421 -> *bddCtx[0m
+    [32mAnd[0m [32mquerying type "fan" returns only state entities[0m                                                                                     [1;30m# test.bdd.steps_test.go:1422 -> *bddCtx[0m
+
+[1;37mFeature:[0m Light Entity
+=== RUN   TestBDDFeatures/Create_with_default_state#05
+
+  [1;37mScenario:[0m Create with default state                                              [1;30m# features/light.feature:4[0m
+    [32mGiven[0m [32ma light entity "test.dev1.light001" named "Ceiling Light" with power off[0m [1;30m# test.bdd.steps_test.go:1310 -> *bddCtx[0m
+    [32mWhen[0m [32mI retrieve "test.dev1.light001"[0m                                           [1;30m# test.bdd.steps_test.go:1365 -> *bddCtx[0m
+    [32mThen[0m [32mthe entity type is "light"[0m                                                [1;30m# test.bdd.steps_test.go:1370 -> *bddCtx[0m
+    [32mAnd[0m [32mthe light power is off[0m                                                     [1;30m# test.bdd.steps_test.go:1374 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/State_fields_hydrate_correctly#04
+
+  [1;37mScenario:[0m State fields hydrate correctly                                                                    [1;30m# features/light.feature:10[0m
+    [32mGiven[0m [32ma light entity "test.dev1.light002" named "Desk Lamp" with power on brightness 200 temperature 4000[0m [1;30m# test.bdd.steps_test.go:1311 -> *bddCtx[0m
+    [32mWhen[0m [32mI retrieve "test.dev1.light002"[0m                                                                      [1;30m# test.bdd.steps_test.go:1365 -> *bddCtx[0m
+    [32mThen[0m [32mthe light power is on[0m                                                                                [1;30m# test.bdd.steps_test.go:1374 -> *bddCtx[0m
+    [32mAnd[0m [32mthe light brightness is 200[0m                                                                           [1;30m# test.bdd.steps_test.go:1375 -> *bddCtx[0m
+    [32mAnd[0m [32mthe light temperature is 4000[0m                                                                         [1;30m# test.bdd.steps_test.go:1376 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Query_by_type#05
+
+  [1;37mScenario:[0m Query by type                                                       [1;30m# features/light.feature:17[0m
+    [32mGiven[0m [32ma light entity "test.dev1.light003" named "Wall Light" with power off[0m [1;30m# test.bdd.steps_test.go:1310 -> *bddCtx[0m
+    [32mAnd[0m [32ma switch entity "test.dev1.sw001" named "Switch" with power off[0m         [1;30m# test.bdd.steps_test.go:1314 -> *bddCtx[0m
+    [32mWhen[0m [32mI query where "type" equals "light"[0m                                    [1;30m# test.bdd.steps_test.go:1409 -> *bddCtx[0m
+    [32mThen[0m [32mthe results include "test.dev1.light003"[0m                               [1;30m# test.bdd.steps_test.go:1415 -> *bddCtx[0m
+    [32mAnd[0m [32mthe results do not include "test.dev1.sw001"[0m                            [1;30m# test.bdd.steps_test.go:1416 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Query_by_brightness
+
+  [1;37mScenario:[0m Query by brightness                                                                       [1;30m# features/light.feature:24[0m
+    [32mGiven[0m [32ma light entity "test.dev1.bright" named "Bright" with power on brightness 200 temperature 0[0m [1;30m# test.bdd.steps_test.go:1311 -> *bddCtx[0m
+    [32mAnd[0m [32ma light entity "test.dev1.dim" named "Dim" with power on brightness 50 temperature 0[0m          [1;30m# test.bdd.steps_test.go:1311 -> *bddCtx[0m
+    [32mWhen[0m [32mI query where "type" equals "light" and "state.brightness" greater than 100[0m                  [1;30m# test.bdd.steps_test.go:1411 -> *bddCtx[0m
+    [32mThen[0m [32mI get 1 result[0m                                                                               [1;30m# test.bdd.steps_test.go:1414 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Update_is_reflected_on_retrieval#04
+
+  [1;37mScenario:[0m Update is reflected on retrieval                          [1;30m# features/light.feature:30[0m
+    [32mGiven[0m [32ma light entity "test.dev1.upd" named "Light" with power off[0m [1;30m# test.bdd.steps_test.go:1310 -> *bddCtx[0m
+    [32mAnd[0m [32mI update "test.dev1.upd" to power on brightness 254[0m           [1;30m# test.bdd.steps_test.go:1352 -> *bddCtx[0m
+    [32mWhen[0m [32mI retrieve "test.dev1.upd"[0m                                   [1;30m# test.bdd.steps_test.go:1365 -> *bddCtx[0m
+    [32mThen[0m [32mthe light power is on[0m                                        [1;30m# test.bdd.steps_test.go:1374 -> *bddCtx[0m
+    [32mAnd[0m [32mthe light brightness is 254[0m                                   [1;30m# test.bdd.steps_test.go:1375 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Delete_removes_entity#05
+
+  [1;37mScenario:[0m Delete removes entity                                     [1;30m# features/light.feature:37[0m
+    [32mGiven[0m [32ma light entity "test.dev1.del" named "Light" with power off[0m [1;30m# test.bdd.steps_test.go:1310 -> *bddCtx[0m
+    [32mWhen[0m [32mI delete "test.dev1.del"[0m                                     [1;30m# test.bdd.steps_test.go:1366 -> *bddCtx[0m
+    [32mThen[0m [32mretrieving "test.dev1.del" should fail[0m                       [1;30m# test.bdd.steps_test.go:1367 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/light_turn_on_command_is_dispatched
+
+  [1;37mScenario:[0m light_turn_on command is dispatched         [1;30m# features/light.feature:42[0m
+    [32mGiven[0m [32ma command listener on "test.>"[0m                [1;30m# test.bdd.steps_test.go:1395 -> *bddCtx[0m
+    [32mWhen[0m [32mI send "light_turn_on" to "test.dev1.light001"[0m [1;30m# test.bdd.steps_test.go:1396 -> *bddCtx[0m
+    [32mThen[0m [32mthe received command action is "light_turn_on"[0m [1;30m# test.bdd.steps_test.go:1405 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/light_turn_off_command_is_dispatched
+
+  [1;37mScenario:[0m light_turn_off command is dispatched         [1;30m# features/light.feature:47[0m
+    [32mGiven[0m [32ma command listener on "test.>"[0m                 [1;30m# test.bdd.steps_test.go:1395 -> *bddCtx[0m
+    [32mWhen[0m [32mI send "light_turn_off" to "test.dev1.light001"[0m [1;30m# test.bdd.steps_test.go:1396 -> *bddCtx[0m
+    [32mThen[0m [32mthe received command action is "light_turn_off"[0m [1;30m# test.bdd.steps_test.go:1405 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/light_set_brightness_command_is_dispatched
+
+  [1;37mScenario:[0m light_set_brightness command is dispatched                             [1;30m# features/light.feature:52[0m
+    [32mGiven[0m [32ma command listener on "test.>"[0m                                           [1;30m# test.bdd.steps_test.go:1395 -> *bddCtx[0m
+    [32mWhen[0m [32mI send "light_set_brightness" with brightness 200 to "test.dev1.light001"[0m [1;30m# test.bdd.steps_test.go:1397 -> *bddCtx[0m
+    [32mThen[0m [32mthe received command action is "light_set_brightness"[0m                     [1;30m# test.bdd.steps_test.go:1405 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/light_set_color_temp_command_is_dispatched
+
+  [1;37mScenario:[0m light_set_color_temp command is dispatched                         [1;30m# features/light.feature:57[0m
+    [32mGiven[0m [32ma command listener on "test.>"[0m                                       [1;30m# test.bdd.steps_test.go:1395 -> *bddCtx[0m
+    [32mWhen[0m [32mI send "light_set_color_temp" with mireds 370 to "test.dev1.light001"[0m [1;30m# test.bdd.steps_test.go:1398 -> *bddCtx[0m
+    [32mThen[0m [32mthe received command action is "light_set_color_temp"[0m                 [1;30m# test.bdd.steps_test.go:1405 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/light_set_rgb_command_is_dispatched
+
+  [1;37mScenario:[0m light_set_rgb command is dispatched                              [1;30m# features/light.feature:62[0m
+    [32mGiven[0m [32ma command listener on "test.>"[0m                                     [1;30m# test.bdd.steps_test.go:1395 -> *bddCtx[0m
+    [32mWhen[0m [32mI send "light_set_rgb" with r 255 g 128 b 0 to "test.dev1.light001"[0m [1;30m# test.bdd.steps_test.go:1399 -> *bddCtx[0m
+    [32mThen[0m [32mthe received command action is "light_set_rgb"[0m                      [1;30m# test.bdd.steps_test.go:1405 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Raw_payload_decodes_to_canonical_state#05
+
+  [1;37mScenario:[0m Raw payload decodes to canonical state                    [1;30m# features/light.feature:67[0m
+    [32mWhen[0m [32mI decode a "light" payload '{"power":true,"brightness":200}'[0m [1;30m# test.bdd.steps_test.go:1425 -> *bddCtx[0m
+    [32mThen[0m [32mthe light power is on[0m                                        [1;30m# test.bdd.steps_test.go:1374 -> *bddCtx[0m
+    [32mAnd[0m [32mthe light brightness is 200[0m                                   [1;30m# test.bdd.steps_test.go:1375 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/light_set_brightness_encodes_to_wire_format
+
+  [1;37mScenario:[0m light_set_brightness encodes to wire format                    [1;30m# features/light.feature:72[0m
+    [32mWhen[0m [32mI encode "light_set_brightness" command with '{"brightness":200}'[0m [1;30m# test.bdd.steps_test.go:1426 -> *bddCtx[0m
+    [32mThen[0m [32mthe wire payload field "brightness" equals 200[0m                    [1;30m# test.bdd.steps_test.go:1427 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Raw_discovery_data_is_stored_internally_and_hidden_from_queries#05
+
+  [1;37mScenario:[0m Raw discovery data is stored internally and hidden from queries                                                            [1;30m# features/light.feature:76[0m
+    [32mGiven[0m [32ma light entity "test.dev1.light001" named "Ceiling Light" with power off[0m                                                     [1;30m# test.bdd.steps_test.go:1310 -> *bddCtx[0m
+    [32mAnd[0m [32mI write internal data for "test.dev1.light001" with payload '{"commandTopic":"zigbee2mqtt/ceiling/set","brightnessScale":254}'[0m [1;30m# test.bdd.steps_test.go:1419 -> *bddCtx[0m
+    [32mWhen[0m [32mI read internal data for "test.dev1.light001"[0m                                                                                 [1;30m# test.bdd.steps_test.go:1420 -> *bddCtx[0m
+    [32mThen[0m [32mthe internal data matches '{"commandTopic":"zigbee2mqtt/ceiling/set","brightnessScale":254}'[0m                                  [1;30m# test.bdd.steps_test.go:1421 -> *bddCtx[0m
+    [32mAnd[0m [32mquerying type "light" returns only state entities[0m                                                                              [1;30m# test.bdd.steps_test.go:1422 -> *bddCtx[0m
+
+[1;37mFeature:[0m Lock Entity
+=== RUN   TestBDDFeatures/Create_with_default_state#06
+
+  [1;37mScenario:[0m Create with default state                                            [1;30m# features/lock.feature:4[0m
+    [32mGiven[0m [32ma lock entity "test.dev1.lock001" named "Front Door" with locked false[0m [1;30m# test.bdd.steps_test.go:1320 -> *bddCtx[0m
+    [32mWhen[0m [32mI retrieve "test.dev1.lock001"[0m                                          [1;30m# test.bdd.steps_test.go:1365 -> *bddCtx[0m
+    [32mThen[0m [32mthe entity type is "lock"[0m                                               [1;30m# test.bdd.steps_test.go:1370 -> *bddCtx[0m
+    [32mAnd[0m [32mthe lock is unlocked[0m                                                     [1;30m# test.bdd.steps_test.go:1379 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/State_fields_hydrate_correctly_-_locked
+
+  [1;37mScenario:[0m State fields hydrate correctly - locked                            [1;30m# features/lock.feature:10[0m
+    [32mGiven[0m [32ma lock entity "test.dev1.lock002" named "Back Door" with locked true[0m [1;30m# test.bdd.steps_test.go:1320 -> *bddCtx[0m
+    [32mWhen[0m [32mI retrieve "test.dev1.lock002"[0m                                        [1;30m# test.bdd.steps_test.go:1365 -> *bddCtx[0m
+    [32mThen[0m [32mthe lock is locked[0m                                                    [1;30m# test.bdd.steps_test.go:1379 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Query_by_type#06
+
+  [1;37mScenario:[0m Query by type                                                         [1;30m# features/lock.feature:15[0m
+    [32mGiven[0m [32ma lock entity "test.dev1.lock003" named "Garage Lock" with locked false[0m [1;30m# test.bdd.steps_test.go:1320 -> *bddCtx[0m
+    [32mAnd[0m [32ma switch entity "test.dev1.sw001" named "Switch" with power off[0m           [1;30m# test.bdd.steps_test.go:1314 -> *bddCtx[0m
+    [32mWhen[0m [32mI query where "type" equals "lock"[0m                                       [1;30m# test.bdd.steps_test.go:1409 -> *bddCtx[0m
+    [32mThen[0m [32mthe results include "test.dev1.lock003"[0m                                  [1;30m# test.bdd.steps_test.go:1415 -> *bddCtx[0m
+    [32mAnd[0m [32mthe results do not include "test.dev1.sw001"[0m                              [1;30m# test.bdd.steps_test.go:1416 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Query_locked_entities
+
+  [1;37mScenario:[0m Query locked entities                                            [1;30m# features/lock.feature:22[0m
+    [32mGiven[0m [32ma lock entity "test.dev1.lockA" named "Lock A" with locked true[0m    [1;30m# test.bdd.steps_test.go:1320 -> *bddCtx[0m
+    [32mAnd[0m [32ma lock entity "test.dev1.lockB" named "Lock B" with locked false[0m     [1;30m# test.bdd.steps_test.go:1320 -> *bddCtx[0m
+    [32mWhen[0m [32mI query where "type" equals "lock" and "state.locked" equals "true"[0m [1;30m# test.bdd.steps_test.go:1410 -> *bddCtx[0m
+    [32mThen[0m [32mI get 1 result[0m                                                      [1;30m# test.bdd.steps_test.go:1414 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Query_unlocked_entities
+
+  [1;37mScenario:[0m Query unlocked entities                                           [1;30m# features/lock.feature:28[0m
+    [32mGiven[0m [32ma lock entity "test.dev1.lockC" named "Lock C" with locked true[0m     [1;30m# test.bdd.steps_test.go:1320 -> *bddCtx[0m
+    [32mAnd[0m [32ma lock entity "test.dev1.lockD" named "Lock D" with locked false[0m      [1;30m# test.bdd.steps_test.go:1320 -> *bddCtx[0m
+    [32mWhen[0m [32mI query where "type" equals "lock" and "state.locked" equals "false"[0m [1;30m# test.bdd.steps_test.go:1410 -> *bddCtx[0m
+    [32mThen[0m [32mI get 1 result[0m                                                       [1;30m# test.bdd.steps_test.go:1414 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Update_is_reflected_on_retrieval#05
+
+  [1;37mScenario:[0m Update is reflected on retrieval                               [1;30m# features/lock.feature:34[0m
+    [32mGiven[0m [32ma lock entity "test.dev1.lockUpd" named "Lock" with locked false[0m [1;30m# test.bdd.steps_test.go:1320 -> *bddCtx[0m
+    [32mAnd[0m [32mI update lock "test.dev1.lockUpd" to locked true[0m                   [1;30m# test.bdd.steps_test.go:1355 -> *bddCtx[0m
+    [32mWhen[0m [32mI retrieve "test.dev1.lockUpd"[0m                                    [1;30m# test.bdd.steps_test.go:1365 -> *bddCtx[0m
+    [32mThen[0m [32mthe lock is locked[0m                                                [1;30m# test.bdd.steps_test.go:1379 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Delete_removes_entity#06
+
+  [1;37mScenario:[0m Delete removes entity                                          [1;30m# features/lock.feature:40[0m
+    [32mGiven[0m [32ma lock entity "test.dev1.lockDel" named "Lock" with locked false[0m [1;30m# test.bdd.steps_test.go:1320 -> *bddCtx[0m
+    [32mWhen[0m [32mI delete "test.dev1.lockDel"[0m                                      [1;30m# test.bdd.steps_test.go:1366 -> *bddCtx[0m
+    [32mThen[0m [32mretrieving "test.dev1.lockDel" should fail[0m                        [1;30m# test.bdd.steps_test.go:1367 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/lock_lock_command_is_dispatched
+
+  [1;37mScenario:[0m lock_lock command is dispatched         [1;30m# features/lock.feature:45[0m
+    [32mGiven[0m [32ma command listener on "test.>"[0m            [1;30m# test.bdd.steps_test.go:1395 -> *bddCtx[0m
+    [32mWhen[0m [32mI send "lock_lock" to "test.dev1.lock001"[0m  [1;30m# test.bdd.steps_test.go:1396 -> *bddCtx[0m
+    [32mThen[0m [32mthe received command action is "lock_lock"[0m [1;30m# test.bdd.steps_test.go:1405 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/lock_unlock_command_is_dispatched
+
+  [1;37mScenario:[0m lock_unlock command is dispatched         [1;30m# features/lock.feature:50[0m
+    [32mGiven[0m [32ma command listener on "test.>"[0m              [1;30m# test.bdd.steps_test.go:1395 -> *bddCtx[0m
+    [32mWhen[0m [32mI send "lock_unlock" to "test.dev1.lock001"[0m  [1;30m# test.bdd.steps_test.go:1396 -> *bddCtx[0m
+    [32mThen[0m [32mthe received command action is "lock_unlock"[0m [1;30m# test.bdd.steps_test.go:1405 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Raw_payload_decodes_to_canonical_state#06
+
+  [1;37mScenario:[0m Raw payload decodes to canonical state   [1;30m# features/lock.feature:55[0m
+    [32mWhen[0m [32mI decode a "lock" payload '{"locked":true}'[0m [1;30m# test.bdd.steps_test.go:1425 -> *bddCtx[0m
+    [32mThen[0m [32mthe lock is locked[0m                          [1;30m# test.bdd.steps_test.go:1379 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/lock_lock_encodes_to_wire_format
+
+  [1;37mScenario:[0m lock_lock encodes to wire format          [1;30m# features/lock.feature:59[0m
+    [32mWhen[0m [32mI encode "lock_lock" command with '{}'[0m       [1;30m# test.bdd.steps_test.go:1426 -> *bddCtx[0m
+    [32mThen[0m [32mthe wire payload field "state" equals "LOCK"[0m [1;30m# test.bdd.steps_test.go:1428 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Raw_discovery_data_is_stored_internally_and_hidden_from_queries#06
+
+  [1;37mScenario:[0m Raw discovery data is stored internally and hidden from queries                                                                                [1;30m# features/lock.feature:63[0m
+    [32mGiven[0m [32ma lock entity "test.dev1.lock001" named "Front Door" with locked false[0m                                                                           [1;30m# test.bdd.steps_test.go:1320 -> *bddCtx[0m
+    [32mAnd[0m [32mI write internal data for "test.dev1.lock001" with payload '{"commandTopic":"zigbee2mqtt/lock/set","lockPayload":"LOCK","unlockPayload":"UNLOCK"}'[0m [1;30m# test.bdd.steps_test.go:1419 -> *bddCtx[0m
+    [32mWhen[0m [32mI read internal data for "test.dev1.lock001"[0m                                                                                                      [1;30m# test.bdd.steps_test.go:1420 -> *bddCtx[0m
+    [32mThen[0m [32mthe internal data matches '{"commandTopic":"zigbee2mqtt/lock/set","lockPayload":"LOCK","unlockPayload":"UNLOCK"}'[0m                                 [1;30m# test.bdd.steps_test.go:1421 -> *bddCtx[0m
+    [32mAnd[0m [32mquerying type "lock" returns only state entities[0m                                                                                                   [1;30m# test.bdd.steps_test.go:1422 -> *bddCtx[0m
+
+[1;37mFeature:[0m Number Entity
+=== RUN   TestBDDFeatures/Create_with_default_state#07
+
+  [1;37mScenario:[0m Create with default state                                                                          [1;30m# features/number.feature:4[0m
+    [32mGiven[0m [32ma number entity "test.dev1.num001" named "Volume" with value 50.0 min 0.0 max 100.0 step 1.0 unit ""[0m [1;30m# test.bdd.steps_test.go:1341 -> *bddCtx[0m
+    [32mWhen[0m [32mI retrieve "test.dev1.num001"[0m                                                                         [1;30m# test.bdd.steps_test.go:1365 -> *bddCtx[0m
+    [32mThen[0m [32mthe entity type is "number"[0m                                                                           [1;30m# test.bdd.steps_test.go:1370 -> *bddCtx[0m
+    [32mAnd[0m [32mthe number value is 50.0[0m                                                                               [1;30m# test.bdd.steps_test.go:1390 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/State_fields_hydrate_correctly#05
+
+  [1;37mScenario:[0m State fields hydrate correctly                                                                                 [1;30m# features/number.feature:10[0m
+    [32mGiven[0m [32ma number entity "test.dev1.num002" named "Brightness Slider" with value 75.5 min 0.0 max 100.0 step 0.5 unit "%"[0m [1;30m# test.bdd.steps_test.go:1341 -> *bddCtx[0m
+    [32mWhen[0m [32mI retrieve "test.dev1.num002"[0m                                                                                     [1;30m# test.bdd.steps_test.go:1365 -> *bddCtx[0m
+    [32mThen[0m [32mthe number value is 75.5[0m                                                                                          [1;30m# test.bdd.steps_test.go:1390 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Query_by_type#07
+
+  [1;37mScenario:[0m Query by type                                                                                        [1;30m# features/number.feature:15[0m
+    [32mGiven[0m [32ma number entity "test.dev1.num003" named "Speed" with value 30.0 min 0.0 max 100.0 step 5.0 unit "rpm"[0m [1;30m# test.bdd.steps_test.go:1341 -> *bddCtx[0m
+    [32mAnd[0m [32ma sensor entity "test.dev1.temp001" named "Temp" with value "20" and unit "°C"[0m                           [1;30m# test.bdd.steps_test.go:1326 -> *bddCtx[0m
+    [32mWhen[0m [32mI query where "type" equals "number"[0m                                                                    [1;30m# test.bdd.steps_test.go:1409 -> *bddCtx[0m
+    [32mThen[0m [32mthe results include "test.dev1.num003"[0m                                                                  [1;30m# test.bdd.steps_test.go:1415 -> *bddCtx[0m
+    [32mAnd[0m [32mthe results do not include "test.dev1.temp001"[0m                                                           [1;30m# test.bdd.steps_test.go:1416 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Query_by_value
+
+  [1;37mScenario:[0m Query by value                                                                                    [1;30m# features/number.feature:22[0m
+    [32mGiven[0m [32ma number entity "test.dev1.numHigh" named "High" with value 80.0 min 0.0 max 100.0 step 1.0 unit ""[0m [1;30m# test.bdd.steps_test.go:1341 -> *bddCtx[0m
+    [32mAnd[0m [32ma number entity "test.dev1.numLow" named "Low" with value 20.0 min 0.0 max 100.0 step 1.0 unit ""[0m     [1;30m# test.bdd.steps_test.go:1341 -> *bddCtx[0m
+    [32mWhen[0m [32mI query where "type" equals "number" and "state.value" greater than 50[0m                               [1;30m# test.bdd.steps_test.go:1411 -> *bddCtx[0m
+    [32mThen[0m [32mI get 1 result[0m                                                                                       [1;30m# test.bdd.steps_test.go:1414 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Update_is_reflected_on_retrieval#06
+
+  [1;37mScenario:[0m Update is reflected on retrieval                                                                   [1;30m# features/number.feature:28[0m
+    [32mGiven[0m [32ma number entity "test.dev1.numUpd" named "Number" with value 10.0 min 0.0 max 100.0 step 1.0 unit ""[0m [1;30m# test.bdd.steps_test.go:1341 -> *bddCtx[0m
+    [32mAnd[0m [32mI update number "test.dev1.numUpd" to value 42.0[0m                                                       [1;30m# test.bdd.steps_test.go:1360 -> *bddCtx[0m
+    [32mWhen[0m [32mI retrieve "test.dev1.numUpd"[0m                                                                         [1;30m# test.bdd.steps_test.go:1365 -> *bddCtx[0m
+    [32mThen[0m [32mthe number value is 42.0[0m                                                                              [1;30m# test.bdd.steps_test.go:1390 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Delete_removes_entity#07
+
+  [1;37mScenario:[0m Delete removes entity                                                                             [1;30m# features/number.feature:34[0m
+    [32mGiven[0m [32ma number entity "test.dev1.numDel" named "Number" with value 0.0 min 0.0 max 100.0 step 1.0 unit ""[0m [1;30m# test.bdd.steps_test.go:1341 -> *bddCtx[0m
+    [32mWhen[0m [32mI delete "test.dev1.numDel"[0m                                                                          [1;30m# test.bdd.steps_test.go:1366 -> *bddCtx[0m
+    [32mThen[0m [32mretrieving "test.dev1.numDel" should fail[0m                                                            [1;30m# test.bdd.steps_test.go:1367 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/number_set_value_command_is_dispatched
+
+  [1;37mScenario:[0m number_set_value command is dispatched                       [1;30m# features/number.feature:39[0m
+    [32mGiven[0m [32ma command listener on "test.>"[0m                                 [1;30m# test.bdd.steps_test.go:1395 -> *bddCtx[0m
+    [32mWhen[0m [32mI send "number_set_value" with value 77.0 to "test.dev1.num001"[0m [1;30m# test.bdd.steps_test.go:1402 -> *bddCtx[0m
+    [32mThen[0m [32mthe received command action is "number_set_value"[0m               [1;30m# test.bdd.steps_test.go:1405 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Raw_payload_decodes_to_canonical_state#07
+
+  [1;37mScenario:[0m Raw payload decodes to canonical state    [1;30m# features/number.feature:44[0m
+    [32mWhen[0m [32mI decode a "number" payload '{"value":42.0}'[0m [1;30m# test.bdd.steps_test.go:1425 -> *bddCtx[0m
+    [32mThen[0m [32mthe number value is 42.0[0m                     [1;30m# test.bdd.steps_test.go:1390 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/number_set_value_encodes_to_wire_format
+
+  [1;37mScenario:[0m number_set_value encodes to wire format                [1;30m# features/number.feature:48[0m
+    [32mWhen[0m [32mI encode "number_set_value" command with '{"value":42.0}'[0m [1;30m# test.bdd.steps_test.go:1426 -> *bddCtx[0m
+    [32mThen[0m [32mthe wire payload field "value" equals 42.0[0m                [1;30m# test.bdd.steps_test.go:1427 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Raw_discovery_data_is_stored_internally_and_hidden_from_queries#07
+
+  [1;37mScenario:[0m Raw discovery data is stored internally and hidden from queries                                                              [1;30m# features/number.feature:52[0m
+    [32mGiven[0m [32ma number entity "test.dev1.num001" named "Volume" with value 50.0 min 0.0 max 100.0 step 1.0 unit ""[0m                           [1;30m# test.bdd.steps_test.go:1341 -> *bddCtx[0m
+    [32mAnd[0m [32mI write internal data for "test.dev1.num001" with payload '{"commandTopic":"zigbee2mqtt/number/set","min":0,"max":100,"step":1}'[0m [1;30m# test.bdd.steps_test.go:1419 -> *bddCtx[0m
+    [32mWhen[0m [32mI read internal data for "test.dev1.num001"[0m                                                                                     [1;30m# test.bdd.steps_test.go:1420 -> *bddCtx[0m
+    [32mThen[0m [32mthe internal data matches '{"commandTopic":"zigbee2mqtt/number/set","min":0,"max":100,"step":1}'[0m                                [1;30m# test.bdd.steps_test.go:1421 -> *bddCtx[0m
+    [32mAnd[0m [32mquerying type "number" returns only state entities[0m                                                                               [1;30m# test.bdd.steps_test.go:1422 -> *bddCtx[0m
+
+[1;37mFeature:[0m Select Entity
+=== RUN   TestBDDFeatures/Create_with_default_state#08
+
+  [1;37mScenario:[0m Create with default state                                                                                [1;30m# features/select.feature:4[0m
+    [32mGiven[0m [32ma select entity "test.dev1.sel001" named "Color Mode" with option "white" and options "white,color,effect"[0m [1;30m# test.bdd.steps_test.go:1344 -> *bddCtx[0m
+    [32mWhen[0m [32mI retrieve "test.dev1.sel001"[0m                                                                               [1;30m# test.bdd.steps_test.go:1365 -> *bddCtx[0m
+    [32mThen[0m [32mthe entity type is "select"[0m                                                                                 [1;30m# test.bdd.steps_test.go:1370 -> *bddCtx[0m
+    [32mAnd[0m [32mthe select option is "white"[0m                                                                                 [1;30m# test.bdd.steps_test.go:1391 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/State_fields_hydrate_correctly#06
+
+  [1;37mScenario:[0m State fields hydrate correctly                                                                        [1;30m# features/select.feature:10[0m
+    [32mGiven[0m [32ma select entity "test.dev1.sel002" named "Fan Speed" with option "medium" and options "low,medium,high"[0m [1;30m# test.bdd.steps_test.go:1344 -> *bddCtx[0m
+    [32mWhen[0m [32mI retrieve "test.dev1.sel002"[0m                                                                            [1;30m# test.bdd.steps_test.go:1365 -> *bddCtx[0m
+    [32mThen[0m [32mthe select option is "medium"[0m                                                                            [1;30m# test.bdd.steps_test.go:1391 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Query_by_type#08
+
+  [1;37mScenario:[0m Query by type                                                                              [1;30m# features/select.feature:15[0m
+    [32mGiven[0m [32ma select entity "test.dev1.sel003" named "Mode" with option "auto" and options "auto,manual"[0m [1;30m# test.bdd.steps_test.go:1344 -> *bddCtx[0m
+    [32mAnd[0m [32ma switch entity "test.dev1.sw001" named "Switch" with power off[0m                                [1;30m# test.bdd.steps_test.go:1314 -> *bddCtx[0m
+    [32mWhen[0m [32mI query where "type" equals "select"[0m                                                          [1;30m# test.bdd.steps_test.go:1409 -> *bddCtx[0m
+    [32mThen[0m [32mthe results include "test.dev1.sel003"[0m                                                        [1;30m# test.bdd.steps_test.go:1415 -> *bddCtx[0m
+    [32mAnd[0m [32mthe results do not include "test.dev1.sw001"[0m                                                   [1;30m# test.bdd.steps_test.go:1416 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Query_by_current_option
+
+  [1;37mScenario:[0m Query by current option                                                                        [1;30m# features/select.feature:22[0m
+    [32mGiven[0m [32ma select entity "test.dev1.selA" named "Select A" with option "cool" and options "cool,heat,off"[0m [1;30m# test.bdd.steps_test.go:1344 -> *bddCtx[0m
+    [32mAnd[0m [32ma select entity "test.dev1.selB" named "Select B" with option "heat" and options "cool,heat,off"[0m   [1;30m# test.bdd.steps_test.go:1344 -> *bddCtx[0m
+    [32mWhen[0m [32mI query where "type" equals "select" and "state.option" equals "cool"[0m                             [1;30m# test.bdd.steps_test.go:1410 -> *bddCtx[0m
+    [32mThen[0m [32mI get 1 result[0m                                                                                    [1;30m# test.bdd.steps_test.go:1414 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Update_is_reflected_on_retrieval#07
+
+  [1;37mScenario:[0m Update is reflected on retrieval                                                       [1;30m# features/select.feature:28[0m
+    [32mGiven[0m [32ma select entity "test.dev1.selUpd" named "Select" with option "off" and options "off,on"[0m [1;30m# test.bdd.steps_test.go:1344 -> *bddCtx[0m
+    [32mAnd[0m [32mI update select "test.dev1.selUpd" to option "on"[0m                                          [1;30m# test.bdd.steps_test.go:1361 -> *bddCtx[0m
+    [32mWhen[0m [32mI retrieve "test.dev1.selUpd"[0m                                                             [1;30m# test.bdd.steps_test.go:1365 -> *bddCtx[0m
+    [32mThen[0m [32mthe select option is "on"[0m                                                                 [1;30m# test.bdd.steps_test.go:1391 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Delete_removes_entity#08
+
+  [1;37mScenario:[0m Delete removes entity                                                             [1;30m# features/select.feature:34[0m
+    [32mGiven[0m [32ma select entity "test.dev1.selDel" named "Select" with option "a" and options "a,b"[0m [1;30m# test.bdd.steps_test.go:1344 -> *bddCtx[0m
+    [32mWhen[0m [32mI delete "test.dev1.selDel"[0m                                                          [1;30m# test.bdd.steps_test.go:1366 -> *bddCtx[0m
+    [32mThen[0m [32mretrieving "test.dev1.selDel" should fail[0m                                            [1;30m# test.bdd.steps_test.go:1367 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/select_option_command_is_dispatched
+
+  [1;37mScenario:[0m select_option command is dispatched                           [1;30m# features/select.feature:39[0m
+    [32mGiven[0m [32ma command listener on "test.>"[0m                                  [1;30m# test.bdd.steps_test.go:1395 -> *bddCtx[0m
+    [32mWhen[0m [32mI send "select_option" with option "color" to "test.dev1.sel001"[0m [1;30m# test.bdd.steps_test.go:1403 -> *bddCtx[0m
+    [32mThen[0m [32mthe received command action is "select_option"[0m                   [1;30m# test.bdd.steps_test.go:1405 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Raw_payload_decodes_to_canonical_state#08
+
+  [1;37mScenario:[0m Raw payload decodes to canonical state                                 [1;30m# features/select.feature:44[0m
+    [32mWhen[0m [32mI decode a "select" payload '{"option":"cool","options":["cool","heat"]}'[0m [1;30m# test.bdd.steps_test.go:1425 -> *bddCtx[0m
+    [32mThen[0m [32mthe select option is "cool"[0m                                               [1;30m# test.bdd.steps_test.go:1391 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/select_option_encodes_to_wire_format
+
+  [1;37mScenario:[0m select_option encodes to wire format                   [1;30m# features/select.feature:48[0m
+    [32mWhen[0m [32mI encode "select_option" command with '{"option":"cool"}'[0m [1;30m# test.bdd.steps_test.go:1426 -> *bddCtx[0m
+    [32mThen[0m [32mthe wire payload field "option" equals "cool"[0m             [1;30m# test.bdd.steps_test.go:1428 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Raw_discovery_data_is_stored_internally_and_hidden_from_queries#08
+
+  [1;37mScenario:[0m Raw discovery data is stored internally and hidden from queries                                                                             [1;30m# features/select.feature:52[0m
+    [32mGiven[0m [32ma select entity "test.dev1.sel001" named "Color Mode" with option "white" and options "white,color,effect"[0m                                    [1;30m# test.bdd.steps_test.go:1344 -> *bddCtx[0m
+    [32mAnd[0m [32mI write internal data for "test.dev1.sel001" with payload '{"commandTopic":"zigbee2mqtt/select/set","options":["option1","option2","option3"]}'[0m [1;30m# test.bdd.steps_test.go:1419 -> *bddCtx[0m
+    [32mWhen[0m [32mI read internal data for "test.dev1.sel001"[0m                                                                                                    [1;30m# test.bdd.steps_test.go:1420 -> *bddCtx[0m
+    [32mThen[0m [32mthe internal data matches '{"commandTopic":"zigbee2mqtt/select/set","options":["option1","option2","option3"]}'[0m                                [1;30m# test.bdd.steps_test.go:1421 -> *bddCtx[0m
+    [32mAnd[0m [32mquerying type "select" returns only state entities[0m                                                                                              [1;30m# test.bdd.steps_test.go:1422 -> *bddCtx[0m
+
+[1;37mFeature:[0m Sensor Entity
+=== RUN   TestBDDFeatures/Create_with_default_state#09
+
+  [1;37mScenario:[0m Create with default state                                                             [1;30m# features/sensor.feature:5[0m
+    [32mGiven[0m [32ma sensor entity "test.dev1.temp001" named "Temperature" with value "22.5" and unit "°C"[0m [1;30m# test.bdd.steps_test.go:1326 -> *bddCtx[0m
+    [32mWhen[0m [32mI retrieve "test.dev1.temp001"[0m                                                           [1;30m# test.bdd.steps_test.go:1365 -> *bddCtx[0m
+    [32mThen[0m [32mthe entity type is "sensor"[0m                                                              [1;30m# test.bdd.steps_test.go:1370 -> *bddCtx[0m
+    [32mAnd[0m [32mthe sensor value is "22.5"[0m                                                                [1;30m# test.bdd.steps_test.go:1382 -> *bddCtx[0m
+    [32mAnd[0m [32mthe sensor unit is "°C"[0m                                                                   [1;30m# test.bdd.steps_test.go:1383 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/State_fields_hydrate_correctly_including_device_class#01
+
+  [1;37mScenario:[0m State fields hydrate correctly including device class                                                  [1;30m# features/sensor.feature:12[0m
+    [32mGiven[0m [32ma sensor entity "test.dev1.hum001" named "Humidity" with value "65" unit "%" and device_class "humidity"[0m [1;30m# test.bdd.steps_test.go:1327 -> *bddCtx[0m
+    [32mWhen[0m [32mI retrieve "test.dev1.hum001"[0m                                                                             [1;30m# test.bdd.steps_test.go:1365 -> *bddCtx[0m
+    [32mThen[0m [32mthe sensor value is "65"[0m                                                                                  [1;30m# test.bdd.steps_test.go:1382 -> *bddCtx[0m
+    [32mAnd[0m [32mthe sensor unit is "%"[0m                                                                                     [1;30m# test.bdd.steps_test.go:1383 -> *bddCtx[0m
+    [32mAnd[0m [32mthe sensor device_class is "humidity"[0m                                                                      [1;30m# test.bdd.steps_test.go:1384 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Query_by_type#09
+
+  [1;37mScenario:[0m Query by type                                                                        [1;30m# features/sensor.feature:19[0m
+    [32mGiven[0m [32ma sensor entity "test.dev1.temp002" named "Outdoor Temp" with value "18" and unit "°C"[0m [1;30m# test.bdd.steps_test.go:1326 -> *bddCtx[0m
+    [32mAnd[0m [32ma light entity "test.dev1.light001" named "Light" with power off[0m                         [1;30m# test.bdd.steps_test.go:1310 -> *bddCtx[0m
+    [32mWhen[0m [32mI query where "type" equals "sensor"[0m                                                    [1;30m# test.bdd.steps_test.go:1409 -> *bddCtx[0m
+    [32mThen[0m [32mthe results include "test.dev1.temp002"[0m                                                 [1;30m# test.bdd.steps_test.go:1415 -> *bddCtx[0m
+    [32mAnd[0m [32mthe results do not include "test.dev1.light001"[0m                                          [1;30m# test.bdd.steps_test.go:1416 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Update_is_reflected_on_retrieval#08
+
+  [1;37mScenario:[0m Update is reflected on retrieval                                               [1;30m# features/sensor.feature:26[0m
+    [32mGiven[0m [32ma sensor entity "test.dev1.tempUpd" named "Sensor" with value "20" and unit "°C"[0m [1;30m# test.bdd.steps_test.go:1326 -> *bddCtx[0m
+    [32mAnd[0m [32mI update sensor "test.dev1.tempUpd" to value "25" and unit "°C"[0m                    [1;30m# test.bdd.steps_test.go:1357 -> *bddCtx[0m
+    [32mWhen[0m [32mI retrieve "test.dev1.tempUpd"[0m                                                    [1;30m# test.bdd.steps_test.go:1365 -> *bddCtx[0m
+    [32mThen[0m [32mthe sensor value is "25"[0m                                                          [1;30m# test.bdd.steps_test.go:1382 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Delete_removes_entity#09
+
+  [1;37mScenario:[0m Delete removes entity                                                       [1;30m# features/sensor.feature:32[0m
+    [32mGiven[0m [32ma sensor entity "test.dev1.tempDel" named "Sensor" with value "0" and unit ""[0m [1;30m# test.bdd.steps_test.go:1326 -> *bddCtx[0m
+    [32mWhen[0m [32mI delete "test.dev1.tempDel"[0m                                                   [1;30m# test.bdd.steps_test.go:1366 -> *bddCtx[0m
+    [32mThen[0m [32mretrieving "test.dev1.tempDel" should fail[0m                                     [1;30m# test.bdd.steps_test.go:1367 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Raw_payload_decodes_to_canonical_state#09
+
+  [1;37mScenario:[0m Raw payload decodes to canonical state                [1;30m# features/sensor.feature:37[0m
+    [32mWhen[0m [32mI decode a "sensor" payload '{"value":22.5,"unit":"°C"}'[0m [1;30m# test.bdd.steps_test.go:1425 -> *bddCtx[0m
+    [32mThen[0m [32mthe sensor value is "22.5"[0m                               [1;30m# test.bdd.steps_test.go:1382 -> *bddCtx[0m
+    [32mAnd[0m [32mthe sensor unit is "°C"[0m                                   [1;30m# test.bdd.steps_test.go:1383 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Raw_discovery_data_is_stored_internally_and_hidden_from_queries#09
+
+  [1;37mScenario:[0m Raw discovery data is stored internally and hidden from queries                                                              [1;30m# features/sensor.feature:42[0m
+    [32mGiven[0m [32ma sensor entity "test.dev1.temp001" named "Temperature" with value "22.5" and unit "°C"[0m                                        [1;30m# test.bdd.steps_test.go:1326 -> *bddCtx[0m
+    [32mAnd[0m [32mI write internal data for "test.dev1.temp001" with payload '{"stateTopic":"zigbee2mqtt/temp/state","deviceClass":"temperature"}'[0m [1;30m# test.bdd.steps_test.go:1419 -> *bddCtx[0m
+    [32mWhen[0m [32mI read internal data for "test.dev1.temp001"[0m                                                                                    [1;30m# test.bdd.steps_test.go:1420 -> *bddCtx[0m
+    [32mThen[0m [32mthe internal data matches '{"stateTopic":"zigbee2mqtt/temp/state","deviceClass":"temperature"}'[0m                                 [1;30m# test.bdd.steps_test.go:1421 -> *bddCtx[0m
+    [32mAnd[0m [32mquerying type "sensor" returns only state entities[0m                                                                               [1;30m# test.bdd.steps_test.go:1422 -> *bddCtx[0m
+
+[1;37mFeature:[0m Switch Entity
+=== RUN   TestBDDFeatures/Create_with_default_state#10
+
+  [1;37mScenario:[0m Create with default state                                     [1;30m# features/switch.feature:4[0m
+    [32mGiven[0m [32ma switch entity "test.dev1.sw001" named "Outlet" with power off[0m [1;30m# test.bdd.steps_test.go:1314 -> *bddCtx[0m
+    [32mWhen[0m [32mI retrieve "test.dev1.sw001"[0m                                     [1;30m# test.bdd.steps_test.go:1365 -> *bddCtx[0m
+    [32mThen[0m [32mthe entity type is "switch"[0m                                      [1;30m# test.bdd.steps_test.go:1370 -> *bddCtx[0m
+    [32mAnd[0m [32mthe switch power is off[0m                                           [1;30m# test.bdd.steps_test.go:1377 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/State_fields_hydrate_correctly#07
+
+  [1;37mScenario:[0m State fields hydrate correctly                                    [1;30m# features/switch.feature:10[0m
+    [32mGiven[0m [32ma switch entity "test.dev1.sw002" named "Wall Switch" with power on[0m [1;30m# test.bdd.steps_test.go:1314 -> *bddCtx[0m
+    [32mWhen[0m [32mI retrieve "test.dev1.sw002"[0m                                         [1;30m# test.bdd.steps_test.go:1365 -> *bddCtx[0m
+    [32mThen[0m [32mthe switch power is on[0m                                               [1;30m# test.bdd.steps_test.go:1377 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Query_by_type#10
+
+  [1;37mScenario:[0m Query by type                                                 [1;30m# features/switch.feature:15[0m
+    [32mGiven[0m [32ma switch entity "test.dev1.sw003" named "Garage" with power off[0m [1;30m# test.bdd.steps_test.go:1314 -> *bddCtx[0m
+    [32mAnd[0m [32ma light entity "test.dev1.light001" named "Light" with power off[0m  [1;30m# test.bdd.steps_test.go:1310 -> *bddCtx[0m
+    [32mWhen[0m [32mI query where "type" equals "switch"[0m                             [1;30m# test.bdd.steps_test.go:1409 -> *bddCtx[0m
+    [32mThen[0m [32mthe results include "test.dev1.sw003"[0m                            [1;30m# test.bdd.steps_test.go:1415 -> *bddCtx[0m
+    [32mAnd[0m [32mthe results do not include "test.dev1.light001"[0m                   [1;30m# test.bdd.steps_test.go:1416 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Query_by_power_state#01
+
+  [1;37mScenario:[0m Query by power state                                              [1;30m# features/switch.feature:22[0m
+    [32mGiven[0m [32ma switch entity "test.dev1.swOn" named "On Switch" with power on[0m    [1;30m# test.bdd.steps_test.go:1314 -> *bddCtx[0m
+    [32mAnd[0m [32ma switch entity "test.dev1.swOff" named "Off Switch" with power off[0m   [1;30m# test.bdd.steps_test.go:1314 -> *bddCtx[0m
+    [32mWhen[0m [32mI query where "type" equals "switch" and "state.power" equals "true"[0m [1;30m# test.bdd.steps_test.go:1410 -> *bddCtx[0m
+    [32mThen[0m [32mI get 1 result[0m                                                       [1;30m# test.bdd.steps_test.go:1414 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Update_is_reflected_on_retrieval#09
+
+  [1;37mScenario:[0m Update is reflected on retrieval                              [1;30m# features/switch.feature:28[0m
+    [32mGiven[0m [32ma switch entity "test.dev1.swUpd" named "Switch" with power off[0m [1;30m# test.bdd.steps_test.go:1314 -> *bddCtx[0m
+    [32mAnd[0m [32mI update switch "test.dev1.swUpd" to power on[0m                     [1;30m# test.bdd.steps_test.go:1353 -> *bddCtx[0m
+    [32mWhen[0m [32mI retrieve "test.dev1.swUpd"[0m                                     [1;30m# test.bdd.steps_test.go:1365 -> *bddCtx[0m
+    [32mThen[0m [32mthe switch power is on[0m                                           [1;30m# test.bdd.steps_test.go:1377 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Delete_removes_entity#10
+
+  [1;37mScenario:[0m Delete removes entity                                         [1;30m# features/switch.feature:34[0m
+    [32mGiven[0m [32ma switch entity "test.dev1.swDel" named "Switch" with power off[0m [1;30m# test.bdd.steps_test.go:1314 -> *bddCtx[0m
+    [32mWhen[0m [32mI delete "test.dev1.swDel"[0m                                       [1;30m# test.bdd.steps_test.go:1366 -> *bddCtx[0m
+    [32mThen[0m [32mretrieving "test.dev1.swDel" should fail[0m                         [1;30m# test.bdd.steps_test.go:1367 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/switch_turn_on_command_is_dispatched
+
+  [1;37mScenario:[0m switch_turn_on command is dispatched         [1;30m# features/switch.feature:39[0m
+    [32mGiven[0m [32ma command listener on "test.>"[0m                 [1;30m# test.bdd.steps_test.go:1395 -> *bddCtx[0m
+    [32mWhen[0m [32mI send "switch_turn_on" to "test.dev1.sw001"[0m    [1;30m# test.bdd.steps_test.go:1396 -> *bddCtx[0m
+    [32mThen[0m [32mthe received command action is "switch_turn_on"[0m [1;30m# test.bdd.steps_test.go:1405 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/switch_turn_off_command_is_dispatched
+
+  [1;37mScenario:[0m switch_turn_off command is dispatched         [1;30m# features/switch.feature:44[0m
+    [32mGiven[0m [32ma command listener on "test.>"[0m                  [1;30m# test.bdd.steps_test.go:1395 -> *bddCtx[0m
+    [32mWhen[0m [32mI send "switch_turn_off" to "test.dev1.sw001"[0m    [1;30m# test.bdd.steps_test.go:1396 -> *bddCtx[0m
+    [32mThen[0m [32mthe received command action is "switch_turn_off"[0m [1;30m# test.bdd.steps_test.go:1405 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/switch_toggle_command_is_dispatched
+
+  [1;37mScenario:[0m switch_toggle command is dispatched         [1;30m# features/switch.feature:49[0m
+    [32mGiven[0m [32ma command listener on "test.>"[0m                [1;30m# test.bdd.steps_test.go:1395 -> *bddCtx[0m
+    [32mWhen[0m [32mI send "switch_toggle" to "test.dev1.sw001"[0m    [1;30m# test.bdd.steps_test.go:1396 -> *bddCtx[0m
+    [32mThen[0m [32mthe received command action is "switch_toggle"[0m [1;30m# test.bdd.steps_test.go:1405 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Raw_payload_decodes_to_canonical_state#10
+
+  [1;37mScenario:[0m Raw payload decodes to canonical state    [1;30m# features/switch.feature:54[0m
+    [32mWhen[0m [32mI decode a "switch" payload '{"power":true}'[0m [1;30m# test.bdd.steps_test.go:1425 -> *bddCtx[0m
+    [32mThen[0m [32mthe switch power is on[0m                       [1;30m# test.bdd.steps_test.go:1377 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/switch_turn_on_encodes_to_wire_format
+
+  [1;37mScenario:[0m switch_turn_on encodes to wire format    [1;30m# features/switch.feature:58[0m
+    [32mWhen[0m [32mI encode "switch_turn_on" command with '{}'[0m [1;30m# test.bdd.steps_test.go:1426 -> *bddCtx[0m
+    [32mThen[0m [32mthe wire payload field "state" equals "ON"[0m  [1;30m# test.bdd.steps_test.go:1428 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Raw_discovery_data_is_stored_internally_and_hidden_from_queries#10
+
+  [1;37mScenario:[0m Raw discovery data is stored internally and hidden from queries                                  [1;30m# features/switch.feature:62[0m
+    [32mGiven[0m [32ma switch entity "test.dev1.sw001" named "Outlet" with power off[0m                                    [1;30m# test.bdd.steps_test.go:1314 -> *bddCtx[0m
+    [32mAnd[0m [32mI write internal data for "test.dev1.sw001" with payload '{"commandTopic":"zigbee2mqtt/outlet/set"}'[0m [1;30m# test.bdd.steps_test.go:1419 -> *bddCtx[0m
+    [32mWhen[0m [32mI read internal data for "test.dev1.sw001"[0m                                                          [1;30m# test.bdd.steps_test.go:1420 -> *bddCtx[0m
+    [32mThen[0m [32mthe internal data matches '{"commandTopic":"zigbee2mqtt/outlet/set"}'[0m                               [1;30m# test.bdd.steps_test.go:1421 -> *bddCtx[0m
+    [32mAnd[0m [32mquerying type "switch" returns only state entities[0m                                                   [1;30m# test.bdd.steps_test.go:1422 -> *bddCtx[0m
+
+[1;37mFeature:[0m Text Entity
+=== RUN   TestBDDFeatures/Create_with_default_state#11
+
+  [1;37mScenario:[0m Create with default state                                       [1;30m# features/text.feature:4[0m
+    [32mGiven[0m [32ma text entity "test.dev1.txt001" named "Label" with value "hello"[0m [1;30m# test.bdd.steps_test.go:1347 -> *bddCtx[0m
+    [32mWhen[0m [32mI retrieve "test.dev1.txt001"[0m                                      [1;30m# test.bdd.steps_test.go:1365 -> *bddCtx[0m
+    [32mThen[0m [32mthe entity type is "text"[0m                                          [1;30m# test.bdd.steps_test.go:1370 -> *bddCtx[0m
+    [32mAnd[0m [32mthe text value is "hello"[0m                                           [1;30m# test.bdd.steps_test.go:1392 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/State_fields_hydrate_correctly#08
+
+  [1;37mScenario:[0m State fields hydrate correctly                                                                                        [1;30m# features/text.feature:10[0m
+    [32mGiven[0m [32ma text entity "test.dev1.txt002" named "Pattern Input" with value "abc123" min 3 max 10 pattern "[a-z0-9]+" mode "text"[0m [1;30m# test.bdd.steps_test.go:1348 -> *bddCtx[0m
+    [32mWhen[0m [32mI retrieve "test.dev1.txt002"[0m                                                                                            [1;30m# test.bdd.steps_test.go:1365 -> *bddCtx[0m
+    [32mThen[0m [32mthe text value is "abc123"[0m                                                                                               [1;30m# test.bdd.steps_test.go:1392 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Query_by_type#11
+
+  [1;37mScenario:[0m Query by type                                                 [1;30m# features/text.feature:15[0m
+    [32mGiven[0m [32ma text entity "test.dev1.txt003" named "Note" with value "test"[0m [1;30m# test.bdd.steps_test.go:1347 -> *bddCtx[0m
+    [32mAnd[0m [32ma switch entity "test.dev1.sw001" named "Switch" with power off[0m   [1;30m# test.bdd.steps_test.go:1314 -> *bddCtx[0m
+    [32mWhen[0m [32mI query where "type" equals "text"[0m                               [1;30m# test.bdd.steps_test.go:1409 -> *bddCtx[0m
+    [32mThen[0m [32mthe results include "test.dev1.txt003"[0m                           [1;30m# test.bdd.steps_test.go:1415 -> *bddCtx[0m
+    [32mAnd[0m [32mthe results do not include "test.dev1.sw001"[0m                      [1;30m# test.bdd.steps_test.go:1416 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Query_by_value#01
+
+  [1;37mScenario:[0m Query by value                                                    [1;30m# features/text.feature:22[0m
+    [32mGiven[0m [32ma text entity "test.dev1.txtA" named "Text A" with value "active"[0m   [1;30m# test.bdd.steps_test.go:1347 -> *bddCtx[0m
+    [32mAnd[0m [32ma text entity "test.dev1.txtB" named "Text B" with value "inactive"[0m   [1;30m# test.bdd.steps_test.go:1347 -> *bddCtx[0m
+    [32mWhen[0m [32mI query where "type" equals "text" and "state.value" equals "active"[0m [1;30m# test.bdd.steps_test.go:1410 -> *bddCtx[0m
+    [32mThen[0m [32mI get 1 result[0m                                                       [1;30m# test.bdd.steps_test.go:1414 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Update_is_reflected_on_retrieval#10
+
+  [1;37mScenario:[0m Update is reflected on retrieval                             [1;30m# features/text.feature:28[0m
+    [32mGiven[0m [32ma text entity "test.dev1.txtUpd" named "Text" with value "old"[0m [1;30m# test.bdd.steps_test.go:1347 -> *bddCtx[0m
+    [32mAnd[0m [32mI update text "test.dev1.txtUpd" to value "new"[0m                  [1;30m# test.bdd.steps_test.go:1362 -> *bddCtx[0m
+    [32mWhen[0m [32mI retrieve "test.dev1.txtUpd"[0m                                   [1;30m# test.bdd.steps_test.go:1365 -> *bddCtx[0m
+    [32mThen[0m [32mthe text value is "new"[0m                                         [1;30m# test.bdd.steps_test.go:1392 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Delete_removes_entity#11
+
+  [1;37mScenario:[0m Delete removes entity                                        [1;30m# features/text.feature:34[0m
+    [32mGiven[0m [32ma text entity "test.dev1.txtDel" named "Text" with value "bye"[0m [1;30m# test.bdd.steps_test.go:1347 -> *bddCtx[0m
+    [32mWhen[0m [32mI delete "test.dev1.txtDel"[0m                                     [1;30m# test.bdd.steps_test.go:1366 -> *bddCtx[0m
+    [32mThen[0m [32mretrieving "test.dev1.txtDel" should fail[0m                       [1;30m# test.bdd.steps_test.go:1367 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/text_set_value_command_is_dispatched
+
+  [1;37mScenario:[0m text_set_value command is dispatched                          [1;30m# features/text.feature:39[0m
+    [32mGiven[0m [32ma command listener on "test.>"[0m                                  [1;30m# test.bdd.steps_test.go:1395 -> *bddCtx[0m
+    [32mWhen[0m [32mI send "text_set_value" with value "world" to "test.dev1.txt001"[0m [1;30m# test.bdd.steps_test.go:1404 -> *bddCtx[0m
+    [32mThen[0m [32mthe received command action is "text_set_value"[0m                  [1;30m# test.bdd.steps_test.go:1405 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Raw_payload_decodes_to_canonical_state#11
+
+  [1;37mScenario:[0m Raw payload decodes to canonical state     [1;30m# features/text.feature:44[0m
+    [32mWhen[0m [32mI decode a "text" payload '{"value":"hello"}'[0m [1;30m# test.bdd.steps_test.go:1425 -> *bddCtx[0m
+    [32mThen[0m [32mthe text value is "hello"[0m                     [1;30m# test.bdd.steps_test.go:1392 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/text_set_value_encodes_to_wire_format
+
+  [1;37mScenario:[0m text_set_value encodes to wire format                   [1;30m# features/text.feature:48[0m
+    [32mWhen[0m [32mI encode "text_set_value" command with '{"value":"hello"}'[0m [1;30m# test.bdd.steps_test.go:1426 -> *bddCtx[0m
+    [32mThen[0m [32mthe wire payload field "value" equals "hello"[0m              [1;30m# test.bdd.steps_test.go:1428 -> *bddCtx[0m
+=== RUN   TestBDDFeatures/Raw_discovery_data_is_stored_internally_and_hidden_from_queries#11
+
+  [1;37mScenario:[0m Raw discovery data is stored internally and hidden from queries                                                 [1;30m# features/text.feature:52[0m
+    [32mGiven[0m [32ma text entity "test.dev1.txt001" named "Label" with value "hello"[0m                                                 [1;30m# test.bdd.steps_test.go:1347 -> *bddCtx[0m
+    [32mAnd[0m [32mI write internal data for "test.dev1.txt001" with payload '{"commandTopic":"zigbee2mqtt/text/set","maxLength":255}'[0m [1;30m# test.bdd.steps_test.go:1419 -> *bddCtx[0m
+    [32mWhen[0m [32mI read internal data for "test.dev1.txt001"[0m                                                                        [1;30m# test.bdd.steps_test.go:1420 -> *bddCtx[0m
+    [32mThen[0m [32mthe internal data matches '{"commandTopic":"zigbee2mqtt/text/set","maxLength":255}'[0m                                [1;30m# test.bdd.steps_test.go:1421 -> *bddCtx[0m
+    [32mAnd[0m [32mquerying type "text" returns only state entities[0m                                                                    [1;30m# test.bdd.steps_test.go:1422 -> *bddCtx[0m
+
+137 scenarios ([32m137 passed[0m)
+514 steps ([32m514 passed[0m)
+4.662365834s
+--- PASS: TestBDDFeatures (4.68s)
+    --- PASS: TestBDDFeatures/Create_with_default_state (0.00s)
+    --- PASS: TestBDDFeatures/State_fields_hydrate_correctly_including_device_class (0.00s)
+    --- PASS: TestBDDFeatures/Query_by_type (0.00s)
+    --- PASS: TestBDDFeatures/Query_by_on_state (0.00s)
+    --- PASS: TestBDDFeatures/Delete_removes_entity (0.00s)
+    --- PASS: TestBDDFeatures/Raw_payload_decodes_to_canonical_state (0.00s)
+    --- PASS: TestBDDFeatures/Raw_discovery_data_is_stored_internally_and_hidden_from_queries (0.00s)
+    --- PASS: TestBDDFeatures/Create_with_default_state#01 (0.00s)
+    --- PASS: TestBDDFeatures/State_fields_hydrate_correctly (0.00s)
+    --- PASS: TestBDDFeatures/Query_by_type#01 (0.00s)
+    --- PASS: TestBDDFeatures/Update_is_reflected_on_retrieval (0.00s)
+    --- PASS: TestBDDFeatures/Delete_removes_entity#01 (0.00s)
+    --- PASS: TestBDDFeatures/button_press_command_is_dispatched (0.00s)
+    --- PASS: TestBDDFeatures/Raw_payload_decodes_to_canonical_state#01 (0.00s)
+    --- PASS: TestBDDFeatures/Raw_discovery_data_is_stored_internally_and_hidden_from_queries#01 (0.00s)
+    --- PASS: TestBDDFeatures/Create_with_default_state#02 (0.00s)
+    --- PASS: TestBDDFeatures/State_fields_hydrate_correctly#01 (0.00s)
+    --- PASS: TestBDDFeatures/Query_by_type#02 (0.00s)
+    --- PASS: TestBDDFeatures/Query_by_hvac_mode (0.00s)
+    --- PASS: TestBDDFeatures/Update_is_reflected_on_retrieval#01 (0.00s)
+    --- PASS: TestBDDFeatures/Delete_removes_entity#02 (0.00s)
+    --- PASS: TestBDDFeatures/climate_set_mode_command_is_dispatched (0.00s)
+    --- PASS: TestBDDFeatures/climate_set_temperature_command_is_dispatched (0.00s)
+    --- PASS: TestBDDFeatures/Raw_payload_decodes_to_canonical_state#02 (0.00s)
+    --- PASS: TestBDDFeatures/climate_set_mode_encodes_to_wire_format (0.00s)
+    --- PASS: TestBDDFeatures/Raw_discovery_data_is_stored_internally_and_hidden_from_queries#02 (0.00s)
+    --- PASS: TestBDDFeatures/Create_with_default_state#03 (0.00s)
+    --- PASS: TestBDDFeatures/State_fields_hydrate_correctly#02 (0.00s)
+    --- PASS: TestBDDFeatures/Query_by_type#03 (0.00s)
+    --- PASS: TestBDDFeatures/Query_by_position (0.00s)
+    --- PASS: TestBDDFeatures/Update_is_reflected_on_retrieval#02 (0.00s)
+    --- PASS: TestBDDFeatures/Delete_removes_entity#03 (0.00s)
+    --- PASS: TestBDDFeatures/cover_open_command_is_dispatched (0.00s)
+    --- PASS: TestBDDFeatures/cover_close_command_is_dispatched (0.00s)
+    --- PASS: TestBDDFeatures/cover_set_position_command_is_dispatched (0.00s)
+    --- PASS: TestBDDFeatures/Raw_payload_decodes_to_canonical_state#03 (0.00s)
+    --- PASS: TestBDDFeatures/cover_set_position_encodes_to_wire_format (0.00s)
+    --- PASS: TestBDDFeatures/Raw_discovery_data_is_stored_internally_and_hidden_from_queries#03 (0.00s)
+    --- PASS: TestBDDFeatures/Discover_ESPHome_devices_on_the_network (0.10s)
+    --- PASS: TestBDDFeatures/ESPHome_device_has_required_fields (0.00s)
+    --- PASS: TestBDDFeatures/ESPHome_device_provides_TXT_records (0.00s)
+    --- PASS: TestBDDFeatures/Parse_device_metadata_from_TXT_records (0.00s)
+    --- PASS: TestBDDFeatures/Detect_API_encryption_requirement (0.00s)
+    --- PASS: TestBDDFeatures/Device_without_API_encryption (0.00s)
+    --- PASS: TestBDDFeatures/Multiple_ESPHome_devices_discovered (0.00s)
+    --- PASS: TestBDDFeatures/Device_address_resolution (0.00s)
+    --- PASS: TestBDDFeatures/Continuous_discovery_updates_device_list (4.00s)
+    --- PASS: TestBDDFeatures/Stale_device_detection (0.00s)
+    --- PASS: TestBDDFeatures/Stop_discovery_service (0.00s)
+    --- PASS: TestBDDFeatures/Create_with_default_state#04 (0.00s)
+    --- PASS: TestBDDFeatures/State_fields_hydrate_correctly#03 (0.00s)
+    --- PASS: TestBDDFeatures/Query_by_type#04 (0.00s)
+    --- PASS: TestBDDFeatures/Query_by_power_state (0.00s)
+    --- PASS: TestBDDFeatures/Query_by_percentage (0.00s)
+    --- PASS: TestBDDFeatures/Update_is_reflected_on_retrieval#03 (0.00s)
+    --- PASS: TestBDDFeatures/Delete_removes_entity#04 (0.00s)
+    --- PASS: TestBDDFeatures/fan_turn_on_command_is_dispatched (0.00s)
+    --- PASS: TestBDDFeatures/fan_turn_off_command_is_dispatched (0.00s)
+    --- PASS: TestBDDFeatures/fan_set_speed_command_is_dispatched (0.00s)
+    --- PASS: TestBDDFeatures/Raw_payload_decodes_to_canonical_state#04 (0.00s)
+    --- PASS: TestBDDFeatures/fan_set_speed_encodes_to_wire_format (0.00s)
+    --- PASS: TestBDDFeatures/Raw_discovery_data_is_stored_internally_and_hidden_from_queries#04 (0.00s)
+    --- PASS: TestBDDFeatures/Create_with_default_state#05 (0.00s)
+    --- PASS: TestBDDFeatures/State_fields_hydrate_correctly#04 (0.00s)
+    --- PASS: TestBDDFeatures/Query_by_type#05 (0.00s)
+    --- PASS: TestBDDFeatures/Query_by_brightness (0.00s)
+    --- PASS: TestBDDFeatures/Update_is_reflected_on_retrieval#04 (0.00s)
+    --- PASS: TestBDDFeatures/Delete_removes_entity#05 (0.00s)
+    --- PASS: TestBDDFeatures/light_turn_on_command_is_dispatched (0.00s)
+    --- PASS: TestBDDFeatures/light_turn_off_command_is_dispatched (0.00s)
+    --- PASS: TestBDDFeatures/light_set_brightness_command_is_dispatched (0.00s)
+    --- PASS: TestBDDFeatures/light_set_color_temp_command_is_dispatched (0.00s)
+    --- PASS: TestBDDFeatures/light_set_rgb_command_is_dispatched (0.00s)
+    --- PASS: TestBDDFeatures/Raw_payload_decodes_to_canonical_state#05 (0.00s)
+    --- PASS: TestBDDFeatures/light_set_brightness_encodes_to_wire_format (0.00s)
+    --- PASS: TestBDDFeatures/Raw_discovery_data_is_stored_internally_and_hidden_from_queries#05 (0.00s)
+    --- PASS: TestBDDFeatures/Create_with_default_state#06 (0.00s)
+    --- PASS: TestBDDFeatures/State_fields_hydrate_correctly_-_locked (0.00s)
+    --- PASS: TestBDDFeatures/Query_by_type#06 (0.00s)
+    --- PASS: TestBDDFeatures/Query_locked_entities (0.00s)
+    --- PASS: TestBDDFeatures/Query_unlocked_entities (0.00s)
+    --- PASS: TestBDDFeatures/Update_is_reflected_on_retrieval#05 (0.00s)
+    --- PASS: TestBDDFeatures/Delete_removes_entity#06 (0.00s)
+    --- PASS: TestBDDFeatures/lock_lock_command_is_dispatched (0.00s)
+    --- PASS: TestBDDFeatures/lock_unlock_command_is_dispatched (0.00s)
+    --- PASS: TestBDDFeatures/Raw_payload_decodes_to_canonical_state#06 (0.00s)
+    --- PASS: TestBDDFeatures/lock_lock_encodes_to_wire_format (0.00s)
+    --- PASS: TestBDDFeatures/Raw_discovery_data_is_stored_internally_and_hidden_from_queries#06 (0.00s)
+    --- PASS: TestBDDFeatures/Create_with_default_state#07 (0.00s)
+    --- PASS: TestBDDFeatures/State_fields_hydrate_correctly#05 (0.00s)
+    --- PASS: TestBDDFeatures/Query_by_type#07 (0.00s)
+    --- PASS: TestBDDFeatures/Query_by_value (0.00s)
+    --- PASS: TestBDDFeatures/Update_is_reflected_on_retrieval#06 (0.00s)
+    --- PASS: TestBDDFeatures/Delete_removes_entity#07 (0.00s)
+    --- PASS: TestBDDFeatures/number_set_value_command_is_dispatched (0.00s)
+    --- PASS: TestBDDFeatures/Raw_payload_decodes_to_canonical_state#07 (0.00s)
+    --- PASS: TestBDDFeatures/number_set_value_encodes_to_wire_format (0.00s)
+    --- PASS: TestBDDFeatures/Raw_discovery_data_is_stored_internally_and_hidden_from_queries#07 (0.00s)
+    --- PASS: TestBDDFeatures/Create_with_default_state#08 (0.00s)
+    --- PASS: TestBDDFeatures/State_fields_hydrate_correctly#06 (0.00s)
+    --- PASS: TestBDDFeatures/Query_by_type#08 (0.00s)
+    --- PASS: TestBDDFeatures/Query_by_current_option (0.00s)
+    --- PASS: TestBDDFeatures/Update_is_reflected_on_retrieval#07 (0.00s)
+    --- PASS: TestBDDFeatures/Delete_removes_entity#08 (0.00s)
+    --- PASS: TestBDDFeatures/select_option_command_is_dispatched (0.00s)
+    --- PASS: TestBDDFeatures/Raw_payload_decodes_to_canonical_state#08 (0.00s)
+    --- PASS: TestBDDFeatures/select_option_encodes_to_wire_format (0.00s)
+    --- PASS: TestBDDFeatures/Raw_discovery_data_is_stored_internally_and_hidden_from_queries#08 (0.00s)
+    --- PASS: TestBDDFeatures/Create_with_default_state#09 (0.00s)
+    --- PASS: TestBDDFeatures/State_fields_hydrate_correctly_including_device_class#01 (0.00s)
+    --- PASS: TestBDDFeatures/Query_by_type#09 (0.00s)
+    --- PASS: TestBDDFeatures/Update_is_reflected_on_retrieval#08 (0.00s)
+    --- PASS: TestBDDFeatures/Delete_removes_entity#09 (0.00s)
+    --- PASS: TestBDDFeatures/Raw_payload_decodes_to_canonical_state#09 (0.00s)
+    --- PASS: TestBDDFeatures/Raw_discovery_data_is_stored_internally_and_hidden_from_queries#09 (0.00s)
+    --- PASS: TestBDDFeatures/Create_with_default_state#10 (0.00s)
+    --- PASS: TestBDDFeatures/State_fields_hydrate_correctly#07 (0.00s)
+    --- PASS: TestBDDFeatures/Query_by_type#10 (0.00s)
+    --- PASS: TestBDDFeatures/Query_by_power_state#01 (0.00s)
+    --- PASS: TestBDDFeatures/Update_is_reflected_on_retrieval#09 (0.00s)
+    --- PASS: TestBDDFeatures/Delete_removes_entity#10 (0.00s)
+    --- PASS: TestBDDFeatures/switch_turn_on_command_is_dispatched (0.00s)
+    --- PASS: TestBDDFeatures/switch_turn_off_command_is_dispatched (0.00s)
+    --- PASS: TestBDDFeatures/switch_toggle_command_is_dispatched (0.00s)
+    --- PASS: TestBDDFeatures/Raw_payload_decodes_to_canonical_state#10 (0.00s)
+    --- PASS: TestBDDFeatures/switch_turn_on_encodes_to_wire_format (0.00s)
+    --- PASS: TestBDDFeatures/Raw_discovery_data_is_stored_internally_and_hidden_from_queries#10 (0.00s)
+    --- PASS: TestBDDFeatures/Create_with_default_state#11 (0.00s)
+    --- PASS: TestBDDFeatures/State_fields_hydrate_correctly#08 (0.00s)
+    --- PASS: TestBDDFeatures/Query_by_type#11 (0.00s)
+    --- PASS: TestBDDFeatures/Query_by_value#01 (0.00s)
+    --- PASS: TestBDDFeatures/Update_is_reflected_on_retrieval#10 (0.00s)
+    --- PASS: TestBDDFeatures/Delete_removes_entity#11 (0.00s)
+    --- PASS: TestBDDFeatures/text_set_value_command_is_dispatched (0.00s)
+    --- PASS: TestBDDFeatures/Raw_payload_decodes_to_canonical_state#11 (0.00s)
+    --- PASS: TestBDDFeatures/text_set_value_encodes_to_wire_format (0.00s)
+    --- PASS: TestBDDFeatures/Raw_discovery_data_is_stored_internally_and_hidden_from_queries#11 (0.00s)
+=== RUN   TestLuaFade_ESPHomeLights
+    test.helper.lua_fade_test.go:192: timeout: collected 0/8 readings
+--- FAIL: TestLuaFade_ESPHomeLights (1.01s)
+=== RUN   TestLuaFade_StopHaltsCommands
+    test.helper.lua_fade_test.go:250: only 0 commands arrived before stop
+--- FAIL: TestLuaFade_StopHaltsCommands (0.50s)
+=== RUN   TestLuaFade_NewDevicePickedUp
+    test.helper.lua_fade_test.go:305: first light never received a command
+--- FAIL: TestLuaFade_NewDevicePickedUp (0.50s)
+=== RUN   TestInternal_WriteReadDelete
+--- PASS: TestInternal_WriteReadDelete (0.00s)
+=== RUN   TestInternal_NotVisibleInQuery
+--- PASS: TestInternal_NotVisibleInQuery (0.00s)
+=== RUN   TestInternal_NotVisibleInSearch
+--- PASS: TestInternal_NotVisibleInSearch (0.00s)
+=== RUN   TestCrossCutting_MultiPluginIsolation
+--- PASS: TestCrossCutting_MultiPluginIsolation (0.00s)
+=== RUN   TestCrossCutting_QueryAllPoweredOn
+--- PASS: TestCrossCutting_QueryAllPoweredOn (0.00s)
+=== RUN   TestCustom_Sprinkler_SaveGetHydrate
+--- PASS: TestCustom_Sprinkler_SaveGetHydrate (0.00s)
+=== RUN   TestCustom_Sprinkler_QueryByType
+--- PASS: TestCustom_Sprinkler_QueryByType (0.00s)
+=== RUN   TestCustom_Sprinkler_QueryByMoisture
+--- PASS: TestCustom_Sprinkler_QueryByMoisture (0.00s)
+=== RUN   TestCustom_Sprinkler_QueryByActive
+--- PASS: TestCustom_Sprinkler_QueryByActive (0.00s)
+=== RUN   TestCustom_Sprinkler_Activate
+--- PASS: TestCustom_Sprinkler_Activate (0.00s)
+=== RUN   TestCustom_Sprinkler_Deactivate
+--- PASS: TestCustom_Sprinkler_Deactivate (0.00s)
+=== RUN   TestMixed_QueryEachTypeInIsolation
+--- PASS: TestMixed_QueryEachTypeInIsolation (0.01s)
+=== RUN   TestMixed_CustomAndBuiltinBoolField
+--- PASS: TestMixed_CustomAndBuiltinBoolField (0.00s)
+=== RUN   TestMixed_NumericCrossType
+--- PASS: TestMixed_NumericCrossType (0.00s)
+=== RUN   TestMixed_PatternIsolatesPlugin
+--- PASS: TestMixed_PatternIsolatesPlugin (0.00s)
+=== RUN   TestMixed_DeleteCustomDoesNotAffectBuiltin
+--- PASS: TestMixed_DeleteCustomDoesNotAffectBuiltin (0.00s)
+=== RUN   TestMixed_OverwriteCustomReflectsInQuery
+--- PASS: TestMixed_OverwriteCustomReflectsInQuery (0.00s)
+=== RUN   TestMixed_FullLifecycle_SaveQueryCommandHydrate
+--- PASS: TestMixed_FullLifecycle_SaveQueryCommandHydrate (0.00s)
+=== RUN   TestDecode_Light
+=== RUN   TestDecode_Light/valid_on_with_brightness
+=== RUN   TestDecode_Light/valid_off
+=== RUN   TestDecode_Light/brightness_clamped_at_max
+=== RUN   TestDecode_Light/brightness_clamped_at_min
+=== RUN   TestDecode_Light/empty_payload
+=== RUN   TestDecode_Light/garbage_payload
+--- PASS: TestDecode_Light (0.00s)
+    --- PASS: TestDecode_Light/valid_on_with_brightness (0.00s)
+    --- PASS: TestDecode_Light/valid_off (0.00s)
+    --- PASS: TestDecode_Light/brightness_clamped_at_max (0.00s)
+    --- PASS: TestDecode_Light/brightness_clamped_at_min (0.00s)
+    --- PASS: TestDecode_Light/empty_payload (0.00s)
+    --- PASS: TestDecode_Light/garbage_payload (0.00s)
+=== RUN   TestDecode_Switch
+=== RUN   TestDecode_Switch/on
+=== RUN   TestDecode_Switch/off
+=== RUN   TestDecode_Switch/empty
+=== RUN   TestDecode_Switch/garbage
+--- PASS: TestDecode_Switch (0.00s)
+    --- PASS: TestDecode_Switch/on (0.00s)
+    --- PASS: TestDecode_Switch/off (0.00s)
+    --- PASS: TestDecode_Switch/empty (0.00s)
+    --- PASS: TestDecode_Switch/garbage (0.00s)
+=== RUN   TestDecode_Cover
+=== RUN   TestDecode_Cover/mid
+=== RUN   TestDecode_Cover/open
+=== RUN   TestDecode_Cover/closed
+=== RUN   TestDecode_Cover/over_max_clamped
+=== RUN   TestDecode_Cover/under_min_clamped
+=== RUN   TestDecode_Cover/empty
+--- PASS: TestDecode_Cover (0.00s)
+    --- PASS: TestDecode_Cover/mid (0.00s)
+    --- PASS: TestDecode_Cover/open (0.00s)
+    --- PASS: TestDecode_Cover/closed (0.00s)
+    --- PASS: TestDecode_Cover/over_max_clamped (0.00s)
+    --- PASS: TestDecode_Cover/under_min_clamped (0.00s)
+    --- PASS: TestDecode_Cover/empty (0.00s)
+=== RUN   TestDecode_Fan
+=== RUN   TestDecode_Fan/on_full
+=== RUN   TestDecode_Fan/on_half
+=== RUN   TestDecode_Fan/off
+=== RUN   TestDecode_Fan/over_max_clamped
+=== RUN   TestDecode_Fan/under_min_clamped
+=== RUN   TestDecode_Fan/empty
+--- PASS: TestDecode_Fan (0.00s)
+    --- PASS: TestDecode_Fan/on_full (0.00s)
+    --- PASS: TestDecode_Fan/on_half (0.00s)
+    --- PASS: TestDecode_Fan/off (0.00s)
+    --- PASS: TestDecode_Fan/over_max_clamped (0.00s)
+    --- PASS: TestDecode_Fan/under_min_clamped (0.00s)
+    --- PASS: TestDecode_Fan/empty (0.00s)
+=== RUN   TestDecode_Sensor
+=== RUN   TestDecode_Sensor/temp_with_unit
+=== RUN   TestDecode_Sensor/no_unit
+=== RUN   TestDecode_Sensor/empty
+=== RUN   TestDecode_Sensor/garbage
+--- PASS: TestDecode_Sensor (0.00s)
+    --- PASS: TestDecode_Sensor/temp_with_unit (0.00s)
+    --- PASS: TestDecode_Sensor/no_unit (0.00s)
+    --- PASS: TestDecode_Sensor/empty (0.00s)
+    --- PASS: TestDecode_Sensor/garbage (0.00s)
+=== RUN   TestDecode_Climate
+=== RUN   TestDecode_Climate/cool_mode
+=== RUN   TestDecode_Climate/off
+=== RUN   TestDecode_Climate/empty
+--- PASS: TestDecode_Climate (0.00s)
+    --- PASS: TestDecode_Climate/cool_mode (0.00s)
+    --- PASS: TestDecode_Climate/off (0.00s)
+    --- PASS: TestDecode_Climate/empty (0.00s)
+=== RUN   TestDecode_UnknownType
+--- PASS: TestDecode_UnknownType (0.00s)
+=== RUN   TestEncode_LightTurnOn
+--- PASS: TestEncode_LightTurnOn (0.00s)
+=== RUN   TestEncode_LightSetBrightness
+=== RUN   TestEncode_LightSetBrightness/valid_200
+=== RUN   TestEncode_LightSetBrightness/valid_0
+=== RUN   TestEncode_LightSetBrightness/max_254
+=== RUN   TestEncode_LightSetBrightness/255_rejected
+=== RUN   TestEncode_LightSetBrightness/negative_rejected
+--- PASS: TestEncode_LightSetBrightness (0.00s)
+    --- PASS: TestEncode_LightSetBrightness/valid_200 (0.00s)
+    --- PASS: TestEncode_LightSetBrightness/valid_0 (0.00s)
+    --- PASS: TestEncode_LightSetBrightness/max_254 (0.00s)
+    --- PASS: TestEncode_LightSetBrightness/255_rejected (0.00s)
+    --- PASS: TestEncode_LightSetBrightness/negative_rejected (0.00s)
+=== RUN   TestEncode_LightSetColorTemp
+=== RUN   TestEncode_LightSetColorTemp/valid_370
+=== RUN   TestEncode_LightSetColorTemp/min_153
+=== RUN   TestEncode_LightSetColorTemp/max_500
+=== RUN   TestEncode_LightSetColorTemp/152_rejected
+=== RUN   TestEncode_LightSetColorTemp/501_rejected
+=== RUN   TestEncode_LightSetColorTemp/with_brightness_128
+=== RUN   TestEncode_LightSetColorTemp/brightness_255_rejected
+--- PASS: TestEncode_LightSetColorTemp (0.00s)
+    --- PASS: TestEncode_LightSetColorTemp/valid_370 (0.00s)
+    --- PASS: TestEncode_LightSetColorTemp/min_153 (0.00s)
+    --- PASS: TestEncode_LightSetColorTemp/max_500 (0.00s)
+    --- PASS: TestEncode_LightSetColorTemp/152_rejected (0.00s)
+    --- PASS: TestEncode_LightSetColorTemp/501_rejected (0.00s)
+    --- PASS: TestEncode_LightSetColorTemp/with_brightness_128 (0.00s)
+    --- PASS: TestEncode_LightSetColorTemp/brightness_255_rejected (0.00s)
+=== RUN   TestEncode_LightSetRGB
+=== RUN   TestEncode_LightSetRGB/valid
+=== RUN   TestEncode_LightSetRGB/all_zero
+=== RUN   TestEncode_LightSetRGB/R=256_rejected
+=== RUN   TestEncode_LightSetRGB/B_negative_rejected
+=== RUN   TestEncode_LightSetRGB/with_brightness_100
+=== RUN   TestEncode_LightSetRGB/brightness_255_rejected
+--- PASS: TestEncode_LightSetRGB (0.00s)
+    --- PASS: TestEncode_LightSetRGB/valid (0.00s)
+    --- PASS: TestEncode_LightSetRGB/all_zero (0.00s)
+    --- PASS: TestEncode_LightSetRGB/R=256_rejected (0.00s)
+    --- PASS: TestEncode_LightSetRGB/B_negative_rejected (0.00s)
+    --- PASS: TestEncode_LightSetRGB/with_brightness_100 (0.00s)
+    --- PASS: TestEncode_LightSetRGB/brightness_255_rejected (0.00s)
+=== RUN   TestEncode_LightSetHS
+=== RUN   TestEncode_LightSetHS/valid
+=== RUN   TestEncode_LightSetHS/hue_361_rejected
+=== RUN   TestEncode_LightSetHS/saturation_101_rejected
+=== RUN   TestEncode_LightSetHS/with_brightness_200
+=== RUN   TestEncode_LightSetHS/brightness_255_rejected
+--- PASS: TestEncode_LightSetHS (0.00s)
+    --- PASS: TestEncode_LightSetHS/valid (0.00s)
+    --- PASS: TestEncode_LightSetHS/hue_361_rejected (0.00s)
+    --- PASS: TestEncode_LightSetHS/saturation_101_rejected (0.00s)
+    --- PASS: TestEncode_LightSetHS/with_brightness_200 (0.00s)
+    --- PASS: TestEncode_LightSetHS/brightness_255_rejected (0.00s)
+=== RUN   TestEncode_LightSetEffect
+--- PASS: TestEncode_LightSetEffect (0.00s)
+=== RUN   TestEncode_FanSetSpeed
+=== RUN   TestEncode_FanSetSpeed/valid_50%
+=== RUN   TestEncode_FanSetSpeed/valid_0%
+=== RUN   TestEncode_FanSetSpeed/valid_100%
+=== RUN   TestEncode_FanSetSpeed/101%_rejected
+=== RUN   TestEncode_FanSetSpeed/negative_rejected
+--- PASS: TestEncode_FanSetSpeed (0.00s)
+    --- PASS: TestEncode_FanSetSpeed/valid_50% (0.00s)
+    --- PASS: TestEncode_FanSetSpeed/valid_0% (0.00s)
+    --- PASS: TestEncode_FanSetSpeed/valid_100% (0.00s)
+    --- PASS: TestEncode_FanSetSpeed/101%_rejected (0.00s)
+    --- PASS: TestEncode_FanSetSpeed/negative_rejected (0.00s)
+=== RUN   TestEncode_CoverSetPosition
+=== RUN   TestEncode_CoverSetPosition/valid_50
+=== RUN   TestEncode_CoverSetPosition/valid_0
+=== RUN   TestEncode_CoverSetPosition/valid_100
+=== RUN   TestEncode_CoverSetPosition/101_rejected
+=== RUN   TestEncode_CoverSetPosition/negative_rejected
+--- PASS: TestEncode_CoverSetPosition (0.00s)
+    --- PASS: TestEncode_CoverSetPosition/valid_50 (0.00s)
+    --- PASS: TestEncode_CoverSetPosition/valid_0 (0.00s)
+    --- PASS: TestEncode_CoverSetPosition/valid_100 (0.00s)
+    --- PASS: TestEncode_CoverSetPosition/101_rejected (0.00s)
+    --- PASS: TestEncode_CoverSetPosition/negative_rejected (0.00s)
+=== RUN   TestEncode_SelectOption
+=== RUN   TestEncode_SelectOption/valid_option
+=== RUN   TestEncode_SelectOption/empty_option_rejected
+--- PASS: TestEncode_SelectOption (0.00s)
+    --- PASS: TestEncode_SelectOption/valid_option (0.00s)
+    --- PASS: TestEncode_SelectOption/empty_option_rejected (0.00s)
+=== RUN   TestEncode_ClimateSetMode
+=== RUN   TestEncode_ClimateSetMode/cool
+=== RUN   TestEncode_ClimateSetMode/off
+=== RUN   TestEncode_ClimateSetMode/empty_rejected
+--- PASS: TestEncode_ClimateSetMode (0.00s)
+    --- PASS: TestEncode_ClimateSetMode/cool (0.00s)
+    --- PASS: TestEncode_ClimateSetMode/off (0.00s)
+    --- PASS: TestEncode_ClimateSetMode/empty_rejected (0.00s)
+=== RUN   TestEncode_SwitchCommands
+--- PASS: TestEncode_SwitchCommands (0.00s)
+=== RUN   TestEncode_UnknownCommand
+--- PASS: TestEncode_UnknownCommand (0.00s)
+=== RUN   TestRoundTrip_LightState
+--- PASS: TestRoundTrip_LightState (0.00s)
+FAIL
+FAIL	github.com/slidebolt/plugin-esphome/cmd/plugin-esphome	6.751s
+=== RUN   TestFetch_ReturnsDevicesWithIPs
+--- PASS: TestFetch_ReturnsDevicesWithIPs (0.00s)
+=== RUN   TestFetch_BadCredentials
+--- PASS: TestFetch_BadCredentials (0.00s)
+=== RUN   TestConfigValid
+--- PASS: TestConfigValid (0.00s)
+PASS
+ok  	github.com/slidebolt/plugin-esphome/internal/dashboard	0.004s
+?   	github.com/slidebolt/plugin-esphome/internal/mdns	[no test files]
+?   	github.com/slidebolt/plugin-esphome/internal/translate	[no test files]
+FAIL

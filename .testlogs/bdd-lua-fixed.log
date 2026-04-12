@@ -1,0 +1,8 @@
+=== RUN   TestLuaFade_ESPHomeLights
+--- PASS: TestLuaFade_ESPHomeLights (0.22s)
+=== RUN   TestLuaFade_StopHaltsCommands
+--- PASS: TestLuaFade_StopHaltsCommands (0.46s)
+=== RUN   TestLuaFade_NewDevicePickedUp
+--- PASS: TestLuaFade_NewDevicePickedUp (0.11s)
+PASS
+ok  	github.com/slidebolt/plugin-esphome/cmd/plugin-esphome	0.807s

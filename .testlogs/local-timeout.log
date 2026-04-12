@@ -1,0 +1,341 @@
+=== RUN   TestLuaFade_ESPHomeLights
+    test.helper.lua_fade_test.go:195: timeout: collected 0/8 readings
+--- FAIL: TestLuaFade_ESPHomeLights (1.01s)
+=== RUN   TestLuaFade_StopHaltsCommands
+    test.helper.lua_fade_test.go:256: only 0 commands arrived before stop
+--- FAIL: TestLuaFade_StopHaltsCommands (0.51s)
+=== RUN   TestLuaFade_NewDevicePickedUp
+    test.helper.lua_fade_test.go:314: first light never received a command
+--- FAIL: TestLuaFade_NewDevicePickedUp (0.51s)
+=== RUN   TestInternal_WriteReadDelete
+--- PASS: TestInternal_WriteReadDelete (0.00s)
+=== RUN   TestInternal_NotVisibleInQuery
+--- PASS: TestInternal_NotVisibleInQuery (0.00s)
+=== RUN   TestInternal_NotVisibleInSearch
+--- PASS: TestInternal_NotVisibleInSearch (0.00s)
+=== RUN   TestCrossCutting_MultiPluginIsolation
+--- PASS: TestCrossCutting_MultiPluginIsolation (0.00s)
+=== RUN   TestCrossCutting_QueryAllPoweredOn
+--- PASS: TestCrossCutting_QueryAllPoweredOn (0.00s)
+=== RUN   TestCustom_Sprinkler_SaveGetHydrate
+--- PASS: TestCustom_Sprinkler_SaveGetHydrate (0.00s)
+=== RUN   TestCustom_Sprinkler_QueryByType
+--- PASS: TestCustom_Sprinkler_QueryByType (0.00s)
+=== RUN   TestCustom_Sprinkler_QueryByMoisture
+--- PASS: TestCustom_Sprinkler_QueryByMoisture (0.00s)
+=== RUN   TestCustom_Sprinkler_QueryByActive
+--- PASS: TestCustom_Sprinkler_QueryByActive (0.00s)
+=== RUN   TestCustom_Sprinkler_Activate
+--- PASS: TestCustom_Sprinkler_Activate (0.00s)
+=== RUN   TestCustom_Sprinkler_Deactivate
+--- PASS: TestCustom_Sprinkler_Deactivate (0.00s)
+=== RUN   TestMixed_QueryEachTypeInIsolation
+--- PASS: TestMixed_QueryEachTypeInIsolation (0.00s)
+=== RUN   TestMixed_CustomAndBuiltinBoolField
+--- PASS: TestMixed_CustomAndBuiltinBoolField (0.00s)
+=== RUN   TestMixed_NumericCrossType
+--- PASS: TestMixed_NumericCrossType (0.00s)
+=== RUN   TestMixed_PatternIsolatesPlugin
+--- PASS: TestMixed_PatternIsolatesPlugin (0.00s)
+=== RUN   TestMixed_DeleteCustomDoesNotAffectBuiltin
+--- PASS: TestMixed_DeleteCustomDoesNotAffectBuiltin (0.00s)
+=== RUN   TestMixed_OverwriteCustomReflectsInQuery
+--- PASS: TestMixed_OverwriteCustomReflectsInQuery (0.00s)
+=== RUN   TestMixed_FullLifecycle_SaveQueryCommandHydrate
+--- PASS: TestMixed_FullLifecycle_SaveQueryCommandHydrate (0.00s)
+=== RUN   TestDeviceDiscovery_Physical_Integration
+    test.integration.device_discovery_test.go:38: discovering devices via mDNS...
+    test.integration.device_discovery_test.go:50: found 9 device(s) via mDNS:
+    test.integration.device_discovery_test.go:52:   alex_room_switch  hasAPIKey=true
+    test.integration.device_discovery_test.go:52:   switch_basement_office  hasAPIKey=true
+    test.integration.device_discovery_test.go:52:   switch_basement_edison  hasAPIKey=true
+    test.integration.device_discovery_test.go:52:   basement-26-office-01  hasAPIKey=true
+    test.integration.device_discovery_test.go:52:   basement-06-movieroom-back-01  hasAPIKey=true
+    test.integration.device_discovery_test.go:52:   basement-17-tv-center-right  hasAPIKey=true
+    test.integration.device_discovery_test.go:52:   basement-28-office-03  hasAPIKey=true
+    test.integration.device_discovery_test.go:52:   basement-27-office-02  hasAPIKey=true
+    test.integration.device_discovery_test.go:52:   basement-10-edison-03  hasAPIKey=true
+    test.integration.device_discovery_test.go:69:   alex_room_switch — key seeded
+    test.integration.device_discovery_test.go:69:   switch_basement_office — key seeded
+    test.integration.device_discovery_test.go:69:   switch_basement_edison — key seeded
+    test.integration.device_discovery_test.go:69:   basement-26-office-01 — key seeded
+    test.integration.device_discovery_test.go:69:   basement-06-movieroom-back-01 — key seeded
+    test.integration.device_discovery_test.go:69:   basement-17-tv-center-right — key seeded
+    test.integration.device_discovery_test.go:69:   basement-28-office-03 — key seeded
+    test.integration.device_discovery_test.go:69:   basement-27-office-02 — key seeded
+    test.integration.device_discovery_test.go:69:   basement-10-edison-03 — key seeded
+    test.integration.device_discovery_test.go:72: seeded keys for 9/9 device(s)
+2026/03/30 10:09:55 plugin-esphome: started, listening for devices via mDNS
+2026/03/30 10:09:55 plugin-esphome: discovered alex_room_switch - connecting
+2026/03/30 10:09:55 plugin-esphome: discovered switch_basement_office - connecting
+2026/03/30 10:09:55 plugin-esphome: discovered switch_basement_edison - connecting
+2026/03/30 10:09:55 plugin-esphome: discovered basement-26-office-01 - connecting
+2026/03/30 10:09:55 plugin-esphome: discovered basement-06-movieroom-back-01 - connecting
+2026/03/30 10:09:55 plugin-esphome: discovered basement-17-tv-center-right - connecting
+2026/03/30 10:09:55 plugin-esphome: discovered basement-28-office-03 - connecting
+2026/03/30 10:09:55 plugin-esphome: discovered basement-27-office-02 - connecting
+2026/03/30 10:09:55 plugin-esphome: discovered basement-10-edison-03 - connecting
+    test.integration.device_discovery_test.go:95: waiting for entities to be registered...
+2026/03/30 10:09:55 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:09:55 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:09:55 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:09:55 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:09:55 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:09:55 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:09:56 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:09:57 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:09:57 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:09:57 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:09:57 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:09:57 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:09:57 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:09:57 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:09:57 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:09:58 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:09:58 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:09:59 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:09:59 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:09:59 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:10:00 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:10:00 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:10:00 plugin-esphome: initial probe found 7 device(s)
+2026/03/30 10:10:00 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:10:00 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:10:00 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:10:00 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:10:01 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:10:01 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:10:01 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:10:01 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:10:01 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:10:01 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:10:02 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:10:02 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:10:03 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:10:09 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:10:10 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+    test.integration.device_discovery_test.go:114: timeout: 0/9 devices registered
+    test.integration.device_discovery_test.go:124: ✗ alex_room_switch: no entities registered
+    test.integration.device_discovery_test.go:124: ✗ switch_basement_office: no entities registered
+    test.integration.device_discovery_test.go:124: ✗ switch_basement_edison: no entities registered
+    test.integration.device_discovery_test.go:124: ✗ basement-26-office-01: no entities registered
+    test.integration.device_discovery_test.go:124: ✗ basement-06-movieroom-back-01: no entities registered
+    test.integration.device_discovery_test.go:124: ✗ basement-17-tv-center-right: no entities registered
+    test.integration.device_discovery_test.go:124: ✗ basement-28-office-03: no entities registered
+    test.integration.device_discovery_test.go:124: ✗ basement-27-office-02: no entities registered
+    test.integration.device_discovery_test.go:124: ✗ basement-10-edison-03: no entities registered
+--- FAIL: TestDeviceDiscovery_Physical_Integration (20.01s)
+=== RUN   TestConnectionStability
+2026/03/30 10:10:10 plugin-esphome: persist private config for alex_room_switch: storage: storage.save: nats: connection draining
+    test.local.connection_stability_test.go:63: target: switch_basement_office  addr=192.168.88.99  port=6053
+    test.local.connection_stability_test.go:86: connected at t=0
+    test.local.connection_stability_test.go:101: device: name="switch_basement_office" mac=E8:DB:84:C9:C3:CA version=2025.11.5
+    test.local.connection_stability_test.go:110: subscribed — holding connection for 90s, pinging every 25s
+    test.local.connection_stability_test.go:134: +11s  still connected  pings=0
+    test.local.connection_stability_test.go:134: +21s  still connected  pings=0
+    test.local.connection_stability_test.go:132: +26s  ping #1 OK
+    test.local.connection_stability_test.go:134: +31s  still connected  pings=1
+    test.local.connection_stability_test.go:134: +41s  still connected  pings=1
+    test.local.connection_stability_test.go:132: +51s  ping #2 OK
+    test.local.connection_stability_test.go:134: +51s  still connected  pings=2
+    test.local.connection_stability_test.go:134: +1m1s  still connected  pings=2
+    test.local.connection_stability_test.go:134: +1m11s  still connected  pings=2
+    test.local.connection_stability_test.go:132: +1m16s  ping #3 OK
+    test.local.connection_stability_test.go:134: +1m21s  still connected  pings=3
+    test.local.connection_stability_test.go:134: +1m31s  still connected  pings=3
+    test.local.connection_stability_test.go:136: PASS: connection held for 1m31s  pings=3  no disconnects
+--- PASS: TestConnectionStability (97.31s)
+=== RUN   TestConnectionTrace
+panic: test timed out after 2m0s
+	running tests:
+		TestConnectionTrace (1s)
+
+goroutine 1122 [running]:
+testing.(*M).startAlarm.func1()
+	/snap/go/11103/src/testing/testing.go:2802 +0x34b
+created by time.goFunc
+	/snap/go/11103/src/time/sleep.go:215 +0x2d
+
+goroutine 1 [chan receive, 1 minutes]:
+testing.(*T).Run(0x20b10ff48248, {0x14d00a8?, 0x20b10ff2bb30?}, 0x1529810)
+	/snap/go/11103/src/testing/testing.go:2109 +0x4e5
+testing.runTests.func1(0x20b10ff48248)
+	/snap/go/11103/src/testing/testing.go:2585 +0x37
+testing.tRunner(0x20b10ff48248, 0x20b10ff2bc58)
+	/snap/go/11103/src/testing/testing.go:2036 +0xea
+testing.runTests({0x14eab6f, 0x23}, {0x1508906, 0x36}, 0x20b10fef5cc8, {0x21405c0, 0x3c, 0x3c}, {0xc26ac28d0a8b73b4, 0x1bf0de79a7, ...})
+	/snap/go/11103/src/testing/testing.go:2583 +0x505
+testing.(*M).Run(0x20b10ff17a40)
+	/snap/go/11103/src/testing/testing.go:2443 +0x6ac
+main.main()
+	_testmain.go:164 +0x9b
+
+goroutine 8 [select, 1 minutes]:
+github.com/blevesearch/bleve_index_api.AnalysisWorker(...)
+	/home/gavin/go/pkg/mod/github.com/blevesearch/bleve_index_api@v1.2.11/analysis.go:46
+created by github.com/blevesearch/bleve_index_api.NewAnalysisQueue in goroutine 1
+	/home/gavin/go/pkg/mod/github.com/blevesearch/bleve_index_api@v1.2.11/analysis.go:38 +0xa5
+
+goroutine 9 [select, 1 minutes]:
+github.com/blevesearch/bleve_index_api.AnalysisWorker(...)
+	/home/gavin/go/pkg/mod/github.com/blevesearch/bleve_index_api@v1.2.11/analysis.go:46
+created by github.com/blevesearch/bleve_index_api.NewAnalysisQueue in goroutine 1
+	/home/gavin/go/pkg/mod/github.com/blevesearch/bleve_index_api@v1.2.11/analysis.go:38 +0xa5
+
+goroutine 10 [select, 1 minutes]:
+github.com/blevesearch/bleve_index_api.AnalysisWorker(...)
+	/home/gavin/go/pkg/mod/github.com/blevesearch/bleve_index_api@v1.2.11/analysis.go:46
+created by github.com/blevesearch/bleve_index_api.NewAnalysisQueue in goroutine 1
+	/home/gavin/go/pkg/mod/github.com/blevesearch/bleve_index_api@v1.2.11/analysis.go:38 +0xa5
+
+goroutine 11 [select, 1 minutes]:
+github.com/blevesearch/bleve_index_api.AnalysisWorker(...)
+	/home/gavin/go/pkg/mod/github.com/blevesearch/bleve_index_api@v1.2.11/analysis.go:46
+created by github.com/blevesearch/bleve_index_api.NewAnalysisQueue in goroutine 1
+	/home/gavin/go/pkg/mod/github.com/blevesearch/bleve_index_api@v1.2.11/analysis.go:38 +0xa5
+
+goroutine 1038 [select]:
+github.com/slidebolt/plugin-esphome/internal/mdns.(*Discovery).Discover(0x20b10fdb2200, {0x1546858, 0x20b1104e4960})
+	/home/gavin/work/sb/clean/plugin-esphome/internal/mdns/discovery.go:183 +0x3e5
+github.com/slidebolt/plugin-esphome/cmd/plugin-esphome.TestConnectionTrace(0x20b10fe52488)
+	/home/gavin/work/sb/clean/plugin-esphome/cmd/plugin-esphome/test.local.connection_trace_test.go:41 +0x159
+testing.tRunner(0x20b10fe52488, 0x1529810)
+	/snap/go/11103/src/testing/testing.go:2036 +0xea
+created by testing.(*T).Run in goroutine 1
+	/snap/go/11103/src/testing/testing.go:2101 +0x4c5
+
+goroutine 18 [syscall, 1 minutes]:
+os/signal.signal_recv()
+	/snap/go/11103/src/runtime/sigqueue.go:152 +0x98
+os/signal.loop()
+	/snap/go/11103/src/os/signal/signal_unix.go:23 +0x13
+created by os/signal.Notify.func1.1 in goroutine 12
+	/snap/go/11103/src/os/signal/signal.go:152 +0x1f
+
+goroutine 1098 [IO wait]:
+internal/poll.runtime_pollWait(0x7855c830fc00, 0x72)
+	/snap/go/11103/src/runtime/netpoll.go:351 +0x85
+internal/poll.(*pollDesc).wait(0x20b10fdb3b00?, 0x7855c834b948?, 0x0)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:84 +0x27
+internal/poll.(*pollDesc).waitRead(...)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:89
+internal/poll.(*FD).RawRead(0x20b10fdb3b00, 0x20b1104e4500)
+	/snap/go/11103/src/internal/poll/fd_unix.go:710 +0x125
+net.(*rawConn).Read(0x20b1102240c8, 0x0?)
+	/snap/go/11103/src/net/rawconn.go:44 +0x36
+golang.org/x/net/internal/socket.(*Conn).recvMsg(0x20b10fed4900, 0x20b1101b6120, 0x0)
+	/home/gavin/go/pkg/mod/golang.org/x/net@v0.50.0/internal/socket/rawconn_msg.go:27 +0x125
+golang.org/x/net/internal/socket.(*Conn).RecvMsg(...)
+	/home/gavin/go/pkg/mod/golang.org/x/net@v0.50.0/internal/socket/socket.go:248
+golang.org/x/net/ipv6.(*payloadHandler).ReadFrom(0x20b1104e5140, {0x20b11016c000, 0x10000, 0x10000})
+	/home/gavin/go/pkg/mod/golang.org/x/net@v0.50.0/ipv6/payload_cmsg.go:31 +0x254
+github.com/grandcat/zeroconf.(*client).recv.func1({0x20b11016c000?, 0x20b11053bf18?, 0x28?})
+	/home/gavin/go/pkg/mod/github.com/grandcat/zeroconf@v1.0.0/client.go:324 +0x2e
+github.com/grandcat/zeroconf.(*client).recv(0x1?, {0x1546858, 0x20b1104e5180}, {0x148d980?, 0x20b1104e5130?}, 0x20b10fd73810)
+	/home/gavin/go/pkg/mod/github.com/grandcat/zeroconf@v1.0.0/client.go:348 +0x14e
+created by github.com/grandcat/zeroconf.(*client).mainloop in goroutine 1040
+	/home/gavin/go/pkg/mod/github.com/grandcat/zeroconf@v1.0.0/client.go:189 +0x1da
+
+goroutine 911 [IO wait, 1 minutes]:
+internal/poll.runtime_pollWait(0x7855c82a4c00, 0x72)
+	/snap/go/11103/src/runtime/netpoll.go:351 +0x85
+internal/poll.(*pollDesc).wait(0x20b1100e8700?, 0x20b110477000?, 0x0)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:84 +0x27
+internal/poll.(*pollDesc).waitRead(...)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:89
+internal/poll.(*FD).Read(0x20b1100e8700, {0x20b110477000, 0x1000, 0x1000})
+	/snap/go/11103/src/internal/poll/fd_unix.go:165 +0x2ae
+net.(*netFD).Read(0x20b1100e8700, {0x20b110477000?, 0x44ae45?, 0x1?})
+	/snap/go/11103/src/net/fd_posix.go:68 +0x25
+net.(*conn).Read(0x20b110224328, {0x20b110477000?, 0x82?, 0x20b1104ef520?})
+	/snap/go/11103/src/net/net.go:196 +0x45
+bufio.(*Reader).Read(0x20b1105006c0, {0x20b110503ef8, 0x3, 0x492729?})
+	/snap/go/11103/src/bufio/bufio.go:245 +0x197
+io.ReadAtLeast({0x153adc0, 0x20b1105006c0}, {0x20b110503ef8, 0x3, 0x3}, 0x3)
+	/snap/go/11103/src/io/io.go:335 +0x8e
+io.ReadFull(...)
+	/snap/go/11103/src/io/io.go:354
+github.com/mycontroller-org/esphome_api/pkg/connection.(*EncryptedConnection).Read(0x20b1100e8780, 0x20b1105006c0)
+	/home/gavin/go/pkg/mod/github.com/mycontroller-org/esphome_api@v1.3.0/pkg/connection/conn_encryption.go:205 +0xe5
+github.com/mycontroller-org/esphome_api/pkg/connection.(*EncryptedConnection).waitForResponse(0x20b1100e8780)
+	/home/gavin/go/pkg/mod/github.com/mycontroller-org/esphome_api@v1.3.0/pkg/connection/conn_encryption.go:135 +0x171
+github.com/mycontroller-org/esphome_api/pkg/connection.(*EncryptedConnection).Handshake(0x20b1100e8780)
+	/home/gavin/go/pkg/mod/github.com/mycontroller-org/esphome_api@v1.3.0/pkg/connection/conn_encryption.go:107 +0x347
+github.com/mycontroller-org/esphome_api/pkg/client.GetClient({0x14c9bcd, 0xe}, {0x20b1101987b0?, 0x20b1104efb08?}, {0x20b10fe25260, 0x2c}, 0x2540be400, 0x20b110304450)
+	/home/gavin/go/pkg/mod/github.com/mycontroller-org/esphome_api@v1.3.0/pkg/client/client.go:60 +0x336
+github.com/slidebolt/plugin-esphome/cmd/plugin-esphome.TestDeviceDiscovery_Physical_Integration.New.func3({0x20b1101987b0?, 0x0?}, {0x20b10fe25260?, 0x2?}, 0x2?)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:139 +0x45
+github.com/slidebolt/plugin-esphome/app.(*App).connectAndRegister(0x20b110088000, {0x1546858, 0x20b10feb1d10}, 0x20b1101eae40, 0x20b10fe6b620)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:469 +0x218
+github.com/slidebolt/plugin-esphome/app.(*App).runDeviceLoop(0x20b110088000, {0x1546858, 0x20b10feb1d10}, 0x20b1101eae40)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:407 +0xc5
+created by github.com/slidebolt/plugin-esphome/app.(*App).onDeviceFound in goroutine 780
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:251 +0x587
+
+goroutine 1097 [IO wait]:
+internal/poll.runtime_pollWait(0x785612a68200, 0x72)
+	/snap/go/11103/src/runtime/netpoll.go:351 +0x85
+internal/poll.(*pollDesc).wait(0x20b10fdb3a80?, 0x7855c841b948?, 0x0)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:84 +0x27
+internal/poll.(*pollDesc).waitRead(...)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:89
+internal/poll.(*FD).RawRead(0x20b10fdb3a80, 0x20b10fe943c0)
+	/snap/go/11103/src/internal/poll/fd_unix.go:710 +0x125
+net.(*rawConn).Read(0x20b1102240b8, 0x0?)
+	/snap/go/11103/src/net/rawconn.go:44 +0x36
+golang.org/x/net/internal/socket.(*Conn).recvMsg(0x20b10fed48e0, 0x20b110284720, 0x0)
+	/home/gavin/go/pkg/mod/golang.org/x/net@v0.50.0/internal/socket/rawconn_msg.go:27 +0x125
+golang.org/x/net/internal/socket.(*Conn).RecvMsg(...)
+	/home/gavin/go/pkg/mod/golang.org/x/net@v0.50.0/internal/socket/socket.go:248
+golang.org/x/net/ipv4.(*payloadHandler).ReadFrom(0x20b1104e50f0, {0x20b10fe5a000, 0x10000, 0x10000})
+	/home/gavin/go/pkg/mod/golang.org/x/net@v0.50.0/ipv4/payload_cmsg.go:31 +0x205
+github.com/grandcat/zeroconf.(*client).recv.func2({0x20b10fe5a000?, 0x20b10fd20f18?, 0x37?})
+	/home/gavin/go/pkg/mod/github.com/grandcat/zeroconf@v1.0.0/client.go:329 +0x2e
+github.com/grandcat/zeroconf.(*client).recv(0x1552a10?, {0x1546858, 0x20b1104e5180}, {0x14899e0?, 0x20b1104e50e0?}, 0x20b10fd73810)
+	/home/gavin/go/pkg/mod/github.com/grandcat/zeroconf@v1.0.0/client.go:348 +0x14e
+created by github.com/grandcat/zeroconf.(*client).mainloop in goroutine 1040
+	/home/gavin/go/pkg/mod/github.com/grandcat/zeroconf@v1.0.0/client.go:186 +0x113
+
+goroutine 946 [IO wait, 1 minutes]:
+internal/poll.runtime_pollWait(0x7855c82a4e00, 0x72)
+	/snap/go/11103/src/runtime/netpoll.go:351 +0x85
+internal/poll.(*pollDesc).wait(0x20b1100e8800?, 0x20b10fea8000?, 0x0)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:84 +0x27
+internal/poll.(*pollDesc).waitRead(...)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:89
+internal/poll.(*FD).Read(0x20b1100e8800, {0x20b10fea8000, 0x1000, 0x1000})
+	/snap/go/11103/src/internal/poll/fd_unix.go:165 +0x2ae
+net.(*netFD).Read(0x20b1100e8800, {0x20b10fea8000?, 0x20b110403508?, 0x44f107?})
+	/snap/go/11103/src/net/fd_posix.go:68 +0x25
+net.(*conn).Read(0x20b1102c6420, {0x20b10fea8000?, 0x0?, 0x20b110403520?})
+	/snap/go/11103/src/net/net.go:196 +0x45
+bufio.(*Reader).Read(0x20b1102846c0, {0x20b1103507c8, 0x3, 0x492729?})
+	/snap/go/11103/src/bufio/bufio.go:245 +0x197
+io.ReadAtLeast({0x153adc0, 0x20b1102846c0}, {0x20b1103507c8, 0x3, 0x3}, 0x3)
+	/snap/go/11103/src/io/io.go:335 +0x8e
+io.ReadFull(...)
+	/snap/go/11103/src/io/io.go:354
+github.com/mycontroller-org/esphome_api/pkg/connection.(*EncryptedConnection).Read(0x20b10ff44e80, 0x20b1102846c0)
+	/home/gavin/go/pkg/mod/github.com/mycontroller-org/esphome_api@v1.3.0/pkg/connection/conn_encryption.go:205 +0xe5
+github.com/mycontroller-org/esphome_api/pkg/connection.(*EncryptedConnection).waitForResponse(0x20b10ff44e80)
+	/home/gavin/go/pkg/mod/github.com/mycontroller-org/esphome_api@v1.3.0/pkg/connection/conn_encryption.go:135 +0x171
+github.com/mycontroller-org/esphome_api/pkg/connection.(*EncryptedConnection).Handshake(0x20b10ff44e80)
+	/home/gavin/go/pkg/mod/github.com/mycontroller-org/esphome_api@v1.3.0/pkg/connection/conn_encryption.go:107 +0x347
+github.com/mycontroller-org/esphome_api/pkg/client.GetClient({0x14c9bcd, 0xe}, {0x20b1101987e0?, 0x20b110403b08?}, {0x20b10fe253b0, 0x2c}, 0x2540be400, 0x20b110304780)
+	/home/gavin/go/pkg/mod/github.com/mycontroller-org/esphome_api@v1.3.0/pkg/client/client.go:60 +0x336
+github.com/slidebolt/plugin-esphome/cmd/plugin-esphome.TestDeviceDiscovery_Physical_Integration.New.func3({0x20b1101987e0?, 0x0?}, {0x20b10fe253b0?, 0x2?}, 0x2?)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:139 +0x45
+github.com/slidebolt/plugin-esphome/app.(*App).connectAndRegister(0x20b110088000, {0x1546858, 0x20b10feb1d10}, 0x20b1100a4f60, 0x20b10fe6ba40)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:469 +0x218
+github.com/slidebolt/plugin-esphome/app.(*App).runDeviceLoop(0x20b110088000, {0x1546858, 0x20b10feb1d10}, 0x20b1100a4f60)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:407 +0xc5
+created by github.com/slidebolt/plugin-esphome/app.(*App).onDeviceFound in goroutine 780
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:251 +0x587
+
+goroutine 1040 [select]:
+github.com/grandcat/zeroconf.(*client).mainloop(0x20b10fe857d0, {0x1546858, 0x20b1104e5180}, 0x20b10fdb3b80)
+	/home/gavin/go/pkg/mod/github.com/grandcat/zeroconf@v1.0.0/client.go:196 +0x2c9
+created by github.com/grandcat/zeroconf.(*Resolver).Browse in goroutine 1039
+	/home/gavin/go/pkg/mod/github.com/grandcat/zeroconf@v1.0.0/client.go:92 +0x267
+FAIL	github.com/slidebolt/plugin-esphome/cmd/plugin-esphome	120.012s
+FAIL

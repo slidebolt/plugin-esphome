@@ -1,0 +1,253 @@
+=== RUN   TestLookupESPKey
+--- PASS: TestLookupESPKey (0.00s)
+=== RUN   TestEntityFromMsgLightIncludesPersistentColorCapabilities
+--- PASS: TestEntityFromMsgLightIncludesPersistentColorCapabilities (0.00s)
+=== RUN   TestEntityFromMsgLightColorTempOnlyOmitsRGBCommand
+--- PASS: TestEntityFromMsgLightColorTempOnlyOmitsRGBCommand (0.00s)
+=== RUN   TestLightStateFromResponseColorTempDoesNotBackfillRGB
+--- PASS: TestLightStateFromResponseColorTempDoesNotBackfillRGB (0.00s)
+=== RUN   TestApplyStateUpdatePersistsFullLightState
+--- PASS: TestApplyStateUpdatePersistsFullLightState (0.00s)
+=== RUN   TestLookupEntityByESPKeyFromStorage
+--- PASS: TestLookupEntityByESPKeyFromStorage (0.00s)
+=== RUN   TestResolveAPIKeyPersistsFallbackToPrivate
+--- PASS: TestResolveAPIKeyPersistsFallbackToPrivate (0.00s)
+=== RUN   TestResolveAPIKeyUsesStoredPrivateConfigWithoutMDNSEncryptionFlag
+--- PASS: TestResolveAPIKeyUsesStoredPrivateConfigWithoutMDNSEncryptionFlag (0.00s)
+=== RUN   TestRememberDevicePersistsLastKnownEndpoint
+--- PASS: TestRememberDevicePersistsLastKnownEndpoint (0.00s)
+=== RUN   TestVerifyConnectedDeviceRejectsMACMismatch
+--- PASS: TestVerifyConnectedDeviceRejectsMACMismatch (0.00s)
+=== RUN   TestOnDeviceFoundStartsOneManagedLoopPerDevice
+2026/03/30 10:03:46 plugin-esphome: discovered basement-edison - connecting
+--- PASS: TestOnDeviceFoundStartsOneManagedLoopPerDevice (0.00s)
+=== RUN   TestHandleCommandSendFailureDropsActiveConnectionAndRequestsReconnect
+2026/03/30 10:03:46 plugin-esphome: send command domain.LightSetBrightness to plugin-esphome.basement-edison.basement-edison_42 (10.0.0.10:6053): broken pipe
+--- PASS: TestHandleCommandSendFailureDropsActiveConnectionAndRequestsReconnect (0.00s)
+=== RUN   TestHelloManifest
+--- PASS: TestHelloManifest (0.00s)
+PASS
+ok  	github.com/slidebolt/plugin-esphome/app	0.004s
+?   	github.com/slidebolt/plugin-esphome/cmd/edison-test	[no test files]
+=== RUN   TestInternal_WriteReadDelete
+--- PASS: TestInternal_WriteReadDelete (0.00s)
+=== RUN   TestInternal_NotVisibleInQuery
+--- PASS: TestInternal_NotVisibleInQuery (0.00s)
+=== RUN   TestInternal_NotVisibleInSearch
+--- PASS: TestInternal_NotVisibleInSearch (0.00s)
+=== RUN   TestCrossCutting_MultiPluginIsolation
+--- PASS: TestCrossCutting_MultiPluginIsolation (0.00s)
+=== RUN   TestCrossCutting_QueryAllPoweredOn
+--- PASS: TestCrossCutting_QueryAllPoweredOn (0.00s)
+=== RUN   TestCustom_Sprinkler_SaveGetHydrate
+--- PASS: TestCustom_Sprinkler_SaveGetHydrate (0.00s)
+=== RUN   TestCustom_Sprinkler_QueryByType
+--- PASS: TestCustom_Sprinkler_QueryByType (0.00s)
+=== RUN   TestCustom_Sprinkler_QueryByMoisture
+--- PASS: TestCustom_Sprinkler_QueryByMoisture (0.00s)
+=== RUN   TestCustom_Sprinkler_QueryByActive
+--- PASS: TestCustom_Sprinkler_QueryByActive (0.00s)
+=== RUN   TestCustom_Sprinkler_Activate
+--- PASS: TestCustom_Sprinkler_Activate (0.00s)
+=== RUN   TestCustom_Sprinkler_Deactivate
+--- PASS: TestCustom_Sprinkler_Deactivate (0.00s)
+=== RUN   TestMixed_QueryEachTypeInIsolation
+--- PASS: TestMixed_QueryEachTypeInIsolation (0.00s)
+=== RUN   TestMixed_CustomAndBuiltinBoolField
+--- PASS: TestMixed_CustomAndBuiltinBoolField (0.00s)
+=== RUN   TestMixed_NumericCrossType
+--- PASS: TestMixed_NumericCrossType (0.00s)
+=== RUN   TestMixed_PatternIsolatesPlugin
+--- PASS: TestMixed_PatternIsolatesPlugin (0.00s)
+=== RUN   TestMixed_DeleteCustomDoesNotAffectBuiltin
+--- PASS: TestMixed_DeleteCustomDoesNotAffectBuiltin (0.00s)
+=== RUN   TestMixed_OverwriteCustomReflectsInQuery
+--- PASS: TestMixed_OverwriteCustomReflectsInQuery (0.00s)
+=== RUN   TestMixed_FullLifecycle_SaveQueryCommandHydrate
+--- PASS: TestMixed_FullLifecycle_SaveQueryCommandHydrate (0.00s)
+=== RUN   TestDecode_Light
+=== RUN   TestDecode_Light/valid_on_with_brightness
+=== RUN   TestDecode_Light/valid_off
+=== RUN   TestDecode_Light/brightness_clamped_at_max
+=== RUN   TestDecode_Light/brightness_clamped_at_min
+=== RUN   TestDecode_Light/empty_payload
+=== RUN   TestDecode_Light/garbage_payload
+--- PASS: TestDecode_Light (0.00s)
+    --- PASS: TestDecode_Light/valid_on_with_brightness (0.00s)
+    --- PASS: TestDecode_Light/valid_off (0.00s)
+    --- PASS: TestDecode_Light/brightness_clamped_at_max (0.00s)
+    --- PASS: TestDecode_Light/brightness_clamped_at_min (0.00s)
+    --- PASS: TestDecode_Light/empty_payload (0.00s)
+    --- PASS: TestDecode_Light/garbage_payload (0.00s)
+=== RUN   TestDecode_Switch
+=== RUN   TestDecode_Switch/on
+=== RUN   TestDecode_Switch/off
+=== RUN   TestDecode_Switch/empty
+=== RUN   TestDecode_Switch/garbage
+--- PASS: TestDecode_Switch (0.00s)
+    --- PASS: TestDecode_Switch/on (0.00s)
+    --- PASS: TestDecode_Switch/off (0.00s)
+    --- PASS: TestDecode_Switch/empty (0.00s)
+    --- PASS: TestDecode_Switch/garbage (0.00s)
+=== RUN   TestDecode_Cover
+=== RUN   TestDecode_Cover/mid
+=== RUN   TestDecode_Cover/open
+=== RUN   TestDecode_Cover/closed
+=== RUN   TestDecode_Cover/over_max_clamped
+=== RUN   TestDecode_Cover/under_min_clamped
+=== RUN   TestDecode_Cover/empty
+--- PASS: TestDecode_Cover (0.00s)
+    --- PASS: TestDecode_Cover/mid (0.00s)
+    --- PASS: TestDecode_Cover/open (0.00s)
+    --- PASS: TestDecode_Cover/closed (0.00s)
+    --- PASS: TestDecode_Cover/over_max_clamped (0.00s)
+    --- PASS: TestDecode_Cover/under_min_clamped (0.00s)
+    --- PASS: TestDecode_Cover/empty (0.00s)
+=== RUN   TestDecode_Fan
+=== RUN   TestDecode_Fan/on_full
+=== RUN   TestDecode_Fan/on_half
+=== RUN   TestDecode_Fan/off
+=== RUN   TestDecode_Fan/over_max_clamped
+=== RUN   TestDecode_Fan/under_min_clamped
+=== RUN   TestDecode_Fan/empty
+--- PASS: TestDecode_Fan (0.00s)
+    --- PASS: TestDecode_Fan/on_full (0.00s)
+    --- PASS: TestDecode_Fan/on_half (0.00s)
+    --- PASS: TestDecode_Fan/off (0.00s)
+    --- PASS: TestDecode_Fan/over_max_clamped (0.00s)
+    --- PASS: TestDecode_Fan/under_min_clamped (0.00s)
+    --- PASS: TestDecode_Fan/empty (0.00s)
+=== RUN   TestDecode_Sensor
+=== RUN   TestDecode_Sensor/temp_with_unit
+=== RUN   TestDecode_Sensor/no_unit
+=== RUN   TestDecode_Sensor/empty
+=== RUN   TestDecode_Sensor/garbage
+--- PASS: TestDecode_Sensor (0.00s)
+    --- PASS: TestDecode_Sensor/temp_with_unit (0.00s)
+    --- PASS: TestDecode_Sensor/no_unit (0.00s)
+    --- PASS: TestDecode_Sensor/empty (0.00s)
+    --- PASS: TestDecode_Sensor/garbage (0.00s)
+=== RUN   TestDecode_Climate
+=== RUN   TestDecode_Climate/cool_mode
+=== RUN   TestDecode_Climate/off
+=== RUN   TestDecode_Climate/empty
+--- PASS: TestDecode_Climate (0.00s)
+    --- PASS: TestDecode_Climate/cool_mode (0.00s)
+    --- PASS: TestDecode_Climate/off (0.00s)
+    --- PASS: TestDecode_Climate/empty (0.00s)
+=== RUN   TestDecode_UnknownType
+--- PASS: TestDecode_UnknownType (0.00s)
+=== RUN   TestEncode_LightTurnOn
+--- PASS: TestEncode_LightTurnOn (0.00s)
+=== RUN   TestEncode_LightSetBrightness
+=== RUN   TestEncode_LightSetBrightness/valid_200
+=== RUN   TestEncode_LightSetBrightness/valid_0
+=== RUN   TestEncode_LightSetBrightness/max_254
+=== RUN   TestEncode_LightSetBrightness/255_rejected
+=== RUN   TestEncode_LightSetBrightness/negative_rejected
+--- PASS: TestEncode_LightSetBrightness (0.00s)
+    --- PASS: TestEncode_LightSetBrightness/valid_200 (0.00s)
+    --- PASS: TestEncode_LightSetBrightness/valid_0 (0.00s)
+    --- PASS: TestEncode_LightSetBrightness/max_254 (0.00s)
+    --- PASS: TestEncode_LightSetBrightness/255_rejected (0.00s)
+    --- PASS: TestEncode_LightSetBrightness/negative_rejected (0.00s)
+=== RUN   TestEncode_LightSetColorTemp
+=== RUN   TestEncode_LightSetColorTemp/valid_370
+=== RUN   TestEncode_LightSetColorTemp/min_153
+=== RUN   TestEncode_LightSetColorTemp/max_500
+=== RUN   TestEncode_LightSetColorTemp/152_rejected
+=== RUN   TestEncode_LightSetColorTemp/501_rejected
+=== RUN   TestEncode_LightSetColorTemp/with_brightness_128
+=== RUN   TestEncode_LightSetColorTemp/brightness_255_rejected
+--- PASS: TestEncode_LightSetColorTemp (0.00s)
+    --- PASS: TestEncode_LightSetColorTemp/valid_370 (0.00s)
+    --- PASS: TestEncode_LightSetColorTemp/min_153 (0.00s)
+    --- PASS: TestEncode_LightSetColorTemp/max_500 (0.00s)
+    --- PASS: TestEncode_LightSetColorTemp/152_rejected (0.00s)
+    --- PASS: TestEncode_LightSetColorTemp/501_rejected (0.00s)
+    --- PASS: TestEncode_LightSetColorTemp/with_brightness_128 (0.00s)
+    --- PASS: TestEncode_LightSetColorTemp/brightness_255_rejected (0.00s)
+=== RUN   TestEncode_LightSetRGB
+=== RUN   TestEncode_LightSetRGB/valid
+=== RUN   TestEncode_LightSetRGB/all_zero
+=== RUN   TestEncode_LightSetRGB/R=256_rejected
+=== RUN   TestEncode_LightSetRGB/B_negative_rejected
+=== RUN   TestEncode_LightSetRGB/with_brightness_100
+=== RUN   TestEncode_LightSetRGB/brightness_255_rejected
+--- PASS: TestEncode_LightSetRGB (0.00s)
+    --- PASS: TestEncode_LightSetRGB/valid (0.00s)
+    --- PASS: TestEncode_LightSetRGB/all_zero (0.00s)
+    --- PASS: TestEncode_LightSetRGB/R=256_rejected (0.00s)
+    --- PASS: TestEncode_LightSetRGB/B_negative_rejected (0.00s)
+    --- PASS: TestEncode_LightSetRGB/with_brightness_100 (0.00s)
+    --- PASS: TestEncode_LightSetRGB/brightness_255_rejected (0.00s)
+=== RUN   TestEncode_LightSetHS
+=== RUN   TestEncode_LightSetHS/valid
+=== RUN   TestEncode_LightSetHS/hue_361_rejected
+=== RUN   TestEncode_LightSetHS/saturation_101_rejected
+=== RUN   TestEncode_LightSetHS/with_brightness_200
+=== RUN   TestEncode_LightSetHS/brightness_255_rejected
+--- PASS: TestEncode_LightSetHS (0.00s)
+    --- PASS: TestEncode_LightSetHS/valid (0.00s)
+    --- PASS: TestEncode_LightSetHS/hue_361_rejected (0.00s)
+    --- PASS: TestEncode_LightSetHS/saturation_101_rejected (0.00s)
+    --- PASS: TestEncode_LightSetHS/with_brightness_200 (0.00s)
+    --- PASS: TestEncode_LightSetHS/brightness_255_rejected (0.00s)
+=== RUN   TestEncode_LightSetEffect
+--- PASS: TestEncode_LightSetEffect (0.00s)
+=== RUN   TestEncode_FanSetSpeed
+=== RUN   TestEncode_FanSetSpeed/valid_50%
+=== RUN   TestEncode_FanSetSpeed/valid_0%
+=== RUN   TestEncode_FanSetSpeed/valid_100%
+=== RUN   TestEncode_FanSetSpeed/101%_rejected
+=== RUN   TestEncode_FanSetSpeed/negative_rejected
+--- PASS: TestEncode_FanSetSpeed (0.00s)
+    --- PASS: TestEncode_FanSetSpeed/valid_50% (0.00s)
+    --- PASS: TestEncode_FanSetSpeed/valid_0% (0.00s)
+    --- PASS: TestEncode_FanSetSpeed/valid_100% (0.00s)
+    --- PASS: TestEncode_FanSetSpeed/101%_rejected (0.00s)
+    --- PASS: TestEncode_FanSetSpeed/negative_rejected (0.00s)
+=== RUN   TestEncode_CoverSetPosition
+=== RUN   TestEncode_CoverSetPosition/valid_50
+=== RUN   TestEncode_CoverSetPosition/valid_0
+=== RUN   TestEncode_CoverSetPosition/valid_100
+=== RUN   TestEncode_CoverSetPosition/101_rejected
+=== RUN   TestEncode_CoverSetPosition/negative_rejected
+--- PASS: TestEncode_CoverSetPosition (0.00s)
+    --- PASS: TestEncode_CoverSetPosition/valid_50 (0.00s)
+    --- PASS: TestEncode_CoverSetPosition/valid_0 (0.00s)
+    --- PASS: TestEncode_CoverSetPosition/valid_100 (0.00s)
+    --- PASS: TestEncode_CoverSetPosition/101_rejected (0.00s)
+    --- PASS: TestEncode_CoverSetPosition/negative_rejected (0.00s)
+=== RUN   TestEncode_SelectOption
+=== RUN   TestEncode_SelectOption/valid_option
+=== RUN   TestEncode_SelectOption/empty_option_rejected
+--- PASS: TestEncode_SelectOption (0.00s)
+    --- PASS: TestEncode_SelectOption/valid_option (0.00s)
+    --- PASS: TestEncode_SelectOption/empty_option_rejected (0.00s)
+=== RUN   TestEncode_ClimateSetMode
+=== RUN   TestEncode_ClimateSetMode/cool
+=== RUN   TestEncode_ClimateSetMode/off
+=== RUN   TestEncode_ClimateSetMode/empty_rejected
+--- PASS: TestEncode_ClimateSetMode (0.00s)
+    --- PASS: TestEncode_ClimateSetMode/cool (0.00s)
+    --- PASS: TestEncode_ClimateSetMode/off (0.00s)
+    --- PASS: TestEncode_ClimateSetMode/empty_rejected (0.00s)
+=== RUN   TestEncode_SwitchCommands
+--- PASS: TestEncode_SwitchCommands (0.00s)
+=== RUN   TestEncode_UnknownCommand
+--- PASS: TestEncode_UnknownCommand (0.00s)
+=== RUN   TestRoundTrip_LightState
+--- PASS: TestRoundTrip_LightState (0.00s)
+PASS
+ok  	github.com/slidebolt/plugin-esphome/cmd/plugin-esphome	0.062s
+=== RUN   TestFetch_ReturnsDevicesWithIPs
+--- PASS: TestFetch_ReturnsDevicesWithIPs (0.00s)
+=== RUN   TestFetch_BadCredentials
+--- PASS: TestFetch_BadCredentials (0.00s)
+=== RUN   TestConfigValid
+--- PASS: TestConfigValid (0.00s)
+PASS
+ok  	github.com/slidebolt/plugin-esphome/internal/dashboard	0.004s
+?   	github.com/slidebolt/plugin-esphome/internal/mdns	[no test files]
+?   	github.com/slidebolt/plugin-esphome/internal/translate	[no test files]

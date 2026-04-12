@@ -1,0 +1,8 @@
+=== RUN   TestLuaFade_QueryFindsSeededESPHomeLights
+--- PASS: TestLuaFade_QueryFindsSeededESPHomeLights (0.01s)
+=== RUN   TestLuaFade_StartWithQueryFieldLeavesResolvedTargetsEmpty
+--- PASS: TestLuaFade_StartWithQueryFieldLeavesResolvedTargetsEmpty (0.27s)
+=== RUN   TestLuaFade_StartWithQueryRefPublishesCommands
+--- PASS: TestLuaFade_StartWithQueryRefPublishesCommands (0.07s)
+PASS
+ok  	github.com/slidebolt/plugin-esphome/cmd/plugin-esphome	0.352s

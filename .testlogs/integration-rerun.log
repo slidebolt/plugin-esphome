@@ -1,0 +1,869 @@
+=== RUN   TestLookupESPKey
+--- PASS: TestLookupESPKey (0.00s)
+=== RUN   TestEntityFromMsgLightIncludesPersistentColorCapabilities
+--- PASS: TestEntityFromMsgLightIncludesPersistentColorCapabilities (0.00s)
+=== RUN   TestEntityFromMsgLightColorTempOnlyOmitsRGBCommand
+--- PASS: TestEntityFromMsgLightColorTempOnlyOmitsRGBCommand (0.00s)
+=== RUN   TestLightStateFromResponseColorTempDoesNotBackfillRGB
+--- PASS: TestLightStateFromResponseColorTempDoesNotBackfillRGB (0.00s)
+=== RUN   TestApplyStateUpdatePersistsFullLightState
+--- PASS: TestApplyStateUpdatePersistsFullLightState (0.00s)
+=== RUN   TestLookupEntityByESPKeyFromStorage
+--- PASS: TestLookupEntityByESPKeyFromStorage (0.00s)
+=== RUN   TestResolveAPIKeyPersistsFallbackToPrivate
+--- PASS: TestResolveAPIKeyPersistsFallbackToPrivate (0.00s)
+=== RUN   TestResolveAPIKeyUsesStoredPrivateConfigWithoutMDNSEncryptionFlag
+--- PASS: TestResolveAPIKeyUsesStoredPrivateConfigWithoutMDNSEncryptionFlag (0.00s)
+=== RUN   TestRememberDevicePersistsLastKnownEndpoint
+--- PASS: TestRememberDevicePersistsLastKnownEndpoint (0.00s)
+=== RUN   TestVerifyConnectedDeviceRejectsMACMismatch
+--- PASS: TestVerifyConnectedDeviceRejectsMACMismatch (0.00s)
+=== RUN   TestOnDeviceFoundStartsOneManagedLoopPerDevice
+2026/03/30 10:05:46 plugin-esphome: discovered basement-edison - connecting
+--- PASS: TestOnDeviceFoundStartsOneManagedLoopPerDevice (0.00s)
+=== RUN   TestHandleCommandSendFailureDropsActiveConnectionAndRequestsReconnect
+2026/03/30 10:05:46 plugin-esphome: send command domain.LightSetBrightness to plugin-esphome.basement-edison.basement-edison_42 (10.0.0.10:6053): broken pipe
+--- PASS: TestHandleCommandSendFailureDropsActiveConnectionAndRequestsReconnect (0.00s)
+=== RUN   TestHelloManifest
+--- PASS: TestHelloManifest (0.00s)
+PASS
+ok  	github.com/slidebolt/plugin-esphome/app	0.004s
+?   	github.com/slidebolt/plugin-esphome/cmd/edison-test	[no test files]
+=== RUN   TestLuaFade_ESPHomeLights
+    test.helper.lua_fade_test.go:192: timeout: collected 0/8 readings
+--- FAIL: TestLuaFade_ESPHomeLights (1.01s)
+=== RUN   TestLuaFade_StopHaltsCommands
+    test.helper.lua_fade_test.go:250: only 0 commands arrived before stop
+--- FAIL: TestLuaFade_StopHaltsCommands (0.51s)
+=== RUN   TestLuaFade_NewDevicePickedUp
+    test.helper.lua_fade_test.go:305: first light never received a command
+--- FAIL: TestLuaFade_NewDevicePickedUp (0.51s)
+=== RUN   TestInternal_WriteReadDelete
+--- PASS: TestInternal_WriteReadDelete (0.00s)
+=== RUN   TestInternal_NotVisibleInQuery
+--- PASS: TestInternal_NotVisibleInQuery (0.00s)
+=== RUN   TestInternal_NotVisibleInSearch
+--- PASS: TestInternal_NotVisibleInSearch (0.00s)
+=== RUN   TestCrossCutting_MultiPluginIsolation
+--- PASS: TestCrossCutting_MultiPluginIsolation (0.00s)
+=== RUN   TestCrossCutting_QueryAllPoweredOn
+--- PASS: TestCrossCutting_QueryAllPoweredOn (0.00s)
+=== RUN   TestCustom_Sprinkler_SaveGetHydrate
+--- PASS: TestCustom_Sprinkler_SaveGetHydrate (0.00s)
+=== RUN   TestCustom_Sprinkler_QueryByType
+--- PASS: TestCustom_Sprinkler_QueryByType (0.00s)
+=== RUN   TestCustom_Sprinkler_QueryByMoisture
+--- PASS: TestCustom_Sprinkler_QueryByMoisture (0.00s)
+=== RUN   TestCustom_Sprinkler_QueryByActive
+--- PASS: TestCustom_Sprinkler_QueryByActive (0.00s)
+=== RUN   TestCustom_Sprinkler_Activate
+--- PASS: TestCustom_Sprinkler_Activate (0.00s)
+=== RUN   TestCustom_Sprinkler_Deactivate
+--- PASS: TestCustom_Sprinkler_Deactivate (0.00s)
+=== RUN   TestMixed_QueryEachTypeInIsolation
+--- PASS: TestMixed_QueryEachTypeInIsolation (0.00s)
+=== RUN   TestMixed_CustomAndBuiltinBoolField
+--- PASS: TestMixed_CustomAndBuiltinBoolField (0.00s)
+=== RUN   TestMixed_NumericCrossType
+--- PASS: TestMixed_NumericCrossType (0.00s)
+=== RUN   TestMixed_PatternIsolatesPlugin
+--- PASS: TestMixed_PatternIsolatesPlugin (0.00s)
+=== RUN   TestMixed_DeleteCustomDoesNotAffectBuiltin
+--- PASS: TestMixed_DeleteCustomDoesNotAffectBuiltin (0.00s)
+=== RUN   TestMixed_OverwriteCustomReflectsInQuery
+--- PASS: TestMixed_OverwriteCustomReflectsInQuery (0.00s)
+=== RUN   TestMixed_FullLifecycle_SaveQueryCommandHydrate
+--- PASS: TestMixed_FullLifecycle_SaveQueryCommandHydrate (0.00s)
+=== RUN   TestDeviceDiscovery_Physical_Integration
+    test.integration.device_discovery_test.go:38: discovering devices via mDNS...
+    test.integration.device_discovery_test.go:50: found 9 device(s) via mDNS:
+    test.integration.device_discovery_test.go:52:   switch_basement_office  hasAPIKey=true
+    test.integration.device_discovery_test.go:52:   switch_basement_edison  hasAPIKey=true
+    test.integration.device_discovery_test.go:52:   alex_room_switch  hasAPIKey=true
+    test.integration.device_discovery_test.go:52:   basement-27-office-02  hasAPIKey=true
+    test.integration.device_discovery_test.go:52:   basement-10-edison-03  hasAPIKey=true
+    test.integration.device_discovery_test.go:52:   basement-28-office-03  hasAPIKey=true
+    test.integration.device_discovery_test.go:52:   basement-06-movieroom-back-01  hasAPIKey=true
+    test.integration.device_discovery_test.go:52:   basement-26-office-01  hasAPIKey=true
+    test.integration.device_discovery_test.go:52:   basement-17-tv-center-right  hasAPIKey=true
+    test.integration.device_discovery_test.go:69:   switch_basement_office — key seeded
+    test.integration.device_discovery_test.go:69:   switch_basement_edison — key seeded
+    test.integration.device_discovery_test.go:69:   alex_room_switch — key seeded
+    test.integration.device_discovery_test.go:69:   basement-27-office-02 — key seeded
+    test.integration.device_discovery_test.go:69:   basement-10-edison-03 — key seeded
+    test.integration.device_discovery_test.go:69:   basement-28-office-03 — key seeded
+    test.integration.device_discovery_test.go:69:   basement-06-movieroom-back-01 — key seeded
+    test.integration.device_discovery_test.go:69:   basement-26-office-01 — key seeded
+    test.integration.device_discovery_test.go:69:   basement-17-tv-center-right — key seeded
+    test.integration.device_discovery_test.go:72: seeded keys for 9/9 device(s)
+2026/03/30 10:05:54 plugin-esphome: started, listening for devices via mDNS
+2026/03/30 10:05:54 plugin-esphome: discovered switch_basement_office - connecting
+2026/03/30 10:05:54 plugin-esphome: discovered switch_basement_edison - connecting
+2026/03/30 10:05:54 plugin-esphome: discovered alex_room_switch - connecting
+2026/03/30 10:05:54 plugin-esphome: discovered basement-27-office-02 - connecting
+2026/03/30 10:05:54 plugin-esphome: discovered basement-10-edison-03 - connecting
+2026/03/30 10:05:54 plugin-esphome: discovered basement-28-office-03 - connecting
+2026/03/30 10:05:54 plugin-esphome: discovered basement-06-movieroom-back-01 - connecting
+2026/03/30 10:05:54 plugin-esphome: discovered basement-26-office-01 - connecting
+2026/03/30 10:05:54 plugin-esphome: discovered basement-17-tv-center-right - connecting
+    test.integration.device_discovery_test.go:95: waiting for entities to be registered...
+2026/03/30 10:05:55 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:05:55 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:05:55 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:05:55 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:05:55 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:05:55 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:05:55 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:05:55 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:05:56 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:05:56 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:05:56 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:05:56 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:05:56 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:05:57 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:05:57 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:05:57 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:05:59 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:05:59 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:05:59 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:05:59 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:05:59 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:05:59 plugin-esphome: initial probe found 9 device(s)
+2026/03/30 10:05:59 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:05:59 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:05:59 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:06:00 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:06:00 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:06:00 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:06:00 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:06:00 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:06:00 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:06:00 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:06:00 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:06:00 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:06:00 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:06:00 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:06:00 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:06:00 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:06:09 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:06:09 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:06:09 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+    test.integration.device_discovery_test.go:114: timeout: 0/9 devices registered
+    test.integration.device_discovery_test.go:124: ✗ switch_basement_office: no entities registered
+    test.integration.device_discovery_test.go:124: ✗ switch_basement_edison: no entities registered
+    test.integration.device_discovery_test.go:124: ✗ alex_room_switch: no entities registered
+    test.integration.device_discovery_test.go:124: ✗ basement-27-office-02: no entities registered
+    test.integration.device_discovery_test.go:124: ✗ basement-10-edison-03: no entities registered
+    test.integration.device_discovery_test.go:124: ✗ basement-28-office-03: no entities registered
+    test.integration.device_discovery_test.go:124: ✗ basement-06-movieroom-back-01: no entities registered
+    test.integration.device_discovery_test.go:124: ✗ basement-26-office-01: no entities registered
+    test.integration.device_discovery_test.go:124: ✗ basement-17-tv-center-right: no entities registered
+--- FAIL: TestDeviceDiscovery_Physical_Integration (20.01s)
+=== RUN   TestESPHomeDashboard_Integration
+    test.integration.discovery_test.go:66: Connecting to ESPHome dashboard: https://esp.357graphics.com/
+    test.integration.discovery_test.go:70: ESPHOME_USERNAME and ESPHOME_PASSWORD not configured in .env - skipping dashboard test
+--- SKIP: TestESPHomeDashboard_Integration (0.00s)
+=== RUN   TestESPHomeConfig_Integration
+    test.integration.discovery_test.go:249: ✓ API encryption key loaded (length: 44)
+    test.integration.discovery_test.go:255: ⚠️  ESPHome credentials not fully configured
+    test.integration.discovery_test.go:256:   Username: ""
+    test.integration.discovery_test.go:257:   Password configured: false
+    test.integration.discovery_test.go:269: ✓ ESPHome dashboard URL: https://esp.357graphics.com/
+--- PASS: TestESPHomeConfig_Integration (0.00s)
+=== RUN   TestMDNSDiscovery_Integration
+    test.integration.discovery_test.go:293: Starting mDNS discovery for ESPHome devices...
+    test.integration.discovery_test.go:301: Found 9 ESPHome device(s)
+=== RUN   TestMDNSDiscovery_Integration/Device_0_switch_basement_office
+    test.integration.discovery_test.go:311: Device: switch_basement_office
+    test.integration.discovery_test.go:311:   Host: switch_basement_office.local.
+    test.integration.discovery_test.go:311:   Addresses: [192.168.88.99]
+    test.integration.discovery_test.go:311:   Port: 6053
+    test.integration.discovery_test.go:311:   Resolved Address: 192.168.88.99
+    test.integration.discovery_test.go:311:   TXT Records: map[api_encryption:Noise_NNpsk0_25519_ChaChaPoly_SHA256 board:esp01_1m friendly_name:Basement Office Switch mac:e8db84c9c3ca network:wifi platform:ESP8266 version:2025.11.5]
+    test.integration.discovery_test.go:311:   ESPHome Version: 2025.11.5
+    test.integration.discovery_test.go:311:   MAC: e8db84c9c3ca
+    test.integration.discovery_test.go:311:   Board: esp01_1m
+    test.integration.discovery_test.go:311:   API Encryption: true
+=== RUN   TestMDNSDiscovery_Integration/Device_1_switch_basement_edison
+    test.integration.discovery_test.go:311: Device: switch_basement_edison
+    test.integration.discovery_test.go:311:   Host: switch_basement_edison.local.
+    test.integration.discovery_test.go:311:   Addresses: [192.168.88.84]
+    test.integration.discovery_test.go:311:   Port: 6053
+    test.integration.discovery_test.go:311:   Resolved Address: 192.168.88.84
+    test.integration.discovery_test.go:311:   TXT Records: map[api_encryption:Noise_NNpsk0_25519_ChaChaPoly_SHA256 board:esp01_1m friendly_name:Basement Edison Switch mac:d8bfc0d9976a network:wifi platform:ESP8266 version:2025.11.5]
+    test.integration.discovery_test.go:311:   ESPHome Version: 2025.11.5
+    test.integration.discovery_test.go:311:   MAC: d8bfc0d9976a
+    test.integration.discovery_test.go:311:   Board: esp01_1m
+    test.integration.discovery_test.go:311:   API Encryption: true
+=== RUN   TestMDNSDiscovery_Integration/Device_2_alex_room_switch
+    test.integration.discovery_test.go:311: Device: alex_room_switch
+    test.integration.discovery_test.go:311:   Host: alex_room_switch.local.
+    test.integration.discovery_test.go:311:   Addresses: [192.168.88.113]
+    test.integration.discovery_test.go:311:   Port: 6053
+    test.integration.discovery_test.go:311:   Resolved Address: 192.168.88.113
+    test.integration.discovery_test.go:311:   TXT Records: map[api_encryption:Noise_NNpsk0_25519_ChaChaPoly_SHA256 board:esp01_1m friendly_name:Alex Room Switch mac:441793213cdc network:wifi platform:ESP8266 version:2025.11.5]
+    test.integration.discovery_test.go:311:   ESPHome Version: 2025.11.5
+    test.integration.discovery_test.go:311:   MAC: 441793213cdc
+    test.integration.discovery_test.go:311:   Board: esp01_1m
+    test.integration.discovery_test.go:311:   API Encryption: true
+=== RUN   TestMDNSDiscovery_Integration/Device_3_basement-10-edison-03
+    test.integration.discovery_test.go:311: Device: basement-10-edison-03
+    test.integration.discovery_test.go:311:   Host: basement-10-edison-03.local.
+    test.integration.discovery_test.go:311:   Addresses: [192.168.88.46]
+    test.integration.discovery_test.go:311:   Port: 6053
+    test.integration.discovery_test.go:311:   Resolved Address: 192.168.88.46
+    test.integration.discovery_test.go:311:   TXT Records: map[api_encryption:Noise_NNpsk0_25519_ChaChaPoly_SHA256 board:generic-bk7231t-qfn32-tuya friendly_name:basement-10-edison-03 mac:105a1750ad75 network:wifi platform:BK7231T version:2025.11.5]
+    test.integration.discovery_test.go:311:   ESPHome Version: 2025.11.5
+    test.integration.discovery_test.go:311:   MAC: 105a1750ad75
+    test.integration.discovery_test.go:311:   Board: generic-bk7231t-qfn32-tuya
+    test.integration.discovery_test.go:311:   API Encryption: true
+=== RUN   TestMDNSDiscovery_Integration/Device_4_basement-27-office-02
+    test.integration.discovery_test.go:311: Device: basement-27-office-02
+    test.integration.discovery_test.go:311:   Host: basement-27-office-02.local.
+    test.integration.discovery_test.go:311:   Addresses: [192.168.88.43]
+    test.integration.discovery_test.go:311:   Port: 6053
+    test.integration.discovery_test.go:311:   Resolved Address: 192.168.88.43
+    test.integration.discovery_test.go:311:   TXT Records: map[api_encryption:Noise_NNpsk0_25519_ChaChaPoly_SHA256 board:generic-bk7231t-qfn32-tuya friendly_name:basement-27-office-02 mac:7cf666747889 network:wifi platform:BK7231T version:2025.11.5]
+    test.integration.discovery_test.go:311:   ESPHome Version: 2025.11.5
+    test.integration.discovery_test.go:311:   MAC: 7cf666747889
+    test.integration.discovery_test.go:311:   Board: generic-bk7231t-qfn32-tuya
+    test.integration.discovery_test.go:311:   API Encryption: true
+=== RUN   TestMDNSDiscovery_Integration/Device_5_basement-17-tv-center-right
+    test.integration.discovery_test.go:311: Device: basement-17-tv-center-right
+    test.integration.discovery_test.go:311:   Host: basement-17-tv-center-right.local.
+    test.integration.discovery_test.go:311:   Addresses: [192.168.88.116]
+    test.integration.discovery_test.go:311:   Port: 6053
+    test.integration.discovery_test.go:311:   Resolved Address: 192.168.88.116
+    test.integration.discovery_test.go:311:   TXT Records: map[api_encryption:Noise_NNpsk0_25519_ChaChaPoly_SHA256 board:generic-bk7231t-qfn32-tuya friendly_name:basement-17-tv-center-right mac:10d5614891f3 network:wifi platform:BK7231T version:2025.11.5]
+    test.integration.discovery_test.go:311:   ESPHome Version: 2025.11.5
+    test.integration.discovery_test.go:311:   MAC: 10d5614891f3
+    test.integration.discovery_test.go:311:   Board: generic-bk7231t-qfn32-tuya
+    test.integration.discovery_test.go:311:   API Encryption: true
+=== RUN   TestMDNSDiscovery_Integration/Device_6_basement-06-movieroom-back-01
+    test.integration.discovery_test.go:311: Device: basement-06-movieroom-back-01
+    test.integration.discovery_test.go:311:   Host: basement-06-movieroom-back-01.local.
+    test.integration.discovery_test.go:311:   Addresses: [192.168.88.11]
+    test.integration.discovery_test.go:311:   Port: 6053
+    test.integration.discovery_test.go:311:   Resolved Address: 192.168.88.11
+    test.integration.discovery_test.go:311:   TXT Records: map[api_encryption:Noise_NNpsk0_25519_ChaChaPoly_SHA256 board:generic-bk7231t-qfn32-tuya friendly_name:basement-06-movieroom-back-01 mac:10d56148e90b network:wifi platform:BK7231T version:2025.11.5]
+    test.integration.discovery_test.go:311:   ESPHome Version: 2025.11.5
+    test.integration.discovery_test.go:311:   MAC: 10d56148e90b
+    test.integration.discovery_test.go:311:   Board: generic-bk7231t-qfn32-tuya
+    test.integration.discovery_test.go:311:   API Encryption: true
+=== RUN   TestMDNSDiscovery_Integration/Device_7_basement-26-office-01
+    test.integration.discovery_test.go:311: Device: basement-26-office-01
+    test.integration.discovery_test.go:311:   Host: basement-26-office-01.local.
+    test.integration.discovery_test.go:311:   Addresses: [192.168.88.42]
+    test.integration.discovery_test.go:311:   Port: 6053
+    test.integration.discovery_test.go:311:   Resolved Address: 192.168.88.42
+    test.integration.discovery_test.go:311:   TXT Records: map[api_encryption:Noise_NNpsk0_25519_ChaChaPoly_SHA256 board:generic-bk7231t-qfn32-tuya friendly_name:basement-26-office-01 mac:7cf666735a3a network:wifi platform:BK7231T version:2025.11.5]
+    test.integration.discovery_test.go:311:   ESPHome Version: 2025.11.5
+    test.integration.discovery_test.go:311:   MAC: 7cf666735a3a
+    test.integration.discovery_test.go:311:   Board: generic-bk7231t-qfn32-tuya
+    test.integration.discovery_test.go:311:   API Encryption: true
+=== RUN   TestMDNSDiscovery_Integration/Device_8_basement-28-office-03
+    test.integration.discovery_test.go:311: Device: basement-28-office-03
+    test.integration.discovery_test.go:311:   Host: basement-28-office-03.local.
+    test.integration.discovery_test.go:311:   Addresses: [192.168.88.45]
+    test.integration.discovery_test.go:311:   Port: 6053
+    test.integration.discovery_test.go:311:   Resolved Address: 192.168.88.45
+    test.integration.discovery_test.go:311:   TXT Records: map[api_encryption:Noise_NNpsk0_25519_ChaChaPoly_SHA256 board:generic-bk7231t-qfn32-tuya friendly_name:basement-28-office-03 mac:105a17b2a2ad network:wifi platform:BK7231T version:2025.11.5]
+    test.integration.discovery_test.go:311:   ESPHome Version: 2025.11.5
+    test.integration.discovery_test.go:311:   MAC: 105a17b2a2ad
+    test.integration.discovery_test.go:311:   Board: generic-bk7231t-qfn32-tuya
+    test.integration.discovery_test.go:311:   API Encryption: true
+--- PASS: TestMDNSDiscovery_Integration (10.00s)
+    --- PASS: TestMDNSDiscovery_Integration/Device_0_switch_basement_office (0.00s)
+    --- PASS: TestMDNSDiscovery_Integration/Device_1_switch_basement_edison (0.00s)
+    --- PASS: TestMDNSDiscovery_Integration/Device_2_alex_room_switch (0.00s)
+    --- PASS: TestMDNSDiscovery_Integration/Device_3_basement-10-edison-03 (0.00s)
+    --- PASS: TestMDNSDiscovery_Integration/Device_4_basement-27-office-02 (0.00s)
+    --- PASS: TestMDNSDiscovery_Integration/Device_5_basement-17-tv-center-right (0.00s)
+    --- PASS: TestMDNSDiscovery_Integration/Device_6_basement-06-movieroom-back-01 (0.00s)
+    --- PASS: TestMDNSDiscovery_Integration/Device_7_basement-26-office-01 (0.00s)
+    --- PASS: TestMDNSDiscovery_Integration/Device_8_basement-28-office-03 (0.00s)
+=== RUN   TestMDNSDiscovery_Continuous_Integration
+    test.integration.discovery_test.go:328: Starting continuous mDNS discovery...
+    test.integration.discovery_test.go:340: Device cache contains 9 device(s) after 3 seconds
+    test.integration.discovery_test.go:354: Discovery stopped successfully
+--- PASS: TestMDNSDiscovery_Continuous_Integration (3.00s)
+=== RUN   TestMDNSDiscovery_DeviceStructure_Integration
+=== RUN   TestMDNSDiscovery_DeviceStructure_Integration/HasName
+    test.integration.discovery_test.go:383: Device name: alex_room_switch
+=== RUN   TestMDNSDiscovery_DeviceStructure_Integration/HasHostOrAddress
+    test.integration.discovery_test.go:392: Host: alex_room_switch.local., Addresses: [192.168.88.113]
+=== RUN   TestMDNSDiscovery_DeviceStructure_Integration/HasValidPort
+    test.integration.discovery_test.go:400: API Port: 6053
+=== RUN   TestMDNSDiscovery_DeviceStructure_Integration/HasLastSeen
+    test.integration.discovery_test.go:410: Last seen: 7.917883975s ago
+=== RUN   TestMDNSDiscovery_DeviceStructure_Integration/CanGetAddress
+    test.integration.discovery_test.go:423: Resolved address: 192.168.88.113
+=== RUN   TestMDNSDiscovery_DeviceStructure_Integration/TXTRecordsParsed
+    test.integration.discovery_test.go:428: TXT Records: map[api_encryption:Noise_NNpsk0_25519_ChaChaPoly_SHA256 board:esp01_1m friendly_name:Alex Room Switch mac:441793213cdc network:wifi platform:ESP8266 version:2025.11.5]
+    test.integration.discovery_test.go:432: ESPHome version: 2025.11.5
+    test.integration.discovery_test.go:435: MAC address: 441793213cdc
+    test.integration.discovery_test.go:438: Board: esp01_1m
+    test.integration.discovery_test.go:440: API encryption required: true
+--- PASS: TestMDNSDiscovery_DeviceStructure_Integration (8.00s)
+    --- PASS: TestMDNSDiscovery_DeviceStructure_Integration/HasName (0.00s)
+    --- PASS: TestMDNSDiscovery_DeviceStructure_Integration/HasHostOrAddress (0.00s)
+    --- PASS: TestMDNSDiscovery_DeviceStructure_Integration/HasValidPort (0.00s)
+    --- PASS: TestMDNSDiscovery_DeviceStructure_Integration/HasLastSeen (0.00s)
+    --- PASS: TestMDNSDiscovery_DeviceStructure_Integration/CanGetAddress (0.00s)
+    --- PASS: TestMDNSDiscovery_DeviceStructure_Integration/TXTRecordsParsed (0.00s)
+=== RUN   TestMDNSDiscovery_MultipleServices_Integration
+=== RUN   TestMDNSDiscovery_MultipleServices_Integration/_esphomelib._tcp
+    test.integration.discovery_test.go:467: Service _esphomelib._tcp: found 9 device(s)
+    test.integration.discovery_test.go:469:   - alex_room_switch at 192.168.88.113:6053
+    test.integration.discovery_test.go:469:   - switch_basement_office at 192.168.88.99:6053
+    test.integration.discovery_test.go:469:   - switch_basement_edison at 192.168.88.84:6053
+    test.integration.discovery_test.go:469:   - basement-17-tv-center-right at 192.168.88.116:6053
+    test.integration.discovery_test.go:469:   - basement-10-edison-03 at 192.168.88.46:6053
+    test.integration.discovery_test.go:469:   - basement-06-movieroom-back-01 at 192.168.88.11:6053
+    test.integration.discovery_test.go:469:   - basement-27-office-02 at 192.168.88.43:6053
+    test.integration.discovery_test.go:469:   - basement-28-office-03 at 192.168.88.45:6053
+    test.integration.discovery_test.go:469:   - basement-26-office-01 at 192.168.88.42:6053
+--- PASS: TestMDNSDiscovery_MultipleServices_Integration (5.00s)
+    --- PASS: TestMDNSDiscovery_MultipleServices_Integration/_esphomelib._tcp (5.00s)
+=== RUN   TestESPHomeDevice_RATGDO_Integration
+    test.integration.discovery_test.go:492: Discovering ESPHome devices...
+    test.integration.discovery_test.go:509: ratgdov25i device not found on network - skipping test
+--- SKIP: TestESPHomeDevice_RATGDO_Integration (10.00s)
+=== RUN   TestESPHomeDevice_ConnectAndFetchEntities_Integration
+    test.integration.discovery_test.go:773: Discovering ESPHome devices...
+    test.integration.discovery_test.go:784: Found 9 device(s), connecting to fetch entities...
+=== RUN   TestESPHomeDevice_ConnectAndFetchEntities_Integration/Device_switch_basement_office
+    test.integration.discovery_test.go:802: Connecting to switch_basement_office at 192.168.88.99:6053
+    test.integration.discovery_test.go:813: Using API encryption key for switch_basement_office
+    test.integration.discovery_test.go:835: Connecting to switch_basement_office at 192.168.88.99:6053...
+    test.integration.discovery_test.go:842: ✓ Connected to switch_basement_office
+    test.integration.discovery_test.go:865: Requesting entities from switch_basement_office...
+    test.integration.discovery_test.go:822: Received message type: *api.ListEntitiesBinarySensorResponse
+    test.integration.discovery_test.go:822: Received message type: *api.ListEntitiesBinarySensorResponse
+    test.integration.discovery_test.go:822: Received message type: *api.ListEntitiesBinarySensorResponse
+    test.integration.discovery_test.go:822: Received message type: *api.ListEntitiesBinarySensorResponse
+    test.integration.discovery_test.go:822: Received message type: *api.ListEntitiesSwitchResponse
+    test.integration.discovery_test.go:822: Received message type: *api.ListEntitiesSwitchResponse
+    test.integration.discovery_test.go:822: Received message type: *api.ListEntitiesButtonResponse
+    test.integration.discovery_test.go:822: Received message type: *api.ListEntitiesButtonResponse
+    test.integration.discovery_test.go:822: Received message type: *api.ListEntitiesDoneResponse
+    test.integration.discovery_test.go:826: Received ListEntitiesDoneResponse!
+    test.integration.discovery_test.go:875: Received ListEntitiesDoneResponse
+    test.integration.discovery_test.go:893: Created binary_sensor: Basement Office Switch SingleClickActivated ()
+    test.integration.discovery_test.go:893: Created binary_sensor: Basement Office Switch DoubleClickActivated ()
+    test.integration.discovery_test.go:893: Created binary_sensor: Basement Office Switch LongPressActivated ()
+    test.integration.discovery_test.go:893: Created binary_sensor: Basement Office Switch Button ()
+    test.integration.discovery_test.go:907: Created switch: Basement Office ()
+    test.integration.discovery_test.go:907: Created switch: Basement Office Switch Green LED ()
+    test.integration.discovery_test.go:949: Created button: Basement Office Switch Restart ()
+    test.integration.discovery_test.go:949: Created button: Basement Office Switch Restart (Safe Mode) ()
+    test.integration.discovery_test.go:977: Received 9 messages, created 8 entities in storage
+=== RUN   TestESPHomeDevice_ConnectAndFetchEntities_Integration/Device_switch_basement_edison
+    test.integration.discovery_test.go:802: Connecting to switch_basement_edison at 192.168.88.84:6053
+    test.integration.discovery_test.go:813: Using API encryption key for switch_basement_edison
+    test.integration.discovery_test.go:835: Connecting to switch_basement_edison at 192.168.88.84:6053...
+    test.integration.discovery_test.go:842: ✓ Connected to switch_basement_edison
+    test.integration.discovery_test.go:865: Requesting entities from switch_basement_edison...
+    test.integration.discovery_test.go:822: Received message type: *api.ListEntitiesBinarySensorResponse
+    test.integration.discovery_test.go:822: Received message type: *api.ListEntitiesBinarySensorResponse
+    test.integration.discovery_test.go:822: Received message type: *api.ListEntitiesBinarySensorResponse
+    test.integration.discovery_test.go:822: Received message type: *api.ListEntitiesBinarySensorResponse
+    test.integration.discovery_test.go:822: Received message type: *api.ListEntitiesSwitchResponse
+    test.integration.discovery_test.go:822: Received message type: *api.ListEntitiesSwitchResponse
+    test.integration.discovery_test.go:822: Received message type: *api.ListEntitiesButtonResponse
+    test.integration.discovery_test.go:822: Received message type: *api.ListEntitiesButtonResponse
+    test.integration.discovery_test.go:822: Received message type: *api.ListEntitiesDoneResponse
+    test.integration.discovery_test.go:826: Received ListEntitiesDoneResponse!
+    test.integration.discovery_test.go:875: Received ListEntitiesDoneResponse
+    test.integration.discovery_test.go:893: Created binary_sensor: Basement Edison Switch SingleClickActivated ()
+    test.integration.discovery_test.go:893: Created binary_sensor: Basement Edison Switch DoubleClickActivated ()
+    test.integration.discovery_test.go:893: Created binary_sensor: Basement Edison Switch LongPressActivated ()
+    test.integration.discovery_test.go:893: Created binary_sensor: Basement Edison Switch Button ()
+    test.integration.discovery_test.go:907: Created switch: Basement Edison Switch ()
+    test.integration.discovery_test.go:907: Created switch: Basement Edison Switch Green LED ()
+    test.integration.discovery_test.go:949: Created button: Basement Edison Switch Restart ()
+    test.integration.discovery_test.go:949: Created button: Basement Edison Switch Restart (Safe Mode) ()
+    test.integration.discovery_test.go:977: Received 9 messages, created 8 entities in storage
+=== RUN   TestESPHomeDevice_ConnectAndFetchEntities_Integration/Device_alex_room_switch
+    test.integration.discovery_test.go:802: Connecting to alex_room_switch at 192.168.88.113:6053
+    test.integration.discovery_test.go:813: Using API encryption key for alex_room_switch
+    test.integration.discovery_test.go:835: Connecting to alex_room_switch at 192.168.88.113:6053...
+    test.integration.discovery_test.go:842: ✓ Connected to alex_room_switch
+    test.integration.discovery_test.go:865: Requesting entities from alex_room_switch...
+    test.integration.discovery_test.go:822: Received message type: *api.ListEntitiesBinarySensorResponse
+    test.integration.discovery_test.go:822: Received message type: *api.ListEntitiesBinarySensorResponse
+    test.integration.discovery_test.go:822: Received message type: *api.ListEntitiesBinarySensorResponse
+    test.integration.discovery_test.go:822: Received message type: *api.ListEntitiesBinarySensorResponse
+    test.integration.discovery_test.go:822: Received message type: *api.ListEntitiesLightResponse
+    test.integration.discovery_test.go:822: Received message type: *api.ListEntitiesLightResponse
+    test.integration.discovery_test.go:822: Received message type: *api.ListEntitiesLightResponse
+    test.integration.discovery_test.go:822: Received message type: *api.ListEntitiesLightResponse
+    test.integration.discovery_test.go:822: Received message type: *api.ListEntitiesLightResponse
+    test.integration.discovery_test.go:822: Received message type: *api.ListEntitiesSwitchResponse
+    test.integration.discovery_test.go:822: Received message type: *api.ListEntitiesButtonResponse
+    test.integration.discovery_test.go:822: Received message type: *api.ListEntitiesDoneResponse
+    test.integration.discovery_test.go:826: Received ListEntitiesDoneResponse!
+    test.integration.discovery_test.go:875: Received ListEntitiesDoneResponse
+    test.integration.discovery_test.go:893: Created binary_sensor: Button Main ()
+    test.integration.discovery_test.go:893: Created binary_sensor: Button Up ()
+    test.integration.discovery_test.go:893: Created binary_sensor: Button Down ()
+    test.integration.discovery_test.go:893: Created binary_sensor: Button Center ()
+    test.integration.discovery_test.go:914: Created light: LED Red ()
+    test.integration.discovery_test.go:914: Created light: LED Level 1 ()
+    test.integration.discovery_test.go:914: Created light: LED Level 2 ()
+    test.integration.discovery_test.go:914: Created light: LED Level 3 ()
+    test.integration.discovery_test.go:914: Created light: LED Level 4 ()
+    test.integration.discovery_test.go:907: Created switch: Main Relay ()
+    test.integration.discovery_test.go:949: Created button: Main Button Short Press ()
+    test.integration.discovery_test.go:977: Received 12 messages, created 11 entities in storage
+=== RUN   TestESPHomeDevice_ConnectAndFetchEntities_Integration/Device_basement-27-office-02
+    test.integration.discovery_test.go:802: Connecting to basement-27-office-02 at 192.168.88.43:6053
+    test.integration.discovery_test.go:813: Using API encryption key for basement-27-office-02
+    test.integration.discovery_test.go:835: Connecting to basement-27-office-02 at 192.168.88.43:6053...
+    test.integration.discovery_test.go:842: ✓ Connected to basement-27-office-02
+    test.integration.discovery_test.go:865: Requesting entities from basement-27-office-02...
+    test.integration.discovery_test.go:822: Received message type: *api.ListEntitiesLightResponse
+    test.integration.discovery_test.go:822: Received message type: *api.ListEntitiesDoneResponse
+    test.integration.discovery_test.go:826: Received ListEntitiesDoneResponse!
+    test.integration.discovery_test.go:875: Received ListEntitiesDoneResponse
+    test.integration.discovery_test.go:914: Created light: basement-27-office-02 ()
+    test.integration.discovery_test.go:977: Received 2 messages, created 1 entities in storage
+=== RUN   TestESPHomeDevice_ConnectAndFetchEntities_Integration/Device_basement-17-tv-center-right
+    test.integration.discovery_test.go:802: Connecting to basement-17-tv-center-right at 192.168.88.116:6053
+    test.integration.discovery_test.go:813: Using API encryption key for basement-17-tv-center-right
+    test.integration.discovery_test.go:835: Connecting to basement-17-tv-center-right at 192.168.88.116:6053...
+    test.integration.discovery_test.go:842: ✓ Connected to basement-17-tv-center-right
+    test.integration.discovery_test.go:865: Requesting entities from basement-17-tv-center-right...
+    test.integration.discovery_test.go:822: Received message type: *api.ListEntitiesLightResponse
+    test.integration.discovery_test.go:822: Received message type: *api.ListEntitiesDoneResponse
+    test.integration.discovery_test.go:826: Received ListEntitiesDoneResponse!
+    test.integration.discovery_test.go:875: Received ListEntitiesDoneResponse
+    test.integration.discovery_test.go:914: Created light: basement-17-tv-center-right ()
+    test.integration.discovery_test.go:977: Received 2 messages, created 1 entities in storage
+--- PASS: TestESPHomeDevice_ConnectAndFetchEntities_Integration (13.96s)
+    --- PASS: TestESPHomeDevice_ConnectAndFetchEntities_Integration/Device_switch_basement_office (0.86s)
+    --- PASS: TestESPHomeDevice_ConnectAndFetchEntities_Integration/Device_switch_basement_edison (0.85s)
+    --- PASS: TestESPHomeDevice_ConnectAndFetchEntities_Integration/Device_alex_room_switch (0.92s)
+    --- PASS: TestESPHomeDevice_ConnectAndFetchEntities_Integration/Device_basement-27-office-02 (0.66s)
+    --- PASS: TestESPHomeDevice_ConnectAndFetchEntities_Integration/Device_basement-17-tv-center-right (0.68s)
+=== RUN   TestESPHomeEntity_Query_Integration
+    test.integration.discovery_test.go:1212: Querying entities from storage...
+    test.integration.discovery_test.go:1221: Found 1 entities for plugin plugin-esphome
+    test.integration.discovery_test.go:1231: Found 1 sensor entities
+--- PASS: TestESPHomeEntity_Query_Integration (10.00s)
+=== RUN   TestESPHomeDevice_ControlLight_Integration
+    test.integration.discovery_test.go:1252: Discovering ESPHome devices...
+    test.integration.discovery_test.go:1265: Found Edison device: switch_basement_edison - checking for lights...
+    test.integration.discovery_test.go:1272: ✗ Device switch_basement_edison has no lights, trying next...
+    test.integration.discovery_test.go:1265: Found Edison device: basement-10-edison-03 - checking for lights...
+    test.integration.discovery_test.go:1269: ✓ Device basement-10-edison-03 has lights, using it
+    test.integration.discovery_test.go:1280: Selected device: basement-10-edison-03 at 192.168.88.46
+    test.integration.discovery_test.go:1333: 
+        === Testing Light Control on: basement-10-edison-03 ===
+    test.integration.discovery_test.go:1334: Address: 192.168.88.46:6053
+    test.integration.discovery_test.go:1344: Using API encryption key
+    test.integration.discovery_test.go:1393: 
+        [1/5] Creating client connection...
+    test.integration.discovery_test.go:1400: ✓ Connected successfully!
+    test.integration.discovery_test.go:1403: 
+        [2/5] Performing ESPHome API handshake...
+    test.integration.discovery_test.go:1421: ✓ Handshake complete
+    test.integration.discovery_test.go:1424: 
+        [3/5] Requesting entity list...
+    test.integration.discovery_test.go:1371: Found light entity: basement-10-edison-03 (key=3359852625)
+    test.integration.discovery_test.go:1360: ✓ Entity list complete
+    test.integration.discovery_test.go:1434: ✓ Entity list received
+    test.integration.discovery_test.go:1445: 
+        [4/5] Found light to control: basement-10-edison-03 (key=3359852625)
+    test.integration.discovery_test.go:1448: 
+        [5/5] Subscribing to state updates...
+    test.integration.discovery_test.go:1454: ✓ Subscribed to state updates
+    test.integration.discovery_test.go:1380: 📊 Light state update: key=3359852625, state=true, brightness=0.360784
+    test.integration.discovery_test.go:1460: 
+        💡 Sending command: Turn light ON
+    test.integration.discovery_test.go:1471: Waiting for state update confirmation...
+    test.integration.discovery_test.go:1475: ✅ SUCCESS! Light is now ON (key=3359852625, brightness=0.360784)
+    test.integration.discovery_test.go:1380: 📊 Light state update: key=3359852625, state=true, brightness=0.360784
+    test.integration.discovery_test.go:1488: 
+        💡 Sending command: Turn light OFF
+    test.integration.discovery_test.go:1499: Waiting for state update confirmation...
+    test.integration.discovery_test.go:1505: ⚠️  Light state is still ON (may still be processing)
+    test.integration.discovery_test.go:1512: 
+        === Test Summary ===
+    test.integration.discovery_test.go:1513: Device: basement-10-edison-03
+    test.integration.discovery_test.go:1514: Light controlled: basement-10-edison-03 (key=3359852625)
+    test.integration.discovery_test.go:1515: Commands sent: ON, OFF
+    test.integration.discovery_test.go:1516: ✓ Full round-trip test complete
+--- PASS: TestESPHomeDevice_ControlLight_Integration (13.50s)
+=== RUN   TestIsolation_BadDeviceHangsRegistration
+    test.integration.harness_isolation_test.go:58: bad device: connection accepted from 127.0.0.1:36462, holding open silently
+    test.integration.harness_isolation_test.go:81: timeout listing entities from bad-device
+    test.integration.harness_isolation_test.go:87: registerLightsFromDevice returned in 11.401670983s (good — has deadline)
+--- PASS: TestIsolation_BadDeviceHangsRegistration (11.40s)
+=== RUN   TestIsolation_ConcurrentSavesBurstNATS
+    test.integration.harness_isolation_test.go:123: 35 concurrent saves completed
+    test.integration.harness_isolation_test.go:131: msg.Request succeeded after concurrent saves (connection held)
+--- PASS: TestIsolation_ConcurrentSavesBurstNATS (0.01s)
+=== RUN   TestIsolation_SubscribeThenSave
+    test.integration.harness_isolation_test.go:159: subscribe + save OK
+--- PASS: TestIsolation_SubscribeThenSave (0.00s)
+=== RUN   TestLuaFade_Physical_Integration
+2026/03/30 10:07:34 plugin-esphome: started, listening for devices via mDNS
+    test.integration.lua_fade_physical_test.go:63: waiting for plugin to discover and register lights...
+2026/03/30 10:07:34 plugin-esphome: seeded 40 device addresses from dashboard
+2026/03/30 10:07:39 plugin-esphome: initial probe found 9 device(s)
+2026/03/30 10:07:39 plugin-esphome: discovered switch_basement_edison - connecting
+2026/03/30 10:07:39 plugin-esphome: discovered alex_room_switch - connecting
+2026/03/30 10:07:39 plugin-esphome: discovered switch_basement_office - connecting
+2026/03/30 10:07:39 plugin-esphome: discovered basement-17-tv-center-right - connecting
+2026/03/30 10:07:39 plugin-esphome: discovered basement-27-office-02 - connecting
+2026/03/30 10:07:39 plugin-esphome: discovered basement-10-edison-03 - connecting
+2026/03/30 10:07:39 plugin-esphome: discovered basement-26-office-01 - connecting
+2026/03/30 10:07:39 plugin-esphome: discovered basement-06-movieroom-back-01 - connecting
+2026/03/30 10:07:39 plugin-esphome: discovered basement-28-office-03 - connecting
+2026/03/30 10:07:40 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:07:40 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:07:40 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:07:40 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:07:40 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:07:40 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:07:40 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:07:40 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:07:40 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:07:41 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:07:41 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:07:41 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:07:41 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:07:41 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:07:41 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:07:41 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:07:41 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:07:41 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:07:43 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:07:43 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:07:43 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:07:43 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:07:43 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:07:43 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:07:44 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:07:44 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:07:44 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:07:48 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:07:48 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:07:48 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:07:48 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:07:48 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:07:48 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:07:48 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:07:48 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:07:48 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:07:56 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:07:56 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:07:56 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:07:56 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:07:56 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:07:56 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:07:57 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:07:57 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:07:57 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+    test.integration.lua_fade_physical_test.go:86: timed out waiting for plugin to register light entities
+--- FAIL: TestLuaFade_Physical_Integration (30.00s)
+=== RUN   TestLuaFade_RealESPHomeLights_Integration
+    test.integration.lua_fade_test.go:38: discovering ESPHome devices via mDNS...
+    test.integration.lua_fade_test.go:46: found 9 device(s)
+    test.integration.lua_fade_test.go:55: connecting to switch_basement_office at 192.168.88.99...
+    test.integration.lua_fade_test.go:55: connecting to alex_room_switch at 192.168.88.113...
+    test.helper.lua_fade_helpers_test.go:107:   registered light: LED Red (alex_room_switch_3536995996)
+    test.helper.lua_fade_helpers_test.go:107:   registered light: LED Level 1 (alex_room_switch_1244120623)
+    test.helper.lua_fade_helpers_test.go:107:   registered light: LED Level 2 (alex_room_switch_1244120620)
+    test.helper.lua_fade_helpers_test.go:107:   registered light: LED Level 3 (alex_room_switch_1244120621)
+    test.helper.lua_fade_helpers_test.go:107:   registered light: LED Level 4 (alex_room_switch_1244120618)
+    test.integration.lua_fade_test.go:55: connecting to switch_basement_edison at 192.168.88.84...
+    test.integration.lua_fade_test.go:55: connecting to basement-10-edison-03 at 192.168.88.46...
+    test.helper.lua_fade_helpers_test.go:107:   registered light: basement-10-edison-03 (basement-10-edison-03_3359852625)
+    test.integration.lua_fade_test.go:55: connecting to basement-28-office-03 at 192.168.88.45...
+    test.helper.lua_fade_helpers_test.go:107:   registered light: basement-28-office-03 (basement-28-office-03_3821584384)
+    test.integration.lua_fade_test.go:55: connecting to basement-27-office-02 at 192.168.88.43...
+    test.helper.lua_fade_helpers_test.go:107:   registered light: basement-27-office-02 (basement-27-office-02_1221826122)
+    test.integration.lua_fade_test.go:55: connecting to basement-26-office-01 at 192.168.88.42...
+    test.helper.lua_fade_helpers_test.go:107:   registered light: basement-26-office-01 (basement-26-office-01_3962872896)
+    test.integration.lua_fade_test.go:55: connecting to basement-06-movieroom-back-01 at 192.168.88.11...
+    test.helper.lua_fade_helpers_test.go:107:   registered light: basement-06-movieroom-back-01 (basement-06-movieroom-back-01_1680551347)
+    test.integration.lua_fade_test.go:55: connecting to basement-17-tv-center-right at 192.168.88.116...
+    test.helper.lua_fade_helpers_test.go:107:   registered light: basement-17-tv-center-right (basement-17-tv-center-right_3785994789)
+    test.integration.lua_fade_test.go:63: registered 11 light(s) total
+    test.integration.lua_fade_test.go:65:   LED Red (plugin-esphome.alex_room_switch.alex_room_switch_3536995996)
+    test.integration.lua_fade_test.go:65:   LED Level 1 (plugin-esphome.alex_room_switch.alex_room_switch_1244120623)
+    test.integration.lua_fade_test.go:65:   LED Level 2 (plugin-esphome.alex_room_switch.alex_room_switch_1244120620)
+    test.integration.lua_fade_test.go:65:   LED Level 3 (plugin-esphome.alex_room_switch.alex_room_switch_1244120621)
+    test.integration.lua_fade_test.go:65:   LED Level 4 (plugin-esphome.alex_room_switch.alex_room_switch_1244120618)
+    test.integration.lua_fade_test.go:65:   basement-10-edison-03 (plugin-esphome.basement-10-edison-03.basement-10-edison-03_3359852625)
+    test.integration.lua_fade_test.go:65:   basement-28-office-03 (plugin-esphome.basement-28-office-03.basement-28-office-03_3821584384)
+    test.integration.lua_fade_test.go:65:   basement-27-office-02 (plugin-esphome.basement-27-office-02.basement-27-office-02_1221826122)
+    test.integration.lua_fade_test.go:65:   basement-26-office-01 (plugin-esphome.basement-26-office-01.basement-26-office-01_3962872896)
+    test.integration.lua_fade_test.go:65:   basement-06-movieroom-back-01 (plugin-esphome.basement-06-movieroom-back-01.basement-06-movieroom-back-01_1680551347)
+    test.integration.lua_fade_test.go:65:   basement-17-tv-center-right (plugin-esphome.basement-17-tv-center-right.basement-17-tv-center-right_3785994789)
+    test.integration.lua_fade_test.go:103: script started (hash=f8cf4fb1ae97b509)
+    test.integration.lua_fade_test.go:145: light LED Red (plugin-esphome.alex_room_switch.alex_room_switch_3536995996): got 0 readings, want >=4
+    test.integration.lua_fade_test.go:145: light LED Level 1 (plugin-esphome.alex_room_switch.alex_room_switch_1244120623): got 0 readings, want >=4
+    test.integration.lua_fade_test.go:145: light LED Level 2 (plugin-esphome.alex_room_switch.alex_room_switch_1244120620): got 0 readings, want >=4
+    test.integration.lua_fade_test.go:145: light LED Level 3 (plugin-esphome.alex_room_switch.alex_room_switch_1244120621): got 0 readings, want >=4
+    test.integration.lua_fade_test.go:145: light LED Level 4 (plugin-esphome.alex_room_switch.alex_room_switch_1244120618): got 0 readings, want >=4
+    test.integration.lua_fade_test.go:145: light basement-10-edison-03 (plugin-esphome.basement-10-edison-03.basement-10-edison-03_3359852625): got 0 readings, want >=4
+    test.integration.lua_fade_test.go:145: light basement-28-office-03 (plugin-esphome.basement-28-office-03.basement-28-office-03_3821584384): got 0 readings, want >=4
+    test.integration.lua_fade_test.go:145: light basement-27-office-02 (plugin-esphome.basement-27-office-02.basement-27-office-02_1221826122): got 0 readings, want >=4
+    test.integration.lua_fade_test.go:145: light basement-26-office-01 (plugin-esphome.basement-26-office-01.basement-26-office-01_3962872896): got 0 readings, want >=4
+    test.integration.lua_fade_test.go:145: light basement-06-movieroom-back-01 (plugin-esphome.basement-06-movieroom-back-01.basement-06-movieroom-back-01_1680551347): got 0 readings, want >=4
+    test.integration.lua_fade_test.go:145: light basement-17-tv-center-right (plugin-esphome.basement-17-tv-center-right.basement-17-tv-center-right_3785994789): got 0 readings, want >=4
+--- FAIL: TestLuaFade_RealESPHomeLights_Integration (23.00s)
+=== RUN   TestLuaRainbow_Physical_Integration
+    test.integration.lua_rainbow_test.go:44: discovering devices via mDNS...
+    test.integration.lua_rainbow_test.go:56: found 9 device(s) via mDNS
+2026/03/30 10:08:32 plugin-esphome: started, listening for devices via mDNS
+2026/03/30 10:08:32 plugin-esphome: discovered switch_basement_office - connecting
+2026/03/30 10:08:32 plugin-esphome: discovered alex_room_switch - connecting
+2026/03/30 10:08:32 plugin-esphome: discovered switch_basement_edison - connecting
+2026/03/30 10:08:32 plugin-esphome: discovered basement-27-office-02 - connecting
+2026/03/30 10:08:32 plugin-esphome: discovered basement-06-movieroom-back-01 - connecting
+2026/03/30 10:08:32 plugin-esphome: discovered basement-10-edison-03 - connecting
+2026/03/30 10:08:32 plugin-esphome: discovered basement-26-office-01 - connecting
+2026/03/30 10:08:32 plugin-esphome: discovered basement-28-office-03 - connecting
+2026/03/30 10:08:32 plugin-esphome: discovered basement-17-tv-center-right - connecting
+    test.integration.lua_rainbow_test.go:87: waiting for devices to register entities...
+2026/03/30 10:08:32 plugin-esphome: seeded 40 device addresses from dashboard
+2026/03/30 10:08:33 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:08:33 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:08:33 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:08:33 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:08:33 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:08:33 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:08:33 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:08:33 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:08:33 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:08:34 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:08:34 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:08:34 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:08:34 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:08:34 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:08:34 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:08:35 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:08:35 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:08:35 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:08:37 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:08:37 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:08:37 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:08:37 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:08:37 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:08:37 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:08:37 plugin-esphome: initial probe found 8 device(s)
+2026/03/30 10:08:37 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:08:37 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:08:37 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:08:38 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:08:38 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:08:38 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:08:38 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:08:38 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:08:38 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:08:38 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:08:38 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:08:38 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:08:38 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:08:38 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:08:38 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:08:38 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:08:38 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:08:46 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:08:47 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:08:47 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:08:47 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+    test.integration.lua_rainbow_test.go:112: timeout: 0/9 devices registered
+    test.integration.lua_rainbow_test.go:119: no light entities found on any device
+--- FAIL: TestLuaRainbow_Physical_Integration (20.01s)
+=== RUN   TestDecode_Light
+=== RUN   TestDecode_Light/valid_on_with_brightness
+=== RUN   TestDecode_Light/valid_off
+=== RUN   TestDecode_Light/brightness_clamped_at_max
+=== RUN   TestDecode_Light/brightness_clamped_at_min
+=== RUN   TestDecode_Light/empty_payload
+=== RUN   TestDecode_Light/garbage_payload
+--- PASS: TestDecode_Light (0.00s)
+    --- PASS: TestDecode_Light/valid_on_with_brightness (0.00s)
+    --- PASS: TestDecode_Light/valid_off (0.00s)
+    --- PASS: TestDecode_Light/brightness_clamped_at_max (0.00s)
+    --- PASS: TestDecode_Light/brightness_clamped_at_min (0.00s)
+    --- PASS: TestDecode_Light/empty_payload (0.00s)
+    --- PASS: TestDecode_Light/garbage_payload (0.00s)
+=== RUN   TestDecode_Switch
+=== RUN   TestDecode_Switch/on
+=== RUN   TestDecode_Switch/off
+=== RUN   TestDecode_Switch/empty
+=== RUN   TestDecode_Switch/garbage
+--- PASS: TestDecode_Switch (0.00s)
+    --- PASS: TestDecode_Switch/on (0.00s)
+    --- PASS: TestDecode_Switch/off (0.00s)
+    --- PASS: TestDecode_Switch/empty (0.00s)
+    --- PASS: TestDecode_Switch/garbage (0.00s)
+=== RUN   TestDecode_Cover
+=== RUN   TestDecode_Cover/mid
+=== RUN   TestDecode_Cover/open
+=== RUN   TestDecode_Cover/closed
+=== RUN   TestDecode_Cover/over_max_clamped
+=== RUN   TestDecode_Cover/under_min_clamped
+=== RUN   TestDecode_Cover/empty
+--- PASS: TestDecode_Cover (0.00s)
+    --- PASS: TestDecode_Cover/mid (0.00s)
+    --- PASS: TestDecode_Cover/open (0.00s)
+    --- PASS: TestDecode_Cover/closed (0.00s)
+    --- PASS: TestDecode_Cover/over_max_clamped (0.00s)
+    --- PASS: TestDecode_Cover/under_min_clamped (0.00s)
+    --- PASS: TestDecode_Cover/empty (0.00s)
+=== RUN   TestDecode_Fan
+=== RUN   TestDecode_Fan/on_full
+=== RUN   TestDecode_Fan/on_half
+=== RUN   TestDecode_Fan/off
+=== RUN   TestDecode_Fan/over_max_clamped
+=== RUN   TestDecode_Fan/under_min_clamped
+=== RUN   TestDecode_Fan/empty
+--- PASS: TestDecode_Fan (0.00s)
+    --- PASS: TestDecode_Fan/on_full (0.00s)
+    --- PASS: TestDecode_Fan/on_half (0.00s)
+    --- PASS: TestDecode_Fan/off (0.00s)
+    --- PASS: TestDecode_Fan/over_max_clamped (0.00s)
+    --- PASS: TestDecode_Fan/under_min_clamped (0.00s)
+    --- PASS: TestDecode_Fan/empty (0.00s)
+=== RUN   TestDecode_Sensor
+=== RUN   TestDecode_Sensor/temp_with_unit
+=== RUN   TestDecode_Sensor/no_unit
+=== RUN   TestDecode_Sensor/empty
+=== RUN   TestDecode_Sensor/garbage
+--- PASS: TestDecode_Sensor (0.00s)
+    --- PASS: TestDecode_Sensor/temp_with_unit (0.00s)
+    --- PASS: TestDecode_Sensor/no_unit (0.00s)
+    --- PASS: TestDecode_Sensor/empty (0.00s)
+    --- PASS: TestDecode_Sensor/garbage (0.00s)
+=== RUN   TestDecode_Climate
+=== RUN   TestDecode_Climate/cool_mode
+=== RUN   TestDecode_Climate/off
+=== RUN   TestDecode_Climate/empty
+--- PASS: TestDecode_Climate (0.00s)
+    --- PASS: TestDecode_Climate/cool_mode (0.00s)
+    --- PASS: TestDecode_Climate/off (0.00s)
+    --- PASS: TestDecode_Climate/empty (0.00s)
+=== RUN   TestDecode_UnknownType
+--- PASS: TestDecode_UnknownType (0.00s)
+=== RUN   TestEncode_LightTurnOn
+--- PASS: TestEncode_LightTurnOn (0.00s)
+=== RUN   TestEncode_LightSetBrightness
+=== RUN   TestEncode_LightSetBrightness/valid_200
+=== RUN   TestEncode_LightSetBrightness/valid_0
+=== RUN   TestEncode_LightSetBrightness/max_254
+=== RUN   TestEncode_LightSetBrightness/255_rejected
+=== RUN   TestEncode_LightSetBrightness/negative_rejected
+--- PASS: TestEncode_LightSetBrightness (0.00s)
+    --- PASS: TestEncode_LightSetBrightness/valid_200 (0.00s)
+    --- PASS: TestEncode_LightSetBrightness/valid_0 (0.00s)
+    --- PASS: TestEncode_LightSetBrightness/max_254 (0.00s)
+    --- PASS: TestEncode_LightSetBrightness/255_rejected (0.00s)
+    --- PASS: TestEncode_LightSetBrightness/negative_rejected (0.00s)
+=== RUN   TestEncode_LightSetColorTemp
+=== RUN   TestEncode_LightSetColorTemp/valid_370
+=== RUN   TestEncode_LightSetColorTemp/min_153
+=== RUN   TestEncode_LightSetColorTemp/max_500
+=== RUN   TestEncode_LightSetColorTemp/152_rejected
+=== RUN   TestEncode_LightSetColorTemp/501_rejected
+=== RUN   TestEncode_LightSetColorTemp/with_brightness_128
+=== RUN   TestEncode_LightSetColorTemp/brightness_255_rejected
+--- PASS: TestEncode_LightSetColorTemp (0.00s)
+    --- PASS: TestEncode_LightSetColorTemp/valid_370 (0.00s)
+    --- PASS: TestEncode_LightSetColorTemp/min_153 (0.00s)
+    --- PASS: TestEncode_LightSetColorTemp/max_500 (0.00s)
+    --- PASS: TestEncode_LightSetColorTemp/152_rejected (0.00s)
+    --- PASS: TestEncode_LightSetColorTemp/501_rejected (0.00s)
+    --- PASS: TestEncode_LightSetColorTemp/with_brightness_128 (0.00s)
+    --- PASS: TestEncode_LightSetColorTemp/brightness_255_rejected (0.00s)
+=== RUN   TestEncode_LightSetRGB
+=== RUN   TestEncode_LightSetRGB/valid
+=== RUN   TestEncode_LightSetRGB/all_zero
+=== RUN   TestEncode_LightSetRGB/R=256_rejected
+=== RUN   TestEncode_LightSetRGB/B_negative_rejected
+=== RUN   TestEncode_LightSetRGB/with_brightness_100
+=== RUN   TestEncode_LightSetRGB/brightness_255_rejected
+--- PASS: TestEncode_LightSetRGB (0.00s)
+    --- PASS: TestEncode_LightSetRGB/valid (0.00s)
+    --- PASS: TestEncode_LightSetRGB/all_zero (0.00s)
+    --- PASS: TestEncode_LightSetRGB/R=256_rejected (0.00s)
+    --- PASS: TestEncode_LightSetRGB/B_negative_rejected (0.00s)
+    --- PASS: TestEncode_LightSetRGB/with_brightness_100 (0.00s)
+    --- PASS: TestEncode_LightSetRGB/brightness_255_rejected (0.00s)
+=== RUN   TestEncode_LightSetHS
+=== RUN   TestEncode_LightSetHS/valid
+=== RUN   TestEncode_LightSetHS/hue_361_rejected
+=== RUN   TestEncode_LightSetHS/saturation_101_rejected
+=== RUN   TestEncode_LightSetHS/with_brightness_200
+=== RUN   TestEncode_LightSetHS/brightness_255_rejected
+--- PASS: TestEncode_LightSetHS (0.00s)
+    --- PASS: TestEncode_LightSetHS/valid (0.00s)
+    --- PASS: TestEncode_LightSetHS/hue_361_rejected (0.00s)
+    --- PASS: TestEncode_LightSetHS/saturation_101_rejected (0.00s)
+    --- PASS: TestEncode_LightSetHS/with_brightness_200 (0.00s)
+    --- PASS: TestEncode_LightSetHS/brightness_255_rejected (0.00s)
+=== RUN   TestEncode_LightSetEffect
+--- PASS: TestEncode_LightSetEffect (0.00s)
+=== RUN   TestEncode_FanSetSpeed
+=== RUN   TestEncode_FanSetSpeed/valid_50%
+=== RUN   TestEncode_FanSetSpeed/valid_0%
+=== RUN   TestEncode_FanSetSpeed/valid_100%
+=== RUN   TestEncode_FanSetSpeed/101%_rejected
+=== RUN   TestEncode_FanSetSpeed/negative_rejected
+--- PASS: TestEncode_FanSetSpeed (0.00s)
+    --- PASS: TestEncode_FanSetSpeed/valid_50% (0.00s)
+    --- PASS: TestEncode_FanSetSpeed/valid_0% (0.00s)
+    --- PASS: TestEncode_FanSetSpeed/valid_100% (0.00s)
+    --- PASS: TestEncode_FanSetSpeed/101%_rejected (0.00s)
+    --- PASS: TestEncode_FanSetSpeed/negative_rejected (0.00s)
+=== RUN   TestEncode_CoverSetPosition
+=== RUN   TestEncode_CoverSetPosition/valid_50
+=== RUN   TestEncode_CoverSetPosition/valid_0
+=== RUN   TestEncode_CoverSetPosition/valid_100
+=== RUN   TestEncode_CoverSetPosition/101_rejected
+=== RUN   TestEncode_CoverSetPosition/negative_rejected
+--- PASS: TestEncode_CoverSetPosition (0.00s)
+    --- PASS: TestEncode_CoverSetPosition/valid_50 (0.00s)
+    --- PASS: TestEncode_CoverSetPosition/valid_0 (0.00s)
+    --- PASS: TestEncode_CoverSetPosition/valid_100 (0.00s)
+    --- PASS: TestEncode_CoverSetPosition/101_rejected (0.00s)
+    --- PASS: TestEncode_CoverSetPosition/negative_rejected (0.00s)
+=== RUN   TestEncode_SelectOption
+=== RUN   TestEncode_SelectOption/valid_option
+=== RUN   TestEncode_SelectOption/empty_option_rejected
+--- PASS: TestEncode_SelectOption (0.00s)
+    --- PASS: TestEncode_SelectOption/valid_option (0.00s)
+    --- PASS: TestEncode_SelectOption/empty_option_rejected (0.00s)
+=== RUN   TestEncode_ClimateSetMode
+=== RUN   TestEncode_ClimateSetMode/cool
+=== RUN   TestEncode_ClimateSetMode/off
+=== RUN   TestEncode_ClimateSetMode/empty_rejected
+--- PASS: TestEncode_ClimateSetMode (0.00s)
+    --- PASS: TestEncode_ClimateSetMode/cool (0.00s)
+    --- PASS: TestEncode_ClimateSetMode/off (0.00s)
+    --- PASS: TestEncode_ClimateSetMode/empty_rejected (0.00s)
+=== RUN   TestEncode_SwitchCommands
+--- PASS: TestEncode_SwitchCommands (0.00s)
+=== RUN   TestEncode_UnknownCommand
+--- PASS: TestEncode_UnknownCommand (0.00s)
+=== RUN   TestRoundTrip_LightState
+--- PASS: TestRoundTrip_LightState (0.00s)
+FAIL
+FAIL	github.com/slidebolt/plugin-esphome/cmd/plugin-esphome	179.986s
+=== RUN   TestFetch_ReturnsDevicesWithIPs
+--- PASS: TestFetch_ReturnsDevicesWithIPs (0.00s)
+=== RUN   TestFetch_BadCredentials
+--- PASS: TestFetch_BadCredentials (0.00s)
+=== RUN   TestConfigValid
+--- PASS: TestConfigValid (0.00s)
+PASS
+ok  	github.com/slidebolt/plugin-esphome/internal/dashboard	0.004s
+?   	github.com/slidebolt/plugin-esphome/internal/mdns	[no test files]
+?   	github.com/slidebolt/plugin-esphome/internal/translate	[no test files]
+FAIL

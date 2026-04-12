@@ -1,0 +1,31 @@
+=== RUN   TestConnectionStability
+    test.local.connection_stability_test.go:63: target: alex_room_switch  addr=192.168.88.113  port=6053
+    test.local.connection_stability_test.go:86: connected at t=0
+    test.local.connection_stability_test.go:101: device: name="alex_room_switch" mac=44:17:93:21:3C:DC version=2025.11.5
+    test.local.connection_stability_test.go:110: subscribed — holding connection for 90s, pinging every 25s
+    test.local.connection_stability_test.go:134: +11s  still connected  pings=0
+    test.local.connection_stability_test.go:134: +21s  still connected  pings=0
+    test.local.connection_stability_test.go:132: +26s  ping #1 OK
+    test.local.connection_stability_test.go:134: +31s  still connected  pings=1
+    test.local.connection_stability_test.go:134: +41s  still connected  pings=1
+    test.local.connection_stability_test.go:132: +51s  ping #2 OK
+    test.local.connection_stability_test.go:134: +51s  still connected  pings=2
+    test.local.connection_stability_test.go:134: +1m1s  still connected  pings=2
+    test.local.connection_stability_test.go:134: +1m11s  still connected  pings=2
+    test.local.connection_stability_test.go:132: +1m16s  ping #3 OK
+    test.local.connection_stability_test.go:134: +1m21s  still connected  pings=3
+    test.local.connection_stability_test.go:134: +1m31s  still connected  pings=3
+    test.local.connection_stability_test.go:136: PASS: connection held for 1m31s  pings=3  no disconnects
+--- PASS: TestConnectionStability (97.29s)
+=== RUN   TestLuaFade_EdisonLights_Integration
+    test.local.lua_fade_test.go:48: found 2 Edison device(s)
+    test.helper.lua_fade_helpers_test.go:107:   registered light: basement-10-edison-03 (basement-10-edison-03_3359852625)
+    test.local.lua_fade_test.go:63: 1 Edison light(s) registered
+    test.local.lua_fade_test.go:114:   basement-10-edison-03 brightness=0
+    test.local.lua_fade_test.go:114:   basement-10-edison-03 brightness=50
+    test.local.lua_fade_test.go:114:   basement-10-edison-03 brightness=100
+    test.local.lua_fade_test.go:114:   basement-10-edison-03 brightness=150
+    test.local.lua_fade_test.go:126: basement-10-edison-03: received 4 brightness commands: [0 50 100 150]
+--- PASS: TestLuaFade_EdisonLights_Integration (12.39s)
+PASS
+ok  	github.com/slidebolt/plugin-esphome/cmd/plugin-esphome	109.687s

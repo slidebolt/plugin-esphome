@@ -1,0 +1,55 @@
+=== RUN   TestDeviceDiscovery_Physical_Integration
+    test.integration.device_discovery_test.go:38: discovering devices via mDNS...
+    test.integration.device_discovery_test.go:50: found 9 device(s) via mDNS:
+    test.integration.device_discovery_test.go:52:   switch_basement_office  hasAPIKey=true
+    test.integration.device_discovery_test.go:52:   alex_room_switch  hasAPIKey=true
+    test.integration.device_discovery_test.go:52:   switch_basement_edison  hasAPIKey=true
+    test.integration.device_discovery_test.go:52:   basement-27-office-02  hasAPIKey=true
+    test.integration.device_discovery_test.go:52:   basement-10-edison-03  hasAPIKey=true
+    test.integration.device_discovery_test.go:52:   basement-06-movieroom-back-01  hasAPIKey=true
+    test.integration.device_discovery_test.go:52:   basement-17-tv-center-right  hasAPIKey=true
+    test.integration.device_discovery_test.go:52:   basement-28-office-03  hasAPIKey=true
+    test.integration.device_discovery_test.go:52:   basement-26-office-01  hasAPIKey=true
+    test.integration.device_discovery_test.go:69:   switch_basement_office — key seeded
+    test.integration.device_discovery_test.go:69:   alex_room_switch — key seeded
+    test.integration.device_discovery_test.go:69:   switch_basement_edison — key seeded
+    test.integration.device_discovery_test.go:69:   basement-27-office-02 — key seeded
+    test.integration.device_discovery_test.go:69:   basement-10-edison-03 — key seeded
+    test.integration.device_discovery_test.go:69:   basement-06-movieroom-back-01 — key seeded
+    test.integration.device_discovery_test.go:69:   basement-17-tv-center-right — key seeded
+    test.integration.device_discovery_test.go:69:   basement-28-office-03 — key seeded
+    test.integration.device_discovery_test.go:69:   basement-26-office-01 — key seeded
+    test.integration.device_discovery_test.go:72: seeded keys for 9/9 device(s)
+2026/03/30 10:53:52 plugin-esphome: started, listening for devices via mDNS
+2026/03/30 10:53:52 plugin-esphome: discovered switch_basement_office - connecting
+2026/03/30 10:53:52 plugin-esphome: discovered alex_room_switch - connecting
+2026/03/30 10:53:52 plugin-esphome: discovered switch_basement_edison - connecting
+2026/03/30 10:53:52 plugin-esphome: discovered basement-27-office-02 - connecting
+2026/03/30 10:53:52 plugin-esphome: discovered basement-10-edison-03 - connecting
+2026/03/30 10:53:52 plugin-esphome: discovered basement-06-movieroom-back-01 - connecting
+2026/03/30 10:53:52 plugin-esphome: discovered basement-17-tv-center-right - connecting
+2026/03/30 10:53:52 plugin-esphome: discovered basement-28-office-03 - connecting
+2026/03/30 10:53:52 plugin-esphome: discovered basement-26-office-01 - connecting
+    test.integration.device_discovery_test.go:95: waiting for entities to be registered...
+2026/03/30 10:53:53 plugin-esphome: basement-27-office-02 - registered 1 entities
+2026/03/30 10:53:53 plugin-esphome: basement-06-movieroom-back-01 - registered 1 entities
+2026/03/30 10:53:53 plugin-esphome: basement-28-office-03 - registered 1 entities
+2026/03/30 10:53:53 plugin-esphome: basement-26-office-01 - registered 1 entities
+2026/03/30 10:53:53 plugin-esphome: basement-17-tv-center-right - registered 1 entities
+2026/03/30 10:53:53 plugin-esphome: basement-10-edison-03 - registered 1 entities
+    test.integration.device_discovery_test.go:106:   ✓ basement-27-office-02 — 1 entit(ies)
+    test.integration.device_discovery_test.go:106:   ✓ basement-10-edison-03 — 1 entit(ies)
+    test.integration.device_discovery_test.go:106:   ✓ basement-06-movieroom-back-01 — 1 entit(ies)
+    test.integration.device_discovery_test.go:106:   ✓ basement-17-tv-center-right — 1 entit(ies)
+    test.integration.device_discovery_test.go:106:   ✓ basement-28-office-03 — 1 entit(ies)
+    test.integration.device_discovery_test.go:106:   ✓ basement-26-office-01 — 1 entit(ies)
+2026/03/30 10:53:53 plugin-esphome: switch_basement_edison - registered 8 entities
+2026/03/30 10:53:53 plugin-esphome: switch_basement_office - registered 8 entities
+2026/03/30 10:53:53 plugin-esphome: alex_room_switch - registered 11 entities
+    test.integration.device_discovery_test.go:106:   ✓ switch_basement_office — 8 entit(ies)
+    test.integration.device_discovery_test.go:106:   ✓ alex_room_switch — 11 entit(ies)
+    test.integration.device_discovery_test.go:106:   ✓ switch_basement_edison — 8 entit(ies)
+2026/03/30 10:53:53 plugin-esphome: initial probe found 9 device(s)
+--- PASS: TestDeviceDiscovery_Physical_Integration (6.02s)
+PASS
+ok  	github.com/slidebolt/plugin-esphome/cmd/plugin-esphome	6.027s

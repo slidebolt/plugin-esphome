@@ -1,0 +1,1511 @@
+=== RUN   TestLookupESPKey
+--- PASS: TestLookupESPKey (0.00s)
+=== RUN   TestEntityFromMsgLightIncludesPersistentColorCapabilities
+--- PASS: TestEntityFromMsgLightIncludesPersistentColorCapabilities (0.00s)
+=== RUN   TestEntityFromMsgLightColorTempOnlyOmitsRGBCommand
+--- PASS: TestEntityFromMsgLightColorTempOnlyOmitsRGBCommand (0.00s)
+=== RUN   TestLightStateFromResponseColorTempDoesNotBackfillRGB
+--- PASS: TestLightStateFromResponseColorTempDoesNotBackfillRGB (0.00s)
+=== RUN   TestApplyStateUpdatePersistsFullLightState
+--- PASS: TestApplyStateUpdatePersistsFullLightState (0.00s)
+=== RUN   TestLookupEntityByESPKeyFromStorage
+--- PASS: TestLookupEntityByESPKeyFromStorage (0.00s)
+=== RUN   TestResolveAPIKeyPersistsFallbackToPrivate
+--- PASS: TestResolveAPIKeyPersistsFallbackToPrivate (0.00s)
+=== RUN   TestResolveAPIKeyUsesStoredPrivateConfigWithoutMDNSEncryptionFlag
+--- PASS: TestResolveAPIKeyUsesStoredPrivateConfigWithoutMDNSEncryptionFlag (0.00s)
+=== RUN   TestRememberDevicePersistsLastKnownEndpoint
+--- PASS: TestRememberDevicePersistsLastKnownEndpoint (0.00s)
+=== RUN   TestVerifyConnectedDeviceRejectsMACMismatch
+--- PASS: TestVerifyConnectedDeviceRejectsMACMismatch (0.00s)
+=== RUN   TestOnDeviceFoundStartsOneManagedLoopPerDevice
+2026/03/30 10:04:02 plugin-esphome: discovered basement-edison - connecting
+--- PASS: TestOnDeviceFoundStartsOneManagedLoopPerDevice (0.00s)
+=== RUN   TestHandleCommandSendFailureDropsActiveConnectionAndRequestsReconnect
+2026/03/30 10:04:02 plugin-esphome: send command domain.LightSetBrightness to plugin-esphome.basement-edison.basement-edison_42 (10.0.0.10:6053): broken pipe
+--- PASS: TestHandleCommandSendFailureDropsActiveConnectionAndRequestsReconnect (0.00s)
+=== RUN   TestHelloManifest
+--- PASS: TestHelloManifest (0.00s)
+PASS
+ok  	github.com/slidebolt/plugin-esphome/app	0.004s
+?   	github.com/slidebolt/plugin-esphome/cmd/edison-test	[no test files]
+=== RUN   TestLuaFade_ESPHomeLights
+    test.helper.lua_fade_test.go:192: timeout: collected 0/8 readings
+--- FAIL: TestLuaFade_ESPHomeLights (1.01s)
+=== RUN   TestLuaFade_StopHaltsCommands
+    test.helper.lua_fade_test.go:250: only 0 commands arrived before stop
+--- FAIL: TestLuaFade_StopHaltsCommands (0.51s)
+=== RUN   TestLuaFade_NewDevicePickedUp
+    test.helper.lua_fade_test.go:305: first light never received a command
+--- FAIL: TestLuaFade_NewDevicePickedUp (0.51s)
+=== RUN   TestInternal_WriteReadDelete
+--- PASS: TestInternal_WriteReadDelete (0.00s)
+=== RUN   TestInternal_NotVisibleInQuery
+--- PASS: TestInternal_NotVisibleInQuery (0.00s)
+=== RUN   TestInternal_NotVisibleInSearch
+--- PASS: TestInternal_NotVisibleInSearch (0.00s)
+=== RUN   TestCrossCutting_MultiPluginIsolation
+--- PASS: TestCrossCutting_MultiPluginIsolation (0.00s)
+=== RUN   TestCrossCutting_QueryAllPoweredOn
+--- PASS: TestCrossCutting_QueryAllPoweredOn (0.00s)
+=== RUN   TestCustom_Sprinkler_SaveGetHydrate
+--- PASS: TestCustom_Sprinkler_SaveGetHydrate (0.00s)
+=== RUN   TestCustom_Sprinkler_QueryByType
+--- PASS: TestCustom_Sprinkler_QueryByType (0.00s)
+=== RUN   TestCustom_Sprinkler_QueryByMoisture
+--- PASS: TestCustom_Sprinkler_QueryByMoisture (0.00s)
+=== RUN   TestCustom_Sprinkler_QueryByActive
+--- PASS: TestCustom_Sprinkler_QueryByActive (0.00s)
+=== RUN   TestCustom_Sprinkler_Activate
+--- PASS: TestCustom_Sprinkler_Activate (0.00s)
+=== RUN   TestCustom_Sprinkler_Deactivate
+--- PASS: TestCustom_Sprinkler_Deactivate (0.00s)
+=== RUN   TestMixed_QueryEachTypeInIsolation
+--- PASS: TestMixed_QueryEachTypeInIsolation (0.00s)
+=== RUN   TestMixed_CustomAndBuiltinBoolField
+--- PASS: TestMixed_CustomAndBuiltinBoolField (0.00s)
+=== RUN   TestMixed_NumericCrossType
+--- PASS: TestMixed_NumericCrossType (0.00s)
+=== RUN   TestMixed_PatternIsolatesPlugin
+--- PASS: TestMixed_PatternIsolatesPlugin (0.00s)
+=== RUN   TestMixed_DeleteCustomDoesNotAffectBuiltin
+--- PASS: TestMixed_DeleteCustomDoesNotAffectBuiltin (0.00s)
+=== RUN   TestMixed_OverwriteCustomReflectsInQuery
+--- PASS: TestMixed_OverwriteCustomReflectsInQuery (0.00s)
+=== RUN   TestMixed_FullLifecycle_SaveQueryCommandHydrate
+--- PASS: TestMixed_FullLifecycle_SaveQueryCommandHydrate (0.00s)
+=== RUN   TestDeviceDiscovery_Physical_Integration
+    test.integration.device_discovery_test.go:38: discovering devices via mDNS...
+    test.integration.device_discovery_test.go:50: found 9 device(s) via mDNS:
+    test.integration.device_discovery_test.go:52:   switch_basement_office  hasAPIKey=true
+    test.integration.device_discovery_test.go:52:   switch_basement_edison  hasAPIKey=true
+    test.integration.device_discovery_test.go:52:   alex_room_switch  hasAPIKey=true
+    test.integration.device_discovery_test.go:52:   basement-17-tv-center-right  hasAPIKey=true
+    test.integration.device_discovery_test.go:52:   basement-10-edison-03  hasAPIKey=true
+    test.integration.device_discovery_test.go:52:   basement-26-office-01  hasAPIKey=true
+    test.integration.device_discovery_test.go:52:   basement-06-movieroom-back-01  hasAPIKey=true
+    test.integration.device_discovery_test.go:52:   basement-27-office-02  hasAPIKey=true
+    test.integration.device_discovery_test.go:52:   basement-28-office-03  hasAPIKey=true
+    test.integration.device_discovery_test.go:69:   switch_basement_office — key seeded
+    test.integration.device_discovery_test.go:69:   switch_basement_edison — key seeded
+    test.integration.device_discovery_test.go:69:   alex_room_switch — key seeded
+    test.integration.device_discovery_test.go:69:   basement-17-tv-center-right — key seeded
+    test.integration.device_discovery_test.go:69:   basement-10-edison-03 — key seeded
+    test.integration.device_discovery_test.go:69:   basement-26-office-01 — key seeded
+    test.integration.device_discovery_test.go:69:   basement-06-movieroom-back-01 — key seeded
+    test.integration.device_discovery_test.go:69:   basement-27-office-02 — key seeded
+    test.integration.device_discovery_test.go:69:   basement-28-office-03 — key seeded
+    test.integration.device_discovery_test.go:72: seeded keys for 9/9 device(s)
+2026/03/30 10:04:10 plugin-esphome: started, listening for devices via mDNS
+2026/03/30 10:04:10 plugin-esphome: discovered switch_basement_office - connecting
+2026/03/30 10:04:10 plugin-esphome: discovered switch_basement_edison - connecting
+2026/03/30 10:04:10 plugin-esphome: discovered alex_room_switch - connecting
+2026/03/30 10:04:10 plugin-esphome: discovered basement-17-tv-center-right - connecting
+2026/03/30 10:04:10 plugin-esphome: discovered basement-10-edison-03 - connecting
+2026/03/30 10:04:10 plugin-esphome: discovered basement-26-office-01 - connecting
+2026/03/30 10:04:10 plugin-esphome: discovered basement-06-movieroom-back-01 - connecting
+2026/03/30 10:04:10 plugin-esphome: discovered basement-27-office-02 - connecting
+2026/03/30 10:04:10 plugin-esphome: discovered basement-28-office-03 - connecting
+    test.integration.device_discovery_test.go:95: waiting for entities to be registered...
+2026/03/30 10:04:10 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:04:10 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:04:10 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:04:10 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:04:10 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:04:10 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:04:10 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:04:10 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:04:10 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:04:12 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:04:12 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:04:12 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:04:12 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:04:12 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:04:12 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:04:12 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:04:12 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:04:12 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:04:14 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:04:14 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:04:14 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:04:14 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:04:14 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:04:14 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:04:15 plugin-esphome: initial probe found 9 device(s)
+2026/03/30 10:04:15 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:04:15 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:04:15 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:04:15 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:04:15 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:04:15 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:04:15 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:04:15 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:04:15 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:04:16 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:04:16 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:04:16 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:04:16 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:04:16 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:04:16 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:04:16 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:04:16 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:04:16 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:04:24 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:04:24 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:04:25 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+    test.integration.device_discovery_test.go:114: timeout: 0/9 devices registered
+    test.integration.device_discovery_test.go:124: ✗ switch_basement_office: no entities registered
+    test.integration.device_discovery_test.go:124: ✗ switch_basement_edison: no entities registered
+    test.integration.device_discovery_test.go:124: ✗ alex_room_switch: no entities registered
+    test.integration.device_discovery_test.go:124: ✗ basement-17-tv-center-right: no entities registered
+    test.integration.device_discovery_test.go:124: ✗ basement-10-edison-03: no entities registered
+    test.integration.device_discovery_test.go:124: ✗ basement-26-office-01: no entities registered
+    test.integration.device_discovery_test.go:124: ✗ basement-06-movieroom-back-01: no entities registered
+    test.integration.device_discovery_test.go:124: ✗ basement-27-office-02: no entities registered
+    test.integration.device_discovery_test.go:124: ✗ basement-28-office-03: no entities registered
+--- FAIL: TestDeviceDiscovery_Physical_Integration (20.01s)
+=== RUN   TestConnectionStability
+    test.local.connection_stability_test.go:63: target: switch_basement_edison  addr=192.168.88.84  port=6053
+    test.local.connection_stability_test.go:86: connected at t=0
+    test.local.connection_stability_test.go:101: device: name="switch_basement_edison" mac=D8:BF:C0:D9:97:6A version=2025.11.5
+    test.local.connection_stability_test.go:110: subscribed — holding connection for 90s, pinging every 25s
+    test.local.connection_stability_test.go:134: +11s  still connected  pings=0
+    test.local.connection_stability_test.go:134: +21s  still connected  pings=0
+    test.local.connection_stability_test.go:132: +26s  ping #1 OK
+    test.local.connection_stability_test.go:134: +31s  still connected  pings=1
+    test.local.connection_stability_test.go:134: +41s  still connected  pings=1
+    test.local.connection_stability_test.go:132: +51s  ping #2 OK
+    test.local.connection_stability_test.go:134: +51s  still connected  pings=2
+    test.local.connection_stability_test.go:134: +1m1s  still connected  pings=2
+    test.local.connection_stability_test.go:134: +1m11s  still connected  pings=2
+    test.local.connection_stability_test.go:132: +1m16s  ping #3 OK
+    test.local.connection_stability_test.go:134: +1m21s  still connected  pings=3
+    test.local.connection_stability_test.go:134: +1m31s  still connected  pings=3
+    test.local.connection_stability_test.go:136: PASS: connection held for 1m31s  pings=3  no disconnects
+--- PASS: TestConnectionStability (97.25s)
+=== RUN   TestConnectionTrace
+    test.local.connection_trace_test.go:45: mDNS found 9 device(s):
+    test.local.connection_trace_test.go:47:   switch_basement_edison  addr=192.168.88.84  port=6053  encrypted=true
+    test.local.connection_trace_test.go:47:   switch_basement_office  addr=192.168.88.99  port=6053  encrypted=true
+    test.local.connection_trace_test.go:47:   alex_room_switch  addr=192.168.88.113  port=6053  encrypted=true
+    test.local.connection_trace_test.go:47:   basement-26-office-01  addr=192.168.88.42  port=6053  encrypted=true
+    test.local.connection_trace_test.go:47:   basement-10-edison-03  addr=192.168.88.46  port=6053  encrypted=true
+    test.local.connection_trace_test.go:47:   basement-06-movieroom-back-01  addr=192.168.88.11  port=6053  encrypted=true
+    test.local.connection_trace_test.go:47:   basement-27-office-02  addr=192.168.88.43  port=6053  encrypted=true
+    test.local.connection_trace_test.go:47:   basement-28-office-03  addr=192.168.88.45  port=6053  encrypted=true
+    test.local.connection_trace_test.go:47:   basement-17-tv-center-right  addr=192.168.88.116  port=6053  encrypted=true
+    test.local.connection_trace_test.go:75: target device: switch_basement_edison  addr=192.168.88.84  port=6053  encrypted=true
+    test.local.connection_trace_test.go:101: ── step 1: GetClient (TCP connect + noise handshake)
+    test.local.connection_trace_test.go:108: GetClient succeeded in 309ms
+    test.local.connection_trace_test.go:112: ── step 2: Send HelloRequest
+    test.local.connection_trace_test.go:121: HelloRequest sent in 0s; sleeping 200ms
+    test.local.connection_trace_test.go:125: ── step 3: Send ConnectRequest (no password)
+    test.local.connection_trace_test.go:130: ConnectRequest sent in 0s; sleeping 200ms
+    test.local.connection_trace_test.go:134: ── step 4: DeviceInfo
+    test.local.connection_trace_test.go:140: DeviceInfo succeeded in 11ms: name="switch_basement_edison" mac=D8:BF:C0:D9:97:6A version=2025.11.5
+    test.local.connection_trace_test.go:144: ── step 5: ListEntitiesRequest
+    test.local.connection_trace_test.go:97: [+   531ms] RECEIVED *api.ListEntitiesBinarySensorResponse
+    test.local.connection_trace_test.go:97: [+   531ms] RECEIVED *api.ListEntitiesBinarySensorResponse
+    test.local.connection_trace_test.go:97: [+   531ms] RECEIVED *api.ListEntitiesBinarySensorResponse
+    test.local.connection_trace_test.go:97: [+   531ms] RECEIVED *api.ListEntitiesBinarySensorResponse
+    test.local.connection_trace_test.go:97: [+   531ms] RECEIVED *api.ListEntitiesSwitchResponse
+    test.local.connection_trace_test.go:97: [+   531ms] RECEIVED *api.ListEntitiesSwitchResponse
+    test.local.connection_trace_test.go:97: [+   531ms] RECEIVED *api.ListEntitiesButtonResponse
+    test.local.connection_trace_test.go:97: [+   531ms] RECEIVED *api.ListEntitiesButtonResponse
+    test.local.connection_trace_test.go:97: [+   531ms] RECEIVED *api.ListEntitiesDoneResponse
+    test.local.connection_trace_test.go:180: ListEntitiesDone received after 151ms
+    test.local.connection_trace_test.go:186: ── step 6: SubscribeStatesRequest
+    test.local.connection_trace_test.go:190: Subscribed to states; listening for 5s...
+    test.local.connection_trace_test.go:97: [+   572ms] RECEIVED *api.BinarySensorStateResponse
+    test.local.connection_trace_test.go:97: [+   572ms] RECEIVED *api.BinarySensorStateResponse
+    test.local.connection_trace_test.go:97: [+   572ms] RECEIVED *api.BinarySensorStateResponse
+    test.local.connection_trace_test.go:97: [+   572ms] RECEIVED *api.BinarySensorStateResponse
+    test.local.connection_trace_test.go:97: [+   572ms] RECEIVED *api.SwitchStateResponse
+    test.local.connection_trace_test.go:97: [+   572ms] RECEIVED *api.SwitchStateResponse
+    test.local.connection_trace_test.go:194: ── step 7: Ping
+    test.local.connection_trace_test.go:199: Ping succeeded in 37ms
+    test.local.connection_trace_test.go:204: total messages received from device: 15
+    test.local.connection_trace_test.go:206:   msg[0] +   531ms *api.ListEntitiesBinarySensorResponse
+    test.local.connection_trace_test.go:206:   msg[1] +   531ms *api.ListEntitiesBinarySensorResponse
+    test.local.connection_trace_test.go:206:   msg[2] +   531ms *api.ListEntitiesBinarySensorResponse
+    test.local.connection_trace_test.go:206:   msg[3] +   531ms *api.ListEntitiesBinarySensorResponse
+    test.local.connection_trace_test.go:206:   msg[4] +   531ms *api.ListEntitiesSwitchResponse
+    test.local.connection_trace_test.go:206:   msg[5] +   531ms *api.ListEntitiesSwitchResponse
+    test.local.connection_trace_test.go:206:   msg[6] +   531ms *api.ListEntitiesButtonResponse
+    test.local.connection_trace_test.go:206:   msg[7] +   531ms *api.ListEntitiesButtonResponse
+    test.local.connection_trace_test.go:206:   msg[8] +   531ms *api.ListEntitiesDoneResponse
+    test.local.connection_trace_test.go:206:   msg[9] +   572ms *api.BinarySensorStateResponse
+    test.local.connection_trace_test.go:206:   msg[10] +   572ms *api.BinarySensorStateResponse
+    test.local.connection_trace_test.go:206:   msg[11] +   572ms *api.BinarySensorStateResponse
+    test.local.connection_trace_test.go:206:   msg[12] +   572ms *api.BinarySensorStateResponse
+    test.local.connection_trace_test.go:206:   msg[13] +   572ms *api.SwitchStateResponse
+    test.local.connection_trace_test.go:206:   msg[14] +   572ms *api.SwitchStateResponse
+--- PASS: TestConnectionTrace (11.93s)
+=== RUN   TestFrontRightCorner_DirectRGB
+    test.local.group_test.go:402: mDNS discover pass 1: found 9 this pass, 9 unique total
+    test.local.group_test.go:402: mDNS names so far: [alex_room_switch basement-06-movieroom-back-01 basement-10-edison-03 basement-17-tv-center-right basement-26-office-01 basement-27-office-02 basement-28-office-03 switch_basement_edison switch_basement_office]
+    test.local.group_test.go:402: mDNS discover pass 2: found 9 this pass, 9 unique total
+    test.local.group_test.go:402: mDNS names so far: [alex_room_switch basement-06-movieroom-back-01 basement-10-edison-03 basement-17-tv-center-right basement-26-office-01 basement-27-office-02 basement-28-office-03 switch_basement_edison switch_basement_office]
+    test.local.group_test.go:402: mDNS discover pass 3: found 9 this pass, 9 unique total
+    test.local.group_test.go:402: mDNS names so far: [alex_room_switch basement-06-movieroom-back-01 basement-10-edison-03 basement-17-tv-center-right basement-26-office-01 basement-27-office-02 basement-28-office-03 switch_basement_edison switch_basement_office]
+    test.local.group_test.go:402: mDNS discover pass 4: found 7 this pass, 9 unique total
+    test.local.group_test.go:402: mDNS names so far: [alex_room_switch basement-06-movieroom-back-01 basement-10-edison-03 basement-17-tv-center-right basement-26-office-01 basement-27-office-02 basement-28-office-03 switch_basement_edison switch_basement_office]
+    test.local.group_test.go:402: found 9 device(s) via mDNS
+2026/03/30 10:07:06 plugin-esphome: trace logging enabled
+2026/03/30 10:07:06 plugin-esphome: started, listening for devices via mDNS
+2026/03/30 10:07:06 plugin-esphome: discovered alex_room_switch - connecting
+2026/03/30 10:07:06 plugin-esphome: discovered basement-06-movieroom-back-01 - connecting
+2026/03/30 10:07:06 plugin-esphome: discovered basement-10-edison-03 - connecting
+2026/03/30 10:07:06 plugin-esphome: discovered basement-17-tv-center-right - connecting
+2026/03/30 10:07:06 plugin-esphome: discovered basement-26-office-01 - connecting
+2026/03/30 10:07:06 plugin-esphome: discovered basement-27-office-02 - connecting
+2026/03/30 10:07:06 plugin-esphome: discovered basement-28-office-03 - connecting
+2026/03/30 10:07:06 plugin-esphome: discovered switch_basement_edison - connecting
+2026/03/30 10:07:06 plugin-esphome: discovered switch_basement_office - connecting
+    test.local.group_test.go:402: waiting for devices to register entities...
+2026/03/30 10:07:07 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:07:07 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:07:07 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:07:07 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:07:07 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:07:07 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:07:07 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:07:07 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:07:07 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:07:08 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:07:08 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:07:08 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:07:08 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:07:08 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:07:09 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:07:09 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:07:09 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:07:09 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:07:11 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:07:11 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:07:11 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:07:11 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:07:11 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:07:11 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:07:11 plugin-esphome: initial probe found 9 device(s)
+2026/03/30 10:07:11 plugin-esphome: [trace] refreshed discovery for basement-17-tv-center-right addr=192.168.88.116 port=6053
+2026/03/30 10:07:11 plugin-esphome: [trace] refreshed discovery for basement-28-office-03 addr=192.168.88.45 port=6053
+2026/03/30 10:07:11 plugin-esphome: [trace] refreshed discovery for basement-06-movieroom-back-01 addr=192.168.88.11 port=6053
+2026/03/30 10:07:11 plugin-esphome: [trace] refreshed discovery for basement-27-office-02 addr=192.168.88.43 port=6053
+2026/03/30 10:07:11 plugin-esphome: [trace] refreshed discovery for basement-26-office-01 addr=192.168.88.42 port=6053
+2026/03/30 10:07:11 plugin-esphome: [trace] refreshed discovery for basement-10-edison-03 addr=192.168.88.46 port=6053
+2026/03/30 10:07:11 plugin-esphome: [trace] refreshed discovery for switch_basement_edison addr=192.168.88.84 port=6053
+2026/03/30 10:07:11 plugin-esphome: [trace] refreshed discovery for switch_basement_office addr=192.168.88.99 port=6053
+2026/03/30 10:07:11 plugin-esphome: [trace] refreshed discovery for alex_room_switch addr=192.168.88.113 port=6053
+2026/03/30 10:07:11 plugin-esphome: [trace] refreshed discovery for basement-28-office-03 addr=192.168.88.45 port=6053
+2026/03/30 10:07:11 plugin-esphome: [trace] refreshed discovery for basement-17-tv-center-right addr=192.168.88.116 port=6053
+2026/03/30 10:07:11 plugin-esphome: [trace] refreshed discovery for switch_basement_office addr=192.168.88.99 port=6053
+2026/03/30 10:07:11 plugin-esphome: [trace] refreshed discovery for basement-06-movieroom-back-01 addr=192.168.88.11 port=6053
+2026/03/30 10:07:11 plugin-esphome: [trace] refreshed discovery for basement-26-office-01 addr=192.168.88.42 port=6053
+2026/03/30 10:07:11 plugin-esphome: [trace] refreshed discovery for basement-27-office-02 addr=192.168.88.43 port=6053
+2026/03/30 10:07:11 plugin-esphome: [trace] refreshed discovery for basement-10-edison-03 addr=192.168.88.46 port=6053
+2026/03/30 10:07:11 plugin-esphome: [trace] refreshed discovery for alex_room_switch addr=192.168.88.113 port=6053
+2026/03/30 10:07:11 plugin-esphome: [trace] refreshed discovery for switch_basement_edison addr=192.168.88.84 port=6053
+2026/03/30 10:07:12 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:07:12 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:07:12 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:07:12 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:07:12 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:07:12 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:07:12 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:07:12 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:07:12 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:07:12 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:07:12 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:07:12 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:07:13 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:07:13 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:07:13 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:07:13 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:07:13 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:07:13 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:07:21 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:07:21 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:07:21 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+    test.local.group_test.go:402: timeout: 0/9 devices registered
+    test.local.group_test.go:402: no light entities found on any device
+--- FAIL: TestFrontRightCorner_DirectRGB (67.51s)
+=== RUN   TestFrontRightCorner_SmallBurst
+    test.local.group_test.go:424: mDNS discover pass 1: found 9 this pass, 9 unique total
+    test.local.group_test.go:424: mDNS names so far: [alex_room_switch basement-06-movieroom-back-01 basement-10-edison-03 basement-17-tv-center-right basement-26-office-01 basement-27-office-02 basement-28-office-03 switch_basement_edison switch_basement_office]
+    test.local.group_test.go:424: mDNS discover pass 2: found 9 this pass, 9 unique total
+    test.local.group_test.go:424: mDNS names so far: [alex_room_switch basement-06-movieroom-back-01 basement-10-edison-03 basement-17-tv-center-right basement-26-office-01 basement-27-office-02 basement-28-office-03 switch_basement_edison switch_basement_office]
+    test.local.group_test.go:424: mDNS discover pass 3: found 8 this pass, 9 unique total
+    test.local.group_test.go:424: mDNS names so far: [alex_room_switch basement-06-movieroom-back-01 basement-10-edison-03 basement-17-tv-center-right basement-26-office-01 basement-27-office-02 basement-28-office-03 switch_basement_edison switch_basement_office]
+    test.local.group_test.go:424: mDNS discover pass 4: found 9 this pass, 9 unique total
+    test.local.group_test.go:424: mDNS names so far: [alex_room_switch basement-06-movieroom-back-01 basement-10-edison-03 basement-17-tv-center-right basement-26-office-01 basement-27-office-02 basement-28-office-03 switch_basement_edison switch_basement_office]
+    test.local.group_test.go:424: found 9 device(s) via mDNS
+2026/03/30 10:08:14 plugin-esphome: trace logging enabled
+2026/03/30 10:08:14 plugin-esphome: started, listening for devices via mDNS
+2026/03/30 10:08:14 plugin-esphome: discovered alex_room_switch - connecting
+2026/03/30 10:08:14 plugin-esphome: discovered basement-06-movieroom-back-01 - connecting
+2026/03/30 10:08:14 plugin-esphome: discovered basement-10-edison-03 - connecting
+2026/03/30 10:08:14 plugin-esphome: discovered basement-17-tv-center-right - connecting
+2026/03/30 10:08:14 plugin-esphome: discovered basement-26-office-01 - connecting
+2026/03/30 10:08:14 plugin-esphome: discovered basement-27-office-02 - connecting
+2026/03/30 10:08:14 plugin-esphome: discovered basement-28-office-03 - connecting
+2026/03/30 10:08:14 plugin-esphome: discovered switch_basement_edison - connecting
+2026/03/30 10:08:14 plugin-esphome: discovered switch_basement_office - connecting
+    test.local.group_test.go:424: waiting for devices to register entities...
+2026/03/30 10:08:14 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:08:14 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:08:14 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:08:14 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:08:14 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:08:14 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:08:15 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:08:15 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:08:15 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:08:16 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:08:16 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:08:16 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:08:16 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:08:16 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:08:16 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:08:16 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:08:16 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:08:16 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:08:19 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:08:19 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:08:19 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:08:19 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:08:19 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:08:19 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:08:19 plugin-esphome: initial probe found 9 device(s)
+2026/03/30 10:08:19 plugin-esphome: [trace] refreshed discovery for basement-06-movieroom-back-01 addr=192.168.88.11 port=6053
+2026/03/30 10:08:19 plugin-esphome: [trace] refreshed discovery for basement-10-edison-03 addr=192.168.88.46 port=6053
+2026/03/30 10:08:19 plugin-esphome: [trace] refreshed discovery for basement-27-office-02 addr=192.168.88.43 port=6053
+2026/03/30 10:08:19 plugin-esphome: [trace] refreshed discovery for basement-17-tv-center-right addr=192.168.88.116 port=6053
+2026/03/30 10:08:19 plugin-esphome: [trace] refreshed discovery for basement-26-office-01 addr=192.168.88.42 port=6053
+2026/03/30 10:08:19 plugin-esphome: [trace] refreshed discovery for basement-28-office-03 addr=192.168.88.45 port=6053
+2026/03/30 10:08:19 plugin-esphome: [trace] refreshed discovery for switch_basement_edison addr=192.168.88.84 port=6053
+2026/03/30 10:08:19 plugin-esphome: [trace] refreshed discovery for alex_room_switch addr=192.168.88.113 port=6053
+2026/03/30 10:08:19 plugin-esphome: [trace] refreshed discovery for switch_basement_office addr=192.168.88.99 port=6053
+2026/03/30 10:08:19 plugin-esphome: [trace] refreshed discovery for basement-10-edison-03 addr=192.168.88.46 port=6053
+2026/03/30 10:08:19 plugin-esphome: [trace] refreshed discovery for basement-26-office-01 addr=192.168.88.42 port=6053
+2026/03/30 10:08:19 plugin-esphome: [trace] refreshed discovery for basement-06-movieroom-back-01 addr=192.168.88.11 port=6053
+2026/03/30 10:08:19 plugin-esphome: [trace] refreshed discovery for basement-27-office-02 addr=192.168.88.43 port=6053
+2026/03/30 10:08:19 plugin-esphome: [trace] refreshed discovery for basement-17-tv-center-right addr=192.168.88.116 port=6053
+2026/03/30 10:08:19 plugin-esphome: [trace] refreshed discovery for basement-28-office-03 addr=192.168.88.45 port=6053
+2026/03/30 10:08:19 plugin-esphome: [trace] refreshed discovery for alex_room_switch addr=192.168.88.113 port=6053
+2026/03/30 10:08:19 plugin-esphome: [trace] refreshed discovery for switch_basement_office addr=192.168.88.99 port=6053
+2026/03/30 10:08:19 plugin-esphome: [trace] refreshed discovery for switch_basement_edison addr=192.168.88.84 port=6053
+2026/03/30 10:08:19 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:08:19 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:08:19 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:08:19 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:08:19 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:08:19 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:08:19 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:08:19 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:08:19 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:08:20 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:08:20 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:08:20 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:08:20 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:08:20 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:08:20 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:08:20 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:08:20 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:08:20 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:08:29 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:08:29 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:08:29 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+    test.local.group_test.go:424: timeout: 0/9 devices registered
+    test.local.group_test.go:424: no light entities found on any device
+--- FAIL: TestFrontRightCorner_SmallBurst (67.51s)
+=== RUN   TestFrontRightCorner_MovieTimePhaseBurst
+    test.local.group_test.go:464: mDNS discover pass 1: found 9 this pass, 9 unique total
+    test.local.group_test.go:464: mDNS names so far: [alex_room_switch basement-06-movieroom-back-01 basement-10-edison-03 basement-17-tv-center-right basement-26-office-01 basement-27-office-02 basement-28-office-03 switch_basement_edison switch_basement_office]
+    test.local.group_test.go:464: mDNS discover pass 2: found 9 this pass, 9 unique total
+    test.local.group_test.go:464: mDNS names so far: [alex_room_switch basement-06-movieroom-back-01 basement-10-edison-03 basement-17-tv-center-right basement-26-office-01 basement-27-office-02 basement-28-office-03 switch_basement_edison switch_basement_office]
+    test.local.group_test.go:464: mDNS discover pass 3: found 9 this pass, 9 unique total
+    test.local.group_test.go:464: mDNS names so far: [alex_room_switch basement-06-movieroom-back-01 basement-10-edison-03 basement-17-tv-center-right basement-26-office-01 basement-27-office-02 basement-28-office-03 switch_basement_edison switch_basement_office]
+    test.local.group_test.go:464: mDNS discover pass 4: found 9 this pass, 9 unique total
+    test.local.group_test.go:464: mDNS names so far: [alex_room_switch basement-06-movieroom-back-01 basement-10-edison-03 basement-17-tv-center-right basement-26-office-01 basement-27-office-02 basement-28-office-03 switch_basement_edison switch_basement_office]
+    test.local.group_test.go:464: found 9 device(s) via mDNS
+2026/03/30 10:09:21 plugin-esphome: trace logging enabled
+2026/03/30 10:09:21 plugin-esphome: started, listening for devices via mDNS
+2026/03/30 10:09:21 plugin-esphome: discovered alex_room_switch - connecting
+2026/03/30 10:09:21 plugin-esphome: discovered basement-06-movieroom-back-01 - connecting
+2026/03/30 10:09:21 plugin-esphome: discovered basement-10-edison-03 - connecting
+2026/03/30 10:09:21 plugin-esphome: discovered basement-17-tv-center-right - connecting
+2026/03/30 10:09:21 plugin-esphome: discovered basement-26-office-01 - connecting
+2026/03/30 10:09:21 plugin-esphome: discovered basement-27-office-02 - connecting
+2026/03/30 10:09:21 plugin-esphome: discovered basement-28-office-03 - connecting
+2026/03/30 10:09:21 plugin-esphome: discovered switch_basement_edison - connecting
+2026/03/30 10:09:21 plugin-esphome: discovered switch_basement_office - connecting
+    test.local.group_test.go:464: waiting for devices to register entities...
+2026/03/30 10:09:22 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:09:22 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:09:22 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:09:22 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:09:22 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:09:22 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:09:22 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:09:22 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:09:22 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:09:24 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:09:24 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:09:24 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:09:24 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:09:24 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:09:24 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:09:24 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:09:24 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:09:24 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:09:26 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:09:26 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:09:26 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:09:26 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:09:26 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:09:26 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:09:26 plugin-esphome: initial probe found 9 device(s)
+2026/03/30 10:09:26 plugin-esphome: [trace] refreshed discovery for switch_basement_office addr=192.168.88.99 port=6053
+2026/03/30 10:09:26 plugin-esphome: [trace] refreshed discovery for alex_room_switch addr=192.168.88.113 port=6053
+2026/03/30 10:09:26 plugin-esphome: [trace] refreshed discovery for switch_basement_edison addr=192.168.88.84 port=6053
+2026/03/30 10:09:26 plugin-esphome: [trace] refreshed discovery for basement-26-office-01 addr=192.168.88.42 port=6053
+2026/03/30 10:09:26 plugin-esphome: [trace] refreshed discovery for basement-06-movieroom-back-01 addr=192.168.88.11 port=6053
+2026/03/30 10:09:26 plugin-esphome: [trace] refreshed discovery for basement-28-office-03 addr=192.168.88.45 port=6053
+2026/03/30 10:09:26 plugin-esphome: [trace] refreshed discovery for basement-17-tv-center-right addr=192.168.88.116 port=6053
+2026/03/30 10:09:26 plugin-esphome: [trace] refreshed discovery for basement-10-edison-03 addr=192.168.88.46 port=6053
+2026/03/30 10:09:26 plugin-esphome: [trace] refreshed discovery for basement-27-office-02 addr=192.168.88.43 port=6053
+2026/03/30 10:09:26 plugin-esphome: [trace] refreshed discovery for switch_basement_office addr=192.168.88.99 port=6053
+2026/03/30 10:09:26 plugin-esphome: [trace] refreshed discovery for alex_room_switch addr=192.168.88.113 port=6053
+2026/03/30 10:09:26 plugin-esphome: [trace] refreshed discovery for basement-26-office-01 addr=192.168.88.42 port=6053
+2026/03/30 10:09:26 plugin-esphome: [trace] refreshed discovery for basement-10-edison-03 addr=192.168.88.46 port=6053
+2026/03/30 10:09:26 plugin-esphome: [trace] refreshed discovery for switch_basement_edison addr=192.168.88.84 port=6053
+2026/03/30 10:09:26 plugin-esphome: [trace] refreshed discovery for basement-28-office-03 addr=192.168.88.45 port=6053
+2026/03/30 10:09:26 plugin-esphome: [trace] refreshed discovery for basement-06-movieroom-back-01 addr=192.168.88.11 port=6053
+2026/03/30 10:09:26 plugin-esphome: [trace] refreshed discovery for basement-27-office-02 addr=192.168.88.43 port=6053
+2026/03/30 10:09:26 plugin-esphome: [trace] refreshed discovery for basement-17-tv-center-right addr=192.168.88.116 port=6053
+2026/03/30 10:09:27 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:09:27 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:09:27 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:09:27 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:09:27 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:09:27 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:09:27 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:09:27 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:09:27 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:09:27 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:09:27 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:09:27 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:09:27 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:09:27 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:09:27 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:09:28 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:09:28 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:09:28 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:09:36 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:09:36 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:09:36 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+    test.local.group_test.go:464: timeout: 0/9 devices registered
+    test.local.group_test.go:464: no light entities found on any device
+--- FAIL: TestFrontRightCorner_MovieTimePhaseBurst (67.51s)
+=== RUN   TestFrontRightCorner_FanoutThreshold
+    test.local.group_test.go:529: mDNS discover pass 1: found 9 this pass, 9 unique total
+    test.local.group_test.go:529: mDNS names so far: [alex_room_switch basement-06-movieroom-back-01 basement-10-edison-03 basement-17-tv-center-right basement-26-office-01 basement-27-office-02 basement-28-office-03 switch_basement_edison switch_basement_office]
+    test.local.group_test.go:529: mDNS discover pass 2: found 9 this pass, 9 unique total
+    test.local.group_test.go:529: mDNS names so far: [alex_room_switch basement-06-movieroom-back-01 basement-10-edison-03 basement-17-tv-center-right basement-26-office-01 basement-27-office-02 basement-28-office-03 switch_basement_edison switch_basement_office]
+    test.local.group_test.go:529: mDNS discover pass 3: found 9 this pass, 9 unique total
+    test.local.group_test.go:529: mDNS names so far: [alex_room_switch basement-06-movieroom-back-01 basement-10-edison-03 basement-17-tv-center-right basement-26-office-01 basement-27-office-02 basement-28-office-03 switch_basement_edison switch_basement_office]
+    test.local.group_test.go:529: mDNS discover pass 4: found 9 this pass, 9 unique total
+    test.local.group_test.go:529: mDNS names so far: [alex_room_switch basement-06-movieroom-back-01 basement-10-edison-03 basement-17-tv-center-right basement-26-office-01 basement-27-office-02 basement-28-office-03 switch_basement_edison switch_basement_office]
+    test.local.group_test.go:529: found 9 device(s) via mDNS
+2026/03/30 10:10:29 plugin-esphome: trace logging enabled
+2026/03/30 10:10:29 plugin-esphome: started, listening for devices via mDNS
+2026/03/30 10:10:29 plugin-esphome: discovered alex_room_switch - connecting
+2026/03/30 10:10:29 plugin-esphome: discovered basement-06-movieroom-back-01 - connecting
+2026/03/30 10:10:29 plugin-esphome: discovered basement-10-edison-03 - connecting
+2026/03/30 10:10:29 plugin-esphome: discovered basement-17-tv-center-right - connecting
+2026/03/30 10:10:29 plugin-esphome: discovered basement-26-office-01 - connecting
+2026/03/30 10:10:29 plugin-esphome: discovered basement-27-office-02 - connecting
+2026/03/30 10:10:29 plugin-esphome: discovered basement-28-office-03 - connecting
+2026/03/30 10:10:29 plugin-esphome: discovered switch_basement_edison - connecting
+2026/03/30 10:10:29 plugin-esphome: discovered switch_basement_office - connecting
+    test.local.group_test.go:529: waiting for devices to register entities...
+2026/03/30 10:10:29 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:10:29 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:10:29 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:10:29 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:10:29 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:10:29 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:10:30 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:10:30 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:10:30 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:10:31 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:10:31 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:10:31 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:10:31 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:10:31 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:10:31 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:10:31 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:10:31 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:10:31 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:10:34 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:10:34 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:10:34 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:10:34 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:10:34 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:10:34 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:10:34 plugin-esphome: initial probe found 9 device(s)
+2026/03/30 10:10:34 plugin-esphome: [trace] refreshed discovery for alex_room_switch addr=192.168.88.113 port=6053
+2026/03/30 10:10:34 plugin-esphome: [trace] refreshed discovery for switch_basement_office addr=192.168.88.99 port=6053
+2026/03/30 10:10:34 plugin-esphome: [trace] refreshed discovery for switch_basement_edison addr=192.168.88.84 port=6053
+2026/03/30 10:10:34 plugin-esphome: [trace] refreshed discovery for basement-28-office-03 addr=192.168.88.45 port=6053
+2026/03/30 10:10:34 plugin-esphome: [trace] refreshed discovery for basement-27-office-02 addr=192.168.88.43 port=6053
+2026/03/30 10:10:34 plugin-esphome: [trace] refreshed discovery for basement-26-office-01 addr=192.168.88.42 port=6053
+2026/03/30 10:10:34 plugin-esphome: [trace] refreshed discovery for basement-17-tv-center-right addr=192.168.88.116 port=6053
+2026/03/30 10:10:34 plugin-esphome: [trace] refreshed discovery for basement-06-movieroom-back-01 addr=192.168.88.11 port=6053
+2026/03/30 10:10:34 plugin-esphome: [trace] refreshed discovery for basement-10-edison-03 addr=192.168.88.46 port=6053
+2026/03/30 10:10:34 plugin-esphome: [trace] refreshed discovery for switch_basement_edison addr=192.168.88.84 port=6053
+2026/03/30 10:10:34 plugin-esphome: [trace] refreshed discovery for alex_room_switch addr=192.168.88.113 port=6053
+2026/03/30 10:10:34 plugin-esphome: [trace] refreshed discovery for switch_basement_office addr=192.168.88.99 port=6053
+2026/03/30 10:10:34 plugin-esphome: [trace] refreshed discovery for basement-28-office-03 addr=192.168.88.45 port=6053
+2026/03/30 10:10:34 plugin-esphome: [trace] refreshed discovery for basement-26-office-01 addr=192.168.88.42 port=6053
+2026/03/30 10:10:34 plugin-esphome: [trace] refreshed discovery for basement-06-movieroom-back-01 addr=192.168.88.11 port=6053
+2026/03/30 10:10:34 plugin-esphome: [trace] refreshed discovery for basement-27-office-02 addr=192.168.88.43 port=6053
+2026/03/30 10:10:34 plugin-esphome: [trace] refreshed discovery for basement-10-edison-03 addr=192.168.88.46 port=6053
+2026/03/30 10:10:34 plugin-esphome: [trace] refreshed discovery for basement-17-tv-center-right addr=192.168.88.116 port=6053
+2026/03/30 10:10:34 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:10:34 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:10:34 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:10:34 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:10:34 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:10:34 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:10:34 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:10:35 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:10:35 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:10:35 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:10:35 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:10:35 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:10:35 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:10:35 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:10:35 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:10:35 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:10:35 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:10:35 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:10:44 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:10:44 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:10:44 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+    test.local.group_test.go:529: timeout: 0/9 devices registered
+    test.local.group_test.go:529: no light entities found on any device
+--- FAIL: TestFrontRightCorner_FanoutThreshold (67.51s)
+=== RUN   TestLocal_MovieTime_TargetedDevices
+    test.local.group_test.go:601: mDNS discover pass 1: found 9 this pass, 9 unique total
+    test.local.group_test.go:601: mDNS names so far: [alex_room_switch basement-06-movieroom-back-01 basement-10-edison-03 basement-17-tv-center-right basement-26-office-01 basement-27-office-02 basement-28-office-03 switch_basement_edison switch_basement_office]
+    test.local.group_test.go:601: mDNS discover pass 2: found 9 this pass, 9 unique total
+    test.local.group_test.go:601: mDNS names so far: [alex_room_switch basement-06-movieroom-back-01 basement-10-edison-03 basement-17-tv-center-right basement-26-office-01 basement-27-office-02 basement-28-office-03 switch_basement_edison switch_basement_office]
+    test.local.group_test.go:601: mDNS discover pass 3: found 9 this pass, 9 unique total
+    test.local.group_test.go:601: mDNS names so far: [alex_room_switch basement-06-movieroom-back-01 basement-10-edison-03 basement-17-tv-center-right basement-26-office-01 basement-27-office-02 basement-28-office-03 switch_basement_edison switch_basement_office]
+    test.local.group_test.go:601: mDNS discover pass 4: found 9 this pass, 9 unique total
+    test.local.group_test.go:601: mDNS names so far: [alex_room_switch basement-06-movieroom-back-01 basement-10-edison-03 basement-17-tv-center-right basement-26-office-01 basement-27-office-02 basement-28-office-03 switch_basement_edison switch_basement_office]
+    test.local.group_test.go:601: found 9 device(s) via mDNS
+2026/03/30 10:11:36 plugin-esphome: trace logging enabled
+2026/03/30 10:11:36 plugin-esphome: started, listening for devices via mDNS
+2026/03/30 10:11:36 plugin-esphome: discovered alex_room_switch - connecting
+2026/03/30 10:11:36 plugin-esphome: discovered basement-06-movieroom-back-01 - connecting
+2026/03/30 10:11:36 plugin-esphome: discovered basement-10-edison-03 - connecting
+2026/03/30 10:11:36 plugin-esphome: discovered basement-17-tv-center-right - connecting
+2026/03/30 10:11:36 plugin-esphome: discovered basement-26-office-01 - connecting
+2026/03/30 10:11:36 plugin-esphome: discovered basement-27-office-02 - connecting
+2026/03/30 10:11:36 plugin-esphome: discovered basement-28-office-03 - connecting
+2026/03/30 10:11:36 plugin-esphome: discovered switch_basement_edison - connecting
+2026/03/30 10:11:36 plugin-esphome: discovered switch_basement_office - connecting
+    test.local.group_test.go:601: waiting for devices to register entities...
+2026/03/30 10:11:37 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:11:37 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:11:37 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:11:37 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:11:37 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:11:37 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:11:37 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:11:37 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:11:37 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:11:39 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:11:39 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:11:39 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:11:39 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:11:39 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:11:39 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:11:39 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:11:39 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:11:39 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:11:41 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:11:41 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:11:41 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:11:41 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:11:41 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:11:41 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:11:41 plugin-esphome: initial probe found 9 device(s)
+2026/03/30 10:11:41 plugin-esphome: [trace] refreshed discovery for basement-26-office-01 addr=192.168.88.42 port=6053
+2026/03/30 10:11:41 plugin-esphome: [trace] refreshed discovery for basement-06-movieroom-back-01 addr=192.168.88.11 port=6053
+2026/03/30 10:11:41 plugin-esphome: [trace] refreshed discovery for basement-27-office-02 addr=192.168.88.43 port=6053
+2026/03/30 10:11:41 plugin-esphome: [trace] refreshed discovery for basement-28-office-03 addr=192.168.88.45 port=6053
+2026/03/30 10:11:41 plugin-esphome: [trace] refreshed discovery for switch_basement_office addr=192.168.88.99 port=6053
+2026/03/30 10:11:41 plugin-esphome: [trace] refreshed discovery for switch_basement_edison addr=192.168.88.84 port=6053
+2026/03/30 10:11:41 plugin-esphome: [trace] refreshed discovery for alex_room_switch addr=192.168.88.113 port=6053
+2026/03/30 10:11:41 plugin-esphome: [trace] refreshed discovery for basement-17-tv-center-right addr=192.168.88.116 port=6053
+2026/03/30 10:11:41 plugin-esphome: [trace] refreshed discovery for basement-10-edison-03 addr=192.168.88.46 port=6053
+2026/03/30 10:11:41 plugin-esphome: [trace] refreshed discovery for basement-06-movieroom-back-01 addr=192.168.88.11 port=6053
+2026/03/30 10:11:41 plugin-esphome: [trace] refreshed discovery for basement-26-office-01 addr=192.168.88.42 port=6053
+2026/03/30 10:11:41 plugin-esphome: [trace] refreshed discovery for switch_basement_office addr=192.168.88.99 port=6053
+2026/03/30 10:11:41 plugin-esphome: [trace] refreshed discovery for basement-28-office-03 addr=192.168.88.45 port=6053
+2026/03/30 10:11:41 plugin-esphome: [trace] refreshed discovery for basement-10-edison-03 addr=192.168.88.46 port=6053
+2026/03/30 10:11:41 plugin-esphome: [trace] refreshed discovery for basement-17-tv-center-right addr=192.168.88.116 port=6053
+2026/03/30 10:11:41 plugin-esphome: [trace] refreshed discovery for switch_basement_edison addr=192.168.88.84 port=6053
+2026/03/30 10:11:41 plugin-esphome: [trace] refreshed discovery for alex_room_switch addr=192.168.88.113 port=6053
+2026/03/30 10:11:41 plugin-esphome: [trace] refreshed discovery for basement-27-office-02 addr=192.168.88.43 port=6053
+2026/03/30 10:11:42 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:11:42 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:11:42 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:11:42 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:11:42 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:11:42 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:11:42 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:11:42 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:11:42 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:11:43 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:11:43 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:11:43 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:11:43 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:11:43 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:11:43 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:11:43 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:11:43 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:11:43 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:11:51 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:11:51 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:11:51 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+    test.local.group_test.go:601: timeout: 0/9 devices registered
+    test.local.group_test.go:601: no light entities found on any device
+--- FAIL: TestLocal_MovieTime_TargetedDevices (67.51s)
+=== RUN   TestLocal_MovieTime_EdisonOnly
+    test.local.group_test.go:720: mDNS discover pass 1: found 9 this pass, 9 unique total
+    test.local.group_test.go:720: mDNS names so far: [alex_room_switch basement-06-movieroom-back-01 basement-10-edison-03 basement-17-tv-center-right basement-26-office-01 basement-27-office-02 basement-28-office-03 switch_basement_edison switch_basement_office]
+    test.local.group_test.go:720: mDNS discover pass 2: found 9 this pass, 9 unique total
+    test.local.group_test.go:720: mDNS names so far: [alex_room_switch basement-06-movieroom-back-01 basement-10-edison-03 basement-17-tv-center-right basement-26-office-01 basement-27-office-02 basement-28-office-03 switch_basement_edison switch_basement_office]
+    test.local.group_test.go:720: mDNS discover pass 3: found 9 this pass, 9 unique total
+    test.local.group_test.go:720: mDNS names so far: [alex_room_switch basement-06-movieroom-back-01 basement-10-edison-03 basement-17-tv-center-right basement-26-office-01 basement-27-office-02 basement-28-office-03 switch_basement_edison switch_basement_office]
+    test.local.group_test.go:720: mDNS discover pass 4: found 9 this pass, 9 unique total
+    test.local.group_test.go:720: mDNS names so far: [alex_room_switch basement-06-movieroom-back-01 basement-10-edison-03 basement-17-tv-center-right basement-26-office-01 basement-27-office-02 basement-28-office-03 switch_basement_edison switch_basement_office]
+    test.local.group_test.go:720: found 9 device(s) via mDNS
+2026/03/30 10:12:44 plugin-esphome: trace logging enabled
+2026/03/30 10:12:44 plugin-esphome: started, listening for devices via mDNS
+2026/03/30 10:12:44 plugin-esphome: discovered alex_room_switch - connecting
+2026/03/30 10:12:44 plugin-esphome: discovered basement-06-movieroom-back-01 - connecting
+2026/03/30 10:12:44 plugin-esphome: discovered basement-10-edison-03 - connecting
+2026/03/30 10:12:44 plugin-esphome: discovered basement-17-tv-center-right - connecting
+2026/03/30 10:12:44 plugin-esphome: discovered basement-26-office-01 - connecting
+2026/03/30 10:12:44 plugin-esphome: discovered basement-27-office-02 - connecting
+2026/03/30 10:12:44 plugin-esphome: discovered basement-28-office-03 - connecting
+2026/03/30 10:12:44 plugin-esphome: discovered switch_basement_edison - connecting
+2026/03/30 10:12:44 plugin-esphome: discovered switch_basement_office - connecting
+    test.local.group_test.go:720: waiting for devices to register entities...
+2026/03/30 10:12:44 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:12:44 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:12:44 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:12:44 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:12:45 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:12:45 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:12:45 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:12:45 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:12:45 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:12:46 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:12:46 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:12:46 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:12:46 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:12:46 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:12:46 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:12:46 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:12:46 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:12:46 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:12:49 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:12:49 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:12:49 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:12:49 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:12:49 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:12:49 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:12:49 plugin-esphome: initial probe found 9 device(s)
+2026/03/30 10:12:49 plugin-esphome: [trace] refreshed discovery for alex_room_switch addr=192.168.88.113 port=6053
+2026/03/30 10:12:49 plugin-esphome: [trace] refreshed discovery for switch_basement_office addr=192.168.88.99 port=6053
+2026/03/30 10:12:49 plugin-esphome: [trace] refreshed discovery for basement-28-office-03 addr=192.168.88.45 port=6053
+2026/03/30 10:12:49 plugin-esphome: [trace] refreshed discovery for basement-10-edison-03 addr=192.168.88.46 port=6053
+2026/03/30 10:12:49 plugin-esphome: [trace] refreshed discovery for basement-26-office-01 addr=192.168.88.42 port=6053
+2026/03/30 10:12:49 plugin-esphome: [trace] refreshed discovery for basement-17-tv-center-right addr=192.168.88.116 port=6053
+2026/03/30 10:12:49 plugin-esphome: [trace] refreshed discovery for basement-06-movieroom-back-01 addr=192.168.88.11 port=6053
+2026/03/30 10:12:49 plugin-esphome: [trace] refreshed discovery for basement-27-office-02 addr=192.168.88.43 port=6053
+2026/03/30 10:12:49 plugin-esphome: [trace] refreshed discovery for switch_basement_edison addr=192.168.88.84 port=6053
+2026/03/30 10:12:49 plugin-esphome: [trace] refreshed discovery for switch_basement_office addr=192.168.88.99 port=6053
+2026/03/30 10:12:49 plugin-esphome: [trace] refreshed discovery for basement-17-tv-center-right addr=192.168.88.116 port=6053
+2026/03/30 10:12:49 plugin-esphome: [trace] refreshed discovery for basement-10-edison-03 addr=192.168.88.46 port=6053
+2026/03/30 10:12:49 plugin-esphome: [trace] refreshed discovery for alex_room_switch addr=192.168.88.113 port=6053
+2026/03/30 10:12:49 plugin-esphome: [trace] refreshed discovery for basement-28-office-03 addr=192.168.88.45 port=6053
+2026/03/30 10:12:49 plugin-esphome: [trace] refreshed discovery for basement-26-office-01 addr=192.168.88.42 port=6053
+2026/03/30 10:12:49 plugin-esphome: [trace] refreshed discovery for basement-27-office-02 addr=192.168.88.43 port=6053
+2026/03/30 10:12:49 plugin-esphome: [trace] refreshed discovery for basement-06-movieroom-back-01 addr=192.168.88.11 port=6053
+2026/03/30 10:12:49 plugin-esphome: [trace] refreshed discovery for switch_basement_edison addr=192.168.88.84 port=6053
+2026/03/30 10:12:49 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:12:49 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:12:49 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:12:49 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:12:49 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:12:49 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:12:49 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:12:49 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:12:49 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:12:50 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:12:50 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:12:50 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:12:50 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:12:50 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:12:50 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:12:50 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:12:50 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:12:50 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:12:59 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:12:59 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:12:59 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+    test.local.group_test.go:720: timeout: 0/9 devices registered
+    test.local.group_test.go:720: no light entities found on any device
+--- FAIL: TestLocal_MovieTime_EdisonOnly (67.51s)
+=== RUN   TestGroupCommand_OfficeLights
+    test.local.group_test.go:877: mDNS discover pass 1: found 10 this pass, 10 unique total
+    test.local.group_test.go:877: mDNS names so far: [alex_room_switch basement-06-movieroom-back-01 basement-10-edison-03 basement-17-tv-center-right basement-26-office-01 basement-27-office-02 basement-28-office-03 switch_basement_edison switch_basement_fan switch_basement_office]
+    test.local.group_test.go:877: mDNS discover pass 2: found 11 this pass, 11 unique total
+    test.local.group_test.go:877: mDNS names so far: [alex_room_switch basement-06-movieroom-back-01 basement-10-edison-03 basement-17-tv-center-right basement-26-office-01 basement-27-office-02 basement-28-office-03 switch_basement_edison switch_basement_fan switch_basement_office switch_basement_pendant]
+    test.local.group_test.go:877: mDNS discover pass 3: found 11 this pass, 12 unique total
+    test.local.group_test.go:877: mDNS names so far: [alex_room_switch basement-06-movieroom-back-01 basement-10-edison-03 basement-17-tv-center-right basement-26-office-01 basement-27-office-02 basement-28-office-03 switch_basement_edison switch_basement_fan switch_basement_office switch_basement_pendant switch_basement_track]
+    test.local.group_test.go:877: mDNS discover pass 4: found 6 this pass, 12 unique total
+    test.local.group_test.go:877: mDNS names so far: [alex_room_switch basement-06-movieroom-back-01 basement-10-edison-03 basement-17-tv-center-right basement-26-office-01 basement-27-office-02 basement-28-office-03 switch_basement_edison switch_basement_fan switch_basement_office switch_basement_pendant switch_basement_track]
+    test.local.group_test.go:877: found 12 device(s) via mDNS
+2026/03/30 10:13:51 plugin-esphome: trace logging enabled
+2026/03/30 10:13:51 plugin-esphome: started, listening for devices via mDNS
+2026/03/30 10:13:51 plugin-esphome: discovered alex_room_switch - connecting
+2026/03/30 10:13:51 plugin-esphome: discovered basement-06-movieroom-back-01 - connecting
+2026/03/30 10:13:51 plugin-esphome: discovered basement-10-edison-03 - connecting
+2026/03/30 10:13:51 plugin-esphome: discovered basement-17-tv-center-right - connecting
+2026/03/30 10:13:51 plugin-esphome: discovered basement-26-office-01 - connecting
+2026/03/30 10:13:51 plugin-esphome: discovered basement-27-office-02 - connecting
+2026/03/30 10:13:51 plugin-esphome: discovered basement-28-office-03 - connecting
+2026/03/30 10:13:51 plugin-esphome: discovered switch_basement_edison - connecting
+2026/03/30 10:13:51 plugin-esphome: discovered switch_basement_fan - connecting
+2026/03/30 10:13:51 plugin-esphome: discovered switch_basement_office - connecting
+2026/03/30 10:13:51 plugin-esphome: discovered switch_basement_pendant - connecting
+2026/03/30 10:13:51 plugin-esphome: discovered switch_basement_track - connecting
+    test.local.group_test.go:877: waiting for devices to register entities...
+2026/03/30 10:13:52 plugin-esphome: device switch_basement_track disconnected: connect switch_basement_track (192.168.88.76:6053): dial tcp 192.168.88.76:6053: connect: no route to host
+2026/03/30 10:13:52 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:13:52 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:13:52 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:13:52 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:13:52 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:13:52 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:13:52 plugin-esphome: device switch_basement_pendant disconnected: identity mismatch for switch_basement_pendant: expected mac e8db84c984fb, got e8:db:84:c9:84:fb
+2026/03/30 10:13:52 plugin-esphome: device switch_basement_fan disconnected: identity mismatch for switch_basement_fan: expected mac d8bfc0d99d6f, got d8:bf:c0:d9:9d:6f
+2026/03/30 10:13:52 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:13:52 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:13:52 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:13:54 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:13:54 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:13:54 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:13:54 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:13:54 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:13:54 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:13:54 plugin-esphome: device switch_basement_pendant disconnected: identity mismatch for switch_basement_pendant: expected mac e8db84c984fb, got e8:db:84:c9:84:fb
+2026/03/30 10:13:54 plugin-esphome: device switch_basement_fan disconnected: identity mismatch for switch_basement_fan: expected mac d8bfc0d99d6f, got d8:bf:c0:d9:9d:6f
+2026/03/30 10:13:54 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:13:54 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:13:54 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:13:56 plugin-esphome: device switch_basement_track disconnected: connect switch_basement_track (192.168.88.76:6053): dial tcp 192.168.88.76:6053: connect: no route to host
+2026/03/30 10:13:56 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:13:56 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:13:56 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:13:56 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:13:56 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:13:56 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:13:56 plugin-esphome: initial probe found 9 device(s)
+2026/03/30 10:13:56 plugin-esphome: [trace] refreshed discovery for alex_room_switch addr=192.168.88.113 port=6053
+2026/03/30 10:13:56 plugin-esphome: [trace] refreshed discovery for switch_basement_edison addr=192.168.88.84 port=6053
+2026/03/30 10:13:56 plugin-esphome: [trace] refreshed discovery for switch_basement_office addr=192.168.88.99 port=6053
+2026/03/30 10:13:56 plugin-esphome: [trace] refreshed discovery for basement-26-office-01 addr=192.168.88.42 port=6053
+2026/03/30 10:13:56 plugin-esphome: [trace] refreshed discovery for basement-27-office-02 addr=192.168.88.43 port=6053
+2026/03/30 10:13:56 plugin-esphome: [trace] refreshed discovery for basement-10-edison-03 addr=192.168.88.46 port=6053
+2026/03/30 10:13:56 plugin-esphome: [trace] refreshed discovery for basement-28-office-03 addr=192.168.88.45 port=6053
+2026/03/30 10:13:56 plugin-esphome: [trace] refreshed discovery for basement-06-movieroom-back-01 addr=192.168.88.11 port=6053
+2026/03/30 10:13:56 plugin-esphome: [trace] refreshed discovery for basement-17-tv-center-right addr=192.168.88.116 port=6053
+2026/03/30 10:13:56 plugin-esphome: [trace] refreshed discovery for alex_room_switch addr=192.168.88.113 port=6053
+2026/03/30 10:13:56 plugin-esphome: [trace] refreshed discovery for switch_basement_edison addr=192.168.88.84 port=6053
+2026/03/30 10:13:56 plugin-esphome: [trace] refreshed discovery for basement-10-edison-03 addr=192.168.88.46 port=6053
+2026/03/30 10:13:56 plugin-esphome: [trace] refreshed discovery for basement-26-office-01 addr=192.168.88.42 port=6053
+2026/03/30 10:13:56 plugin-esphome: [trace] refreshed discovery for basement-27-office-02 addr=192.168.88.43 port=6053
+2026/03/30 10:13:56 plugin-esphome: [trace] refreshed discovery for switch_basement_office addr=192.168.88.99 port=6053
+2026/03/30 10:13:56 plugin-esphome: [trace] refreshed discovery for basement-17-tv-center-right addr=192.168.88.116 port=6053
+2026/03/30 10:13:56 plugin-esphome: [trace] refreshed discovery for basement-28-office-03 addr=192.168.88.45 port=6053
+2026/03/30 10:13:56 plugin-esphome: [trace] refreshed discovery for basement-06-movieroom-back-01 addr=192.168.88.11 port=6053
+2026/03/30 10:13:57 plugin-esphome: device switch_basement_pendant disconnected: identity mismatch for switch_basement_pendant: expected mac e8db84c984fb, got e8:db:84:c9:84:fb
+2026/03/30 10:13:57 plugin-esphome: device switch_basement_fan disconnected: identity mismatch for switch_basement_fan: expected mac d8bfc0d99d6f, got d8:bf:c0:d9:9d:6f
+2026/03/30 10:13:57 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:13:57 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:13:57 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:13:57 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:13:57 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:13:57 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:13:57 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:13:57 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:13:57 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:13:58 plugin-esphome: device switch_basement_edison disconnected: identity mismatch for switch_basement_edison: expected mac d8bfc0d9976a, got d8:bf:c0:d9:97:6a
+2026/03/30 10:13:58 plugin-esphome: device switch_basement_office disconnected: identity mismatch for switch_basement_office: expected mac e8db84c9c3ca, got e8:db:84:c9:c3:ca
+2026/03/30 10:13:58 plugin-esphome: device alex_room_switch disconnected: identity mismatch for alex_room_switch: expected mac 441793213cdc, got 44:17:93:21:3c:dc
+2026/03/30 10:13:58 plugin-esphome: device basement-26-office-01 disconnected: identity mismatch for basement-26-office-01: expected mac 7cf666735a3a, got 7c:f6:66:73:5a:3a
+2026/03/30 10:13:58 plugin-esphome: device basement-27-office-02 disconnected: identity mismatch for basement-27-office-02: expected mac 7cf666747889, got 7c:f6:66:74:78:89
+2026/03/30 10:13:58 plugin-esphome: device basement-06-movieroom-back-01 disconnected: identity mismatch for basement-06-movieroom-back-01: expected mac 10d56148e90b, got 10:d5:61:48:e9:0b
+2026/03/30 10:13:58 plugin-esphome: device basement-10-edison-03 disconnected: identity mismatch for basement-10-edison-03: expected mac 105a1750ad75, got 10:5a:17:50:ad:75
+2026/03/30 10:13:58 plugin-esphome: device basement-28-office-03 disconnected: identity mismatch for basement-28-office-03: expected mac 105a17b2a2ad, got 10:5a:17:b2:a2:ad
+2026/03/30 10:13:58 plugin-esphome: device basement-17-tv-center-right disconnected: identity mismatch for basement-17-tv-center-right: expected mac 10d5614891f3, got 10:d5:61:48:91:f3
+2026/03/30 10:14:00 plugin-esphome: device switch_basement_track disconnected: connect switch_basement_track (192.168.88.76:6053): dial tcp 192.168.88.76:6053: connect: no route to host
+2026/03/30 10:14:01 plugin-esphome: device switch_basement_pendant disconnected: identity mismatch for switch_basement_pendant: expected mac e8db84c984fb, got e8:db:84:c9:84:fb
+2026/03/30 10:14:01 plugin-esphome: device switch_basement_fan disconnected: identity mismatch for switch_basement_fan: expected mac d8bfc0d99d6f, got d8:bf:c0:d9:9d:6f
+panic: test timed out after 10m0s
+	running tests:
+		TestGroupCommand_OfficeLights (1m4s)
+
+goroutine 2854 [running]:
+testing.(*M).startAlarm.func1()
+	/snap/go/11103/src/testing/testing.go:2802 +0x34b
+created by time.goFunc
+	/snap/go/11103/src/time/sleep.go:215 +0x2d
+
+goroutine 1 [chan receive, 1 minutes]:
+testing.(*T).Run(0xa4ad954e248, {0x14dfbe7?, 0xa4ad9531b30?}, 0x15298b0)
+	/snap/go/11103/src/testing/testing.go:2109 +0x4e5
+testing.runTests.func1(0xa4ad954e248)
+	/snap/go/11103/src/testing/testing.go:2585 +0x37
+testing.tRunner(0xa4ad954e248, 0xa4ad9531c58)
+	/snap/go/11103/src/testing/testing.go:2036 +0xea
+testing.runTests({0x14eaaf0, 0x23}, {0x1508887, 0x36}, 0xa4ad94fbcc8, {0x21405c0, 0x3c, 0x3c}, {0xc26ac2aec45cbde6, 0x8bb31b145c, ...})
+	/snap/go/11103/src/testing/testing.go:2583 +0x505
+testing.(*M).Run(0xa4ad951bb80)
+	/snap/go/11103/src/testing/testing.go:2443 +0x6ac
+main.main()
+	_testmain.go:164 +0x9b
+
+goroutine 8 [select, 9 minutes]:
+github.com/blevesearch/bleve_index_api.AnalysisWorker(...)
+	/home/gavin/go/pkg/mod/github.com/blevesearch/bleve_index_api@v1.2.11/analysis.go:46
+created by github.com/blevesearch/bleve_index_api.NewAnalysisQueue in goroutine 1
+	/home/gavin/go/pkg/mod/github.com/blevesearch/bleve_index_api@v1.2.11/analysis.go:38 +0xa5
+
+goroutine 9 [select, 9 minutes]:
+github.com/blevesearch/bleve_index_api.AnalysisWorker(...)
+	/home/gavin/go/pkg/mod/github.com/blevesearch/bleve_index_api@v1.2.11/analysis.go:46
+created by github.com/blevesearch/bleve_index_api.NewAnalysisQueue in goroutine 1
+	/home/gavin/go/pkg/mod/github.com/blevesearch/bleve_index_api@v1.2.11/analysis.go:38 +0xa5
+
+goroutine 10 [select, 9 minutes]:
+github.com/blevesearch/bleve_index_api.AnalysisWorker(...)
+	/home/gavin/go/pkg/mod/github.com/blevesearch/bleve_index_api@v1.2.11/analysis.go:46
+created by github.com/blevesearch/bleve_index_api.NewAnalysisQueue in goroutine 1
+	/home/gavin/go/pkg/mod/github.com/blevesearch/bleve_index_api@v1.2.11/analysis.go:38 +0xa5
+
+goroutine 11 [select, 9 minutes]:
+github.com/blevesearch/bleve_index_api.AnalysisWorker(...)
+	/home/gavin/go/pkg/mod/github.com/blevesearch/bleve_index_api@v1.2.11/analysis.go:46
+created by github.com/blevesearch/bleve_index_api.NewAnalysisQueue in goroutine 1
+	/home/gavin/go/pkg/mod/github.com/blevesearch/bleve_index_api@v1.2.11/analysis.go:38 +0xa5
+
+goroutine 2553 [select]:
+github.com/slidebolt/plugin-esphome/cmd/plugin-esphome.setupGroupTest(0xa4ad94b4008)
+	/home/gavin/work/sb/clean/plugin-esphome/cmd/plugin-esphome/test.local.group_test.go:142 +0x1212
+github.com/slidebolt/plugin-esphome/cmd/plugin-esphome.TestGroupCommand_OfficeLights(0xa4ad94b4008)
+	/home/gavin/work/sb/clean/plugin-esphome/cmd/plugin-esphome/test.local.group_test.go:877 +0x2a
+testing.tRunner(0xa4ad94b4008, 0x15298b0)
+	/snap/go/11103/src/testing/testing.go:2036 +0xea
+created by testing.(*T).Run in goroutine 1
+	/snap/go/11103/src/testing/testing.go:2101 +0x4c5
+
+goroutine 18 [syscall, 10 minutes]:
+os/signal.signal_recv()
+	/snap/go/11103/src/runtime/sigqueue.go:152 +0x98
+os/signal.loop()
+	/snap/go/11103/src/os/signal/signal_unix.go:23 +0x13
+created by os/signal.Notify.func1.1 in goroutine 12
+	/snap/go/11103/src/os/signal/signal.go:152 +0x1f
+
+goroutine 2711 [IO wait]:
+internal/poll.runtime_pollWait(0x7a63846f9800, 0x72)
+	/snap/go/11103/src/runtime/netpoll.go:351 +0x85
+internal/poll.(*pollDesc).wait(0xa4ad95b0280?, 0xa4ad96a4000?, 0x0)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:84 +0x27
+internal/poll.(*pollDesc).waitRead(...)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:89
+internal/poll.(*FD).Read(0xa4ad95b0280, {0xa4ad96a4000, 0x8000, 0x8000})
+	/snap/go/11103/src/internal/poll/fd_unix.go:165 +0x2ae
+net.(*netFD).Read(0xa4ad95b0280, {0xa4ad96a4000?, 0xa000a4ad95de720?, 0x48d24c?})
+	/snap/go/11103/src/net/fd_posix.go:68 +0x25
+net.(*conn).Read(0xa4ad9584080, {0xa4ad96a4000?, 0x143fea0?, 0xa4ad96e3f01?})
+	/snap/go/11103/src/net/net.go:196 +0x45
+github.com/nats-io/nats%2ego.(*natsReader).Read(0xa4ad931ebc0)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:2197 +0x7f
+github.com/nats-io/nats%2ego.(*Conn).readLoop(0xa4ad9350e08)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:3407 +0xef
+created by github.com/nats-io/nats%2ego.(*Conn).processConnectInit in goroutine 2553
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:2632 +0x2b3
+
+goroutine 2724 [select]:
+github.com/slidebolt/plugin-esphome/app.(*App).waitForReconnect(0xa4ad92b48d0?, {0x15467d8, 0xa4ad970b4a0}, 0xa4ad9478300, 0xa4ad9a91680?)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:426 +0xe5
+github.com/slidebolt/plugin-esphome/app.(*App).runDeviceLoop(0xa4ad9738000, {0x15467d8, 0xa4ad970b4a0}, 0xa4ad9478300)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:413 +0x1ef
+created by github.com/slidebolt/plugin-esphome/app.(*App).onDeviceFound in goroutine 2553
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:251 +0x587
+
+goroutine 2558 [IO wait]:
+internal/poll.runtime_pollWait(0x7a63ee849200, 0x72)
+	/snap/go/11103/src/runtime/netpoll.go:351 +0x85
+internal/poll.(*pollDesc).wait(0xa4ad9916280?, 0xa4ad9290980?, 0x0)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:84 +0x27
+internal/poll.(*pollDesc).waitRead(...)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:89
+internal/poll.(*FD).Read(0xa4ad9916280, {0xa4ad9290980, 0x80, 0x80})
+	/snap/go/11103/src/internal/poll/fd_unix.go:165 +0x2ae
+net.(*netFD).Read(0xa4ad9916280, {0xa4ad9290980?, 0x0?, 0xffffffffffffffff?})
+	/snap/go/11103/src/net/fd_posix.go:68 +0x25
+net.(*conn).Read(0xa4ad9880018, {0xa4ad9290980?, 0x2149f60?, 0x80?})
+	/snap/go/11103/src/net/net.go:196 +0x45
+github.com/nats-io/nats-server/v2/server.(*client).readLoop(0xa4ad94e0008, {0x0, 0x0, 0x0})
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/client.go:1426 +0x65d
+github.com/nats-io/nats-server/v2/server.(*Server).createClientEx.func1()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:3543 +0x25
+github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine.func1()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4078 +0x32
+created by github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine in goroutine 2574
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4076 +0x129
+
+goroutine 2452 [select]:
+github.com/nats-io/nats-server/v2/server.(*Server).internalSendLoop(0xa4ad9503008, 0x20c404?)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/events.go:524 +0x29f
+created by github.com/nats-io/nats-server/v2/server.(*Server).setSystemAccount in goroutine 2553
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:1881 +0x436
+
+goroutine 2713 [sync.Cond.Wait]:
+sync.runtime_notifyListWait(0xa4ad9432f10, 0x0)
+	/snap/go/11103/src/runtime/sema.go:617 +0x1b3
+sync.(*Cond).Wait(0x0?)
+	/snap/go/11103/src/sync/cond.go:71 +0x73
+github.com/nats-io/nats%2ego.(*asyncCallbacksHandler).asyncCBDispatcher(0xa4ad95ca9e0)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:3332 +0x5a
+created by github.com/nats-io/nats%2ego.Options.Connect in goroutine 2553
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:1789 +0x3ae
+
+goroutine 2672 [sync.Cond.Wait]:
+sync.runtime_notifyListWait(0xa4ad931ec90, 0x2)
+	/snap/go/11103/src/runtime/sema.go:617 +0x1b3
+sync.(*Cond).Wait(0xa4ad94e3608?)
+	/snap/go/11103/src/sync/cond.go:71 +0x73
+github.com/nats-io/nats-server/v2/server.(*client).writeLoop(0xa4ad94e3608)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/client.go:1295 +0x1f1
+github.com/nats-io/nats-server/v2/server.(*Server).createClientEx.func2()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:3546 +0x17
+github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine.func1()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4078 +0x32
+created by github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine in goroutine 2656
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4076 +0x129
+
+goroutine 2715 [chan receive]:
+github.com/nats-io/nats%2ego.(*Conn).flusher(0xa4ad967f108)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:3849 +0xe9
+created by github.com/nats-io/nats%2ego.(*Conn).processConnectInit in goroutine 2553
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:2633 +0x2f9
+
+goroutine 2714 [IO wait]:
+internal/poll.runtime_pollWait(0x7a63ee84a000, 0x72)
+	/snap/go/11103/src/runtime/netpoll.go:351 +0x85
+internal/poll.(*pollDesc).wait(0xa4ad91fa380?, 0xa4ad96d4000?, 0x0)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:84 +0x27
+internal/poll.(*pollDesc).waitRead(...)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:89
+internal/poll.(*FD).Read(0xa4ad91fa380, {0xa4ad96d4000, 0x8000, 0x8000})
+	/snap/go/11103/src/internal/poll/fd_unix.go:165 +0x2ae
+net.(*netFD).Read(0xa4ad91fa380, {0xa4ad96d4000?, 0xa000a4ad95dc720?, 0x48d24c?})
+	/snap/go/11103/src/net/fd_posix.go:68 +0x25
+net.(*conn).Read(0xa4ad9302118, {0xa4ad96d4000?, 0x143fea0?, 0xa4ad9a14001?})
+	/snap/go/11103/src/net/net.go:196 +0x45
+github.com/nats-io/nats%2ego.(*natsReader).Read(0xa4ad9432f40)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:2197 +0x7f
+github.com/nats-io/nats%2ego.(*Conn).readLoop(0xa4ad967f108)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:3407 +0xef
+created by github.com/nats-io/nats%2ego.(*Conn).processConnectInit in goroutine 2553
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:2632 +0x2b3
+
+goroutine 2741 [select]:
+github.com/slidebolt/plugin-esphome/app.(*App).waitForReconnect(0xa4ad92b48d0?, {0x15467d8, 0xa4ad970b4a0}, 0xa4ad969a600, 0xa4ad9b84780?)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:426 +0xe5
+github.com/slidebolt/plugin-esphome/app.(*App).runDeviceLoop(0xa4ad9738000, {0x15467d8, 0xa4ad970b4a0}, 0xa4ad969a600)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:413 +0x1ef
+created by github.com/slidebolt/plugin-esphome/app.(*App).onDeviceFound in goroutine 2553
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:251 +0x587
+
+goroutine 2561 [chan receive]:
+github.com/nats-io/nats%2ego.(*Conn).flusher(0xa4ad9353808)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:3849 +0xe9
+created by github.com/nats-io/nats%2ego.(*Conn).processConnectInit in goroutine 2553
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:2633 +0x2f9
+
+goroutine 2454 [select, 1 minutes]:
+github.com/nats-io/nats-server/v2/server.(*Server).internalReceiveLoop(0xa4ad9503008, 0xa4ad9916100)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/events.go:478 +0xb7
+created by github.com/nats-io/nats-server/v2/server.(*Server).setSystemAccount in goroutine 2553
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:1886 +0x4e6
+
+goroutine 2594 [select]:
+github.com/nats-io/nats-server/v2/server.(*Server).startRateLimitLogExpiration.func1()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4713 +0x11d
+github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine.func1()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4078 +0x32
+created by github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine in goroutine 2553
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4076 +0x129
+
+goroutine 2670 [sync.Cond.Wait]:
+sync.runtime_notifyListWait(0xa4ad931eb90, 0x0)
+	/snap/go/11103/src/runtime/sema.go:617 +0x1b3
+sync.(*Cond).Wait(0x0?)
+	/snap/go/11103/src/sync/cond.go:71 +0x73
+github.com/nats-io/nats%2ego.(*asyncCallbacksHandler).asyncCBDispatcher(0xa4ad984a2e0)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:3332 +0x5a
+created by github.com/nats-io/nats%2ego.Options.Connect in goroutine 2553
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:1789 +0x3ae
+
+goroutine 2601 [IO wait]:
+internal/poll.runtime_pollWait(0x7a63a40c9400, 0x72)
+	/snap/go/11103/src/runtime/netpoll.go:351 +0x85
+internal/poll.(*pollDesc).wait(0xa4ad91fbb00?, 0x7a63a4ae8fe0?, 0x0)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:84 +0x27
+internal/poll.(*pollDesc).waitRead(...)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:89
+internal/poll.(*FD).RawRead(0xa4ad91fbb00, 0xa4ad9a7e050)
+	/snap/go/11103/src/internal/poll/fd_unix.go:710 +0x125
+net.(*rawConn).Read(0xa4ad9302130, 0x0?)
+	/snap/go/11103/src/net/rawconn.go:44 +0x36
+golang.org/x/net/internal/socket.(*Conn).recvMsg(0xa4ad95caa60, 0xa4ad9c18a80, 0x0)
+	/home/gavin/go/pkg/mod/golang.org/x/net@v0.50.0/internal/socket/rawconn_msg.go:27 +0x125
+golang.org/x/net/internal/socket.(*Conn).RecvMsg(...)
+	/home/gavin/go/pkg/mod/golang.org/x/net@v0.50.0/internal/socket/socket.go:248
+golang.org/x/net/ipv4.(*payloadHandler).ReadFrom(0xa4ad970b410, {0xa4ad993e000, 0x10000, 0x10000})
+	/home/gavin/go/pkg/mod/golang.org/x/net@v0.50.0/ipv4/payload_cmsg.go:31 +0x205
+github.com/grandcat/zeroconf.(*client).recv.func2({0xa4ad993e000?, 0xa4ad9277f18?, 0x319?})
+	/home/gavin/go/pkg/mod/github.com/grandcat/zeroconf@v1.0.0/client.go:329 +0x2e
+github.com/grandcat/zeroconf.(*client).recv(0x10?, {0x15467d8, 0xa4ad9323770}, {0x14899e0?, 0xa4ad970b400?}, 0xa4ad95a1ab0)
+	/home/gavin/go/pkg/mod/github.com/grandcat/zeroconf@v1.0.0/client.go:348 +0x14e
+created by github.com/grandcat/zeroconf.(*client).mainloop in goroutine 2789
+	/home/gavin/go/pkg/mod/github.com/grandcat/zeroconf@v1.0.0/client.go:186 +0x113
+
+goroutine 2740 [select]:
+github.com/slidebolt/plugin-esphome/app.(*App).waitForReconnect(0xa4ad92b48d0?, {0x15467d8, 0xa4ad970b4a0}, 0xa4ad969a2d0, 0xa4ad9b848a0?)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:426 +0xe5
+github.com/slidebolt/plugin-esphome/app.(*App).runDeviceLoop(0xa4ad9738000, {0x15467d8, 0xa4ad970b4a0}, 0xa4ad969a2d0)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:413 +0x1ef
+created by github.com/slidebolt/plugin-esphome/app.(*App).onDeviceFound in goroutine 2553
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:251 +0x587
+
+goroutine 2712 [chan receive]:
+github.com/nats-io/nats%2ego.(*Conn).flusher(0xa4ad9350e08)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:3849 +0xe9
+created by github.com/nats-io/nats%2ego.(*Conn).processConnectInit in goroutine 2553
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:2633 +0x2f9
+
+goroutine 2744 [select]:
+github.com/slidebolt/plugin-esphome/app.(*App).waitForReconnect(0xa4ad92b48d0?, {0x15467d8, 0xa4ad970b4a0}, 0xa4ad969b830, 0xa4ad9a914a0?)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:426 +0xe5
+github.com/slidebolt/plugin-esphome/app.(*App).runDeviceLoop(0xa4ad9738000, {0x15467d8, 0xa4ad970b4a0}, 0xa4ad969b830)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:413 +0x1ef
+created by github.com/slidebolt/plugin-esphome/app.(*App).onDeviceFound in goroutine 2553
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:251 +0x587
+
+goroutine 2337 [select, 1 minutes]:
+github.com/nats-io/nats-server/v2/server.(*Server).handleSignals.func1()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/signal.go:47 +0x9a
+created by github.com/nats-io/nats-server/v2/server.(*Server).handleSignals in goroutine 2553
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/signal.go:45 +0x106
+
+goroutine 2504 [IO wait]:
+internal/poll.runtime_pollWait(0x7a63846f9200, 0x72)
+	/snap/go/11103/src/runtime/netpoll.go:351 +0x85
+internal/poll.(*pollDesc).wait(0xa4ad95b0000?, 0xa4ad97d9b00?, 0x0)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:84 +0x27
+internal/poll.(*pollDesc).waitRead(...)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:89
+internal/poll.(*FD).Read(0xa4ad95b0000, {0xa4ad97d9b00, 0x40, 0x40})
+	/snap/go/11103/src/internal/poll/fd_unix.go:165 +0x2ae
+net.(*netFD).Read(0xa4ad95b0000, {0xa4ad97d9b00?, 0x0?, 0xffffffffffffffff?})
+	/snap/go/11103/src/net/fd_posix.go:68 +0x25
+net.(*conn).Read(0xa4ad9584008, {0xa4ad97d9b00?, 0x2149f60?, 0x40?})
+	/snap/go/11103/src/net/net.go:196 +0x45
+github.com/nats-io/nats-server/v2/server.(*client).readLoop(0xa4ad98d5b08, {0x0, 0x0, 0x0})
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/client.go:1426 +0x65d
+github.com/nats-io/nats-server/v2/server.(*Server).createClientEx.func1()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:3543 +0x25
+github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine.func1()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4078 +0x32
+created by github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine in goroutine 2503
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4076 +0x129
+
+goroutine 2453 [select, 1 minutes]:
+github.com/nats-io/nats-server/v2/server.(*Server).internalReceiveLoop(0xa4ad9503008, 0xa4ad9916080)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/events.go:478 +0xb7
+created by github.com/nats-io/nats-server/v2/server.(*Server).setSystemAccount in goroutine 2553
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:1884 +0x48d
+
+goroutine 2508 [select]:
+github.com/slidebolt/plugin-esphome/app.(*App).waitForReconnect(0xa4ad92b48d0?, {0x15467d8, 0xa4ad970b4a0}, 0xa4ad94fc330, 0xa4ad9b84f60?)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:426 +0xe5
+github.com/slidebolt/plugin-esphome/app.(*App).runDeviceLoop(0xa4ad9738000, {0x15467d8, 0xa4ad970b4a0}, 0xa4ad94fc330)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:413 +0x1ef
+created by github.com/slidebolt/plugin-esphome/app.(*App).onDeviceFound in goroutine 2553
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:251 +0x587
+
+goroutine 2787 [select]:
+github.com/slidebolt/plugin-esphome/internal/mdns.(*Discovery).listenLoop(0xa4ad91fa480, {0x15467d8, 0xa4ad970b4a0}, 0xa4ad942d3c0)
+	/home/gavin/work/sb/clean/plugin-esphome/internal/mdns/discovery.go:138 +0x145
+created by github.com/slidebolt/plugin-esphome/internal/mdns.(*Discovery).Listen in goroutine 2717
+	/home/gavin/work/sb/clean/plugin-esphome/internal/mdns/discovery.go:121 +0xe5
+
+goroutine 2559 [sync.Cond.Wait]:
+sync.runtime_notifyListWait(0xa4ad97321d0, 0x2ae)
+	/snap/go/11103/src/runtime/sema.go:617 +0x1b3
+sync.(*Cond).Wait(0xa4ad94e0008?)
+	/snap/go/11103/src/sync/cond.go:71 +0x73
+github.com/nats-io/nats-server/v2/server.(*client).writeLoop(0xa4ad94e0008)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/client.go:1295 +0x1f1
+github.com/nats-io/nats-server/v2/server.(*Server).createClientEx.func2()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:3546 +0x17
+github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine.func1()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4078 +0x32
+created by github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine in goroutine 2574
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4076 +0x129
+
+goroutine 2725 [select]:
+github.com/slidebolt/plugin-esphome/app.(*App).waitForReconnect(0xa4ad92b48d0?, {0x15467d8, 0xa4ad970b4a0}, 0xa4ad9478720, 0xa4ad9657c20?)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:426 +0xe5
+github.com/slidebolt/plugin-esphome/app.(*App).runDeviceLoop(0xa4ad9738000, {0x15467d8, 0xa4ad970b4a0}, 0xa4ad9478720)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:413 +0x1ef
+created by github.com/slidebolt/plugin-esphome/app.(*App).onDeviceFound in goroutine 2553
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:251 +0x587
+
+goroutine 2754 [select]:
+github.com/slidebolt/plugin-esphome/app.(*App).waitForReconnect(0xa4ad92b48d0?, {0x15467d8, 0xa4ad970b4a0}, 0xa4ad96946c0, 0xa4ad9c182a0?)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:426 +0xe5
+github.com/slidebolt/plugin-esphome/app.(*App).runDeviceLoop(0xa4ad9738000, {0x15467d8, 0xa4ad970b4a0}, 0xa4ad96946c0)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:413 +0x1ef
+created by github.com/slidebolt/plugin-esphome/app.(*App).onDeviceFound in goroutine 2553
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:251 +0x587
+
+goroutine 2510 [select]:
+github.com/slidebolt/plugin-esphome/app.(*App).waitForReconnect(0xa4ad92b48d0?, {0x15467d8, 0xa4ad970b4a0}, 0xa4ad94fcb70, 0xa4ad9820420?)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:426 +0xe5
+github.com/slidebolt/plugin-esphome/app.(*App).runDeviceLoop(0xa4ad9738000, {0x15467d8, 0xa4ad970b4a0}, 0xa4ad94fcb70)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:413 +0x1ef
+created by github.com/slidebolt/plugin-esphome/app.(*App).onDeviceFound in goroutine 2553
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:251 +0x587
+
+goroutine 2710 [sync.Cond.Wait]:
+sync.runtime_notifyListWait(0xa4ad94328d0, 0x2ac)
+	/snap/go/11103/src/runtime/sema.go:617 +0x1b3
+sync.(*Cond).Wait(0xa4ad931ba40?)
+	/snap/go/11103/src/sync/cond.go:71 +0x73
+github.com/nats-io/nats%2ego.(*Conn).waitForMsgs(0xa4ad9353808, 0xa4ad96583c0)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:3451 +0xc8
+created by github.com/nats-io/nats%2ego.(*Conn).subscribeLocked in goroutine 2553
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:4810 +0x419
+
+goroutine 2671 [IO wait]:
+internal/poll.runtime_pollWait(0x7a63a40c9a00, 0x72)
+	/snap/go/11103/src/runtime/netpoll.go:351 +0x85
+internal/poll.(*pollDesc).wait(0xa4ad9455c00?, 0xa4ad987e400?, 0x0)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:84 +0x27
+internal/poll.(*pollDesc).waitRead(...)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:89
+internal/poll.(*FD).Read(0xa4ad9455c00, {0xa4ad987e400, 0x80, 0x80})
+	/snap/go/11103/src/internal/poll/fd_unix.go:165 +0x2ae
+net.(*netFD).Read(0xa4ad9455c00, {0xa4ad987e400?, 0xa4ad94f0d10?, 0x492729?})
+	/snap/go/11103/src/net/fd_posix.go:68 +0x25
+net.(*conn).Read(0xa4ad9880068, {0xa4ad987e400?, 0x2149f60?, 0x100?})
+	/snap/go/11103/src/net/net.go:196 +0x45
+github.com/nats-io/nats-server/v2/server.(*client).readLoop(0xa4ad94e3608, {0x0, 0x0, 0x0})
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/client.go:1426 +0x65d
+github.com/nats-io/nats-server/v2/server.(*Server).createClientEx.func1()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:3543 +0x25
+github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine.func1()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4078 +0x32
+created by github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine in goroutine 2656
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4076 +0x129
+
+goroutine 2554 [select, 1 minutes]:
+github.com/nats-io/nats-server/v2/server.(*Server).startGWReplyMapExpiration.func1()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/gateway.go:3381 +0xfe
+github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine.func1()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4078 +0x32
+created by github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine in goroutine 2553
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4076 +0x129
+
+goroutine 2509 [select]:
+github.com/slidebolt/plugin-esphome/app.(*App).waitForReconnect(0xa4ad92b48d0?, {0x15467d8, 0xa4ad970b4a0}, 0xa4ad94fc9c0, 0xa4ad9a91440?)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:426 +0xe5
+github.com/slidebolt/plugin-esphome/app.(*App).runDeviceLoop(0xa4ad9738000, {0x15467d8, 0xa4ad970b4a0}, 0xa4ad94fc9c0)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:413 +0x1ef
+created by github.com/slidebolt/plugin-esphome/app.(*App).onDeviceFound in goroutine 2553
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:251 +0x587
+
+goroutine 2555 [select, 1 minutes]:
+github.com/nats-io/nats-server/v2/server.(*Server).delayedAPIResponder(0xa4ad9503008)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/jetstream_api.go:1152 +0x1a5
+github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine.func1()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4078 +0x32
+created by github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine in goroutine 2553
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4076 +0x129
+
+goroutine 2613 [sync.Cond.Wait]:
+sync.runtime_notifyListWait(0xa4ad9732490, 0x3a2)
+	/snap/go/11103/src/runtime/sema.go:617 +0x1b3
+sync.(*Cond).Wait(0xa4ad95c2850?)
+	/snap/go/11103/src/sync/cond.go:71 +0x73
+github.com/nats-io/nats%2ego.(*Conn).waitForMsgs(0xa4ad9370308, 0xa4ad96580f0)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:3451 +0xc8
+created by github.com/nats-io/nats%2ego.(*Conn).subscribeLocked in goroutine 2553
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:4810 +0x419
+
+goroutine 2505 [sync.Cond.Wait]:
+sync.runtime_notifyListWait(0xa4ad95aa050, 0x3a8)
+	/snap/go/11103/src/runtime/sema.go:617 +0x1b3
+sync.(*Cond).Wait(0xa4ad98d5b08?)
+	/snap/go/11103/src/sync/cond.go:71 +0x73
+github.com/nats-io/nats-server/v2/server.(*client).writeLoop(0xa4ad98d5b08)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/client.go:1295 +0x1f1
+github.com/nats-io/nats-server/v2/server.(*Server).createClientEx.func2()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:3546 +0x17
+github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine.func1()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4078 +0x32
+created by github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine in goroutine 2503
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4076 +0x129
+
+goroutine 2745 [select]:
+github.com/slidebolt/plugin-esphome/app.(*App).waitForReconnect(0xa4ad92b48d0?, {0x15467d8, 0xa4ad970b4a0}, 0xa4ad969bc20, 0xa4ad9820060?)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:426 +0xe5
+github.com/slidebolt/plugin-esphome/app.(*App).runDeviceLoop(0xa4ad9738000, {0x15467d8, 0xa4ad970b4a0}, 0xa4ad969bc20)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:413 +0x1ef
+created by github.com/slidebolt/plugin-esphome/app.(*App).onDeviceFound in goroutine 2553
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:251 +0x587
+
+goroutine 2716 [sync.Cond.Wait]:
+sync.runtime_notifyListWait(0xa4ad9433010, 0x0)
+	/snap/go/11103/src/runtime/sema.go:617 +0x1b3
+sync.(*Cond).Wait(0x152a7d0?)
+	/snap/go/11103/src/sync/cond.go:71 +0x73
+github.com/nats-io/nats%2ego.(*Conn).waitForMsgs(0xa4ad9350e08, 0xa4ad96584b0)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:3451 +0xc8
+created by github.com/nats-io/nats%2ego.(*Conn).subscribeLocked in goroutine 2553
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:4810 +0x419
+
+goroutine 2602 [IO wait]:
+internal/poll.runtime_pollWait(0x7a63846f9600, 0x72)
+	/snap/go/11103/src/runtime/netpoll.go:351 +0x85
+internal/poll.(*pollDesc).wait(0xa4ad91fbb80?, 0x7a63a4aa72c0?, 0x0)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:84 +0x27
+internal/poll.(*pollDesc).waitRead(...)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:89
+internal/poll.(*FD).RawRead(0xa4ad91fbb80, 0xa4ad98f9360)
+	/snap/go/11103/src/internal/poll/fd_unix.go:710 +0x125
+net.(*rawConn).Read(0xa4ad9302140, 0x0?)
+	/snap/go/11103/src/net/rawconn.go:44 +0x36
+golang.org/x/net/internal/socket.(*Conn).recvMsg(0xa4ad95caa80, 0xa4ad95c4960, 0x0)
+	/home/gavin/go/pkg/mod/golang.org/x/net@v0.50.0/internal/socket/rawconn_msg.go:27 +0x125
+golang.org/x/net/internal/socket.(*Conn).RecvMsg(...)
+	/home/gavin/go/pkg/mod/golang.org/x/net@v0.50.0/internal/socket/socket.go:248
+golang.org/x/net/ipv6.(*payloadHandler).ReadFrom(0xa4ad970b460, {0xa4ad98e0000, 0x10000, 0x10000})
+	/home/gavin/go/pkg/mod/golang.org/x/net@v0.50.0/ipv6/payload_cmsg.go:31 +0x254
+github.com/grandcat/zeroconf.(*client).recv.func1({0xa4ad98e0000?, 0xa4ad94f2f18?, 0x10c?})
+	/home/gavin/go/pkg/mod/github.com/grandcat/zeroconf@v1.0.0/client.go:324 +0x2e
+github.com/grandcat/zeroconf.(*client).recv(0xa4ad9264fd0?, {0x15467d8, 0xa4ad9323770}, {0x148d980?, 0xa4ad970b450?}, 0xa4ad95a1ab0)
+	/home/gavin/go/pkg/mod/github.com/grandcat/zeroconf@v1.0.0/client.go:348 +0x14e
+created by github.com/grandcat/zeroconf.(*client).mainloop in goroutine 2789
+	/home/gavin/go/pkg/mod/github.com/grandcat/zeroconf@v1.0.0/client.go:189 +0x1da
+
+goroutine 2612 [chan receive]:
+github.com/nats-io/nats%2ego.(*Conn).flusher(0xa4ad9370308)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:3849 +0xe9
+created by github.com/nats-io/nats%2ego.(*Conn).processConnectInit in goroutine 2553
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:2633 +0x2f9
+
+goroutine 2285 [select, 1 minutes]:
+github.com/nats-io/nats-server/v2/server.(*sendq).internalLoop(0xa4ad95ca000)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/sendq.go:65 +0x245
+github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine.func1()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4078 +0x32
+created by github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine in goroutine 2553
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4076 +0x129
+
+goroutine 2556 [IO wait]:
+internal/poll.runtime_pollWait(0x7a63ee849400, 0x72)
+	/snap/go/11103/src/runtime/netpoll.go:351 +0x85
+internal/poll.(*pollDesc).wait(0xa4ad99ae000?, 0x36?, 0x0)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:84 +0x27
+internal/poll.(*pollDesc).waitRead(...)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:89
+internal/poll.(*FD).Accept(0xa4ad99ae000)
+	/snap/go/11103/src/internal/poll/fd_unix.go:613 +0x28c
+net.(*netFD).accept(0xa4ad99ae000)
+	/snap/go/11103/src/net/fd_unix.go:150 +0x29
+net.(*TCPListener).accept(0xa4ad9732040)
+	/snap/go/11103/src/net/tcpsock_posix.go:159 +0x1b
+net.(*TCPListener).Accept(0xa4ad9732040)
+	/snap/go/11103/src/net/tcpsock.go:387 +0x30
+github.com/nats-io/nats-server/v2/server.(*Server).acceptConnections(0xa4ad9503008, {0x15441c0, 0xa4ad9732040}, {0x14c0ac8, 0x6}, 0xa4ad97ac440, 0xa4ad97ac450)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:2893 +0x63
+created by github.com/nats-io/nats-server/v2/server.(*Server).AcceptLoop in goroutine 2553
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:2842 +0x845
+
+goroutine 2723 [sync.Cond.Wait]:
+sync.runtime_notifyListWait(0xa4ad931ecd0, 0xf9)
+	/snap/go/11103/src/runtime/sema.go:617 +0x1b3
+sync.(*Cond).Wait(0xa4ad94e5108?)
+	/snap/go/11103/src/sync/cond.go:71 +0x73
+github.com/nats-io/nats-server/v2/server.(*client).writeLoop(0xa4ad94e5108)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/client.go:1295 +0x1f1
+github.com/nats-io/nats-server/v2/server.(*Server).createClientEx.func2()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:3546 +0x17
+github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine.func1()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4078 +0x32
+created by github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine in goroutine 2673
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4076 +0x129
+
+goroutine 2560 [IO wait]:
+internal/poll.runtime_pollWait(0x7a63a40c9800, 0x72)
+	/snap/go/11103/src/runtime/netpoll.go:351 +0x85
+internal/poll.(*pollDesc).wait(0xa4ad99ae080?, 0xa4ad9936000?, 0x0)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:84 +0x27
+internal/poll.(*pollDesc).waitRead(...)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:89
+internal/poll.(*FD).Read(0xa4ad99ae080, {0xa4ad9936000, 0x8000, 0x8000})
+	/snap/go/11103/src/internal/poll/fd_unix.go:165 +0x2ae
+net.(*netFD).Read(0xa4ad99ae080, {0xa4ad9936000?, 0xa000a4ad94d9720?, 0x48d24c?})
+	/snap/go/11103/src/net/fd_posix.go:68 +0x25
+net.(*conn).Read(0xa4ad9724010, {0xa4ad9936000?, 0x143fea0?, 0xae2601?})
+	/snap/go/11103/src/net/net.go:196 +0x45
+github.com/nats-io/nats%2ego.(*natsReader).Read(0xa4ad9732100)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:2197 +0x7f
+github.com/nats-io/nats%2ego.(*Conn).readLoop(0xa4ad9353808)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:3407 +0xef
+created by github.com/nats-io/nats%2ego.(*Conn).processConnectInit in goroutine 2553
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:2632 +0x2b3
+
+goroutine 2742 [select]:
+github.com/slidebolt/plugin-esphome/app.(*App).waitForReconnect(0xa4ad92b48d0?, {0x15467d8, 0xa4ad970b4a0}, 0xa4ad969b050, 0xa4ad9657bc0?)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:426 +0xe5
+github.com/slidebolt/plugin-esphome/app.(*App).runDeviceLoop(0xa4ad9738000, {0x15467d8, 0xa4ad970b4a0}, 0xa4ad969b050)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:413 +0x1ef
+created by github.com/slidebolt/plugin-esphome/app.(*App).onDeviceFound in goroutine 2553
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:251 +0x587
+
+goroutine 2722 [IO wait]:
+internal/poll.runtime_pollWait(0x7a63ee849600, 0x72)
+	/snap/go/11103/src/runtime/netpoll.go:351 +0x85
+internal/poll.(*pollDesc).wait(0xa4ad95b0300?, 0xa4ad9c92100?, 0x0)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:84 +0x27
+internal/poll.(*pollDesc).waitRead(...)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:89
+internal/poll.(*FD).Read(0xa4ad95b0300, {0xa4ad9c92100, 0x100, 0x100})
+	/snap/go/11103/src/internal/poll/fd_unix.go:165 +0x2ae
+net.(*netFD).Read(0xa4ad95b0300, {0xa4ad9c92100?, 0x0?, 0xffffffffffffffff?})
+	/snap/go/11103/src/net/fd_posix.go:68 +0x25
+net.(*conn).Read(0xa4ad9584088, {0xa4ad9c92100?, 0x2149f60?, 0x100?})
+	/snap/go/11103/src/net/net.go:196 +0x45
+github.com/nats-io/nats-server/v2/server.(*client).readLoop(0xa4ad94e5108, {0x0, 0x0, 0x0})
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/client.go:1426 +0x65d
+github.com/nats-io/nats-server/v2/server.(*Server).createClientEx.func1()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:3543 +0x25
+github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine.func1()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4078 +0x32
+created by github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine in goroutine 2673
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4076 +0x129
+
+goroutine 2718 [sync.Cond.Wait]:
+sync.runtime_notifyListWait(0xa4ad989afd0, 0xf8)
+	/snap/go/11103/src/runtime/sema.go:617 +0x1b3
+sync.(*Cond).Wait(0xa4ad9414f68?)
+	/snap/go/11103/src/sync/cond.go:71 +0x73
+github.com/nats-io/nats%2ego.(*Conn).waitForMsgs(0xa4ad967f108, 0xa4ad96585a0)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:3451 +0xc8
+created by github.com/nats-io/nats%2ego.(*Conn).subscribeLocked in goroutine 2553
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:4810 +0x419
+
+goroutine 2610 [sync.Cond.Wait, 1 minutes]:
+sync.runtime_notifyListWait(0xa4ad97322d0, 0x0)
+	/snap/go/11103/src/runtime/sema.go:617 +0x1b3
+sync.(*Cond).Wait(0xa4ad9427008?)
+	/snap/go/11103/src/sync/cond.go:71 +0x73
+github.com/nats-io/nats%2ego.(*asyncCallbacksHandler).asyncCBDispatcher(0xa4ad95ca1a0)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:3332 +0x5a
+created by github.com/nats-io/nats%2ego.Options.Connect in goroutine 2553
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:1789 +0x3ae
+
+goroutine 2557 [sync.Cond.Wait, 1 minutes]:
+sync.runtime_notifyListWait(0xa4ad97320d0, 0x0)
+	/snap/go/11103/src/runtime/sema.go:617 +0x1b3
+sync.(*Cond).Wait(0x9fc3e0?)
+	/snap/go/11103/src/sync/cond.go:71 +0x73
+github.com/nats-io/nats%2ego.(*asyncCallbacksHandler).asyncCBDispatcher(0xa4ad95ca100)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:3332 +0x5a
+created by github.com/nats-io/nats%2ego.Options.Connect in goroutine 2553
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:1789 +0x3ae
+
+goroutine 2611 [IO wait]:
+internal/poll.runtime_pollWait(0x7a63846f9a00, 0x72)
+	/snap/go/11103/src/runtime/netpoll.go:351 +0x85
+internal/poll.(*pollDesc).wait(0xa4ad99ae100?, 0xa4ad994e000?, 0x0)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:84 +0x27
+internal/poll.(*pollDesc).waitRead(...)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:89
+internal/poll.(*FD).Read(0xa4ad99ae100, {0xa4ad994e000, 0x8000, 0x8000})
+	/snap/go/11103/src/internal/poll/fd_unix.go:165 +0x2ae
+net.(*netFD).Read(0xa4ad99ae100, {0xa4ad994e000?, 0xa00000001277e80?, 0xa4ad9808350?})
+	/snap/go/11103/src/net/fd_posix.go:68 +0x25
+net.(*conn).Read(0xa4ad9724020, {0xa4ad994e000?, 0x10000000152d270?, 0xa4ad96ec760?})
+	/snap/go/11103/src/net/net.go:196 +0x45
+github.com/nats-io/nats%2ego.(*natsReader).Read(0xa4ad9732300)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:2197 +0x7f
+github.com/nats-io/nats%2ego.(*Conn).readLoop(0xa4ad9370308)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:3407 +0xef
+created by github.com/nats-io/nats%2ego.(*Conn).processConnectInit in goroutine 2553
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:2632 +0x2b3
+
+goroutine 2743 [select]:
+github.com/slidebolt/plugin-esphome/app.(*App).waitForReconnect(0xa4ad92b48d0?, {0x15467d8, 0xa4ad970b4a0}, 0xa4ad969b560, 0xa4ad9b853e0?)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:426 +0xe5
+github.com/slidebolt/plugin-esphome/app.(*App).runDeviceLoop(0xa4ad9738000, {0x15467d8, 0xa4ad970b4a0}, 0xa4ad969b560)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:413 +0x1ef
+created by github.com/slidebolt/plugin-esphome/app.(*App).onDeviceFound in goroutine 2553
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:251 +0x587
+
+goroutine 2789 [select]:
+github.com/grandcat/zeroconf.(*client).mainloop(0xa4ad963f6b0, {0x15467d8, 0xa4ad9323770}, 0xa4ad91fa600)
+	/home/gavin/go/pkg/mod/github.com/grandcat/zeroconf@v1.0.0/client.go:196 +0x2c9
+created by github.com/grandcat/zeroconf.(*Resolver).Browse in goroutine 2788
+	/home/gavin/go/pkg/mod/github.com/grandcat/zeroconf@v1.0.0/client.go:92 +0x267
+FAIL	github.com/slidebolt/plugin-esphome/cmd/plugin-esphome	600.014s
+=== RUN   TestFetch_ReturnsDevicesWithIPs
+--- PASS: TestFetch_ReturnsDevicesWithIPs (0.00s)
+=== RUN   TestFetch_BadCredentials
+--- PASS: TestFetch_BadCredentials (0.00s)
+=== RUN   TestConfigValid
+--- PASS: TestConfigValid (0.00s)
+PASS
+ok  	github.com/slidebolt/plugin-esphome/internal/dashboard	0.004s
+?   	github.com/slidebolt/plugin-esphome/internal/mdns	[no test files]
+?   	github.com/slidebolt/plugin-esphome/internal/translate	[no test files]
+FAIL

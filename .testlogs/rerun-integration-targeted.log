@@ -1,0 +1,243 @@
+=== RUN   TestDeviceDiscovery_Physical_Integration
+    test.integration.device_discovery_test.go:38: discovering devices via mDNS...
+    test.integration.device_discovery_test.go:50: found 9 device(s) via mDNS:
+    test.integration.device_discovery_test.go:52:   alex_room_switch  hasAPIKey=true
+    test.integration.device_discovery_test.go:52:   switch_basement_edison  hasAPIKey=true
+    test.integration.device_discovery_test.go:52:   switch_basement_office  hasAPIKey=true
+    test.integration.device_discovery_test.go:52:   basement-28-office-03  hasAPIKey=true
+    test.integration.device_discovery_test.go:52:   basement-17-tv-center-right  hasAPIKey=true
+    test.integration.device_discovery_test.go:52:   basement-26-office-01  hasAPIKey=true
+    test.integration.device_discovery_test.go:52:   basement-10-edison-03  hasAPIKey=true
+    test.integration.device_discovery_test.go:52:   basement-06-movieroom-back-01  hasAPIKey=true
+    test.integration.device_discovery_test.go:52:   basement-27-office-02  hasAPIKey=true
+    test.integration.device_discovery_test.go:69:   alex_room_switch — key seeded
+    test.integration.device_discovery_test.go:69:   switch_basement_edison — key seeded
+    test.integration.device_discovery_test.go:69:   switch_basement_office — key seeded
+    test.integration.device_discovery_test.go:69:   basement-28-office-03 — key seeded
+    test.integration.device_discovery_test.go:69:   basement-17-tv-center-right — key seeded
+    test.integration.device_discovery_test.go:69:   basement-26-office-01 — key seeded
+    test.integration.device_discovery_test.go:69:   basement-10-edison-03 — key seeded
+    test.integration.device_discovery_test.go:69:   basement-06-movieroom-back-01 — key seeded
+    test.integration.device_discovery_test.go:69:   basement-27-office-02 — key seeded
+    test.integration.device_discovery_test.go:72: seeded keys for 9/9 device(s)
+2026/03/30 11:20:46 plugin-esphome: started, listening for devices via mDNS
+2026/03/30 11:20:46 plugin-esphome: discovered alex_room_switch - connecting
+2026/03/30 11:20:46 plugin-esphome: discovered switch_basement_edison - connecting
+2026/03/30 11:20:46 plugin-esphome: discovered switch_basement_office - connecting
+2026/03/30 11:20:46 plugin-esphome: discovered basement-28-office-03 - connecting
+2026/03/30 11:20:46 plugin-esphome: discovered basement-17-tv-center-right - connecting
+2026/03/30 11:20:46 plugin-esphome: discovered basement-26-office-01 - connecting
+2026/03/30 11:20:46 plugin-esphome: discovered basement-10-edison-03 - connecting
+2026/03/30 11:20:46 plugin-esphome: discovered basement-06-movieroom-back-01 - connecting
+2026/03/30 11:20:46 plugin-esphome: discovered basement-27-office-02 - connecting
+    test.integration.device_discovery_test.go:95: waiting for entities to be registered...
+2026/03/30 11:20:47 plugin-esphome: basement-26-office-01 - registered 1 entities
+2026/03/30 11:20:47 plugin-esphome: basement-06-movieroom-back-01 - registered 1 entities
+2026/03/30 11:20:47 plugin-esphome: basement-28-office-03 - registered 1 entities
+2026/03/30 11:20:47 plugin-esphome: basement-17-tv-center-right - registered 1 entities
+2026/03/30 11:20:47 plugin-esphome: basement-10-edison-03 - registered 1 entities
+2026/03/30 11:20:47 plugin-esphome: basement-27-office-02 - registered 1 entities
+    test.integration.device_discovery_test.go:106:   ✓ basement-28-office-03 — 1 entit(ies)
+    test.integration.device_discovery_test.go:106:   ✓ basement-17-tv-center-right — 1 entit(ies)
+    test.integration.device_discovery_test.go:106:   ✓ basement-26-office-01 — 1 entit(ies)
+    test.integration.device_discovery_test.go:106:   ✓ basement-10-edison-03 — 1 entit(ies)
+    test.integration.device_discovery_test.go:106:   ✓ basement-06-movieroom-back-01 — 1 entit(ies)
+    test.integration.device_discovery_test.go:106:   ✓ basement-27-office-02 — 1 entit(ies)
+2026/03/30 11:20:47 plugin-esphome: alex_room_switch - registered 11 entities
+2026/03/30 11:20:47 plugin-esphome: switch_basement_office - registered 8 entities
+2026/03/30 11:20:47 plugin-esphome: switch_basement_edison - registered 8 entities
+    test.integration.device_discovery_test.go:106:   ✓ alex_room_switch — 11 entit(ies)
+    test.integration.device_discovery_test.go:106:   ✓ switch_basement_edison — 8 entit(ies)
+    test.integration.device_discovery_test.go:106:   ✓ switch_basement_office — 8 entit(ies)
+2026/03/30 11:20:47 plugin-esphome: initial probe found 9 device(s)
+--- PASS: TestDeviceDiscovery_Physical_Integration (6.02s)
+=== RUN   TestLuaFade_Physical_Integration
+2026/03/30 11:20:47 plugin-esphome: persist private config for basement-17-tv-center-right: storage: storage.save: nats: connection closed
+2026/03/30 11:20:47 plugin-esphome: persist private config for basement-06-movieroom-back-01: storage: storage.save: nats: connection closed
+2026/03/30 11:20:47 plugin-esphome: persist private config for basement-27-office-02: storage: storage.save: nats: connection closed
+2026/03/30 11:20:47 plugin-esphome: persist private config for basement-26-office-01: storage: storage.save: nats: connection closed
+2026/03/30 11:20:47 plugin-esphome: persist private config for basement-28-office-03: storage: storage.save: nats: connection closed
+2026/03/30 11:20:47 plugin-esphome: persist private config for basement-10-edison-03: storage: storage.save: nats: connection closed
+2026/03/30 11:20:47 plugin-esphome: persist private config for switch_basement_office: storage: storage.save: nats: connection closed
+2026/03/30 11:20:47 plugin-esphome: persist private config for switch_basement_edison: storage: storage.save: nats: connection closed
+2026/03/30 11:20:47 plugin-esphome: persist private config for alex_room_switch: storage: storage.save: nats: connection closed
+2026/03/30 11:20:47 plugin-esphome: started, listening for devices via mDNS
+    test.integration.lua_fade_physical_test.go:63: waiting for plugin to discover and register lights...
+2026/03/30 11:20:52 plugin-esphome: initial probe found 3 device(s)
+2026/03/30 11:20:52 plugin-esphome: discovered switch_basement_office - connecting
+2026/03/30 11:20:52 plugin-esphome: discovered switch_basement_edison - connecting
+2026/03/30 11:20:52 plugin-esphome: discovered alex_room_switch - connecting
+2026/03/30 11:20:52 plugin-esphome: discovered basement-26-office-01 - connecting
+2026/03/30 11:20:52 plugin-esphome: discovered basement-17-tv-center-right - connecting
+2026/03/30 11:20:52 plugin-esphome: discovered basement-28-office-03 - connecting
+2026/03/30 11:20:53 plugin-esphome: discovered basement-27-office-02 - connecting
+2026/03/30 11:20:53 plugin-esphome: discovered basement-06-movieroom-back-01 - connecting
+2026/03/30 11:20:53 plugin-esphome: discovered basement-10-edison-03 - connecting
+2026/03/30 11:20:53 plugin-esphome: basement-26-office-01 - registered 1 entities
+2026/03/30 11:20:53 plugin-esphome: basement-17-tv-center-right - registered 1 entities
+2026/03/30 11:20:53 plugin-esphome: basement-28-office-03 - registered 1 entities
+2026/03/30 11:20:53 plugin-esphome: basement-27-office-02 - registered 1 entities
+2026/03/30 11:20:53 plugin-esphome: basement-06-movieroom-back-01 - registered 1 entities
+2026/03/30 11:20:53 plugin-esphome: basement-10-edison-03 - registered 1 entities
+2026/03/30 11:20:53 plugin-esphome: alex_room_switch - registered 11 entities
+2026/03/30 11:20:53 plugin-esphome: switch_basement_edison - registered 8 entities
+2026/03/30 11:20:53 plugin-esphome: switch_basement_office - registered 8 entities
+    test.integration.lua_fade_physical_test.go:97: plugin registered 11 light(s)
+    test.integration.lua_fade_physical_test.go:99:   plugin-esphome.alex_room_switch.alex_room_switch_1244120618
+    test.integration.lua_fade_physical_test.go:99:   plugin-esphome.alex_room_switch.alex_room_switch_1244120620
+    test.integration.lua_fade_physical_test.go:99:   plugin-esphome.alex_room_switch.alex_room_switch_1244120621
+    test.integration.lua_fade_physical_test.go:99:   plugin-esphome.alex_room_switch.alex_room_switch_1244120623
+    test.integration.lua_fade_physical_test.go:99:   plugin-esphome.alex_room_switch.alex_room_switch_3536995996
+    test.integration.lua_fade_physical_test.go:99:   plugin-esphome.basement-06-movieroom-back-01.basement-06-movieroom-back-01_1680551347
+    test.integration.lua_fade_physical_test.go:99:   plugin-esphome.basement-10-edison-03.basement-10-edison-03_3359852625
+    test.integration.lua_fade_physical_test.go:99:   plugin-esphome.basement-17-tv-center-right.basement-17-tv-center-right_3785994789
+    test.integration.lua_fade_physical_test.go:99:   plugin-esphome.basement-26-office-01.basement-26-office-01_3962872896
+    test.integration.lua_fade_physical_test.go:99:   plugin-esphome.basement-27-office-02.basement-27-office-02_1221826122
+    test.integration.lua_fade_physical_test.go:99:   plugin-esphome.basement-28-office-03.basement-28-office-03_3821584384
+    test.integration.lua_fade_physical_test.go:156: script started (hash=84a30dede729cda0)
+    test.integration.lua_fade_physical_test.go:180:   plugin-esphome.basement-27-office-02.basement-27-office-02_1221826122 brightness=254
+    test.integration.lua_fade_physical_test.go:180:   plugin-esphome.basement-26-office-01.basement-26-office-01_3962872896 brightness=254
+    test.integration.lua_fade_physical_test.go:180:   plugin-esphome.basement-06-movieroom-back-01.basement-06-movieroom-back-01_1680551347 brightness=254
+    test.integration.lua_fade_physical_test.go:180:   plugin-esphome.basement-28-office-03.basement-28-office-03_3821584384 brightness=254
+    test.integration.lua_fade_physical_test.go:180:   plugin-esphome.basement-17-tv-center-right.basement-17-tv-center-right_3785994789 brightness=254
+    test.integration.lua_fade_physical_test.go:180:   plugin-esphome.basement-10-edison-03.basement-10-edison-03_3359852625 brightness=254
+    test.integration.lua_fade_physical_test.go:180:   plugin-esphome.alex_room_switch.alex_room_switch_1244120618 brightness=254
+    test.integration.lua_fade_physical_test.go:180:   plugin-esphome.alex_room_switch.alex_room_switch_1244120620 brightness=254
+    test.integration.lua_fade_physical_test.go:180:   plugin-esphome.alex_room_switch.alex_room_switch_1244120621 brightness=254
+    test.integration.lua_fade_physical_test.go:180:   plugin-esphome.alex_room_switch.alex_room_switch_1244120623 brightness=254
+    test.integration.lua_fade_physical_test.go:180:   plugin-esphome.alex_room_switch.alex_room_switch_3536995996 brightness=254
+    test.integration.lua_fade_physical_test.go:180:   plugin-esphome.basement-28-office-03.basement-28-office-03_3821584384 brightness=50
+    test.integration.lua_fade_physical_test.go:180:   plugin-esphome.basement-27-office-02.basement-27-office-02_1221826122 brightness=50
+    test.integration.lua_fade_physical_test.go:180:   plugin-esphome.basement-06-movieroom-back-01.basement-06-movieroom-back-01_1680551347 brightness=50
+    test.integration.lua_fade_physical_test.go:180:   plugin-esphome.basement-26-office-01.basement-26-office-01_3962872896 brightness=50
+    test.integration.lua_fade_physical_test.go:180:   plugin-esphome.basement-17-tv-center-right.basement-17-tv-center-right_3785994789 brightness=50
+    test.integration.lua_fade_physical_test.go:180:   plugin-esphome.basement-10-edison-03.basement-10-edison-03_3359852625 brightness=50
+    test.integration.lua_fade_physical_test.go:180:   plugin-esphome.alex_room_switch.alex_room_switch_1244120618 brightness=254
+    test.integration.lua_fade_physical_test.go:180:   plugin-esphome.alex_room_switch.alex_room_switch_1244120620 brightness=254
+    test.integration.lua_fade_physical_test.go:180:   plugin-esphome.alex_room_switch.alex_room_switch_1244120621 brightness=254
+    test.integration.lua_fade_physical_test.go:180:   plugin-esphome.alex_room_switch.alex_room_switch_1244120623 brightness=254
+    test.integration.lua_fade_physical_test.go:180:   plugin-esphome.alex_room_switch.alex_room_switch_3536995996 brightness=254
+    test.integration.lua_fade_physical_test.go:180:   plugin-esphome.basement-28-office-03.basement-28-office-03_3821584384 brightness=100
+    test.integration.lua_fade_physical_test.go:180:   plugin-esphome.basement-26-office-01.basement-26-office-01_3962872896 brightness=100
+    test.integration.lua_fade_physical_test.go:180:   plugin-esphome.basement-27-office-02.basement-27-office-02_1221826122 brightness=100
+    test.integration.lua_fade_physical_test.go:180:   plugin-esphome.basement-06-movieroom-back-01.basement-06-movieroom-back-01_1680551347 brightness=100
+    test.integration.lua_fade_physical_test.go:180:   plugin-esphome.basement-17-tv-center-right.basement-17-tv-center-right_3785994789 brightness=100
+    test.integration.lua_fade_physical_test.go:180:   plugin-esphome.basement-10-edison-03.basement-10-edison-03_3359852625 brightness=100
+    test.integration.lua_fade_physical_test.go:180:   plugin-esphome.alex_room_switch.alex_room_switch_1244120618 brightness=254
+    test.integration.lua_fade_physical_test.go:180:   plugin-esphome.alex_room_switch.alex_room_switch_1244120620 brightness=254
+    test.integration.lua_fade_physical_test.go:180:   plugin-esphome.alex_room_switch.alex_room_switch_1244120621 brightness=254
+    test.integration.lua_fade_physical_test.go:180:   plugin-esphome.alex_room_switch.alex_room_switch_1244120623 brightness=254
+    test.integration.lua_fade_physical_test.go:180:   plugin-esphome.alex_room_switch.alex_room_switch_3536995996 brightness=254
+    test.integration.lua_fade_physical_test.go:180:   plugin-esphome.basement-26-office-01.basement-26-office-01_3962872896 brightness=150
+    test.integration.lua_fade_physical_test.go:180:   plugin-esphome.basement-27-office-02.basement-27-office-02_1221826122 brightness=150
+    test.integration.lua_fade_physical_test.go:180:   plugin-esphome.basement-06-movieroom-back-01.basement-06-movieroom-back-01_1680551347 brightness=150
+    test.integration.lua_fade_physical_test.go:180:   plugin-esphome.basement-17-tv-center-right.basement-17-tv-center-right_3785994789 brightness=150
+    test.integration.lua_fade_physical_test.go:180:   plugin-esphome.basement-28-office-03.basement-28-office-03_3821584384 brightness=150
+    test.integration.lua_fade_physical_test.go:180:   plugin-esphome.basement-10-edison-03.basement-10-edison-03_3359852625 brightness=150
+    test.integration.lua_fade_physical_test.go:180:   plugin-esphome.alex_room_switch.alex_room_switch_1244120618 brightness=254
+    test.integration.lua_fade_physical_test.go:180:   plugin-esphome.alex_room_switch.alex_room_switch_1244120620 brightness=254
+    test.integration.lua_fade_physical_test.go:180:   plugin-esphome.alex_room_switch.alex_room_switch_1244120621 brightness=254
+    test.integration.lua_fade_physical_test.go:180:   plugin-esphome.alex_room_switch.alex_room_switch_1244120623 brightness=254
+    test.integration.lua_fade_physical_test.go:180:   plugin-esphome.alex_room_switch.alex_room_switch_3536995996 brightness=254
+    test.integration.lua_fade_physical_test.go:211: ~ plugin-esphome.alex_room_switch.alex_room_switch_1244120618: non-dimmable light (always 254), skipping fade assertion
+    test.integration.lua_fade_physical_test.go:211: ~ plugin-esphome.alex_room_switch.alex_room_switch_1244120620: non-dimmable light (always 254), skipping fade assertion
+    test.integration.lua_fade_physical_test.go:211: ~ plugin-esphome.alex_room_switch.alex_room_switch_1244120621: non-dimmable light (always 254), skipping fade assertion
+    test.integration.lua_fade_physical_test.go:211: ~ plugin-esphome.alex_room_switch.alex_room_switch_1244120623: non-dimmable light (always 254), skipping fade assertion
+    test.integration.lua_fade_physical_test.go:211: ~ plugin-esphome.alex_room_switch.alex_room_switch_3536995996: non-dimmable light (always 254), skipping fade assertion
+    test.integration.lua_fade_physical_test.go:217: ✓ plugin-esphome.basement-06-movieroom-back-01.basement-06-movieroom-back-01_1680551347: brightness ranged 50→254 over [254 50 100 150]
+    test.integration.lua_fade_physical_test.go:217: ✓ plugin-esphome.basement-10-edison-03.basement-10-edison-03_3359852625: brightness ranged 50→254 over [254 50 100 150]
+    test.integration.lua_fade_physical_test.go:217: ✓ plugin-esphome.basement-17-tv-center-right.basement-17-tv-center-right_3785994789: brightness ranged 50→254 over [254 50 100 150]
+    test.integration.lua_fade_physical_test.go:217: ✓ plugin-esphome.basement-26-office-01.basement-26-office-01_3962872896: brightness ranged 50→254 over [254 50 100 150]
+    test.integration.lua_fade_physical_test.go:217: ✓ plugin-esphome.basement-27-office-02.basement-27-office-02_1221826122: brightness ranged 50→254 over [254 50 100 150]
+    test.integration.lua_fade_physical_test.go:217: ✓ plugin-esphome.basement-28-office-03.basement-28-office-03_3821584384: brightness ranged 50→254 over [254 50 100 150]
+--- PASS: TestLuaFade_Physical_Integration (10.46s)
+=== RUN   TestLuaFade_RealESPHomeLights_Integration
+    test.integration.lua_fade_test.go:38: discovering ESPHome devices via mDNS...
+    test.integration.lua_fade_test.go:46: found 9 device(s)
+    test.integration.lua_fade_test.go:55: connecting to alex_room_switch at 192.168.88.113...
+    test.helper.lua_fade_helpers_test.go:107:   registered light: LED Red (alex_room_switch_3536995996)
+    test.helper.lua_fade_helpers_test.go:107:   registered light: LED Level 1 (alex_room_switch_1244120623)
+    test.helper.lua_fade_helpers_test.go:107:   registered light: LED Level 2 (alex_room_switch_1244120620)
+    test.helper.lua_fade_helpers_test.go:107:   registered light: LED Level 3 (alex_room_switch_1244120621)
+    test.helper.lua_fade_helpers_test.go:107:   registered light: LED Level 4 (alex_room_switch_1244120618)
+    test.integration.lua_fade_test.go:55: connecting to switch_basement_edison at 192.168.88.84...
+    test.integration.lua_fade_test.go:55: connecting to switch_basement_office at 192.168.88.99...
+    test.integration.lua_fade_test.go:55: connecting to basement-17-tv-center-right at 192.168.88.116...
+    test.helper.lua_fade_helpers_test.go:107:   registered light: basement-17-tv-center-right (basement-17-tv-center-right_3785994789)
+    test.integration.lua_fade_test.go:55: connecting to basement-27-office-02 at 192.168.88.43...
+    test.helper.lua_fade_helpers_test.go:107:   registered light: basement-27-office-02 (basement-27-office-02_1221826122)
+    test.integration.lua_fade_test.go:55: connecting to basement-06-movieroom-back-01 at 192.168.88.11...
+    test.helper.lua_fade_helpers_test.go:107:   registered light: basement-06-movieroom-back-01 (basement-06-movieroom-back-01_1680551347)
+    test.integration.lua_fade_test.go:55: connecting to basement-28-office-03 at 192.168.88.45...
+    test.helper.lua_fade_helpers_test.go:107:   registered light: basement-28-office-03 (basement-28-office-03_3821584384)
+    test.integration.lua_fade_test.go:55: connecting to basement-26-office-01 at 192.168.88.42...
+    test.helper.lua_fade_helpers_test.go:107:   registered light: basement-26-office-01 (basement-26-office-01_3962872896)
+    test.integration.lua_fade_test.go:55: connecting to basement-10-edison-03 at 192.168.88.46...
+    test.helper.lua_fade_helpers_test.go:107:   registered light: basement-10-edison-03 (basement-10-edison-03_3359852625)
+    test.integration.lua_fade_test.go:63: registered 11 light(s) total
+    test.integration.lua_fade_test.go:65:   LED Red (plugin-esphome.alex_room_switch.alex_room_switch_3536995996)
+    test.integration.lua_fade_test.go:65:   LED Level 1 (plugin-esphome.alex_room_switch.alex_room_switch_1244120623)
+    test.integration.lua_fade_test.go:65:   LED Level 2 (plugin-esphome.alex_room_switch.alex_room_switch_1244120620)
+    test.integration.lua_fade_test.go:65:   LED Level 3 (plugin-esphome.alex_room_switch.alex_room_switch_1244120621)
+    test.integration.lua_fade_test.go:65:   LED Level 4 (plugin-esphome.alex_room_switch.alex_room_switch_1244120618)
+    test.integration.lua_fade_test.go:65:   basement-17-tv-center-right (plugin-esphome.basement-17-tv-center-right.basement-17-tv-center-right_3785994789)
+    test.integration.lua_fade_test.go:65:   basement-27-office-02 (plugin-esphome.basement-27-office-02.basement-27-office-02_1221826122)
+    test.integration.lua_fade_test.go:65:   basement-06-movieroom-back-01 (plugin-esphome.basement-06-movieroom-back-01.basement-06-movieroom-back-01_1680551347)
+    test.integration.lua_fade_test.go:65:   basement-28-office-03 (plugin-esphome.basement-28-office-03.basement-28-office-03_3821584384)
+    test.integration.lua_fade_test.go:65:   basement-26-office-01 (plugin-esphome.basement-26-office-01.basement-26-office-01_3962872896)
+    test.integration.lua_fade_test.go:65:   basement-10-edison-03 (plugin-esphome.basement-10-edison-03.basement-10-edison-03_3359852625)
+    test.integration.lua_fade_test.go:104: script started (hash=13cbc29c090bad78)
+    test.integration.lua_fade_test.go:157: ✓ LED Red: brightness ramp [0 50 100 150]... correct
+    test.integration.lua_fade_test.go:157: ✓ LED Level 1: brightness ramp [0 50 100 150]... correct
+    test.integration.lua_fade_test.go:157: ✓ LED Level 2: brightness ramp [0 50 100 150]... correct
+    test.integration.lua_fade_test.go:157: ✓ LED Level 3: brightness ramp [0 50 100 150]... correct
+    test.integration.lua_fade_test.go:157: ✓ LED Level 4: brightness ramp [0 50 100 150]... correct
+    test.integration.lua_fade_test.go:157: ✓ basement-17-tv-center-right: brightness ramp [0 50 100 150]... correct
+    test.integration.lua_fade_test.go:157: ✓ basement-27-office-02: brightness ramp [0 50 100 150]... correct
+    test.integration.lua_fade_test.go:157: ✓ basement-06-movieroom-back-01: brightness ramp [0 50 100 150]... correct
+    test.integration.lua_fade_test.go:157: ✓ basement-28-office-03: brightness ramp [0 50 100 150]... correct
+    test.integration.lua_fade_test.go:157: ✓ basement-26-office-01: brightness ramp [0 50 100 150]... correct
+    test.integration.lua_fade_test.go:157: ✓ basement-10-edison-03: brightness ramp [0 50 100 150]... correct
+--- PASS: TestLuaFade_RealESPHomeLights_Integration (17.36s)
+=== RUN   TestLuaRainbow_Physical_Integration
+    test.integration.lua_rainbow_test.go:44: discovering devices via mDNS...
+    test.integration.lua_rainbow_test.go:56: found 9 device(s) via mDNS
+2026/03/30 11:21:20 plugin-esphome: started, listening for devices via mDNS
+2026/03/30 11:21:20 plugin-esphome: discovered switch_basement_office - connecting
+2026/03/30 11:21:20 plugin-esphome: discovered alex_room_switch - connecting
+2026/03/30 11:21:20 plugin-esphome: discovered switch_basement_edison - connecting
+2026/03/30 11:21:20 plugin-esphome: discovered basement-17-tv-center-right - connecting
+2026/03/30 11:21:20 plugin-esphome: discovered basement-27-office-02 - connecting
+2026/03/30 11:21:20 plugin-esphome: discovered basement-06-movieroom-back-01 - connecting
+2026/03/30 11:21:20 plugin-esphome: discovered basement-26-office-01 - connecting
+2026/03/30 11:21:20 plugin-esphome: discovered basement-28-office-03 - connecting
+2026/03/30 11:21:20 plugin-esphome: discovered basement-10-edison-03 - connecting
+    test.integration.lua_rainbow_test.go:87: waiting for devices to register entities...
+2026/03/30 11:21:21 plugin-esphome: seeded 40 device addresses from dashboard
+2026/03/30 11:21:21 plugin-esphome: basement-27-office-02 - registered 1 entities
+2026/03/30 11:21:21 plugin-esphome: basement-06-movieroom-back-01 - registered 1 entities
+2026/03/30 11:21:21 plugin-esphome: basement-10-edison-03 - registered 1 entities
+2026/03/30 11:21:21 plugin-esphome: basement-28-office-03 - registered 1 entities
+2026/03/30 11:21:21 plugin-esphome: basement-26-office-01 - registered 1 entities
+2026/03/30 11:21:21 plugin-esphome: basement-17-tv-center-right - registered 1 entities
+2026/03/30 11:21:21 plugin-esphome: switch_basement_edison - registered 8 entities
+2026/03/30 11:21:21 plugin-esphome: alex_room_switch - registered 11 entities
+2026/03/30 11:21:21 plugin-esphome: switch_basement_office - registered 8 entities
+    test.integration.lua_rainbow_test.go:121: registered 11 light(s) with persistent connections
+    test.integration.lua_rainbow_test.go:173: 🌈 script started — lights should be changing color! (hash=d2116e9c6c815946)
+    test.integration.lua_rainbow_test.go:180: letting rainbow run for 22s — watch the lights!
+2026/03/30 11:21:26 plugin-esphome: initial probe found 9 device(s)
+    test.integration.lua_rainbow_test.go:211: ✓ plugin-esphome.basement-17-tv-center-right.basement-17-tv-center-right_3785994789: rainbow starts orange, green rising correctly
+    test.integration.lua_rainbow_test.go:211: ✓ plugin-esphome.basement-27-office-02.basement-27-office-02_1221826122: rainbow starts orange, green rising correctly
+    test.integration.lua_rainbow_test.go:211: ✓ plugin-esphome.basement-06-movieroom-back-01.basement-06-movieroom-back-01_1680551347: rainbow starts orange, green rising correctly
+    test.integration.lua_rainbow_test.go:211: ✓ plugin-esphome.basement-26-office-01.basement-26-office-01_3962872896: rainbow starts orange, green rising correctly
+    test.integration.lua_rainbow_test.go:211: ✓ plugin-esphome.basement-28-office-03.basement-28-office-03_3821584384: rainbow starts orange, green rising correctly
+    test.integration.lua_rainbow_test.go:211: ✓ plugin-esphome.basement-10-edison-03.basement-10-edison-03_3359852625: rainbow starts orange, green rising correctly
+    test.integration.lua_rainbow_test.go:211: ✓ plugin-esphome.alex_room_switch.alex_room_switch_1244120618: rainbow starts orange, green rising correctly
+    test.integration.lua_rainbow_test.go:211: ✓ plugin-esphome.alex_room_switch.alex_room_switch_3536995996: rainbow starts orange, green rising correctly
+    test.integration.lua_rainbow_test.go:211: ✓ plugin-esphome.alex_room_switch.alex_room_switch_1244120623: rainbow starts orange, green rising correctly
+    test.integration.lua_rainbow_test.go:211: ✓ plugin-esphome.alex_room_switch.alex_room_switch_1244120620: rainbow starts orange, green rising correctly
+    test.integration.lua_rainbow_test.go:211: ✓ plugin-esphome.alex_room_switch.alex_room_switch_1244120621: rainbow starts orange, green rising correctly
+--- PASS: TestLuaRainbow_Physical_Integration (28.02s)
+PASS
+ok  	github.com/slidebolt/plugin-esphome/cmd/plugin-esphome	61.875s

@@ -1,0 +1,63 @@
+=== RUN   TestFrontRightCorner_SmallBurst
+    test.local.group_test.go:487: mDNS discover pass 1: found 9 this pass, 9 unique total
+    test.local.group_test.go:487: mDNS names so far: [alex_room_switch basement-06-movieroom-back-01 basement-10-edison-03 basement-17-tv-center-right basement-26-office-01 basement-27-office-02 basement-28-office-03 switch_basement_edison switch_basement_office]
+    test.local.group_test.go:487: mDNS discover pass 2: found 9 this pass, 9 unique total
+    test.local.group_test.go:487: mDNS names so far: [alex_room_switch basement-06-movieroom-back-01 basement-10-edison-03 basement-17-tv-center-right basement-26-office-01 basement-27-office-02 basement-28-office-03 switch_basement_edison switch_basement_office]
+    test.local.group_test.go:487: found 9 device(s) via mDNS
+2026/03/30 11:44:46 plugin-esphome: trace logging enabled
+2026/03/30 11:44:46 plugin-esphome: started, listening for devices via mDNS
+2026/03/30 11:44:46 plugin-esphome: discovered alex_room_switch - connecting
+2026/03/30 11:44:46 plugin-esphome: discovered basement-06-movieroom-back-01 - connecting
+2026/03/30 11:44:46 plugin-esphome: discovered basement-10-edison-03 - connecting
+2026/03/30 11:44:46 plugin-esphome: discovered basement-17-tv-center-right - connecting
+2026/03/30 11:44:46 plugin-esphome: discovered basement-26-office-01 - connecting
+2026/03/30 11:44:46 plugin-esphome: discovered basement-27-office-02 - connecting
+2026/03/30 11:44:46 plugin-esphome: discovered basement-28-office-03 - connecting
+2026/03/30 11:44:46 plugin-esphome: discovered switch_basement_edison - connecting
+2026/03/30 11:44:46 plugin-esphome: discovered switch_basement_office - connecting
+    test.local.group_test.go:487: waiting for devices to register entities...
+2026/03/30 11:44:46 plugin-esphome: basement-06-movieroom-back-01 - registered 1 entities
+2026/03/30 11:44:46 plugin-esphome: basement-27-office-02 - registered 1 entities
+2026/03/30 11:44:46 plugin-esphome: basement-26-office-01 - registered 1 entities
+2026/03/30 11:44:46 plugin-esphome: [trace] state update dev=basement-06-movieroom-back-01 entity=basement-06-movieroom-back-01_1680551347 msg=*api.LightStateResponse state={Power:true Brightness:150 ColorMode:rgb RGB:[0 5 255] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:153 White:255 Effect:}
+2026/03/30 11:44:46 plugin-esphome: basement-10-edison-03 - registered 1 entities
+2026/03/30 11:44:46 plugin-esphome: [trace] state update dev=basement-27-office-02 entity=basement-27-office-02_1221826122 msg=*api.LightStateResponse state={Power:true Brightness:150 ColorMode:rgb RGB:[0 5 255] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:370 White:255 Effect:}
+2026/03/30 11:44:46 plugin-esphome: [trace] state update dev=basement-26-office-01 entity=basement-26-office-01_3962872896 msg=*api.LightStateResponse state={Power:true Brightness:150 ColorMode:rgb RGB:[0 5 255] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:370 White:255 Effect:}
+2026/03/30 11:44:46 plugin-esphome: [trace] state update dev=basement-10-edison-03 entity=basement-10-edison-03_3359852625 msg=*api.LightStateResponse state={Power:true Brightness:150 ColorMode:cold_warm_white RGB:[] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:370 White:255 Effect:}
+2026/03/30 11:44:46 plugin-esphome: basement-17-tv-center-right - registered 1 entities
+2026/03/30 11:44:46 plugin-esphome: basement-28-office-03 - registered 1 entities
+2026/03/30 11:44:46 plugin-esphome: [trace] state update dev=basement-28-office-03 entity=basement-28-office-03_3821584384 msg=*api.LightStateResponse state={Power:true Brightness:150 ColorMode:rgb RGB:[0 5 255] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:370 White:255 Effect:}
+2026/03/30 11:44:46 plugin-esphome: [trace] state update dev=basement-17-tv-center-right entity=basement-17-tv-center-right_3785994789 msg=*api.LightStateResponse state={Power:true Brightness:150 ColorMode:rgb RGB:[0 5 255] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:153 White:255 Effect:}
+2026/03/30 11:44:47 plugin-esphome: switch_basement_office - registered 8 entities
+2026/03/30 11:44:47 plugin-esphome: [trace] state update dev=switch_basement_office entity=switch_basement_office_2686519914 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:44:47 plugin-esphome: [trace] state update dev=switch_basement_office entity=switch_basement_office_1243485573 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:44:47 plugin-esphome: [trace] state update dev=switch_basement_office entity=switch_basement_office_3413872047 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:44:47 plugin-esphome: alex_room_switch - registered 11 entities
+2026/03/30 11:44:47 plugin-esphome: [trace] state update dev=switch_basement_office entity=switch_basement_office_3349744299 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:44:47 plugin-esphome: switch_basement_edison - registered 8 entities
+2026/03/30 11:44:47 plugin-esphome: [trace] state update dev=switch_basement_office entity=switch_basement_office_2823101305 msg=*api.SwitchStateResponse state={Power:true}
+2026/03/30 11:44:47 plugin-esphome: [trace] state update dev=switch_basement_office entity=switch_basement_office_703927066 msg=*api.SwitchStateResponse state={Power:false}
+2026/03/30 11:44:47 plugin-esphome: [trace] state update dev=switch_basement_edison entity=switch_basement_edison_1805240098 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:44:47 plugin-esphome: [trace] state update dev=switch_basement_edison entity=switch_basement_edison_1496264397 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:44:47 plugin-esphome: [trace] state update dev=switch_basement_edison entity=switch_basement_edison_322047543 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:44:47 plugin-esphome: [trace] state update dev=switch_basement_edison entity=switch_basement_edison_3060779987 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:44:47 plugin-esphome: [trace] state update dev=switch_basement_edison entity=switch_basement_edison_2387054064 msg=*api.SwitchStateResponse state={Power:true}
+2026/03/30 11:44:47 plugin-esphome: [trace] state update dev=switch_basement_edison entity=switch_basement_edison_3477607426 msg=*api.SwitchStateResponse state={Power:false}
+2026/03/30 11:44:47 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_3430626415 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:44:47 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_1972958575 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:44:47 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_4085851028 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:44:47 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_1377879859 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 11:44:47 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_3536995996 msg=*api.LightStateResponse state={Power:true Brightness:254 ColorMode:on_off RGB:[] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:0 White:255 Effect:}
+2026/03/30 11:44:47 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_1244120623 msg=*api.LightStateResponse state={Power:true Brightness:254 ColorMode:on_off RGB:[] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:0 White:255 Effect:}
+2026/03/30 11:44:47 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_1244120620 msg=*api.LightStateResponse state={Power:true Brightness:254 ColorMode:on_off RGB:[] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:0 White:255 Effect:}
+2026/03/30 11:44:47 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_1244120621 msg=*api.LightStateResponse state={Power:true Brightness:254 ColorMode:on_off RGB:[] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:0 White:255 Effect:}
+2026/03/30 11:44:47 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_1244120618 msg=*api.LightStateResponse state={Power:true Brightness:254 ColorMode:on_off RGB:[] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:0 White:255 Effect:}
+2026/03/30 11:44:47 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_100946040 msg=*api.SwitchStateResponse state={Power:true}
+    test.local.group_test.go:487: registered 11 light(s) with persistent connections
+    test.local.group_test.go:499: front right corner not found on network
+2026/03/30 11:44:47 plugin-esphome: initial probe found 9 device(s)
+--- SKIP: TestFrontRightCorner_SmallBurst (11.52s)
+2026/03/30 11:44:47 plugin-esphome: persist private config for switch_basement_edison: storage: storage.save: nats: connection closed
+PASS
+2026/03/30 11:44:47 plugin-esphome: [trace] refreshed discovery for switch_basement_edison addr=192.168.88.84 port=6053
+ok  	github.com/slidebolt/plugin-esphome/cmd/plugin-esphome	11.532s

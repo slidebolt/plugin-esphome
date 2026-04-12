@@ -1,0 +1,48 @@
+# github.com/slidebolt/plugin-esphome/cmd/plugin-esphome [github.com/slidebolt/plugin-esphome/cmd/plugin-esphome.test]
+cmd/plugin-esphome/test.bdd.steps_test.go:251:58: cannot use temperature (variable of type int) as float64 value in struct literal
+cmd/plugin-esphome/test.bdd.steps_test.go:263:58: cannot use temperature (variable of type int) as float64 value in struct literal
+cmd/plugin-esphome/test.bdd.steps_test.go:436:58: cannot use temperature (variable of type int) as float64 value in struct literal
+cmd/plugin-esphome/test.bdd.steps_test.go:578:23: invalid operation: st.Temperature != float64(expected) (mismatched types int and float64)
+=== RUN   TestLookupESPKey
+--- PASS: TestLookupESPKey (0.00s)
+=== RUN   TestEntityFromMsgLightIncludesPersistentColorCapabilities
+--- PASS: TestEntityFromMsgLightIncludesPersistentColorCapabilities (0.00s)
+=== RUN   TestEntityFromMsgLightColorTempOnlyOmitsRGBCommand
+--- PASS: TestEntityFromMsgLightColorTempOnlyOmitsRGBCommand (0.00s)
+=== RUN   TestLightStateFromResponseColorTempDoesNotBackfillRGB
+--- PASS: TestLightStateFromResponseColorTempDoesNotBackfillRGB (0.00s)
+=== RUN   TestApplyStateUpdatePersistsFullLightState
+--- PASS: TestApplyStateUpdatePersistsFullLightState (0.00s)
+=== RUN   TestLookupEntityByESPKeyFromStorage
+--- PASS: TestLookupEntityByESPKeyFromStorage (0.00s)
+=== RUN   TestResolveAPIKeyPersistsFallbackToPrivate
+--- PASS: TestResolveAPIKeyPersistsFallbackToPrivate (0.00s)
+=== RUN   TestResolveAPIKeyUsesStoredPrivateConfigWithoutMDNSEncryptionFlag
+--- PASS: TestResolveAPIKeyUsesStoredPrivateConfigWithoutMDNSEncryptionFlag (0.00s)
+=== RUN   TestRememberDevicePersistsLastKnownEndpoint
+--- PASS: TestRememberDevicePersistsLastKnownEndpoint (0.00s)
+=== RUN   TestVerifyConnectedDeviceRejectsMACMismatch
+--- PASS: TestVerifyConnectedDeviceRejectsMACMismatch (0.00s)
+=== RUN   TestOnDeviceFoundStartsOneManagedLoopPerDevice
+2026/03/30 10:03:53 plugin-esphome: discovered basement-edison - connecting
+--- PASS: TestOnDeviceFoundStartsOneManagedLoopPerDevice (0.00s)
+=== RUN   TestHandleCommandSendFailureDropsActiveConnectionAndRequestsReconnect
+2026/03/30 10:03:53 plugin-esphome: send command domain.LightSetBrightness to plugin-esphome.basement-edison.basement-edison_42 (10.0.0.10:6053): broken pipe
+--- PASS: TestHandleCommandSendFailureDropsActiveConnectionAndRequestsReconnect (0.00s)
+=== RUN   TestHelloManifest
+--- PASS: TestHelloManifest (0.00s)
+PASS
+ok  	github.com/slidebolt/plugin-esphome/app	0.004s
+?   	github.com/slidebolt/plugin-esphome/cmd/edison-test	[no test files]
+FAIL	github.com/slidebolt/plugin-esphome/cmd/plugin-esphome [build failed]
+=== RUN   TestFetch_ReturnsDevicesWithIPs
+--- PASS: TestFetch_ReturnsDevicesWithIPs (0.00s)
+=== RUN   TestFetch_BadCredentials
+--- PASS: TestFetch_BadCredentials (0.00s)
+=== RUN   TestConfigValid
+--- PASS: TestConfigValid (0.00s)
+PASS
+ok  	github.com/slidebolt/plugin-esphome/internal/dashboard	0.003s
+?   	github.com/slidebolt/plugin-esphome/internal/mdns	[no test files]
+?   	github.com/slidebolt/plugin-esphome/internal/translate	[no test files]
+FAIL

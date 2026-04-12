@@ -1,0 +1,1049 @@
+ok  	github.com/slidebolt/plugin-esphome/app	0.004s
+?   	github.com/slidebolt/plugin-esphome/cmd/edison-test	[no test files]
+write tcp 127.0.0.1:46164->127.0.0.1:44217: write: broken pipe on connection [5]
+2026/03/30 12:25:13 plugin-esphome: started, listening for devices via mDNS
+2026/03/30 12:25:13 plugin-esphome: discovered switch_basement_office - connecting
+2026/03/30 12:25:13 plugin-esphome: discovered alex_room_switch - connecting
+2026/03/30 12:25:13 plugin-esphome: discovered switch_basement_edison - connecting
+2026/03/30 12:25:13 plugin-esphome: discovered basement-06-movieroom-back-01 - connecting
+2026/03/30 12:25:13 plugin-esphome: discovered basement-27-office-02 - connecting
+2026/03/30 12:25:13 plugin-esphome: discovered basement-28-office-03 - connecting
+2026/03/30 12:25:13 plugin-esphome: discovered basement-10-edison-03 - connecting
+2026/03/30 12:25:13 plugin-esphome: discovered basement-17-tv-center-right - connecting
+2026/03/30 12:25:13 plugin-esphome: discovered basement-26-office-01 - connecting
+2026/03/30 12:25:14 plugin-esphome: basement-27-office-02 - registered 1 entities
+2026/03/30 12:25:14 plugin-esphome: basement-06-movieroom-back-01 - registered 1 entities
+2026/03/30 12:25:14 plugin-esphome: basement-26-office-01 - registered 1 entities
+2026/03/30 12:25:14 plugin-esphome: basement-17-tv-center-right - registered 1 entities
+2026/03/30 12:25:14 plugin-esphome: basement-28-office-03 - registered 1 entities
+2026/03/30 12:25:14 plugin-esphome: basement-10-edison-03 - registered 1 entities
+2026/03/30 12:25:14 plugin-esphome: alex_room_switch - registered 11 entities
+2026/03/30 12:25:14 plugin-esphome: switch_basement_office - registered 8 entities
+2026/03/30 12:25:14 plugin-esphome: switch_basement_edison - registered 8 entities
+2026/03/30 12:25:14 plugin-esphome: initial probe found 9 device(s)
+2026/03/30 12:27:58 plugin-esphome: trace logging enabled
+2026/03/30 12:27:58 plugin-esphome: started, listening for devices via mDNS
+2026/03/30 12:27:58 plugin-esphome: discovered alex_room_switch - connecting
+2026/03/30 12:27:58 plugin-esphome: discovered basement-06-movieroom-back-01 - connecting
+2026/03/30 12:27:58 plugin-esphome: discovered basement-10-edison-03 - connecting
+2026/03/30 12:27:58 plugin-esphome: discovered basement-17-tv-center-right - connecting
+2026/03/30 12:27:58 plugin-esphome: discovered basement-26-office-01 - connecting
+2026/03/30 12:27:58 plugin-esphome: discovered basement-27-office-02 - connecting
+2026/03/30 12:27:58 plugin-esphome: discovered basement-28-office-03 - connecting
+2026/03/30 12:27:58 plugin-esphome: discovered switch_basement_edison - connecting
+2026/03/30 12:27:58 plugin-esphome: discovered switch_basement_office - connecting
+2026/03/30 12:27:59 plugin-esphome: basement-27-office-02 - registered 1 entities
+2026/03/30 12:27:59 plugin-esphome: basement-06-movieroom-back-01 - registered 1 entities
+2026/03/30 12:27:59 plugin-esphome: basement-26-office-01 - registered 1 entities
+2026/03/30 12:27:59 plugin-esphome: [trace] state update dev=basement-27-office-02 entity=basement-27-office-02_1221826122 msg=*api.LightStateResponse state={Power:true Brightness:150 ColorMode:rgb RGB:[0 5 255] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:370 White:255 Effect:}
+2026/03/30 12:27:59 plugin-esphome: [trace] state update dev=basement-06-movieroom-back-01 entity=basement-06-movieroom-back-01_1680551347 msg=*api.LightStateResponse state={Power:false Brightness:38 ColorMode:rgb RGB:[255 0 0] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:153 White:255 Effect:}
+2026/03/30 12:27:59 plugin-esphome: basement-10-edison-03 - registered 1 entities
+2026/03/30 12:27:59 plugin-esphome: [trace] state update dev=basement-26-office-01 entity=basement-26-office-01_3962872896 msg=*api.LightStateResponse state={Power:true Brightness:150 ColorMode:rgb RGB:[0 5 255] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:370 White:255 Effect:}
+2026/03/30 12:27:59 plugin-esphome: [trace] state update dev=basement-10-edison-03 entity=basement-10-edison-03_3359852625 msg=*api.LightStateResponse state={Power:true Brightness:150 ColorMode:cold_warm_white RGB:[] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:370 White:255 Effect:}
+2026/03/30 12:27:59 plugin-esphome: basement-17-tv-center-right - registered 1 entities
+2026/03/30 12:27:59 plugin-esphome: basement-28-office-03 - registered 1 entities
+2026/03/30 12:27:59 plugin-esphome: [trace] state update dev=basement-17-tv-center-right entity=basement-17-tv-center-right_3785994789 msg=*api.LightStateResponse state={Power:false Brightness:38 ColorMode:rgb RGB:[255 0 0] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:153 White:255 Effect:}
+2026/03/30 12:27:59 plugin-esphome: [trace] state update dev=basement-28-office-03 entity=basement-28-office-03_3821584384 msg=*api.LightStateResponse state={Power:true Brightness:150 ColorMode:rgb RGB:[0 5 255] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:370 White:255 Effect:}
+2026/03/30 12:27:59 plugin-esphome: switch_basement_edison - registered 8 entities
+2026/03/30 12:27:59 plugin-esphome: [trace] state update dev=switch_basement_edison entity=switch_basement_edison_1805240098 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 12:27:59 plugin-esphome: [trace] state update dev=switch_basement_edison entity=switch_basement_edison_1496264397 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 12:27:59 plugin-esphome: [trace] state update dev=switch_basement_edison entity=switch_basement_edison_322047543 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 12:27:59 plugin-esphome: [trace] state update dev=switch_basement_edison entity=switch_basement_edison_3060779987 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 12:27:59 plugin-esphome: [trace] state update dev=switch_basement_edison entity=switch_basement_edison_2387054064 msg=*api.SwitchStateResponse state={Power:true}
+2026/03/30 12:27:59 plugin-esphome: switch_basement_office - registered 8 entities
+2026/03/30 12:27:59 plugin-esphome: [trace] state update dev=switch_basement_edison entity=switch_basement_edison_3477607426 msg=*api.SwitchStateResponse state={Power:false}
+2026/03/30 12:27:59 plugin-esphome: alex_room_switch - registered 11 entities
+2026/03/30 12:27:59 plugin-esphome: [trace] state update dev=switch_basement_office entity=switch_basement_office_2686519914 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 12:27:59 plugin-esphome: [trace] state update dev=switch_basement_office entity=switch_basement_office_1243485573 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 12:27:59 plugin-esphome: [trace] state update dev=switch_basement_office entity=switch_basement_office_3413872047 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 12:27:59 plugin-esphome: [trace] state update dev=switch_basement_office entity=switch_basement_office_3349744299 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 12:27:59 plugin-esphome: [trace] state update dev=switch_basement_office entity=switch_basement_office_2823101305 msg=*api.SwitchStateResponse state={Power:true}
+2026/03/30 12:27:59 plugin-esphome: [trace] state update dev=switch_basement_office entity=switch_basement_office_703927066 msg=*api.SwitchStateResponse state={Power:false}
+2026/03/30 12:27:59 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_3430626415 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 12:27:59 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_1972958575 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 12:27:59 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_4085851028 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 12:27:59 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_1377879859 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 12:27:59 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_3536995996 msg=*api.LightStateResponse state={Power:true Brightness:254 ColorMode:on_off RGB:[] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:0 White:255 Effect:}
+2026/03/30 12:27:59 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_1244120623 msg=*api.LightStateResponse state={Power:true Brightness:254 ColorMode:on_off RGB:[] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:0 White:255 Effect:}
+2026/03/30 12:27:59 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_1244120620 msg=*api.LightStateResponse state={Power:true Brightness:254 ColorMode:on_off RGB:[] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:0 White:255 Effect:}
+2026/03/30 12:27:59 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_1244120621 msg=*api.LightStateResponse state={Power:true Brightness:254 ColorMode:on_off RGB:[] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:0 White:255 Effect:}
+2026/03/30 12:27:59 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_1244120618 msg=*api.LightStateResponse state={Power:true Brightness:254 ColorMode:on_off RGB:[] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:0 White:255 Effect:}
+2026/03/30 12:27:59 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_100946040 msg=*api.SwitchStateResponse state={Power:true}
+2026/03/30 12:27:59 plugin-esphome: initial probe found 9 device(s)
+2026/03/30 12:27:59 plugin-esphome: [trace] refreshed discovery for basement-17-tv-center-right addr=192.168.88.116 port=6053
+2026/03/30 12:27:59 plugin-esphome: [trace] refreshed discovery for basement-26-office-01 addr=192.168.88.42 port=6053
+2026/03/30 12:27:59 plugin-esphome: [trace] refreshed discovery for basement-28-office-03 addr=192.168.88.45 port=6053
+2026/03/30 12:27:59 plugin-esphome: [trace] refreshed discovery for basement-27-office-02 addr=192.168.88.43 port=6053
+2026/03/30 12:27:59 plugin-esphome: [trace] refreshed discovery for basement-10-edison-03 addr=192.168.88.46 port=6053
+2026/03/30 12:27:59 plugin-esphome: [trace] refreshed discovery for basement-06-movieroom-back-01 addr=192.168.88.11 port=6053
+2026/03/30 12:27:59 plugin-esphome: [trace] refreshed discovery for switch_basement_edison addr=192.168.88.84 port=6053
+2026/03/30 12:27:59 plugin-esphome: [trace] refreshed discovery for switch_basement_office addr=192.168.88.99 port=6053
+2026/03/30 12:27:59 plugin-esphome: [trace] refreshed discovery for alex_room_switch addr=192.168.88.113 port=6053
+2026/03/30 12:28:12 plugin-esphome: trace logging enabled
+2026/03/30 12:28:12 plugin-esphome: started, listening for devices via mDNS
+2026/03/30 12:28:12 plugin-esphome: discovered alex_room_switch - connecting
+2026/03/30 12:28:12 plugin-esphome: discovered basement-06-movieroom-back-01 - connecting
+2026/03/30 12:28:12 plugin-esphome: discovered basement-10-edison-03 - connecting
+2026/03/30 12:28:12 plugin-esphome: discovered basement-17-tv-center-right - connecting
+2026/03/30 12:28:12 plugin-esphome: discovered basement-26-office-01 - connecting
+2026/03/30 12:28:12 plugin-esphome: discovered basement-27-office-02 - connecting
+2026/03/30 12:28:12 plugin-esphome: discovered basement-28-office-03 - connecting
+2026/03/30 12:28:12 plugin-esphome: discovered switch_basement_edison - connecting
+2026/03/30 12:28:12 plugin-esphome: discovered switch_basement_office - connecting
+2026/03/30 12:28:12 plugin-esphome: basement-27-office-02 - registered 1 entities
+2026/03/30 12:28:12 plugin-esphome: basement-26-office-01 - registered 1 entities
+2026/03/30 12:28:12 plugin-esphome: basement-06-movieroom-back-01 - registered 1 entities
+2026/03/30 12:28:12 plugin-esphome: basement-17-tv-center-right - registered 1 entities
+2026/03/30 12:28:12 plugin-esphome: [trace] state update dev=basement-27-office-02 entity=basement-27-office-02_1221826122 msg=*api.LightStateResponse state={Power:true Brightness:150 ColorMode:rgb RGB:[0 5 255] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:370 White:255 Effect:}
+2026/03/30 12:28:12 plugin-esphome: [trace] state update dev=basement-26-office-01 entity=basement-26-office-01_3962872896 msg=*api.LightStateResponse state={Power:true Brightness:150 ColorMode:rgb RGB:[0 5 255] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:370 White:255 Effect:}
+2026/03/30 12:28:12 plugin-esphome: [trace] state update dev=basement-06-movieroom-back-01 entity=basement-06-movieroom-back-01_1680551347 msg=*api.LightStateResponse state={Power:false Brightness:38 ColorMode:rgb RGB:[255 0 0] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:153 White:255 Effect:}
+2026/03/30 12:28:12 plugin-esphome: [trace] state update dev=basement-17-tv-center-right entity=basement-17-tv-center-right_3785994789 msg=*api.LightStateResponse state={Power:false Brightness:38 ColorMode:rgb RGB:[255 0 0] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:153 White:255 Effect:}
+2026/03/30 12:28:12 plugin-esphome: basement-10-edison-03 - registered 1 entities
+2026/03/30 12:28:12 plugin-esphome: basement-28-office-03 - registered 1 entities
+2026/03/30 12:28:12 plugin-esphome: [trace] state update dev=basement-10-edison-03 entity=basement-10-edison-03_3359852625 msg=*api.LightStateResponse state={Power:true Brightness:150 ColorMode:cold_warm_white RGB:[] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:370 White:255 Effect:}
+2026/03/30 12:28:12 plugin-esphome: [trace] state update dev=basement-28-office-03 entity=basement-28-office-03_3821584384 msg=*api.LightStateResponse state={Power:true Brightness:150 ColorMode:rgb RGB:[0 5 255] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:370 White:255 Effect:}
+2026/03/30 12:28:13 plugin-esphome: switch_basement_office - registered 8 entities
+2026/03/30 12:28:13 plugin-esphome: switch_basement_edison - registered 8 entities
+2026/03/30 12:28:13 plugin-esphome: alex_room_switch - registered 11 entities
+2026/03/30 12:28:13 plugin-esphome: [trace] state update dev=switch_basement_office entity=switch_basement_office_2686519914 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 12:28:13 plugin-esphome: [trace] state update dev=switch_basement_office entity=switch_basement_office_1243485573 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 12:28:13 plugin-esphome: [trace] state update dev=switch_basement_office entity=switch_basement_office_3413872047 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 12:28:13 plugin-esphome: [trace] state update dev=switch_basement_office entity=switch_basement_office_3349744299 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 12:28:13 plugin-esphome: [trace] state update dev=switch_basement_office entity=switch_basement_office_2823101305 msg=*api.SwitchStateResponse state={Power:true}
+2026/03/30 12:28:13 plugin-esphome: [trace] state update dev=switch_basement_office entity=switch_basement_office_703927066 msg=*api.SwitchStateResponse state={Power:false}
+2026/03/30 12:28:13 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_3430626415 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 12:28:13 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_1972958575 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 12:28:13 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_4085851028 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 12:28:13 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_1377879859 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 12:28:13 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_3536995996 msg=*api.LightStateResponse state={Power:false Brightness:254 ColorMode:on_off RGB:[] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:0 White:255 Effect:}
+2026/03/30 12:28:13 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_1244120623 msg=*api.LightStateResponse state={Power:false Brightness:254 ColorMode:on_off RGB:[] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:0 White:255 Effect:}
+2026/03/30 12:28:13 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_1244120620 msg=*api.LightStateResponse state={Power:false Brightness:254 ColorMode:on_off RGB:[] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:0 White:255 Effect:}
+2026/03/30 12:28:13 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_1244120621 msg=*api.LightStateResponse state={Power:false Brightness:254 ColorMode:on_off RGB:[] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:0 White:255 Effect:}
+2026/03/30 12:28:13 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_1244120618 msg=*api.LightStateResponse state={Power:false Brightness:254 ColorMode:on_off RGB:[] RGBW:[] RGBWW:[] HS:[] XY:[] Temperature:0 White:255 Effect:}
+2026/03/30 12:28:13 plugin-esphome: [trace] state update dev=alex_room_switch entity=alex_room_switch_100946040 msg=*api.SwitchStateResponse state={Power:true}
+2026/03/30 12:28:13 plugin-esphome: [trace] state update dev=switch_basement_edison entity=switch_basement_edison_1805240098 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 12:28:13 plugin-esphome: [trace] state update dev=switch_basement_edison entity=switch_basement_edison_1496264397 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 12:28:13 plugin-esphome: [trace] state update dev=switch_basement_edison entity=switch_basement_edison_322047543 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 12:28:13 plugin-esphome: [trace] state update dev=switch_basement_edison entity=switch_basement_edison_3060779987 msg=*api.BinarySensorStateResponse state={On:false DeviceClass:}
+2026/03/30 12:28:13 plugin-esphome: [trace] state update dev=switch_basement_edison entity=switch_basement_edison_2387054064 msg=*api.SwitchStateResponse state={Power:true}
+2026/03/30 12:28:13 plugin-esphome: [trace] state update dev=switch_basement_edison entity=switch_basement_edison_3477607426 msg=*api.SwitchStateResponse state={Power:false}
+2026/03/30 12:28:13 plugin-esphome: initial probe found 9 device(s)
+2026/03/30 12:28:13 plugin-esphome: [trace] refreshed discovery for basement-17-tv-center-right addr=192.168.88.116 port=6053
+2026/03/30 12:28:13 plugin-esphome: [trace] refreshed discovery for basement-06-movieroom-back-01 addr=192.168.88.11 port=6053
+2026/03/30 12:28:13 plugin-esphome: [trace] refreshed discovery for basement-28-office-03 addr=192.168.88.45 port=6053
+2026/03/30 12:28:13 plugin-esphome: [trace] refreshed discovery for basement-26-office-01 addr=192.168.88.42 port=6053
+2026/03/30 12:28:13 plugin-esphome: [trace] refreshed discovery for basement-27-office-02 addr=192.168.88.43 port=6053
+2026/03/30 12:28:13 plugin-esphome: [trace] refreshed discovery for basement-10-edison-03 addr=192.168.88.46 port=6053
+2026/03/30 12:28:13 plugin-esphome: [trace] refreshed discovery for switch_basement_office addr=192.168.88.99 port=6053
+2026/03/30 12:28:13 plugin-esphome: [trace] refreshed discovery for switch_basement_edison addr=192.168.88.84 port=6053
+2026/03/30 12:28:13 plugin-esphome: [trace] refreshed discovery for alex_room_switch addr=192.168.88.113 port=6053
+2026/03/30 12:29:07 plugin-esphome: trace logging enabled
+2026/03/30 12:29:07 plugin-esphome: started, listening for devices via mDNS
+2026/03/30 12:29:07 plugin-esphome: discovered alex_room_switch - connecting
+2026/03/30 12:29:07 plugin-esphome: discovered basement-06-movieroom-back-01 - connecting
+2026/03/30 12:29:07 plugin-esphome: discovered basement-10-edison-03 - connecting
+2026/03/30 12:29:07 plugin-esphome: discovered basement-17-tv-center-right - connecting
+2026/03/30 12:29:07 plugin-esphome: discovered basement-26-office-01 - connecting
+2026/03/30 12:29:07 plugin-esphome: discovered basement-27-office-02 - connecting
+2026/03/30 12:29:07 plugin-esphome: discovered basement-28-office-03 - connecting
+2026/03/30 12:29:07 plugin-esphome: discovered switch_basement_edison - connecting
+2026/03/30 12:29:07 plugin-esphome: discovered switch_basement_office - connecting
+2026/03/30 12:29:07 plugin-esphome: discovered switch_basement_track - connecting
+panic: test timed out after 4m0s
+	running tests:
+		TestFrontRightCorner_MovieTimePhaseBurst (53s)
+
+goroutine 1683 [running]:
+testing.(*M).startAlarm.func1()
+	/snap/go/11103/src/testing/testing.go:2802 +0x34b
+created by time.goFunc
+	/snap/go/11103/src/time/sleep.go:215 +0x2d
+
+goroutine 1 [chan receive]:
+testing.(*T).Run(0x17e4c3a4e248, {0x14f733a?, 0x17e4c3a31b30?}, 0x152d1e8)
+	/snap/go/11103/src/testing/testing.go:2109 +0x4e5
+testing.runTests.func1(0x17e4c3a4e248)
+	/snap/go/11103/src/testing/testing.go:2585 +0x37
+testing.tRunner(0x17e4c3a4e248, 0x17e4c3a31c58)
+	/snap/go/11103/src/testing/testing.go:2036 +0xea
+testing.runTests({0x14ee330, 0x23}, {0x150c0ec, 0x36}, 0x17e4c39fbcc8, {0x2146b80, 0x3f, 0x3f}, {0xc26aca98e98167c0, 0x37e17abe7f, ...})
+	/snap/go/11103/src/testing/testing.go:2583 +0x505
+testing.(*M).Run(0x17e4c3a1f860)
+	/snap/go/11103/src/testing/testing.go:2443 +0x6ac
+main.main()
+	_testmain.go:170 +0x9b
+
+goroutine 8 [select]:
+github.com/blevesearch/bleve_index_api.AnalysisWorker(...)
+	/home/gavin/go/pkg/mod/github.com/blevesearch/bleve_index_api@v1.2.11/analysis.go:46
+created by github.com/blevesearch/bleve_index_api.NewAnalysisQueue in goroutine 1
+	/home/gavin/go/pkg/mod/github.com/blevesearch/bleve_index_api@v1.2.11/analysis.go:38 +0xa5
+
+goroutine 9 [select]:
+github.com/blevesearch/bleve_index_api.AnalysisWorker(...)
+	/home/gavin/go/pkg/mod/github.com/blevesearch/bleve_index_api@v1.2.11/analysis.go:46
+created by github.com/blevesearch/bleve_index_api.NewAnalysisQueue in goroutine 1
+	/home/gavin/go/pkg/mod/github.com/blevesearch/bleve_index_api@v1.2.11/analysis.go:38 +0xa5
+
+goroutine 10 [select]:
+github.com/blevesearch/bleve_index_api.AnalysisWorker(...)
+	/home/gavin/go/pkg/mod/github.com/blevesearch/bleve_index_api@v1.2.11/analysis.go:46
+created by github.com/blevesearch/bleve_index_api.NewAnalysisQueue in goroutine 1
+	/home/gavin/go/pkg/mod/github.com/blevesearch/bleve_index_api@v1.2.11/analysis.go:38 +0xa5
+
+goroutine 11 [select]:
+github.com/blevesearch/bleve_index_api.AnalysisWorker(...)
+	/home/gavin/go/pkg/mod/github.com/blevesearch/bleve_index_api@v1.2.11/analysis.go:46
+created by github.com/blevesearch/bleve_index_api.NewAnalysisQueue in goroutine 1
+	/home/gavin/go/pkg/mod/github.com/blevesearch/bleve_index_api@v1.2.11/analysis.go:38 +0xa5
+
+goroutine 18 [syscall, 4 minutes]:
+os/signal.signal_recv()
+	/snap/go/11103/src/runtime/sigqueue.go:152 +0x98
+os/signal.loop()
+	/snap/go/11103/src/os/signal/signal_unix.go:23 +0x13
+created by os/signal.Notify.func1.1 in goroutine 12
+	/snap/go/11103/src/os/signal/signal.go:152 +0x1f
+
+goroutine 1587 [select]:
+github.com/nats-io/nats-server/v2/server.(*Server).handleSignals.func1()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/signal.go:47 +0x9a
+created by github.com/nats-io/nats-server/v2/server.(*Server).handleSignals in goroutine 1586
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/signal.go:45 +0x106
+
+goroutine 1678 [IO wait]:
+internal/poll.runtime_pollWait(0x735448f63400, 0x72)
+	/snap/go/11103/src/runtime/netpoll.go:351 +0x85
+internal/poll.(*pollDesc).wait(0x17e4c420b800?, 0x17e4c3a50000?, 0x0)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:84 +0x27
+internal/poll.(*pollDesc).waitRead(...)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:89
+internal/poll.(*FD).Read(0x17e4c420b800, {0x17e4c3a50000, 0x8000, 0x8000})
+	/snap/go/11103/src/internal/poll/fd_unix.go:165 +0x2ae
+net.(*netFD).Read(0x17e4c420b800, {0x17e4c3a50000?, 0xa0017e4c3c67720?, 0x48d24c?})
+	/snap/go/11103/src/net/fd_posix.go:68 +0x25
+net.(*conn).Read(0x17e4c4018038, {0x17e4c3a50000?, 0x14434a0?, 0x17e4c3928001?})
+	/snap/go/11103/src/net/net.go:196 +0x45
+github.com/nats-io/nats%2ego.(*natsReader).Read(0x17e4c3993d40)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:2197 +0x7f
+github.com/nats-io/nats%2ego.(*Conn).readLoop(0x17e4c3eab808)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:3407 +0xef
+created by github.com/nats-io/nats%2ego.(*Conn).processConnectInit in goroutine 1586
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:2632 +0x2b3
+
+goroutine 1631 [chan receive]:
+github.com/nats-io/nats%2ego.(*Conn).flusher(0x17e4c3ed3c08)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:3849 +0xe9
+created by github.com/nats-io/nats%2ego.(*Conn).processConnectInit in goroutine 1586
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:2633 +0x2f9
+
+goroutine 1586 [select]:
+github.com/slidebolt/plugin-esphome/cmd/plugin-esphome.setupGroupTestWithOptions(0x17e4c4212248, {{0x0, 0x0, 0x0}, 0x0, 0x2cb417800, 0x4, 0x59682f00, 0x37e11d600, 0x0})
+	/home/gavin/work/sb/clean/plugin-esphome/cmd/plugin-esphome/test.local.group_test.go:174 +0x1314
+github.com/slidebolt/plugin-esphome/cmd/plugin-esphome.setupGroupTest(...)
+	/home/gavin/work/sb/clean/plugin-esphome/cmd/plugin-esphome/test.local.group_test.go:37
+github.com/slidebolt/plugin-esphome/cmd/plugin-esphome.TestFrontRightCorner_MovieTimePhaseBurst(0x17e4c4212248)
+	/home/gavin/work/sb/clean/plugin-esphome/cmd/plugin-esphome/test.local.group_test.go:535 +0x46
+testing.tRunner(0x17e4c4212248, 0x152d1e8)
+	/snap/go/11103/src/testing/testing.go:2036 +0xea
+created by testing.(*T).Run in goroutine 1
+	/snap/go/11103/src/testing/testing.go:2101 +0x4c5
+
+goroutine 1709 [IO wait]:
+internal/poll.runtime_pollWait(0x735448f63c00, 0x72)
+	/snap/go/11103/src/runtime/netpoll.go:351 +0x85
+internal/poll.(*pollDesc).wait(0x17e4c3e0a200?, 0x17e4c3b58000?, 0x0)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:84 +0x27
+internal/poll.(*pollDesc).waitRead(...)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:89
+internal/poll.(*FD).Read(0x17e4c3e0a200, {0x17e4c3b58000, 0x1000, 0x1000})
+	/snap/go/11103/src/internal/poll/fd_unix.go:165 +0x2ae
+net.(*netFD).Read(0x17e4c3e0a200, {0x17e4c3b58000?, 0x17e4c39334e8?, 0x427066?})
+	/snap/go/11103/src/net/fd_posix.go:68 +0x25
+net.(*conn).Read(0x17e4c3ca8158, {0x17e4c3b58000?, 0x17e4c36e74a0?, 0x17e4c3933500?})
+	/snap/go/11103/src/net/net.go:196 +0x45
+bufio.(*Reader).Read(0x17e4c3700420, {0x17e4c36e74a0, 0x3, 0x492729?})
+	/snap/go/11103/src/bufio/bufio.go:245 +0x197
+io.ReadAtLeast({0x153e720, 0x17e4c3700420}, {0x17e4c36e74a0, 0x3, 0x3}, 0x3)
+	/snap/go/11103/src/io/io.go:335 +0x8e
+io.ReadFull(...)
+	/snap/go/11103/src/io/io.go:354
+github.com/mycontroller-org/esphome_api/pkg/connection.(*EncryptedConnection).Read(0x17e4c420b280, 0x17e4c3700420)
+	/home/gavin/go/pkg/mod/github.com/mycontroller-org/esphome_api@v1.3.0/pkg/connection/conn_encryption.go:205 +0xe5
+github.com/mycontroller-org/esphome_api/pkg/connection.(*EncryptedConnection).waitForResponse(0x17e4c420b280)
+	/home/gavin/go/pkg/mod/github.com/mycontroller-org/esphome_api@v1.3.0/pkg/connection/conn_encryption.go:135 +0x171
+github.com/mycontroller-org/esphome_api/pkg/connection.(*EncryptedConnection).Handshake(0x17e4c420b280)
+	/home/gavin/go/pkg/mod/github.com/mycontroller-org/esphome_api@v1.3.0/pkg/connection/conn_encryption.go:107 +0x347
+github.com/mycontroller-org/esphome_api/pkg/client.GetClient({0x14cd20c, 0xe}, {0x17e4c42860c0?, 0x17e4c3933ae8?}, {0x17e4c3a1a990, 0x2c}, 0x2540be400, 0x17e4c38426c0)
+	/home/gavin/go/pkg/mod/github.com/mycontroller-org/esphome_api@v1.3.0/pkg/client/client.go:60 +0x336
+github.com/slidebolt/plugin-esphome/cmd/plugin-esphome.setupGroupTestWithOptions.New.func8({0x17e4c42860c0?, 0x0?}, {0x17e4c3a1a990?, 0x2?}, 0x2?)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:140 +0x45
+github.com/slidebolt/plugin-esphome/app.(*App).connectAndRegister(0x17e4c38aa0f0, {0x154a258, 0x17e4c4195130}, 0x17e4c387a2a0, 0x17e4c3a0c240)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:505 +0x218
+github.com/slidebolt/plugin-esphome/app.(*App).runDeviceLoop(0x17e4c38aa0f0, {0x154a258, 0x17e4c4195130}, 0x17e4c387a2a0)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:443 +0x105
+created by github.com/slidebolt/plugin-esphome/app.(*App).onDeviceFound in goroutine 1586
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:286 +0x598
+
+goroutine 1632 [sync.Cond.Wait]:
+sync.runtime_notifyListWait(0x17e4c3993d10, 0x0)
+	/snap/go/11103/src/runtime/sema.go:617 +0x1b3
+sync.(*Cond).Wait(0x0?)
+	/snap/go/11103/src/sync/cond.go:71 +0x73
+github.com/nats-io/nats%2ego.(*asyncCallbacksHandler).asyncCBDispatcher(0x17e4c3b9eb80)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:3332 +0x5a
+created by github.com/nats-io/nats%2ego.Options.Connect in goroutine 1586
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:1789 +0x3ae
+
+goroutine 1413 [select]:
+github.com/nats-io/nats-server/v2/server.(*Server).delayedAPIResponder(0x17e4c3f77008)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/jetstream_api.go:1152 +0x1a5
+github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine.func1()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4078 +0x32
+created by github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine in goroutine 1586
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4076 +0x129
+
+goroutine 1706 [sync.Cond.Wait]:
+sync.runtime_notifyListWait(0x17e4c3f19510, 0x1d)
+	/snap/go/11103/src/runtime/sema.go:617 +0x1b3
+sync.(*Cond).Wait(0x17e4c38ef260?)
+	/snap/go/11103/src/sync/cond.go:71 +0x73
+github.com/nats-io/nats%2ego.(*Conn).waitForMsgs(0x17e4c3eab808, 0x17e4c38aa1e0)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:3451 +0xc8
+created by github.com/nats-io/nats%2ego.(*Conn).subscribeLocked in goroutine 1633
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:4810 +0x419
+
+goroutine 1566 [sync.Cond.Wait]:
+sync.runtime_notifyListWait(0x17e4c420e190, 0x0)
+	/snap/go/11103/src/runtime/sema.go:617 +0x1b3
+sync.(*Cond).Wait(0xe2c43c?)
+	/snap/go/11103/src/sync/cond.go:71 +0x73
+github.com/nats-io/nats%2ego.(*asyncCallbacksHandler).asyncCBDispatcher(0x17e4c3b9e0a0)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:3332 +0x5a
+created by github.com/nats-io/nats%2ego.Options.Connect in goroutine 1586
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:1789 +0x3ae
+
+goroutine 1649 [IO wait]:
+internal/poll.runtime_pollWait(0x73544c1c9400, 0x72)
+	/snap/go/11103/src/runtime/netpoll.go:351 +0x85
+internal/poll.(*pollDesc).wait(0x17e4c3ab0700?, 0x17e4c36e0f00?, 0x0)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:84 +0x27
+internal/poll.(*pollDesc).waitRead(...)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:89
+internal/poll.(*FD).Read(0x17e4c3ab0700, {0x17e4c36e0f00, 0x100, 0x100})
+	/snap/go/11103/src/internal/poll/fd_unix.go:165 +0x2ae
+net.(*netFD).Read(0x17e4c3ab0700, {0x17e4c36e0f00?, 0x17e4c3cc9d10?, 0x492729?})
+	/snap/go/11103/src/net/fd_posix.go:68 +0x25
+net.(*conn).Read(0x17e4c3a84168, {0x17e4c36e0f00?, 0x214ffc0?, 0x200?})
+	/snap/go/11103/src/net/net.go:196 +0x45
+github.com/nats-io/nats-server/v2/server.(*client).readLoop(0x17e4c3dda008, {0x0, 0x0, 0x0})
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/client.go:1426 +0x65d
+github.com/nats-io/nats-server/v2/server.(*Server).createClientEx.func1()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:3543 +0x25
+github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine.func1()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4078 +0x32
+created by github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine in goroutine 1648
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4076 +0x129
+
+goroutine 1565 [chan receive]:
+github.com/nats-io/nats%2ego.(*Conn).flusher(0x17e4c3ed3508)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:3849 +0xe9
+created by github.com/nats-io/nats%2ego.(*Conn).processConnectInit in goroutine 1586
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:2633 +0x2f9
+
+goroutine 1567 [IO wait]:
+internal/poll.runtime_pollWait(0x73544c1c9a00, 0x72)
+	/snap/go/11103/src/runtime/netpoll.go:351 +0x85
+internal/poll.(*pollDesc).wait(0x17e4c3b78200?, 0x17e4c3a08140?, 0x0)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:84 +0x27
+internal/poll.(*pollDesc).waitRead(...)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:89
+internal/poll.(*FD).Read(0x17e4c3b78200, {0x17e4c3a08140, 0x40, 0x40})
+	/snap/go/11103/src/internal/poll/fd_unix.go:165 +0x2ae
+net.(*netFD).Read(0x17e4c3b78200, {0x17e4c3a08140?, 0x0?, 0xffffffffffffffff?})
+	/snap/go/11103/src/net/fd_posix.go:68 +0x25
+net.(*conn).Read(0x17e4c36d4518, {0x17e4c3a08140?, 0x214ffc0?, 0x40?})
+	/snap/go/11103/src/net/net.go:196 +0x45
+github.com/nats-io/nats-server/v2/server.(*client).readLoop(0x17e4c3e2a008, {0x0, 0x0, 0x0})
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/client.go:1426 +0x65d
+github.com/nats-io/nats-server/v2/server.(*Server).createClientEx.func1()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:3543 +0x25
+github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine.func1()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4078 +0x32
+created by github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine in goroutine 1416
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4076 +0x129
+
+goroutine 1412 [select]:
+github.com/nats-io/nats-server/v2/server.(*Server).startGWReplyMapExpiration.func1()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/gateway.go:3381 +0xfe
+github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine.func1()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4078 +0x32
+created by github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine in goroutine 1586
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4076 +0x129
+
+goroutine 1707 [IO wait]:
+internal/poll.runtime_pollWait(0x73544859de00, 0x72)
+	/snap/go/11103/src/runtime/netpoll.go:351 +0x85
+internal/poll.(*pollDesc).wait(0x17e4c420a880?, 0x735492e9d5e0?, 0x0)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:84 +0x27
+internal/poll.(*pollDesc).waitRead(...)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:89
+internal/poll.(*FD).RawRead(0x17e4c420a880, 0x17e4c37ef8b0)
+	/snap/go/11103/src/internal/poll/fd_unix.go:710 +0x125
+net.(*rawConn).Read(0x17e4c3ca8088, 0x0?)
+	/snap/go/11103/src/net/rawconn.go:44 +0x36
+golang.org/x/net/internal/socket.(*Conn).recvMsg(0x17e4c4196040, 0x17e4c3701200, 0x0)
+	/home/gavin/go/pkg/mod/golang.org/x/net@v0.50.0/internal/socket/rawconn_msg.go:27 +0x125
+golang.org/x/net/internal/socket.(*Conn).RecvMsg(...)
+	/home/gavin/go/pkg/mod/golang.org/x/net@v0.50.0/internal/socket/socket.go:248
+golang.org/x/net/ipv4.(*payloadHandler).ReadFrom(0x17e4c37ee380, {0x17e4c3b8a000, 0x10000, 0x10000})
+	/home/gavin/go/pkg/mod/golang.org/x/net@v0.50.0/ipv4/payload_cmsg.go:31 +0x205
+github.com/grandcat/zeroconf.(*client).recv.func2({0x17e4c3b8a000?, 0x17e4c3c10f18?, 0x152?})
+	/home/gavin/go/pkg/mod/github.com/grandcat/zeroconf@v1.0.0/client.go:329 +0x2e
+github.com/grandcat/zeroconf.(*client).recv(0x17e4c3c9afd0?, {0x154a258, 0x17e4c37ee460}, {0x148d000?, 0x17e4c37ee370?}, 0x17e4c3a38150)
+	/home/gavin/go/pkg/mod/github.com/grandcat/zeroconf@v1.0.0/client.go:348 +0x14e
+created by github.com/grandcat/zeroconf.(*client).mainloop in goroutine 1730
+	/home/gavin/go/pkg/mod/github.com/grandcat/zeroconf@v1.0.0/client.go:186 +0x113
+
+goroutine 1592 [select]:
+github.com/nats-io/nats-server/v2/server.(*Server).internalReceiveLoop(0x17e4c3f77008, 0x17e4c3ab0480)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/events.go:478 +0xb7
+created by github.com/nats-io/nats-server/v2/server.(*Server).setSystemAccount in goroutine 1586
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:1886 +0x4e6
+
+goroutine 1679 [chan receive]:
+github.com/nats-io/nats%2ego.(*Conn).flusher(0x17e4c3eab808)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:3849 +0xe9
+created by github.com/nats-io/nats%2ego.(*Conn).processConnectInit in goroutine 1586
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:2633 +0x2f9
+
+goroutine 1564 [IO wait]:
+internal/poll.runtime_pollWait(0x73544859ea00, 0x72)
+	/snap/go/11103/src/runtime/netpoll.go:351 +0x85
+internal/poll.(*pollDesc).wait(0x17e4c3b78100?, 0x17e4c3944000?, 0x0)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:84 +0x27
+internal/poll.(*pollDesc).waitRead(...)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:89
+internal/poll.(*FD).Read(0x17e4c3b78100, {0x17e4c3944000, 0x8000, 0x8000})
+	/snap/go/11103/src/internal/poll/fd_unix.go:165 +0x2ae
+net.(*netFD).Read(0x17e4c3b78100, {0x17e4c3944000?, 0xa0017e4c3c2a720?, 0x48d24c?})
+	/snap/go/11103/src/net/fd_posix.go:68 +0x25
+net.(*conn).Read(0x17e4c36d4510, {0x17e4c3944000?, 0x14434a0?, 0x1?})
+	/snap/go/11103/src/net/net.go:196 +0x45
+github.com/nats-io/nats%2ego.(*natsReader).Read(0x17e4c3f181c0)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:2197 +0x7f
+github.com/nats-io/nats%2ego.(*Conn).readLoop(0x17e4c3ed3508)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:3407 +0xef
+created by github.com/nats-io/nats%2ego.(*Conn).processConnectInit in goroutine 1586
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:2632 +0x2b3
+
+goroutine 1732 [IO wait]:
+internal/poll.runtime_pollWait(0x73544c1c9c00, 0x72)
+	/snap/go/11103/src/runtime/netpoll.go:351 +0x85
+internal/poll.(*pollDesc).wait(0x17e4c420ad00?, 0x17e4c3b40000?, 0x0)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:84 +0x27
+internal/poll.(*pollDesc).waitRead(...)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:89
+internal/poll.(*FD).Read(0x17e4c420ad00, {0x17e4c3b40000, 0x1000, 0x1000})
+	/snap/go/11103/src/internal/poll/fd_unix.go:165 +0x2ae
+net.(*netFD).Read(0x17e4c420ad00, {0x17e4c3b40000?, 0x17e4c39794e8?, 0x427066?})
+	/snap/go/11103/src/net/fd_posix.go:68 +0x25
+net.(*conn).Read(0x17e4c3ca8168, {0x17e4c3b40000?, 0x17e4c36e7410?, 0x17e4c3979500?})
+	/snap/go/11103/src/net/net.go:196 +0x45
+bufio.(*Reader).Read(0x17e4c3731ce0, {0x17e4c36e7410, 0x3, 0x492729?})
+	/snap/go/11103/src/bufio/bufio.go:245 +0x197
+io.ReadAtLeast({0x153e720, 0x17e4c3731ce0}, {0x17e4c36e7410, 0x3, 0x3}, 0x3)
+	/snap/go/11103/src/io/io.go:335 +0x8e
+io.ReadFull(...)
+	/snap/go/11103/src/io/io.go:354
+github.com/mycontroller-org/esphome_api/pkg/connection.(*EncryptedConnection).Read(0x17e4c420b380, 0x17e4c3731ce0)
+	/home/gavin/go/pkg/mod/github.com/mycontroller-org/esphome_api@v1.3.0/pkg/connection/conn_encryption.go:205 +0xe5
+github.com/mycontroller-org/esphome_api/pkg/connection.(*EncryptedConnection).waitForResponse(0x17e4c420b380)
+	/home/gavin/go/pkg/mod/github.com/mycontroller-org/esphome_api@v1.3.0/pkg/connection/conn_encryption.go:135 +0x171
+github.com/mycontroller-org/esphome_api/pkg/connection.(*EncryptedConnection).Handshake(0x17e4c420b380)
+	/home/gavin/go/pkg/mod/github.com/mycontroller-org/esphome_api@v1.3.0/pkg/connection/conn_encryption.go:107 +0x347
+github.com/mycontroller-org/esphome_api/pkg/client.GetClient({0x14cd20c, 0xe}, {0x17e4c3cc01c8?, 0x17e4c3979ae8?}, {0x17e4c3abe750, 0x2c}, 0x2540be400, 0x17e4c39f49f0)
+	/home/gavin/go/pkg/mod/github.com/mycontroller-org/esphome_api@v1.3.0/pkg/client/client.go:60 +0x336
+github.com/slidebolt/plugin-esphome/cmd/plugin-esphome.setupGroupTestWithOptions.New.func8({0x17e4c3cc01c8?, 0x0?}, {0x17e4c3abe750?, 0x2?}, 0x2?)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:140 +0x45
+github.com/slidebolt/plugin-esphome/app.(*App).connectAndRegister(0x17e4c38aa0f0, {0x154a258, 0x17e4c4195130}, 0x17e4c39f4840, 0x17e4c3730cc0)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:505 +0x218
+github.com/slidebolt/plugin-esphome/app.(*App).runDeviceLoop(0x17e4c38aa0f0, {0x154a258, 0x17e4c4195130}, 0x17e4c39f4840)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:443 +0x105
+created by github.com/slidebolt/plugin-esphome/app.(*App).onDeviceFound in goroutine 1586
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:286 +0x598
+
+goroutine 1708 [IO wait]:
+internal/poll.runtime_pollWait(0x73544859e200, 0x72)
+	/snap/go/11103/src/runtime/netpoll.go:351 +0x85
+internal/poll.(*pollDesc).wait(0x17e4c420ab80?, 0x73544871acc8?, 0x0)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:84 +0x27
+internal/poll.(*pollDesc).waitRead(...)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:89
+internal/poll.(*FD).RawRead(0x17e4c420ab80, 0x17e4c393a230)
+	/snap/go/11103/src/internal/poll/fd_unix.go:710 +0x125
+net.(*rawConn).Read(0x17e4c3ca8098, 0x0?)
+	/snap/go/11103/src/net/rawconn.go:44 +0x36
+golang.org/x/net/internal/socket.(*Conn).recvMsg(0x17e4c4196080, 0x17e4c3a0c180, 0x0)
+	/home/gavin/go/pkg/mod/golang.org/x/net@v0.50.0/internal/socket/rawconn_msg.go:27 +0x125
+golang.org/x/net/internal/socket.(*Conn).RecvMsg(...)
+	/home/gavin/go/pkg/mod/golang.org/x/net@v0.50.0/internal/socket/socket.go:248
+golang.org/x/net/ipv6.(*payloadHandler).ReadFrom(0x17e4c37ee3d0, {0x17e4c3acc000, 0x10000, 0x10000})
+	/home/gavin/go/pkg/mod/golang.org/x/net@v0.50.0/ipv6/payload_cmsg.go:31 +0x254
+github.com/grandcat/zeroconf.(*client).recv.func1({0x17e4c3acc000?, 0x17e4c3c13f18?, 0x28?})
+	/home/gavin/go/pkg/mod/github.com/grandcat/zeroconf@v1.0.0/client.go:324 +0x2e
+github.com/grandcat/zeroconf.(*client).recv(0x17e4c3c657d0?, {0x154a258, 0x17e4c37ee460}, {0x1490fa0?, 0x17e4c37ee3c0?}, 0x17e4c3a38150)
+	/home/gavin/go/pkg/mod/github.com/grandcat/zeroconf@v1.0.0/client.go:348 +0x14e
+created by github.com/grandcat/zeroconf.(*client).mainloop in goroutine 1730
+	/home/gavin/go/pkg/mod/github.com/grandcat/zeroconf@v1.0.0/client.go:189 +0x1da
+
+goroutine 1488 [IO wait]:
+internal/poll.runtime_pollWait(0x73544c1c9e00, 0x72)
+	/snap/go/11103/src/runtime/netpoll.go:351 +0x85
+internal/poll.(*pollDesc).wait(0x17e4c38b6880?, 0x17e4c3c18a00?, 0x0)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:84 +0x27
+internal/poll.(*pollDesc).waitRead(...)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:89
+internal/poll.(*FD).Read(0x17e4c38b6880, {0x17e4c3c18a00, 0x80, 0x80})
+	/snap/go/11103/src/internal/poll/fd_unix.go:165 +0x2ae
+net.(*netFD).Read(0x17e4c38b6880, {0x17e4c3c18a00?, 0x0?, 0xffffffffffffffff?})
+	/snap/go/11103/src/net/fd_posix.go:68 +0x25
+net.(*conn).Read(0x17e4c3ca8028, {0x17e4c3c18a00?, 0x214ffc0?, 0x80?})
+	/snap/go/11103/src/net/net.go:196 +0x45
+github.com/nats-io/nats-server/v2/server.(*client).readLoop(0x17e4c3cd4008, {0x0, 0x0, 0x0})
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/client.go:1426 +0x65d
+github.com/nats-io/nats-server/v2/server.(*Server).createClientEx.func1()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:3543 +0x25
+github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine.func1()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4078 +0x32
+created by github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine in goroutine 1563
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4076 +0x129
+
+goroutine 1568 [sync.Cond.Wait]:
+sync.runtime_notifyListWait(0x17e4c420e290, 0x32)
+	/snap/go/11103/src/runtime/sema.go:617 +0x1b3
+sync.(*Cond).Wait(0x17e4c3e2a008?)
+	/snap/go/11103/src/sync/cond.go:71 +0x73
+github.com/nats-io/nats-server/v2/server.(*client).writeLoop(0x17e4c3e2a008)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/client.go:1295 +0x1f1
+github.com/nats-io/nats-server/v2/server.(*Server).createClientEx.func2()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:3546 +0x17
+github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine.func1()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4078 +0x32
+created by github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine in goroutine 1416
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4076 +0x129
+
+goroutine 1714 [sync.Cond.Wait]:
+sync.runtime_notifyListWait(0x17e4c3a45650, 0x1b)
+	/snap/go/11103/src/runtime/sema.go:617 +0x1b3
+sync.(*Cond).Wait(0x17e4c3dda008?)
+	/snap/go/11103/src/sync/cond.go:71 +0x73
+github.com/nats-io/nats-server/v2/server.(*client).writeLoop(0x17e4c3dda008)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/client.go:1295 +0x1f1
+github.com/nats-io/nats-server/v2/server.(*Server).createClientEx.func2()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:3546 +0x17
+github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine.func1()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4078 +0x32
+created by github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine in goroutine 1648
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4076 +0x129
+
+goroutine 1591 [select]:
+github.com/nats-io/nats-server/v2/server.(*Server).internalReceiveLoop(0x17e4c3f77008, 0x17e4c3ab0400)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/events.go:478 +0xb7
+created by github.com/nats-io/nats-server/v2/server.(*Server).setSystemAccount in goroutine 1586
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:1884 +0x48d
+
+goroutine 1711 [IO wait]:
+internal/poll.runtime_pollWait(0x73544859ec00, 0x72)
+	/snap/go/11103/src/runtime/netpoll.go:351 +0x85
+internal/poll.(*pollDesc).wait(0x17e4c3ab0180?, 0x17e4c3b59000?, 0x0)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:84 +0x27
+internal/poll.(*pollDesc).waitRead(...)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:89
+internal/poll.(*FD).Read(0x17e4c3ab0180, {0x17e4c3b59000, 0x1000, 0x1000})
+	/snap/go/11103/src/internal/poll/fd_unix.go:165 +0x2ae
+net.(*netFD).Read(0x17e4c3ab0180, {0x17e4c3b59000?, 0x11523fa?, 0x0?})
+	/snap/go/11103/src/net/fd_posix.go:68 +0x25
+net.(*conn).Read(0x17e4c3ca8148, {0x17e4c3b59000?, 0x17e4c39774e0?, 0x17e4c3977500?})
+	/snap/go/11103/src/net/net.go:196 +0x45
+bufio.(*Reader).Read(0x17e4c37007e0, {0x17e4c36e74d8, 0x3, 0x492729?})
+	/snap/go/11103/src/bufio/bufio.go:245 +0x197
+io.ReadAtLeast({0x153e720, 0x17e4c37007e0}, {0x17e4c36e74d8, 0x3, 0x3}, 0x3)
+	/snap/go/11103/src/io/io.go:335 +0x8e
+io.ReadFull(...)
+	/snap/go/11103/src/io/io.go:354
+github.com/mycontroller-org/esphome_api/pkg/connection.(*EncryptedConnection).Read(0x17e4c420b180, 0x17e4c37007e0)
+	/home/gavin/go/pkg/mod/github.com/mycontroller-org/esphome_api@v1.3.0/pkg/connection/conn_encryption.go:205 +0xe5
+github.com/mycontroller-org/esphome_api/pkg/connection.(*EncryptedConnection).waitForResponse(0x17e4c420b180)
+	/home/gavin/go/pkg/mod/github.com/mycontroller-org/esphome_api@v1.3.0/pkg/connection/conn_encryption.go:135 +0x171
+github.com/mycontroller-org/esphome_api/pkg/connection.(*EncryptedConnection).Handshake(0x17e4c420b180)
+	/home/gavin/go/pkg/mod/github.com/mycontroller-org/esphome_api@v1.3.0/pkg/connection/conn_encryption.go:107 +0x347
+github.com/mycontroller-org/esphome_api/pkg/client.GetClient({0x14cd20c, 0xe}, {0x17e4c4286150?, 0x17e4c3977ae8?}, {0x17e4c3a10b10, 0x2c}, 0x2540be400, 0x17e4c387ab10)
+	/home/gavin/go/pkg/mod/github.com/mycontroller-org/esphome_api@v1.3.0/pkg/client/client.go:60 +0x336
+github.com/slidebolt/plugin-esphome/cmd/plugin-esphome.setupGroupTestWithOptions.New.func8({0x17e4c4286150?, 0x0?}, {0x17e4c3a10b10?, 0x2?}, 0x2?)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:140 +0x45
+github.com/slidebolt/plugin-esphome/app.(*App).connectAndRegister(0x17e4c38aa0f0, {0x154a258, 0x17e4c4195130}, 0x17e4c387a990, 0x17e4c3a0c3c0)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:505 +0x218
+github.com/slidebolt/plugin-esphome/app.(*App).runDeviceLoop(0x17e4c38aa0f0, {0x154a258, 0x17e4c4195130}, 0x17e4c387a990)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:443 +0x105
+created by github.com/slidebolt/plugin-esphome/app.(*App).onDeviceFound in goroutine 1586
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:286 +0x598
+
+goroutine 1748 [IO wait]:
+internal/poll.runtime_pollWait(0x735448f63800, 0x72)
+	/snap/go/11103/src/runtime/netpoll.go:351 +0x85
+internal/poll.(*pollDesc).wait(0x17e4c3ab0080?, 0x17e4c3b6a000?, 0x0)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:84 +0x27
+internal/poll.(*pollDesc).waitRead(...)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:89
+internal/poll.(*FD).Read(0x17e4c3ab0080, {0x17e4c3b6a000, 0x1000, 0x1000})
+	/snap/go/11103/src/internal/poll/fd_unix.go:165 +0x2ae
+net.(*netFD).Read(0x17e4c3ab0080, {0x17e4c3b6a000?, 0x17e4c39754e8?, 0x427066?})
+	/snap/go/11103/src/net/fd_posix.go:68 +0x25
+net.(*conn).Read(0x17e4c3ca8180, {0x17e4c3b6a000?, 0x17e4c36e7530?, 0x17e4c3975500?})
+	/snap/go/11103/src/net/net.go:196 +0x45
+bufio.(*Reader).Read(0x17e4c3700ba0, {0x17e4c36e7530, 0x3, 0x492729?})
+	/snap/go/11103/src/bufio/bufio.go:245 +0x197
+io.ReadAtLeast({0x153e720, 0x17e4c3700ba0}, {0x17e4c36e7530, 0x3, 0x3}, 0x3)
+	/snap/go/11103/src/io/io.go:335 +0x8e
+io.ReadFull(...)
+	/snap/go/11103/src/io/io.go:354
+github.com/mycontroller-org/esphome_api/pkg/connection.(*EncryptedConnection).Read(0x17e4c420b680, 0x17e4c3700ba0)
+	/home/gavin/go/pkg/mod/github.com/mycontroller-org/esphome_api@v1.3.0/pkg/connection/conn_encryption.go:205 +0xe5
+github.com/mycontroller-org/esphome_api/pkg/connection.(*EncryptedConnection).waitForResponse(0x17e4c420b680)
+	/home/gavin/go/pkg/mod/github.com/mycontroller-org/esphome_api@v1.3.0/pkg/connection/conn_encryption.go:135 +0x171
+github.com/mycontroller-org/esphome_api/pkg/connection.(*EncryptedConnection).Handshake(0x17e4c420b680)
+	/home/gavin/go/pkg/mod/github.com/mycontroller-org/esphome_api@v1.3.0/pkg/connection/conn_encryption.go:107 +0x347
+github.com/mycontroller-org/esphome_api/pkg/client.GetClient({0x14cd20c, 0xe}, {0x17e4c3826108?, 0x17e4c3975ae8?}, {0x17e4c3a10720, 0x2c}, 0x2540be400, 0x17e4c387a630)
+	/home/gavin/go/pkg/mod/github.com/mycontroller-org/esphome_api@v1.3.0/pkg/client/client.go:60 +0x336
+github.com/slidebolt/plugin-esphome/cmd/plugin-esphome.setupGroupTestWithOptions.New.func8({0x17e4c3826108?, 0x0?}, {0x17e4c3a10720?, 0x2?}, 0x2?)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:140 +0x45
+github.com/slidebolt/plugin-esphome/app.(*App).connectAndRegister(0x17e4c38aa0f0, {0x154a258, 0x17e4c4195130}, 0x17e4c3842bd0, 0x17e4c38781e0)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:505 +0x218
+github.com/slidebolt/plugin-esphome/app.(*App).runDeviceLoop(0x17e4c38aa0f0, {0x154a258, 0x17e4c4195130}, 0x17e4c3842bd0)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:443 +0x105
+created by github.com/slidebolt/plugin-esphome/app.(*App).onDeviceFound in goroutine 1586
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:286 +0x598
+
+goroutine 1630 [IO wait]:
+internal/poll.runtime_pollWait(0x73544859e000, 0x72)
+	/snap/go/11103/src/runtime/netpoll.go:351 +0x85
+internal/poll.(*pollDesc).wait(0x17e4c3ca2180?, 0x17e4c39b2000?, 0x0)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:84 +0x27
+internal/poll.(*pollDesc).waitRead(...)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:89
+internal/poll.(*FD).Read(0x17e4c3ca2180, {0x17e4c39b2000, 0x8000, 0x8000})
+	/snap/go/11103/src/internal/poll/fd_unix.go:165 +0x2ae
+net.(*netFD).Read(0x17e4c3ca2180, {0x17e4c39b2000?, 0xa0017e4c3c29720?, 0x48d24c?})
+	/snap/go/11103/src/net/fd_posix.go:68 +0x25
+net.(*conn).Read(0x17e4c3ca8070, {0x17e4c39b2000?, 0x14434a0?, 0x17e4c3b2f701?})
+	/snap/go/11103/src/net/net.go:196 +0x45
+github.com/nats-io/nats%2ego.(*natsReader).Read(0x17e4c3f19380)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:2197 +0x7f
+github.com/nats-io/nats%2ego.(*Conn).readLoop(0x17e4c3ed3c08)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:3407 +0xef
+created by github.com/nats-io/nats%2ego.(*Conn).processConnectInit in goroutine 1586
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:2632 +0x2b3
+
+goroutine 1511 [IO wait]:
+internal/poll.runtime_pollWait(0x73544859e600, 0x72)
+	/snap/go/11103/src/runtime/netpoll.go:351 +0x85
+internal/poll.(*pollDesc).wait(0x17e4c3e0a180?, 0x17e4c3b6b000?, 0x0)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:84 +0x27
+internal/poll.(*pollDesc).waitRead(...)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:89
+internal/poll.(*FD).Read(0x17e4c3e0a180, {0x17e4c3b6b000, 0x1000, 0x1000})
+	/snap/go/11103/src/internal/poll/fd_unix.go:165 +0x2ae
+net.(*netFD).Read(0x17e4c3e0a180, {0x17e4c3b6b000?, 0x11523fa?, 0x427066?})
+	/snap/go/11103/src/net/fd_posix.go:68 +0x25
+net.(*conn).Read(0x17e4c3ca8178, {0x17e4c3b6b000?, 0x17e4c36e7650?, 0x17e4c37e7500?})
+	/snap/go/11103/src/net/net.go:196 +0x45
+bufio.(*Reader).Read(0x17e4c37010e0, {0x17e4c36e7650, 0x3, 0x492729?})
+	/snap/go/11103/src/bufio/bufio.go:245 +0x197
+io.ReadAtLeast({0x153e720, 0x17e4c37010e0}, {0x17e4c36e7650, 0x3, 0x3}, 0x3)
+	/snap/go/11103/src/io/io.go:335 +0x8e
+io.ReadFull(...)
+	/snap/go/11103/src/io/io.go:354
+github.com/mycontroller-org/esphome_api/pkg/connection.(*EncryptedConnection).Read(0x17e4c420b600, 0x17e4c37010e0)
+	/home/gavin/go/pkg/mod/github.com/mycontroller-org/esphome_api@v1.3.0/pkg/connection/conn_encryption.go:205 +0xe5
+github.com/mycontroller-org/esphome_api/pkg/connection.(*EncryptedConnection).waitForResponse(0x17e4c420b600)
+	/home/gavin/go/pkg/mod/github.com/mycontroller-org/esphome_api@v1.3.0/pkg/connection/conn_encryption.go:135 +0x171
+github.com/mycontroller-org/esphome_api/pkg/connection.(*EncryptedConnection).Handshake(0x17e4c420b600)
+	/home/gavin/go/pkg/mod/github.com/mycontroller-org/esphome_api@v1.3.0/pkg/connection/conn_encryption.go:107 +0x347
+github.com/mycontroller-org/esphome_api/pkg/client.GetClient({0x14cd20c, 0xe}, {0x17e4c3716450?, 0x17e4c37e7ae8?}, {0x17e4c3a1a7e0, 0x2c}, 0x2540be400, 0x17e4c38423c0)
+	/home/gavin/go/pkg/mod/github.com/mycontroller-org/esphome_api@v1.3.0/pkg/client/client.go:60 +0x336
+github.com/slidebolt/plugin-esphome/cmd/plugin-esphome.setupGroupTestWithOptions.New.func8({0x17e4c3716450?, 0x0?}, {0x17e4c3a1a7e0?, 0x2?}, 0x2?)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:140 +0x45
+github.com/slidebolt/plugin-esphome/app.(*App).connectAndRegister(0x17e4c38aa0f0, {0x154a258, 0x17e4c4195130}, 0x17e4c40062d0, 0x17e4c39a4180)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:505 +0x218
+github.com/slidebolt/plugin-esphome/app.(*App).runDeviceLoop(0x17e4c38aa0f0, {0x154a258, 0x17e4c4195130}, 0x17e4c40062d0)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:443 +0x105
+created by github.com/slidebolt/plugin-esphome/app.(*App).onDeviceFound in goroutine 1586
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:286 +0x598
+
+goroutine 1746 [IO wait]:
+internal/poll.runtime_pollWait(0x73544c1ca000, 0x72)
+	/snap/go/11103/src/runtime/netpoll.go:351 +0x85
+internal/poll.(*pollDesc).wait(0x17e4c3ca2080?, 0x17e4c3938000?, 0x0)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:84 +0x27
+internal/poll.(*pollDesc).waitRead(...)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:89
+internal/poll.(*FD).Read(0x17e4c3ca2080, {0x17e4c3938000, 0x1000, 0x1000})
+	/snap/go/11103/src/internal/poll/fd_unix.go:165 +0x2ae
+net.(*netFD).Read(0x17e4c3ca2080, {0x17e4c3938000?, 0x17e4c3cc54e8?, 0x44f107?})
+	/snap/go/11103/src/net/fd_posix.go:68 +0x25
+net.(*conn).Read(0x17e4c3ca8160, {0x17e4c3938000?, 0x0?, 0x17e4c3cc5500?})
+	/snap/go/11103/src/net/net.go:196 +0x45
+bufio.(*Reader).Read(0x17e4c37313e0, {0x17e4c36e735c, 0x3, 0x492729?})
+	/snap/go/11103/src/bufio/bufio.go:245 +0x197
+io.ReadAtLeast({0x153e720, 0x17e4c37313e0}, {0x17e4c36e735c, 0x3, 0x3}, 0x3)
+	/snap/go/11103/src/io/io.go:335 +0x8e
+io.ReadFull(...)
+	/snap/go/11103/src/io/io.go:354
+github.com/mycontroller-org/esphome_api/pkg/connection.(*EncryptedConnection).Read(0x17e4c420b300, 0x17e4c37313e0)
+	/home/gavin/go/pkg/mod/github.com/mycontroller-org/esphome_api@v1.3.0/pkg/connection/conn_encryption.go:205 +0xe5
+github.com/mycontroller-org/esphome_api/pkg/connection.(*EncryptedConnection).waitForResponse(0x17e4c420b300)
+	/home/gavin/go/pkg/mod/github.com/mycontroller-org/esphome_api@v1.3.0/pkg/connection/conn_encryption.go:135 +0x171
+github.com/mycontroller-org/esphome_api/pkg/connection.(*EncryptedConnection).Handshake(0x17e4c420b300)
+	/home/gavin/go/pkg/mod/github.com/mycontroller-org/esphome_api@v1.3.0/pkg/connection/conn_encryption.go:69 +0x47
+github.com/mycontroller-org/esphome_api/pkg/client.GetClient({0x14cd20c, 0xe}, {0x17e4c3826060?, 0x17e4c3cc5ae8?}, {0x17e4c3b04540, 0x2c}, 0x2540be400, 0x17e4c4006540)
+	/home/gavin/go/pkg/mod/github.com/mycontroller-org/esphome_api@v1.3.0/pkg/client/client.go:60 +0x336
+github.com/slidebolt/plugin-esphome/cmd/plugin-esphome.setupGroupTestWithOptions.New.func8({0x17e4c3826060?, 0x0?}, {0x17e4c3b04540?, 0x2?}, 0x2?)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:140 +0x45
+github.com/slidebolt/plugin-esphome/app.(*App).connectAndRegister(0x17e4c38aa0f0, {0x154a258, 0x17e4c4195130}, 0x17e4c38427e0, 0x17e4c3878060)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:505 +0x218
+github.com/slidebolt/plugin-esphome/app.(*App).runDeviceLoop(0x17e4c38aa0f0, {0x154a258, 0x17e4c4195130}, 0x17e4c38427e0)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:443 +0x105
+created by github.com/slidebolt/plugin-esphome/app.(*App).onDeviceFound in goroutine 1586
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:286 +0x598
+
+goroutine 1510 [IO wait]:
+internal/poll.runtime_pollWait(0x73544c1c9200, 0x72)
+	/snap/go/11103/src/runtime/netpoll.go:351 +0x85
+internal/poll.(*pollDesc).wait(0x17e4c3e0a080?, 0x17e4c3916000?, 0x0)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:84 +0x27
+internal/poll.(*pollDesc).waitRead(...)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:89
+internal/poll.(*FD).Read(0x17e4c3e0a080, {0x17e4c3916000, 0x1000, 0x1000})
+	/snap/go/11103/src/internal/poll/fd_unix.go:165 +0x2ae
+net.(*netFD).Read(0x17e4c3e0a080, {0x17e4c3916000?, 0x17e4c39314e8?, 0x44f107?})
+	/snap/go/11103/src/net/fd_posix.go:68 +0x25
+net.(*conn).Read(0x17e4c3ca8140, {0x17e4c3916000?, 0x0?, 0x17e4c3931500?})
+	/snap/go/11103/src/net/net.go:196 +0x45
+bufio.(*Reader).Read(0x17e4c37310e0, {0x17e4c36e7343, 0x3, 0x492729?})
+	/snap/go/11103/src/bufio/bufio.go:245 +0x197
+io.ReadAtLeast({0x153e720, 0x17e4c37310e0}, {0x17e4c36e7343, 0x3, 0x3}, 0x3)
+	/snap/go/11103/src/io/io.go:335 +0x8e
+io.ReadFull(...)
+	/snap/go/11103/src/io/io.go:354
+github.com/mycontroller-org/esphome_api/pkg/connection.(*EncryptedConnection).Read(0x17e4c420b100, 0x17e4c37310e0)
+	/home/gavin/go/pkg/mod/github.com/mycontroller-org/esphome_api@v1.3.0/pkg/connection/conn_encryption.go:205 +0xe5
+github.com/mycontroller-org/esphome_api/pkg/connection.(*EncryptedConnection).waitForResponse(0x17e4c420b100)
+	/home/gavin/go/pkg/mod/github.com/mycontroller-org/esphome_api@v1.3.0/pkg/connection/conn_encryption.go:135 +0x171
+github.com/mycontroller-org/esphome_api/pkg/connection.(*EncryptedConnection).Handshake(0x17e4c420b100)
+	/home/gavin/go/pkg/mod/github.com/mycontroller-org/esphome_api@v1.3.0/pkg/connection/conn_encryption.go:69 +0x47
+github.com/mycontroller-org/esphome_api/pkg/client.GetClient({0x14cd20c, 0xe}, {0x17e4c3716420?, 0x17e4c3931ae8?}, {0x17e4c3a1a6c0, 0x2c}, 0x2540be400, 0x17e4c3842210)
+	/home/gavin/go/pkg/mod/github.com/mycontroller-org/esphome_api@v1.3.0/pkg/client/client.go:60 +0x336
+github.com/slidebolt/plugin-esphome/cmd/plugin-esphome.setupGroupTestWithOptions.New.func8({0x17e4c3716420?, 0x0?}, {0x17e4c3a1a6c0?, 0x2?}, 0x2?)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:140 +0x45
+github.com/slidebolt/plugin-esphome/app.(*App).connectAndRegister(0x17e4c38aa0f0, {0x154a258, 0x17e4c4195130}, 0x17e4c4006150, 0x17e4c39a40c0)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:505 +0x218
+github.com/slidebolt/plugin-esphome/app.(*App).runDeviceLoop(0x17e4c38aa0f0, {0x154a258, 0x17e4c4195130}, 0x17e4c4006150)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:443 +0x105
+created by github.com/slidebolt/plugin-esphome/app.(*App).onDeviceFound in goroutine 1586
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:286 +0x598
+
+goroutine 1588 [select]:
+github.com/nats-io/nats-server/v2/server.(*Server).startRateLimitLogExpiration.func1()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4713 +0x11d
+github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine.func1()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4078 +0x32
+created by github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine in goroutine 1586
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4076 +0x129
+
+goroutine 1415 [sync.Cond.Wait]:
+sync.runtime_notifyListWait(0x17e4c3f18190, 0x0)
+	/snap/go/11103/src/runtime/sema.go:617 +0x1b3
+sync.(*Cond).Wait(0x0?)
+	/snap/go/11103/src/sync/cond.go:71 +0x73
+github.com/nats-io/nats%2ego.(*asyncCallbacksHandler).asyncCBDispatcher(0x17e4c405a2e0)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:3332 +0x5a
+created by github.com/nats-io/nats%2ego.Options.Connect in goroutine 1586
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:1789 +0x3ae
+
+goroutine 1703 [sync.Cond.Wait]:
+sync.runtime_notifyListWait(0x17e4c3f19350, 0x0)
+	/snap/go/11103/src/runtime/sema.go:617 +0x1b3
+sync.(*Cond).Wait(0x0?)
+	/snap/go/11103/src/sync/cond.go:71 +0x73
+github.com/nats-io/nats%2ego.(*asyncCallbacksHandler).asyncCBDispatcher(0x17e4c4196940)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:3332 +0x5a
+created by github.com/nats-io/nats%2ego.Options.Connect in goroutine 1586
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:1789 +0x3ae
+
+goroutine 1629 [sync.Cond.Wait]:
+sync.runtime_notifyListWait(0x17e4c3993c50, 0x14)
+	/snap/go/11103/src/runtime/sema.go:617 +0x1b3
+sync.(*Cond).Wait(0x17e4c3c99768?)
+	/snap/go/11103/src/sync/cond.go:71 +0x73
+github.com/nats-io/nats%2ego.(*Conn).waitForMsgs(0x17e4c3ed3508, 0x17e4c42144b0)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:3451 +0xc8
+created by github.com/nats-io/nats%2ego.(*Conn).subscribeLocked in goroutine 1586
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:4810 +0x419
+
+goroutine 1602 [IO wait]:
+internal/poll.runtime_pollWait(0x735448f63e00, 0x72)
+	/snap/go/11103/src/runtime/netpoll.go:351 +0x85
+internal/poll.(*pollDesc).wait(0x17e4c38b6c80?, 0x17e4c3d5e000?, 0x0)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:84 +0x27
+internal/poll.(*pollDesc).waitRead(...)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:89
+internal/poll.(*FD).Read(0x17e4c38b6c80, {0x17e4c3d5e000, 0x8000, 0x8000})
+	/snap/go/11103/src/internal/poll/fd_unix.go:165 +0x2ae
+net.(*netFD).Read(0x17e4c38b6c80, {0x17e4c3d5e000?, 0xa0017e4c3c2a720?, 0x48d24c?})
+	/snap/go/11103/src/net/fd_posix.go:68 +0x25
+net.(*conn).Read(0x17e4c3ca80f8, {0x17e4c3d5e000?, 0x14434a0?, 0x1?})
+	/snap/go/11103/src/net/net.go:196 +0x45
+github.com/nats-io/nats%2ego.(*natsReader).Read(0x17e4c420e1c0)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:2197 +0x7f
+github.com/nats-io/nats%2ego.(*Conn).readLoop(0x17e4c3ea8008)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:3407 +0xef
+created by github.com/nats-io/nats%2ego.(*Conn).processConnectInit in goroutine 1586
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:2632 +0x2b3
+
+goroutine 1414 [IO wait]:
+internal/poll.runtime_pollWait(0x73544c1c9800, 0x72)
+	/snap/go/11103/src/runtime/netpoll.go:351 +0x85
+internal/poll.(*pollDesc).wait(0x17e4c3b78000?, 0x36?, 0x0)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:84 +0x27
+internal/poll.(*pollDesc).waitRead(...)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:89
+internal/poll.(*FD).Accept(0x17e4c3b78000)
+	/snap/go/11103/src/internal/poll/fd_unix.go:613 +0x28c
+net.(*netFD).accept(0x17e4c3b78000)
+	/snap/go/11103/src/net/fd_unix.go:150 +0x29
+net.(*TCPListener).accept(0x17e4c3f18100)
+	/snap/go/11103/src/net/tcpsock_posix.go:159 +0x1b
+net.(*TCPListener).Accept(0x17e4c3f18100)
+	/snap/go/11103/src/net/tcpsock.go:387 +0x30
+github.com/nats-io/nats-server/v2/server.(*Server).acceptConnections(0x17e4c3f77008, {0x1547c40, 0x17e4c3f18100}, {0x14c40e8, 0x6}, 0x17e4c41043b0, 0x17e4c41043c0)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:2893 +0x63
+created by github.com/nats-io/nats-server/v2/server.(*Server).AcceptLoop in goroutine 1586
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:2842 +0x845
+
+goroutine 1747 [IO wait]:
+internal/poll.runtime_pollWait(0x735448f63600, 0x72)
+	/snap/go/11103/src/runtime/netpoll.go:351 +0x85
+internal/poll.(*pollDesc).wait(0x17e4c3e0a280?, 0x17e4c3b41000?, 0x0)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:84 +0x27
+internal/poll.(*pollDesc).waitRead(...)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:89
+internal/poll.(*FD).Read(0x17e4c3e0a280, {0x17e4c3b41000, 0x1000, 0x1000})
+	/snap/go/11103/src/internal/poll/fd_unix.go:165 +0x2ae
+net.(*netFD).Read(0x17e4c3e0a280, {0x17e4c3b41000?, 0x11523fa?, 0x0?})
+	/snap/go/11103/src/net/fd_posix.go:68 +0x25
+net.(*conn).Read(0x17e4c3ca8170, {0x17e4c3b41000?, 0x17e4c39374e0?, 0x17e4c3937500?})
+	/snap/go/11103/src/net/net.go:196 +0x45
+bufio.(*Reader).Read(0x17e4c3700120, {0x17e4c36e7448, 0x3, 0x492729?})
+	/snap/go/11103/src/bufio/bufio.go:245 +0x197
+io.ReadAtLeast({0x153e720, 0x17e4c3700120}, {0x17e4c36e7448, 0x3, 0x3}, 0x3)
+	/snap/go/11103/src/io/io.go:335 +0x8e
+io.ReadFull(...)
+	/snap/go/11103/src/io/io.go:354
+github.com/mycontroller-org/esphome_api/pkg/connection.(*EncryptedConnection).Read(0x17e4c420b580, 0x17e4c3700120)
+	/home/gavin/go/pkg/mod/github.com/mycontroller-org/esphome_api@v1.3.0/pkg/connection/conn_encryption.go:205 +0xe5
+github.com/mycontroller-org/esphome_api/pkg/connection.(*EncryptedConnection).waitForResponse(0x17e4c420b580)
+	/home/gavin/go/pkg/mod/github.com/mycontroller-org/esphome_api@v1.3.0/pkg/connection/conn_encryption.go:135 +0x171
+github.com/mycontroller-org/esphome_api/pkg/connection.(*EncryptedConnection).Handshake(0x17e4c420b580)
+	/home/gavin/go/pkg/mod/github.com/mycontroller-org/esphome_api@v1.3.0/pkg/connection/conn_encryption.go:107 +0x347
+github.com/mycontroller-org/esphome_api/pkg/client.GetClient({0x14cd20c, 0xe}, {0x17e4c38260a8?, 0x17e4c3937ae8?}, {0x17e4c3a1acc0, 0x2c}, 0x2540be400, 0x17e4c3842a80)
+	/home/gavin/go/pkg/mod/github.com/mycontroller-org/esphome_api@v1.3.0/pkg/client/client.go:60 +0x336
+github.com/slidebolt/plugin-esphome/cmd/plugin-esphome.setupGroupTestWithOptions.New.func8({0x17e4c38260a8?, 0x0?}, {0x17e4c3a1acc0?, 0x2?}, 0x2?)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:140 +0x45
+github.com/slidebolt/plugin-esphome/app.(*App).connectAndRegister(0x17e4c38aa0f0, {0x154a258, 0x17e4c4195130}, 0x17e4c3842960, 0x17e4c3878120)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:505 +0x218
+github.com/slidebolt/plugin-esphome/app.(*App).runDeviceLoop(0x17e4c38aa0f0, {0x154a258, 0x17e4c4195130}, 0x17e4c3842960)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:443 +0x105
+created by github.com/slidebolt/plugin-esphome/app.(*App).onDeviceFound in goroutine 1586
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:286 +0x598
+
+goroutine 1590 [select]:
+github.com/nats-io/nats-server/v2/server.(*Server).internalSendLoop(0x17e4c3f77008, 0x17e4c3950480?)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/events.go:524 +0x29f
+created by github.com/nats-io/nats-server/v2/server.(*Server).setSystemAccount in goroutine 1586
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:1881 +0x436
+
+goroutine 1604 [sync.Cond.Wait]:
+sync.runtime_notifyListWait(0x17e4c3bc21d0, 0x2f)
+	/snap/go/11103/src/runtime/sema.go:617 +0x1b3
+sync.(*Cond).Wait(0x17e4c37928c0?)
+	/snap/go/11103/src/sync/cond.go:71 +0x73
+github.com/nats-io/nats%2ego.(*Conn).waitForMsgs(0x17e4c3ea8008, 0x17e4c42142d0)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:3451 +0xc8
+created by github.com/nats-io/nats%2ego.(*Conn).subscribeLocked in goroutine 1586
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:4810 +0x419
+
+goroutine 1489 [sync.Cond.Wait]:
+sync.runtime_notifyListWait(0x17e4c3bc2090, 0x16)
+	/snap/go/11103/src/runtime/sema.go:617 +0x1b3
+sync.(*Cond).Wait(0x17e4c3cd4008?)
+	/snap/go/11103/src/sync/cond.go:71 +0x73
+github.com/nats-io/nats-server/v2/server.(*client).writeLoop(0x17e4c3cd4008)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/client.go:1295 +0x1f1
+github.com/nats-io/nats-server/v2/server.(*Server).createClientEx.func2()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:3546 +0x17
+github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine.func1()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4078 +0x32
+created by github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine in goroutine 1563
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4076 +0x129
+
+goroutine 1603 [chan receive]:
+github.com/nats-io/nats%2ego.(*Conn).flusher(0x17e4c3ea8008)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:3849 +0xe9
+created by github.com/nats-io/nats%2ego.(*Conn).processConnectInit in goroutine 1586
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:2633 +0x2f9
+
+goroutine 1633 [select]:
+github.com/slidebolt/plugin-esphome/internal/mdns.(*Discovery).Discover(0x17e4c3d41580, {0x154a258, 0x17e4c4195130})
+	/home/gavin/work/sb/clean/plugin-esphome/internal/mdns/discovery.go:183 +0x3e5
+github.com/slidebolt/plugin-esphome/app.(*App).OnStart.func1()
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:210 +0xa5
+created by github.com/slidebolt/plugin-esphome/app.(*App).OnStart in goroutine 1586
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:206 +0x625
+
+goroutine 1589 [select]:
+github.com/nats-io/nats-server/v2/server.(*sendq).internalLoop(0x17e4c41961e0)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/sendq.go:65 +0x245
+github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine.func1()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4078 +0x32
+created by github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine in goroutine 1586
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4076 +0x129
+
+goroutine 1710 [IO wait]:
+internal/poll.runtime_pollWait(0x73544c1c9600, 0x72)
+	/snap/go/11103/src/runtime/netpoll.go:351 +0x85
+internal/poll.(*pollDesc).wait(0x17e4c3e0a300?, 0x17e4c386e000?, 0x0)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:84 +0x27
+internal/poll.(*pollDesc).waitRead(...)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:89
+internal/poll.(*FD).Read(0x17e4c3e0a300, {0x17e4c386e000, 0x1000, 0x1000})
+	/snap/go/11103/src/internal/poll/fd_unix.go:165 +0x2ae
+net.(*netFD).Read(0x17e4c3e0a300, {0x17e4c386e000?, 0x11523fa?, 0x427066?})
+	/snap/go/11103/src/net/fd_posix.go:68 +0x25
+net.(*conn).Read(0x17e4c3ca8150, {0x17e4c386e000?, 0x17e4c3dcc980?, 0x17e4c3afb500?})
+	/snap/go/11103/src/net/net.go:196 +0x45
+bufio.(*Reader).Read(0x17e4c38308a0, {0x17e4c3dcc980, 0x3, 0x492729?})
+	/snap/go/11103/src/bufio/bufio.go:245 +0x197
+io.ReadAtLeast({0x153e720, 0x17e4c38308a0}, {0x17e4c3dcc980, 0x3, 0x3}, 0x3)
+	/snap/go/11103/src/io/io.go:335 +0x8e
+io.ReadFull(...)
+	/snap/go/11103/src/io/io.go:354
+github.com/mycontroller-org/esphome_api/pkg/connection.(*EncryptedConnection).Read(0x17e4c420b200, 0x17e4c38308a0)
+	/home/gavin/go/pkg/mod/github.com/mycontroller-org/esphome_api@v1.3.0/pkg/connection/conn_encryption.go:205 +0xe5
+github.com/mycontroller-org/esphome_api/pkg/connection.(*EncryptedConnection).waitForResponse(0x17e4c420b200)
+	/home/gavin/go/pkg/mod/github.com/mycontroller-org/esphome_api@v1.3.0/pkg/connection/conn_encryption.go:135 +0x171
+github.com/mycontroller-org/esphome_api/pkg/connection.(*EncryptedConnection).Handshake(0x17e4c420b200)
+	/home/gavin/go/pkg/mod/github.com/mycontroller-org/esphome_api@v1.3.0/pkg/connection/conn_encryption.go:107 +0x347
+github.com/mycontroller-org/esphome_api/pkg/client.GetClient({0x14cd20c, 0xe}, {0x17e4c4286108?, 0x17e4c3afbae8?}, {0x17e4c3a1afc0, 0x2c}, 0x2540be400, 0x17e4c3842d80)
+	/home/gavin/go/pkg/mod/github.com/mycontroller-org/esphome_api@v1.3.0/pkg/client/client.go:60 +0x336
+github.com/slidebolt/plugin-esphome/cmd/plugin-esphome.setupGroupTestWithOptions.New.func8({0x17e4c4286108?, 0x0?}, {0x17e4c3a1afc0?, 0x2?}, 0x2?)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:140 +0x45
+github.com/slidebolt/plugin-esphome/app.(*App).connectAndRegister(0x17e4c38aa0f0, {0x154a258, 0x17e4c4195130}, 0x17e4c387a780, 0x17e4c3a0c300)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:505 +0x218
+github.com/slidebolt/plugin-esphome/app.(*App).runDeviceLoop(0x17e4c38aa0f0, {0x154a258, 0x17e4c4195130}, 0x17e4c387a780)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:443 +0x105
+created by github.com/slidebolt/plugin-esphome/app.(*App).onDeviceFound in goroutine 1586
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:286 +0x598
+
+goroutine 1705 [sync.Cond.Wait]:
+sync.runtime_notifyListWait(0x17e4c3f19450, 0x1)
+	/snap/go/11103/src/runtime/sema.go:617 +0x1b3
+sync.(*Cond).Wait(0x17e4c3cd5b08?)
+	/snap/go/11103/src/sync/cond.go:71 +0x73
+github.com/nats-io/nats-server/v2/server.(*client).writeLoop(0x17e4c3cd5b08)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/client.go:1295 +0x1f1
+github.com/nats-io/nats-server/v2/server.(*Server).createClientEx.func2()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:3546 +0x17
+github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine.func1()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4078 +0x32
+created by github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine in goroutine 1677
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4076 +0x129
+
+goroutine 1712 [IO wait]:
+internal/poll.runtime_pollWait(0x73544853de00, 0x72)
+	/snap/go/11103/src/runtime/netpoll.go:351 +0x85
+internal/poll.(*pollDesc).wait(0x17e4c420ae00?, 0x17e4c3939000?, 0x0)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:84 +0x27
+internal/poll.(*pollDesc).waitRead(...)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:89
+internal/poll.(*FD).Read(0x17e4c420ae00, {0x17e4c3939000, 0x1000, 0x1000})
+	/snap/go/11103/src/internal/poll/fd_unix.go:165 +0x2ae
+net.(*netFD).Read(0x17e4c420ae00, {0x17e4c3939000?, 0x17e4c3732008?, 0x0?})
+	/snap/go/11103/src/net/fd_posix.go:68 +0x25
+net.(*conn).Read(0x17e4c3ca8138, {0x17e4c3939000?, 0x17e4c3af74e0?, 0x17e4c3af7500?})
+	/snap/go/11103/src/net/net.go:196 +0x45
+bufio.(*Reader).Read(0x17e4c37316e0, {0x17e4c36e7398, 0x3, 0x492729?})
+	/snap/go/11103/src/bufio/bufio.go:245 +0x197
+io.ReadAtLeast({0x153e720, 0x17e4c37316e0}, {0x17e4c36e7398, 0x3, 0x3}, 0x3)
+	/snap/go/11103/src/io/io.go:335 +0x8e
+io.ReadFull(...)
+	/snap/go/11103/src/io/io.go:354
+github.com/mycontroller-org/esphome_api/pkg/connection.(*EncryptedConnection).Read(0x17e4c420ae80, 0x17e4c37316e0)
+	/home/gavin/go/pkg/mod/github.com/mycontroller-org/esphome_api@v1.3.0/pkg/connection/conn_encryption.go:205 +0xe5
+github.com/mycontroller-org/esphome_api/pkg/connection.(*EncryptedConnection).waitForResponse(0x17e4c420ae80)
+	/home/gavin/go/pkg/mod/github.com/mycontroller-org/esphome_api@v1.3.0/pkg/connection/conn_encryption.go:135 +0x171
+github.com/mycontroller-org/esphome_api/pkg/connection.(*EncryptedConnection).Handshake(0x17e4c420ae80)
+	/home/gavin/go/pkg/mod/github.com/mycontroller-org/esphome_api@v1.3.0/pkg/connection/conn_encryption.go:107 +0x347
+github.com/mycontroller-org/esphome_api/pkg/client.GetClient({0x14cd20c, 0xe}, {0x17e4c4286180?, 0x17e4c3af7ae8?}, {0x17e4c3abecf0, 0x2c}, 0x2540be400, 0x17e4c39f4d80)
+	/home/gavin/go/pkg/mod/github.com/mycontroller-org/esphome_api@v1.3.0/pkg/client/client.go:60 +0x336
+github.com/slidebolt/plugin-esphome/cmd/plugin-esphome.setupGroupTestWithOptions.New.func8({0x17e4c4286180?, 0x0?}, {0x17e4c3abecf0?, 0x2?}, 0x2?)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:140 +0x45
+github.com/slidebolt/plugin-esphome/app.(*App).connectAndRegister(0x17e4c38aa0f0, {0x154a258, 0x17e4c4195130}, 0x17e4c387ac30, 0x17e4c3a0c480)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:505 +0x218
+github.com/slidebolt/plugin-esphome/app.(*App).runDeviceLoop(0x17e4c38aa0f0, {0x154a258, 0x17e4c4195130}, 0x17e4c387ac30)
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:443 +0x105
+created by github.com/slidebolt/plugin-esphome/app.(*App).onDeviceFound in goroutine 1586
+	/home/gavin/work/sb/clean/plugin-esphome/app/app.go:286 +0x598
+
+goroutine 1680 [sync.Cond.Wait]:
+sync.runtime_notifyListWait(0x17e4c385da90, 0x0)
+	/snap/go/11103/src/runtime/sema.go:617 +0x1b3
+sync.(*Cond).Wait(0x17e4c3b19768?)
+	/snap/go/11103/src/sync/cond.go:71 +0x73
+github.com/nats-io/nats%2ego.(*Conn).waitForMsgs(0x17e4c3ed3c08, 0x17e4c399c000)
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:3451 +0xc8
+created by github.com/nats-io/nats%2ego.(*Conn).subscribeLocked in goroutine 1586
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats.go@v1.49.0/nats.go:4810 +0x419
+
+goroutine 1730 [select]:
+github.com/grandcat/zeroconf.(*client).mainloop(0x17e4c39f42d0, {0x154a258, 0x17e4c37ee460}, 0x17e4c420ac00)
+	/home/gavin/go/pkg/mod/github.com/grandcat/zeroconf@v1.0.0/client.go:196 +0x2c9
+created by github.com/grandcat/zeroconf.(*Resolver).Browse in goroutine 1681
+	/home/gavin/go/pkg/mod/github.com/grandcat/zeroconf@v1.0.0/client.go:92 +0x267
+
+goroutine 1704 [IO wait]:
+internal/poll.runtime_pollWait(0x73544859e800, 0x72)
+	/snap/go/11103/src/runtime/netpoll.go:351 +0x85
+internal/poll.(*pollDesc).wait(0x17e4c3d41500?, 0x17e4c3a90900?, 0x0)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:84 +0x27
+internal/poll.(*pollDesc).waitRead(...)
+	/snap/go/11103/src/internal/poll/fd_poll_runtime.go:89
+internal/poll.(*FD).Read(0x17e4c3d41500, {0x17e4c3a90900, 0x100, 0x100})
+	/snap/go/11103/src/internal/poll/fd_unix.go:165 +0x2ae
+net.(*netFD).Read(0x17e4c3d41500, {0x17e4c3a90900?, 0x17e4c3933d10?, 0x492729?})
+	/snap/go/11103/src/net/fd_posix.go:68 +0x25
+net.(*conn).Read(0x17e4c4018030, {0x17e4c3a90900?, 0x214ffc0?, 0x200?})
+	/snap/go/11103/src/net/net.go:196 +0x45
+github.com/nats-io/nats-server/v2/server.(*client).readLoop(0x17e4c3cd5b08, {0x0, 0x0, 0x0})
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/client.go:1426 +0x65d
+github.com/nats-io/nats-server/v2/server.(*Server).createClientEx.func1()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:3543 +0x25
+github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine.func1()
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4078 +0x32
+created by github.com/nats-io/nats-server/v2/server.(*Server).startGoRoutine in goroutine 1677
+	/home/gavin/go/pkg/mod/github.com/nats-io/nats-server/v2@v2.12.5/server/server.go:4076 +0x129
+FAIL	github.com/slidebolt/plugin-esphome/cmd/plugin-esphome	240.016s
+ok  	github.com/slidebolt/plugin-esphome/internal/dashboard	0.005s
+?   	github.com/slidebolt/plugin-esphome/internal/mdns	[no test files]
+?   	github.com/slidebolt/plugin-esphome/internal/translate	[no test files]
+FAIL
