@@ -9,16 +9,16 @@ require (
 	github.com/joho/godotenv v1.5.1
 	github.com/mycontroller-org/esphome_api v1.3.0
 	github.com/slidebolt/sb-contract v1.0.6
-	github.com/slidebolt/sb-domain v1.0.12
+	github.com/slidebolt/sb-domain v1.0.13
 	github.com/slidebolt/sb-logging v1.0.5
 	github.com/slidebolt/sb-logging-sdk v1.0.8
 	github.com/slidebolt/sb-messenger-sdk v1.0.7
 	github.com/slidebolt/sb-runtime v1.0.6
-	github.com/slidebolt/sb-script v1.0.8
-	github.com/slidebolt/sb-storage-sdk v1.0.6
-	github.com/slidebolt/sb-storage-server v1.0.8
-	github.com/slidebolt/sb-testkit v1.0.8
-	github.com/slidebolt/sb-virtual v1.0.8
+	github.com/slidebolt/sb-script v1.0.9
+	github.com/slidebolt/sb-storage-sdk v1.0.7
+	github.com/slidebolt/sb-storage-server v1.0.9
+	github.com/slidebolt/sb-testkit v1.0.9
+	github.com/slidebolt/sb-virtual v1.0.9
 	google.golang.org/protobuf v1.36.11
 )
 
