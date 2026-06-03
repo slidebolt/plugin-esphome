@@ -539,9 +539,9 @@ func (a *App) connectAndRegister(ctx context.Context, md *managedDevice, dev *in
 					if err := a.store.Save(entity); err != nil {
 						log.Printf("plugin-esphome: save entity from %s: %v", dev.Name, err)
 					} else {
+						a.saveESPHomeEntityMetadata(entity, msg, espKey)
 						created++
 					}
-					_ = espKey
 				}
 			}
 		} else {
@@ -995,11 +995,15 @@ func EntityFromMsg(devName string, msg proto.Message) (domain.Entity, uint32, bo
 			State:    domain.Climate{HVACMode: "off"},
 		}, resp.Key, true
 	case *api.ListEntitiesCoverResponse:
+		commands := []string{"cover_open", "cover_close"}
+		if resp.SupportsPosition {
+			commands = append(commands, "cover_set_position")
+		}
 		return domain.Entity{
 			ID: fmt.Sprintf("%s_%d", devName, resp.Key), Plugin: PluginID, DeviceID: devName,
 			Type: "cover", Name: resp.Name,
-			Commands: []string{"cover_open", "cover_close", "cover_set_position"},
-			State:    domain.Cover{Position: 0},
+			Commands: commands,
+			State:    domain.Cover{Position: 0, DeviceClass: resp.DeviceClass},
 		}, resp.Key, true
 	case *api.ListEntitiesLockResponse:
 		return domain.Entity{
@@ -1039,6 +1043,40 @@ func EntityFromMsg(devName string, msg proto.Message) (domain.Entity, uint32, bo
 	return domain.Entity{}, 0, false
 }
 
+func mustJSONRaw(v any) json.RawMessage {
+	data, err := json.Marshal(v)
+	if err != nil {
+		return nil
+	}
+	return data
+}
+
+func (a *App) saveESPHomeEntityMetadata(entity domain.Entity, msg proto.Message, espKey uint32) {
+	if a == nil || a.store == nil {
+		return
+	}
+	var metadata map[string]any
+	switch resp := msg.(type) {
+	case *api.ListEntitiesCoverResponse:
+		metadata = map[string]any{
+			"esp_key":             espKey,
+			"object_id":           resp.ObjectId,
+			"unique_id":           resp.UniqueId,
+			"assumed_state":       resp.AssumedState,
+			"supports_position":   resp.SupportsPosition,
+			"supports_tilt":       resp.SupportsTilt,
+			"device_class":        resp.DeviceClass,
+			"disabled_by_default": resp.DisabledByDefault,
+			"icon":                resp.Icon,
+		}
+	default:
+		return
+	}
+	if err := a.store.SetInternal(entity, mustJSONRaw(metadata)); err != nil {
+		log.Printf("plugin-esphome: save internal metadata for %s: %v", entity.Key(), err)
+	}
+}
+
 func (a *App) applyStateUpdate(devName string, msg proto.Message) {
 	var espKey uint32
 	var newState any
@@ -1066,8 +1104,9 @@ func (a *App) applyStateUpdate(devName string, msg proto.Message) {
 		logData["state_power"] = resp.State
 	case *api.CoverStateResponse:
 		espKey = resp.Key
-		newState = domain.Cover{Position: int(resp.Position * 100)}
-		logData["state_position"] = int(resp.Position * 100)
+		position := int(resp.Position * 100)
+		newState = domain.Cover{Position: position, DeviceClass: a.coverDeviceClass(devName, espKey)}
+		logData["state_position"] = position
 	case *api.LockStateResponse:
 		espKey = resp.Key
 		newState = domain.Lock{Locked: resp.State == api.LockState_LOCK_STATE_LOCKED}
@@ -1252,6 +1291,33 @@ func lightStateFromResponse(resp *api.LightStateResponse) domain.Light {
 		state.Effect = resp.Effect
 	}
 	return state
+}
+
+func (a *App) coverDeviceClass(devName string, espKey uint32) string {
+	if a == nil || a.store == nil {
+		return ""
+	}
+	info, ok := a.lookupEntityByESPKey(devName, espKey)
+	if !ok {
+		return ""
+	}
+	raw, err := a.store.Get(domain.EntityKey{Plugin: PluginID, DeviceID: devName, ID: info.id})
+	if err != nil {
+		return ""
+	}
+	var entity domain.Entity
+	if err := json.Unmarshal(raw, &entity); err != nil {
+		return ""
+	}
+	switch state := entity.State.(type) {
+	case domain.Cover:
+		return state.DeviceClass
+	case map[string]interface{}:
+		deviceClass, _ := state["deviceClass"].(string)
+		return deviceClass
+	default:
+		return ""
+	}
 }
 
 func (a *App) updateFromStorage(devName string, info entityRef, mutate func(*domain.Entity)) {
@@ -1474,18 +1540,9 @@ func (a *App) handleCommandWithTrace(addr messenger.Address, cmd any, traceID st
 			HasSpeedLevel: true, SpeedLevel: int32(c.Percentage),
 		}
 	case domain.CoverOpen:
-		// SHIM: TODO: This uses a legacy command format.
-		// Investigate if there's a more modern way to send these commands to the ESPHome device.
-		req = &api.CoverCommandRequest{
-			Key:              ec.espKey,
-			HasLegacyCommand: true, LegacyCommand: api.LegacyCoverCommand_LEGACY_COVER_COMMAND_OPEN,
-		}
+		req = a.coverOpenCloseRequest(addr, ec.espKey, 1.0, api.LegacyCoverCommand_LEGACY_COVER_COMMAND_OPEN)
 	case domain.CoverClose:
-		// SHIM: TODO: This uses a legacy command format.
-		req = &api.CoverCommandRequest{
-			Key:              ec.espKey,
-			HasLegacyCommand: true, LegacyCommand: api.LegacyCoverCommand_LEGACY_COVER_COMMAND_CLOSE,
-		}
+		req = a.coverOpenCloseRequest(addr, ec.espKey, 0.0, api.LegacyCoverCommand_LEGACY_COVER_COMMAND_CLOSE)
 	case domain.CoverSetPosition:
 		req = &api.CoverCommandRequest{
 			Key:         ec.espKey,
@@ -1531,6 +1588,37 @@ func (a *App) handleCommandWithTrace(addr messenger.Address, cmd any, traceID st
 		a.rememberPendingTrace(addr.Key(), traceID)
 		a.tracef("command sent ok key=%s addr=%s cmd=%T", addr.Key(), devConn.address, cmd)
 	}
+}
+
+func (a *App) coverOpenCloseRequest(addr messenger.Address, espKey uint32, position float32, legacy api.LegacyCoverCommand) *api.CoverCommandRequest {
+	if a.entitySupportsCommand(addr, "cover_set_position") {
+		return &api.CoverCommandRequest{Key: espKey, HasPosition: true, Position: position}
+	}
+	return &api.CoverCommandRequest{
+		Key:              espKey,
+		HasLegacyCommand: true,
+		LegacyCommand:    legacy,
+	}
+}
+
+func (a *App) entitySupportsCommand(addr messenger.Address, command string) bool {
+	if a == nil || a.store == nil {
+		return false
+	}
+	raw, err := a.store.Get(domain.EntityKey{Plugin: addr.Plugin, DeviceID: addr.DeviceID, ID: addr.EntityID})
+	if err != nil || len(raw) == 0 {
+		return false
+	}
+	var entity domain.Entity
+	if err := json.Unmarshal(raw, &entity); err != nil {
+		return false
+	}
+	for _, candidate := range entity.Commands {
+		if candidate == command {
+			return true
+		}
+	}
+	return false
 }
 
 func (a *App) rememberPendingTrace(entityKey, traceID string) {
