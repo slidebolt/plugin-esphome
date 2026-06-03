@@ -16,14 +16,16 @@ import (
 	domain "github.com/slidebolt/sb-domain"
 	messenger "github.com/slidebolt/sb-messenger-sdk"
 	storage "github.com/slidebolt/sb-storage-sdk"
+	storageserver "github.com/slidebolt/sb-storage-server"
 	"google.golang.org/protobuf/proto"
 )
 
 type fakeStore struct {
-	mu      sync.RWMutex
-	entries []storage.Entry
-	data    map[string]json.RawMessage
-	private map[string]json.RawMessage
+	mu       sync.RWMutex
+	entries  []storage.Entry
+	data     map[string]json.RawMessage
+	private  map[string]json.RawMessage
+	internal map[string]json.RawMessage
 }
 
 func (f *fakeStore) Save(v storage.Keyed) error {
@@ -73,13 +75,28 @@ func (f *fakeStore) GetPrivate(key storage.Keyed) (json.RawMessage, error) {
 	}
 	return f.private[key.Key()], nil
 }
-func (f *fakeStore) DeletePrivate(key storage.Keyed) error                     { return nil }
-func (f *fakeStore) SetInternal(key storage.Keyed, data json.RawMessage) error { return nil }
-func (f *fakeStore) GetInternal(key storage.Keyed) (json.RawMessage, error)    { return nil, nil }
-func (f *fakeStore) DeleteInternal(key storage.Keyed) error                    { return nil }
-func (f *fakeStore) SetProfile(key storage.Keyed, data json.RawMessage) error  { return nil }
-func (f *fakeStore) Close()                                                    {}
-func (f *fakeStore) Search(pattern string) ([]storage.Entry, error)            { return f.entries, nil }
+func (f *fakeStore) DeletePrivate(key storage.Keyed) error { return nil }
+func (f *fakeStore) SetInternal(key storage.Keyed, data json.RawMessage) error {
+	f.mu.Lock()
+	defer f.mu.Unlock()
+	if f.internal == nil {
+		f.internal = make(map[string]json.RawMessage)
+	}
+	f.internal[key.Key()] = data
+	return nil
+}
+func (f *fakeStore) GetInternal(key storage.Keyed) (json.RawMessage, error) {
+	f.mu.RLock()
+	defer f.mu.RUnlock()
+	if f.internal == nil {
+		return nil, nil
+	}
+	return f.internal[key.Key()], nil
+}
+func (f *fakeStore) DeleteInternal(key storage.Keyed) error                   { return nil }
+func (f *fakeStore) SetProfile(key storage.Keyed, data json.RawMessage) error { return nil }
+func (f *fakeStore) Close()                                                   {}
+func (f *fakeStore) Search(pattern string) ([]storage.Entry, error)           { return f.entries, nil }
 func (f *fakeStore) SearchFiles(target storage.StorageTarget, pattern string) ([]storage.Entry, error) {
 	return f.entries, nil
 }
@@ -135,6 +152,225 @@ func TestEntityFromMsgLightColorTempOnlyOmitsRGBCommand(t *testing.T) {
 	}
 	if light.ColorMode != "color_temp" {
 		t.Fatalf("state.colorMode = %q, want color_temp", light.ColorMode)
+	}
+}
+
+func TestEntityFromMsgCoverPublishesDomainCapabilities(t *testing.T) {
+	entity, _, ok := EntityFromMsg("garage", &api.ListEntitiesCoverResponse{
+		Key:               99,
+		ObjectId:          "garage_door",
+		Name:              "Garage Door",
+		UniqueId:          "garage-door-unique",
+		AssumedState:      true,
+		SupportsPosition:  true,
+		SupportsTilt:      false,
+		DeviceClass:       "garage",
+		DisabledByDefault: false,
+		Icon:              "mdi:garage",
+	})
+	if !ok {
+		t.Fatal("EntityFromMsg should accept ListEntitiesCoverResponse")
+	}
+	if !reflect.DeepEqual(entity.Commands, []string{"cover_open", "cover_close", "cover_set_position"}) {
+		t.Fatalf("commands = %v", entity.Commands)
+	}
+	cover, ok := entity.State.(domain.Cover)
+	if !ok {
+		t.Fatalf("state type = %T, want domain.Cover", entity.State)
+	}
+	if cover.DeviceClass != "garage" {
+		t.Fatalf("cover.DeviceClass = %q, want garage", cover.DeviceClass)
+	}
+	if len(entity.Meta) != 0 {
+		t.Fatalf("public entity meta = %+v, want empty; ESPHome provider data belongs in internal storage", entity.Meta)
+	}
+}
+
+func TestEntityFromMsgCoverWithoutPositionOmitsSetPosition(t *testing.T) {
+	entity, _, ok := EntityFromMsg("awning", &api.ListEntitiesCoverResponse{
+		Key:              100,
+		Name:             "Awning",
+		SupportsPosition: false,
+	})
+	if !ok {
+		t.Fatal("EntityFromMsg should accept ListEntitiesCoverResponse")
+	}
+	if !reflect.DeepEqual(entity.Commands, []string{"cover_open", "cover_close"}) {
+		t.Fatalf("commands = %v, want open/close only", entity.Commands)
+	}
+}
+
+func TestCoverCloseUsesPositionWhenEntitySupportsPosition(t *testing.T) {
+	entity, _, _ := EntityFromMsg("garage", &api.ListEntitiesCoverResponse{
+		Key:              99,
+		Name:             "Garage Door",
+		SupportsPosition: true,
+	})
+	raw, _ := json.Marshal(entity)
+	store := &fakeStore{data: map[string]json.RawMessage{entity.Key(): raw}}
+	app := &App{store: store}
+	var sent proto.Message
+	app.devices.Store("garage", &deviceConn{
+		send: func(msg proto.Message) error {
+			sent = msg
+			return nil
+		},
+		address: "192.0.2.20:6053",
+	})
+
+	app.handleCommandWithTrace(messenger.Address{Plugin: PluginID, DeviceID: "garage", EntityID: entity.ID}, domain.CoverClose{}, "")
+
+	req, ok := sent.(*api.CoverCommandRequest)
+	if !ok {
+		t.Fatalf("sent = %T, want *api.CoverCommandRequest", sent)
+	}
+	if !req.HasPosition || req.Position != 0 {
+		t.Fatalf("request = %+v, want position close", req)
+	}
+	if req.HasLegacyCommand {
+		t.Fatalf("request unexpectedly used legacy command: %+v", req)
+	}
+}
+
+func TestCoverCloseFallsBackToLegacyWithoutPositionCommand(t *testing.T) {
+	entity, _, _ := EntityFromMsg("awning", &api.ListEntitiesCoverResponse{
+		Key:              100,
+		Name:             "Awning",
+		SupportsPosition: false,
+	})
+	raw, _ := json.Marshal(entity)
+	store := &fakeStore{data: map[string]json.RawMessage{entity.Key(): raw}}
+	app := &App{store: store}
+	var sent proto.Message
+	app.devices.Store("awning", &deviceConn{
+		send: func(msg proto.Message) error {
+			sent = msg
+			return nil
+		},
+		address: "192.0.2.21:6053",
+	})
+
+	app.handleCommandWithTrace(messenger.Address{Plugin: PluginID, DeviceID: "awning", EntityID: entity.ID}, domain.CoverClose{}, "")
+
+	req, ok := sent.(*api.CoverCommandRequest)
+	if !ok {
+		t.Fatalf("sent = %T, want *api.CoverCommandRequest", sent)
+	}
+	if !req.HasLegacyCommand || req.LegacyCommand != api.LegacyCoverCommand_LEGACY_COVER_COMMAND_CLOSE {
+		t.Fatalf("request = %+v, want legacy close", req)
+	}
+	if req.HasPosition {
+		t.Fatalf("request unexpectedly used position: %+v", req)
+	}
+}
+
+func TestSaveESPHomeEntityMetadataStoresCoverDetailsInternally(t *testing.T) {
+	msg := &api.ListEntitiesCoverResponse{
+		Key:               99,
+		ObjectId:          "garage_door",
+		Name:              "Garage Door",
+		UniqueId:          "garage-door-unique",
+		AssumedState:      true,
+		SupportsPosition:  true,
+		SupportsTilt:      false,
+		DeviceClass:       "garage",
+		DisabledByDefault: true,
+		Icon:              "mdi:garage",
+	}
+	entity, espKey, ok := EntityFromMsg("garage", msg)
+	if !ok {
+		t.Fatal("EntityFromMsg should accept ListEntitiesCoverResponse")
+	}
+	store := &fakeStore{}
+	app := &App{store: store}
+
+	app.saveESPHomeEntityMetadata(entity, msg, espKey)
+
+	raw, err := store.GetInternal(entity)
+	if err != nil {
+		t.Fatalf("GetInternal: %v", err)
+	}
+	var meta map[string]any
+	if err := json.Unmarshal(raw, &meta); err != nil {
+		t.Fatalf("unmarshal internal metadata: %v", err)
+	}
+	if meta["object_id"] != "garage_door" || meta["unique_id"] != "garage-door-unique" {
+		t.Fatalf("unexpected identity metadata: %+v", meta)
+	}
+	if meta["supports_position"] != true || meta["supports_tilt"] != false {
+		t.Fatalf("unexpected capability metadata: %+v", meta)
+	}
+	if meta["device_class"] != "garage" || meta["disabled_by_default"] != true || meta["icon"] != "mdi:garage" {
+		t.Fatalf("unexpected provider metadata: %+v", meta)
+	}
+	if meta["esp_key"] != float64(99) {
+		t.Fatalf("esp_key = %v, want 99", meta["esp_key"])
+	}
+}
+
+func TestCoverDiscoveryStorageContractKeepsProviderMetadataInternal(t *testing.T) {
+	msg, err := messenger.Mock()
+	if err != nil {
+		t.Fatalf("messenger.Mock: %v", err)
+	}
+	defer msg.Close()
+
+	store, err := storageserver.Mock(msg)
+	if err != nil {
+		t.Fatalf("storageserver.Mock: %v", err)
+	}
+	defer store.Close()
+
+	resp := &api.ListEntitiesCoverResponse{
+		Key:              99,
+		ObjectId:         "garage_door",
+		Name:             "Garage Door",
+		UniqueId:         "garage-door-unique",
+		SupportsPosition: true,
+		DeviceClass:      "garage",
+	}
+	entity, espKey, ok := EntityFromMsg("garage", resp)
+	if !ok {
+		t.Fatal("EntityFromMsg should accept ListEntitiesCoverResponse")
+	}
+	if err := store.Save(entity); err != nil {
+		t.Fatalf("Save: %v", err)
+	}
+	app := &App{store: store}
+	app.saveESPHomeEntityMetadata(entity, resp, espKey)
+
+	raw, err := store.Get(entity)
+	if err != nil {
+		t.Fatalf("Get: %v", err)
+	}
+	var public domain.Entity
+	if err := json.Unmarshal(raw, &public); err != nil {
+		t.Fatalf("unmarshal public entity: %v", err)
+	}
+	if len(public.Meta) != 0 {
+		t.Fatalf("public Meta = %+v, want empty", public.Meta)
+	}
+	if !reflect.DeepEqual(public.Commands, []string{"cover_open", "cover_close", "cover_set_position"}) {
+		t.Fatalf("commands = %v", public.Commands)
+	}
+	cover, ok := public.State.(domain.Cover)
+	if !ok {
+		t.Fatalf("state type = %T, want domain.Cover", public.State)
+	}
+	if cover.DeviceClass != "garage" {
+		t.Fatalf("cover.DeviceClass = %q, want garage", cover.DeviceClass)
+	}
+
+	internalRaw, err := store.GetInternal(entity)
+	if err != nil {
+		t.Fatalf("GetInternal: %v", err)
+	}
+	var internal map[string]any
+	if err := json.Unmarshal(internalRaw, &internal); err != nil {
+		t.Fatalf("unmarshal internal metadata: %v", err)
+	}
+	if internal["supports_position"] != true || internal["object_id"] != "garage_door" {
+		t.Fatalf("internal metadata = %+v", internal)
 	}
 }
 
@@ -208,6 +444,42 @@ func TestApplyStateUpdatePersistsFullLightState(t *testing.T) {
 	}
 	if light.Temperature != 275 || light.Effect != "rainbow" {
 		t.Fatalf("light extras = %+v", light)
+	}
+}
+
+func TestApplyCoverStateUpdatePreservesDeviceClass(t *testing.T) {
+	entity := domain.Entity{
+		ID:       "garage_99",
+		Plugin:   PluginID,
+		DeviceID: "garage",
+		Type:     "cover",
+		Name:     "Garage Door",
+		Commands: []string{"cover_open", "cover_close", "cover_set_position"},
+		State:    domain.Cover{Position: 0, DeviceClass: "garage"},
+	}
+	raw, _ := json.Marshal(entity)
+	store := &fakeStore{
+		entries: []storage.Entry{{Key: entity.Key(), Data: raw}},
+		data:    map[string]json.RawMessage{entity.Key(): raw},
+	}
+	app := &App{store: store}
+
+	app.applyStateUpdate("garage", &api.CoverStateResponse{
+		Key:      99,
+		Position: 0.42,
+	})
+
+	gotRaw, _ := store.Get(domain.EntityKey{Plugin: PluginID, DeviceID: "garage", ID: "garage_99"})
+	var got domain.Entity
+	if err := json.Unmarshal(gotRaw, &got); err != nil {
+		t.Fatalf("unmarshal updated entity: %v", err)
+	}
+	cover, ok := got.State.(domain.Cover)
+	if !ok {
+		t.Fatalf("state type = %T, want domain.Cover", got.State)
+	}
+	if cover.Position != 42 || cover.DeviceClass != "garage" {
+		t.Fatalf("cover state = %+v, want position 42 and deviceClass garage", cover)
 	}
 }
 
