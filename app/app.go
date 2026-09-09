@@ -965,7 +965,7 @@ func EntityFromMsg(devName string, msg proto.Message) (domain.Entity, uint32, bo
 			cmds = append(cmds, "light_set_color_temp")
 		}
 		if supportsRGB(resp.SupportedColorModes) {
-			cmds = append(cmds, "light_set_rgb")
+			cmds = append(cmds, "light_set_rgb", "light_set_hs")
 		}
 		state := domain.Light{Power: false}
 		for _, mode := range resp.SupportedColorModes {

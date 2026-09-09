@@ -120,7 +120,7 @@ func TestEntityFromMsgLightIncludesPersistentColorCapabilities(t *testing.T) {
 	if !ok {
 		t.Fatal("EntityFromMsg should accept ListEntitiesLightResponse")
 	}
-	wantCommands := []string{"light_turn_on", "light_turn_off", "light_set_brightness", "light_set_color_temp", "light_set_rgb"}
+	wantCommands := []string{"light_turn_on", "light_turn_off", "light_set_brightness", "light_set_color_temp", "light_set_rgb", "light_set_hs"}
 	if got := entity.Commands; len(got) != len(wantCommands) {
 		t.Fatalf("commands len = %d, want %d (%v)", len(got), len(wantCommands), got)
 	}
@@ -402,7 +402,7 @@ func TestApplyStateUpdatePersistsFullLightState(t *testing.T) {
 		DeviceID: "tv-light",
 		Type:     "light",
 		Name:     "TV Light",
-		Commands: []string{"light_turn_on", "light_turn_off", "light_set_brightness", "light_set_color_temp", "light_set_rgb"},
+		Commands: []string{"light_turn_on", "light_turn_off", "light_set_brightness", "light_set_color_temp", "light_set_rgb", "light_set_hs"},
 		State:    domain.Light{Power: false, ColorMode: "rgb"},
 	}
 	raw, _ := json.Marshal(entity)
