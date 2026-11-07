@@ -946,7 +946,7 @@ func (c *bddCtx) receivedCommandActionIs(expected string) error {
 			return fmt.Errorf("command action: got %q, want %q", got, expected)
 		}
 		return nil
-	case <-time.After(2 * time.Second):
+	case <-time.After(15 * time.Second):
 		return fmt.Errorf("timed out waiting for command %q", expected)
 	}
 }

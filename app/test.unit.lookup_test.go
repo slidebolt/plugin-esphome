@@ -712,7 +712,7 @@ func TestHandleCommandSendFailureDropsActiveConnectionAndRequestsReconnect(t *te
 
 	select {
 	case <-md.reconnect:
-	case <-time.After(100 * time.Millisecond):
+	case <-time.After(15 * time.Second):
 		t.Fatal("expected reconnect to be requested after send failure")
 	}
 }

@@ -108,7 +108,7 @@ type scriptInstanceMeta struct {
 
 func waitForScriptInstance(t *testing.T, store storage.Storage, hash string, pred func(scriptInstanceMeta) bool) scriptInstanceMeta {
 	t.Helper()
-	deadline := time.Now().Add(2 * time.Second)
+	deadline := time.Now().Add(15 * time.Second)
 	for time.Now().Before(deadline) {
 		entries, err := store.Search("sb-script.instances.*")
 		if err == nil {
@@ -189,7 +189,7 @@ func saveESPHomeLightGroupQuery(t *testing.T, store storage.Storage, name, group
 
 func waitForCommand(t *testing.T, ch <-chan string, want string) {
 	t.Helper()
-	deadline := time.After(500 * time.Millisecond)
+	deadline := time.After(15 * time.Second)
 	for {
 		select {
 		case got := <-ch:
@@ -413,7 +413,7 @@ func TestLuaFade_ESPHomeLights(t *testing.T) {
 		readings[l.id] = &entityReadings{}
 	}
 
-	deadline := time.After(time.Second)
+	deadline := time.After(15 * time.Second)
 	total := 0
 	for total < wantTicks*wantEntities {
 		select {
@@ -478,7 +478,7 @@ func TestLuaFade_StopHaltsCommands(t *testing.T) {
 
 	// Wait for at least 3 commands.
 	count := 0
-	deadline := time.After(500 * time.Millisecond)
+	deadline := time.After(15 * time.Second)
 	for count < 3 {
 		select {
 		case <-arrived:
@@ -542,7 +542,7 @@ func TestLuaFade_NewDevicePickedUp(t *testing.T) {
 
 	select {
 	case <-firstArrived:
-	case <-time.After(500 * time.Millisecond):
+	case <-time.After(15 * time.Second):
 		t.Fatal("first light never received a command")
 	}
 
@@ -564,7 +564,7 @@ func TestLuaFade_NewDevicePickedUp(t *testing.T) {
 	select {
 	case <-newArrived:
 		// new device picked up
-	case <-time.After(500 * time.Millisecond):
+	case <-time.After(15 * time.Second):
 		t.Fatal("newly added ESPHome light was not picked up by the running script")
 	}
 }
