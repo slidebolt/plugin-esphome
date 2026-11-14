@@ -8,7 +8,7 @@ require (
 	github.com/grandcat/zeroconf v1.0.0
 	github.com/joho/godotenv v1.5.1
 	github.com/mycontroller-org/esphome_api v1.3.0
-	github.com/slidebolt/sb-contract v1.0.6
+	github.com/slidebolt/sb-contract v1.0.7
 	github.com/slidebolt/sb-domain v1.0.16
 	github.com/slidebolt/sb-logging v1.0.7
 	github.com/slidebolt/sb-logging-sdk v1.0.9

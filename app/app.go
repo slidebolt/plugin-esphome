@@ -202,6 +202,7 @@ func (a *App) Hello() contract.HelloResponse {
 		ID:              PluginID,
 		Kind:            contract.KindPlugin,
 		ContractVersion: contract.ContractVersion,
+		Definitions:     contract.DescribePlugin("ESPHome", "Discovers ESPHome nodes and translates their capabilities into shared domain entities.", "binary_sensor", "button", "climate", "cover", "diagnostic", "fan", "light", "lock", "number", "select", "sensor", "switch"),
 		DependsOn:       []string{"messenger", "storage"},
 	}
 }
