@@ -630,6 +630,10 @@ func (a *App) connectAndRegister(ctx context.Context, md *managedDevice, dev *in
 		a.recordDeviceConnectionFailed(dev.Name, address, err, 0)
 		return err
 	}
+	if err := a.saveDomainDevice(dev, info); err != nil {
+		a.recordDeviceConnectionFailed(dev.Name, address, err, 0)
+		return err
+	}
 	a.rememberVerifiedDevice(dev, info)
 
 	if err := espClient.Send(&api.ListEntitiesRequest{}); err != nil {
@@ -736,6 +740,18 @@ func (a *App) rememberVerifiedDevice(dev *internalmdns.Device, info *espmodel.De
 			cfg.MAC = actualMAC
 		}
 	})
+}
+
+func (a *App) saveDomainDevice(dev *internalmdns.Device, info *espmodel.DeviceInfo) error {
+	name := strings.TrimSpace(info.Name)
+	if name == "" {
+		name = dev.Name
+	}
+	device := domain.Device{ID: dev.Name, Plugin: PluginID, Name: name, Entities: []domain.Entity{}}
+	if err := a.store.Save(device); err != nil {
+		return fmt.Errorf("save device %s: %w", dev.Name, err)
+	}
+	return nil
 }
 
 func (a *App) forgetDeviceAddress(deviceID string) {

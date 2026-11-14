@@ -641,6 +641,26 @@ func TestVerifyConnectedDeviceAcceptsEquivalentMACFormats(t *testing.T) {
 	}
 }
 
+func TestSaveDomainDeviceCreatesGenericDeviceWithEmptyEntityArray(t *testing.T) {
+	store := &fakeStore{}
+	application := &App{store: store}
+	dev := &internalmdns.Device{Name: "node-one"}
+	if err := application.saveDomainDevice(dev, &espmodel.DeviceInfo{Name: "Node One", Model: "provider-model"}); err != nil {
+		t.Fatal(err)
+	}
+	raw, err := store.Get(domain.DeviceKey{Plugin: PluginID, ID: "node-one"})
+	if err != nil {
+		t.Fatal(err)
+	}
+	var device domain.Device
+	if err := json.Unmarshal(raw, &device); err != nil {
+		t.Fatal(err)
+	}
+	if device.Name != "Node One" || device.Entities == nil || device.Class != "" || len(device.Meta) != 0 {
+		t.Fatalf("device = %#v", device)
+	}
+}
+
 func TestOnDeviceFoundStartsOneManagedLoopPerDevice(t *testing.T) {
 	app := New()
 
