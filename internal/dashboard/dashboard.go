@@ -39,7 +39,16 @@ func ConfigFromEnv() Config {
 		URL:      os.Getenv("ESPHOME_DASHBOARD_URL"),
 		Username: os.Getenv("ESPHOME_DASHBOARD_USER"),
 		Password: os.Getenv("ESPHOME_DASHBOARD_PASSWORD"),
-		Insecure: os.Getenv("ESPHOME_DASHBOARD_INSECURE") == "1",
+		Insecure: parseBoolean(os.Getenv("ESPHOME_DASHBOARD_INSECURE")),
+	}
+}
+
+func parseBoolean(value string) bool {
+	switch strings.ToLower(strings.TrimSpace(value)) {
+	case "1", "true", "yes", "on":
+		return true
+	default:
+		return false
 	}
 }
 

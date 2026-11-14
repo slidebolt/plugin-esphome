@@ -204,11 +204,24 @@ func (a *App) Hello() contract.HelloResponse {
 		ContractVersion: contract.ContractVersion,
 		Definitions:     contract.DescribePlugin("ESPHome", "Discovers ESPHome nodes and translates their capabilities into shared domain entities.", "binary_sensor", "button", "climate", "cover", "diagnostic", "fan", "light", "lock", "number", "select", "sensor", "switch"),
 		DependsOn:       []string{"messenger", "storage"},
+		Setup: &contract.SetupDefinition{
+			Mode:     contract.SetupSelectable,
+			Category: "Devices",
+			Fields: []contract.SetupField{
+				{Key: "api_key", Environment: "ESPHOME_API_KEY", Name: "Default API encryption key", Description: "Optional fallback encryption key for discovered nodes. Per-device keys saved in SlideBolt take precedence.", Control: contract.SetupSecret, Sensitive: true},
+				{Key: "dashboard_url", Environment: "ESPHOME_DASHBOARD_URL", Name: "Dashboard URL", Description: "Optional ESPHome dashboard URL used to seed device addresses before mDNS discovery.", Control: contract.SetupText, Format: "uri"},
+				{Key: "dashboard_user", Environment: "ESPHOME_DASHBOARD_USER", Name: "Dashboard username", Description: "Username for the optional ESPHome dashboard.", Control: contract.SetupText},
+				{Key: "dashboard_password", Environment: "ESPHOME_DASHBOARD_PASSWORD", Name: "Dashboard password", Description: "Password for the optional ESPHome dashboard.", Control: contract.SetupSecret, Sensitive: true},
+				{Key: "dashboard_insecure", Environment: "ESPHOME_DASHBOARD_INSECURE", Name: "Allow unverified dashboard TLS", Description: "Skip certificate verification for the optional dashboard connection.", Control: contract.SetupBoolean, Advanced: true, Default: json.RawMessage(`false`)},
+				{Key: "trace", Environment: "ESPHOME_TRACE", Name: "Trace logging", Description: "Emit verbose native API diagnostics.", Control: contract.SetupBoolean, Advanced: true, Default: json.RawMessage(`false`)},
+			},
+			Constraints: []contract.SetupConstraint{{Kind: "all_or_none", Fields: []string{"dashboard_url", "dashboard_user", "dashboard_password"}}},
+		},
 	}
 }
 
 func (a *App) OnStart(deps map[string]json.RawMessage) (json.RawMessage, error) {
-	a.trace = os.Getenv("ESPHOME_TRACE") == "1"
+	a.trace = environmentBoolean(os.Getenv("ESPHOME_TRACE"))
 	if a.trace {
 		log.Printf("plugin-esphome: trace logging enabled")
 	}
@@ -268,6 +281,15 @@ func (a *App) OnStart(deps map[string]json.RawMessage) (json.RawMessage, error) 
 
 	log.Println("plugin-esphome: started, listening for devices via mDNS")
 	return nil, nil
+}
+
+func environmentBoolean(value string) bool {
+	switch strings.ToLower(strings.TrimSpace(value)) {
+	case "1", "true", "yes", "on":
+		return true
+	default:
+		return false
+	}
 }
 
 func (a *App) OnShutdown() error {
