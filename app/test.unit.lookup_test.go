@@ -663,6 +663,8 @@ func TestSaveDomainDeviceCreatesGenericDeviceWithEmptyEntityArray(t *testing.T) 
 
 func TestOnDeviceFoundStartsOneManagedLoopPerDevice(t *testing.T) {
 	app := New()
+	store := &fakeStore{}
+	app.store = store
 
 	started := 0
 	var managed *managedDevice
@@ -697,6 +699,17 @@ func TestOnDeviceFoundStartsOneManagedLoopPerDevice(t *testing.T) {
 	}
 	if got.GetAPIPort() != 7000 {
 		t.Fatalf("managed device port = %d, want 7000", got.GetAPIPort())
+	}
+	raw, err := store.Get(domain.DeviceKey{Plugin: PluginID, ID: "basement-edison"})
+	if err != nil {
+		t.Fatal(err)
+	}
+	var device domain.Device
+	if err := json.Unmarshal(raw, &device); err != nil {
+		t.Fatal(err)
+	}
+	if device.ID != "basement-edison" || device.Entities == nil {
+		t.Fatalf("discovered device = %#v", device)
 	}
 }
 

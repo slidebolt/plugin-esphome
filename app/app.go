@@ -333,6 +333,11 @@ func (a *App) OnDeviceFound(dev *internalmdns.Device) {
 
 func (a *App) onDeviceFound(dev *internalmdns.Device) {
 	a.rememberDevice(dev)
+	if a.store != nil {
+		if err := a.saveDomainDevice(dev, &espmodel.DeviceInfo{Name: dev.Name}); err != nil {
+			log.Printf("plugin-esphome: register discovered device %s: %v", dev.Name, err)
+		}
+	}
 	if existing, ok := a.deviceManagers.Load(dev.Name); ok {
 		existing.(*managedDevice).update(dev)
 		a.tracef("refreshed discovery for %s addr=%s port=%d", dev.Name, dev.GetAddress(), dev.GetAPIPort())
