@@ -19,7 +19,7 @@ import (
 	virtual "github.com/slidebolt/sb-virtual/virtual"
 )
 
-type basementFixture struct {
+type automationFixture struct {
 	t          *testing.T
 	msg        messenger.Messenger
 	store      storage.Storage
@@ -45,7 +45,7 @@ func saveScriptDefinition(t *testing.T, store storage.Storage, name, source, def
 	}
 }
 
-func newBasementFixture(t *testing.T) *basementFixture {
+func newAutomationFixture(t *testing.T) *automationFixture {
 	t.Helper()
 
 	msg, err := messenger.Mock()
@@ -65,49 +65,49 @@ func newBasementFixture(t *testing.T) *basementFixture {
 	logger := logSvc.Store()
 
 	saveTraceEntity(t, store, domain.Entity{
-		ID:       "switch_main_basement_3558733165",
+		ID:       "example_trigger_3558733165",
 		Plugin:   PluginID,
-		DeviceID: "switch_main_basement",
+		DeviceID: "example-trigger",
 		Type:     "binary_sensor",
 		Name:     "Main Switch SingleClickActivated",
 		Labels: map[string][]string{
-			"PluginAutomation": {"Basement"},
+			"PluginAutomation": {"ExampleGroup"},
 		},
 		State: domain.BinarySensor{On: false},
 	})
 	saveTraceEntity(t, store, domain.Entity{
-		ID:       "basement-light-1",
+		ID:       "example-light",
 		Plugin:   PluginID,
-		DeviceID: "basement-light-1",
+		DeviceID: "example-light",
 		Type:     "light",
-		Name:     "Basement Light 1",
+		Name:     "ExampleGroup Light 1",
 		Labels: map[string][]string{
-			"PluginAutomation": {"Basement"},
+			"PluginAutomation": {"ExampleGroup"},
 		},
 		State: domain.Light{Power: false},
 	})
 	saveTraceEntity(t, store, domain.Entity{
-		ID:       "basement",
+		ID:       "example",
 		Plugin:   "plugin-automation",
 		DeviceID: "group",
 		Type:     "light",
-		Name:     "Basement",
-		Target:   json.RawMessage(`{"pattern":"","where":[{"field":"labels.PluginAutomation","op":"eq","value":"Basement"}]}`),
+		Name:     "ExampleGroup",
+		Target:   json.RawMessage(`{"pattern":"","where":[{"field":"labels.PluginAutomation","op":"eq","value":"ExampleGroup"}]}`),
 		State:    domain.Light{Power: false},
 	})
-	if err := storage.SaveQueryDefinition(store, "basement_lights", storage.Query{
+	if err := storage.SaveQueryDefinition(store, "example_lights", storage.Query{
 		Pattern: "",
 		Where: []storage.Filter{
-			{Field: "labels.PluginAutomation", Op: storage.Eq, Value: "Basement"},
+			{Field: "labels.PluginAutomation", Op: storage.Eq, Value: "ExampleGroup"},
 			{Field: "type", Op: storage.Eq, Value: "light"},
 		},
 	}); err != nil {
 		t.Fatal(err)
 	}
 
-	saveScriptDefinition(t, store, "MainBasementSwitch", `Automation("MainBasementSwitch", {
-  trigger = Entity("plugin-esphome.switch_main_basement.switch_main_basement_3558733165"),
-  targets = Entity("plugin-automation.group.basement")
+	saveScriptDefinition(t, store, "ExampleSwitchAutomation", `Automation("ExampleSwitchAutomation", {
+  trigger = Entity("plugin-esphome.example-trigger.example_trigger_3558733165"),
+  targets = Entity("plugin-automation.group.example")
 }, function(ctx)
   local trigger_on = ctx.trigger and ctx.trigger.entity and ctx.trigger.entity.state and ctx.trigger.entity.state.on
   if not trigger_on then
@@ -136,7 +136,7 @@ func newBasementFixture(t *testing.T) *basementFixture {
     end)
   end
 
-  ctx.scripts:stopAll("basement_lights")
+  ctx.scripts:stopAll("example_lights")
 end)`, "automation")
 
 	scriptSvc, err := scriptserver.NewWithLogger(msg, store, logger)
@@ -159,7 +159,7 @@ end)`, "automation")
 		t.Fatal(err)
 	}
 
-	f := &basementFixture{
+	f := &automationFixture{
 		t:          t,
 		msg:        msg,
 		store:      store,
@@ -189,15 +189,15 @@ end)`, "automation")
 	return f
 }
 
-func (f *basementFixture) pressMainSwitch(state bool) {
+func (f *automationFixture) pressMainSwitch(state bool) {
 	f.t.Helper()
-	f.esphomeApp.applyStateUpdate("switch_main_basement", &api.BinarySensorStateResponse{
+	f.esphomeApp.applyStateUpdate("example-trigger", &api.BinarySensorStateResponse{
 		Key:   3558733165,
 		State: state,
 	})
 }
 
-func (f *basementFixture) waitForEvent(traceID, source, kind string) logging.Event {
+func (f *automationFixture) waitForEvent(traceID, source, kind string) logging.Event {
 	f.t.Helper()
 	deadline := time.Now().Add(3 * time.Second)
 	for time.Now().Before(deadline) {
@@ -214,19 +214,19 @@ func (f *basementFixture) waitForEvent(traceID, source, kind string) logging.Eve
 	return logging.Event{}
 }
 
-func (f *basementFixture) waitForTrace() string {
+func (f *automationFixture) waitForTrace() string {
 	f.t.Helper()
 	return f.waitForTraceCount(1)
 }
 
-func (f *basementFixture) waitForTraceCount(count int) string {
+func (f *automationFixture) waitForTraceCount(count int) string {
 	f.t.Helper()
 	deadline := time.Now().Add(3 * time.Second)
 	for time.Now().Before(deadline) {
 		events, err := f.logger.List(context.Background(), logging.ListRequest{
 			Source: "plugin-esphome",
 			Kind:   "state.updated",
-			Entity: "plugin-esphome.switch_main_basement.switch_main_basement_3558733165",
+			Entity: "plugin-esphome.example-trigger.example_trigger_3558733165",
 		})
 		if err != nil {
 			f.t.Fatal(err)
@@ -240,7 +240,7 @@ func (f *basementFixture) waitForTraceCount(count int) string {
 	return ""
 }
 
-func (f *basementFixture) waitForTraceEvents(traceID string, minCount int) []logging.Event {
+func (f *automationFixture) waitForTraceEvents(traceID string, minCount int) []logging.Event {
 	f.t.Helper()
 	deadline := time.Now().Add(3 * time.Second)
 	var events []logging.Event
@@ -264,12 +264,56 @@ func (f *basementFixture) waitForTraceEvents(traceID string, minCount int) []log
 	return events
 }
 
-func TestBasementAutomationTraceFlowsAcrossPlugins(t *testing.T) {
-	f := newBasementFixture(t)
+func (f *automationFixture) waitForTraceStages(traceID string, stages ...string) []logging.Event {
+	f.t.Helper()
+	deadline := time.Now().Add(5 * time.Second)
+	var events []logging.Event
+	for time.Now().Before(deadline) {
+		var err error
+		events, err = f.logger.List(context.Background(), logging.ListRequest{TraceID: traceID})
+		if err != nil {
+			f.t.Fatal(err)
+		}
+		seen := make(map[string]bool, len(stages))
+		for _, event := range events {
+			seen[event.Source+"/"+event.Kind] = true
+		}
+		complete := true
+		for _, stage := range stages {
+			if !seen[stage] {
+				complete = false
+				break
+			}
+		}
+		if complete {
+			sort.Slice(events, func(i, j int) bool {
+				if events[i].TS.Equal(events[j].TS) {
+					return events[i].ID < events[j].ID
+				}
+				return events[i].TS.Before(events[j].TS)
+			})
+			return events
+		}
+		time.Sleep(10 * time.Millisecond)
+	}
+	f.t.Fatalf("trace %s did not reach required stages %v", traceID, stages)
+	return nil
+}
+
+func TestAutomationTraceFlowsAcrossPlugins(t *testing.T) {
+	f := newAutomationFixture(t)
 
 	f.pressMainSwitch(true)
 	traceID := f.waitForTrace()
-	events := f.waitForTraceEvents(traceID, 8)
+	events := f.waitForTraceStages(traceID,
+		"plugin-esphome/state.updated",
+		"sb-script/automation.triggered",
+		"sb-script/automation.targets.resolved",
+		"sb-script/automation.command.published",
+		"sb-script/script.control.stop_all",
+		"sb-virtual/fanout.published",
+		"plugin-esphome/command.received",
+	)
 	for _, event := range events {
 		data, _ := json.Marshal(event)
 		t.Logf("event: %s", data)
@@ -305,12 +349,20 @@ func TestBasementAutomationTraceFlowsAcrossPlugins(t *testing.T) {
 	}
 }
 
-func TestBasementAutomationTraceContract(t *testing.T) {
-	f := newBasementFixture(t)
+func TestAutomationTraceContract(t *testing.T) {
+	f := newAutomationFixture(t)
 
 	f.pressMainSwitch(true)
 	traceID := f.waitForTrace()
-	events := f.waitForTraceEvents(traceID, 8)
+	events := f.waitForTraceStages(traceID,
+		"plugin-esphome/state.updated",
+		"sb-script/automation.triggered",
+		"sb-script/automation.targets.resolved",
+		"sb-script/automation.command.published",
+		"sb-script/script.control.stop_all",
+		"sb-virtual/fanout.published",
+		"plugin-esphome/command.received",
+	)
 
 	required := map[string]bool{
 		"plugin-esphome/state.updated":           false,
@@ -337,8 +389,8 @@ func TestBasementAutomationTraceContract(t *testing.T) {
 	}
 }
 
-func TestBasementAutomationMomentaryPulseContract(t *testing.T) {
-	f := newBasementFixture(t)
+func TestAutomationMomentaryPulseContract(t *testing.T) {
+	f := newAutomationFixture(t)
 
 	f.pressMainSwitch(true)
 	pressTraceID := f.waitForTrace()
