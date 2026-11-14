@@ -381,9 +381,7 @@ func getDeviceStatusEntity(t *testing.T, store storage.Storage, deviceID string)
 	if err := json.Unmarshal(raw, &entity); err != nil {
 		t.Fatalf("unmarshal status entity: %v", err)
 	}
-	state, ok := entity.State.(map[string]any)
-	if !ok {
-		t.Fatalf("status state type = %T, want map[string]any", entity.State)
-	}
-	return state
+	state, ok := entity.State.(domain.Diagnostic)
+	if !ok { t.Fatalf("status state type = %T, want domain.Diagnostic", entity.State) }
+	return map[string]any(state)
 }
