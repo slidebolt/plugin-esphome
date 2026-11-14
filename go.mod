@@ -9,7 +9,7 @@ require (
 	github.com/joho/godotenv v1.5.1
 	github.com/mycontroller-org/esphome_api v1.3.0
 	github.com/slidebolt/sb-contract v1.0.7
-	github.com/slidebolt/sb-domain v1.0.16
+	github.com/slidebolt/sb-domain v1.0.22
 	github.com/slidebolt/sb-logging v1.0.7
 	github.com/slidebolt/sb-logging-sdk v1.0.9
 	github.com/slidebolt/sb-messenger-sdk v1.0.8
