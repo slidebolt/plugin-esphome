@@ -8,16 +8,16 @@ require (
 	github.com/grandcat/zeroconf v1.0.0
 	github.com/joho/godotenv v1.5.1
 	github.com/mycontroller-org/esphome_api v1.3.0
-	github.com/slidebolt/sb-contract v1.0.9
-	github.com/slidebolt/sb-domain v1.0.24
+	github.com/slidebolt/sb-contract v1.0.15
+	github.com/slidebolt/sb-domain v1.0.27
 	github.com/slidebolt/sb-logging v1.0.8
 	github.com/slidebolt/sb-logging-sdk v1.0.9
 	github.com/slidebolt/sb-messenger-sdk v1.0.9
 	github.com/slidebolt/sb-runtime v1.0.7
 	github.com/slidebolt/sb-script v1.0.19
 	github.com/slidebolt/sb-storage-sdk v1.0.8
-	github.com/slidebolt/sb-storage-server v1.0.11
-	github.com/slidebolt/sb-testkit v1.0.17
+	github.com/slidebolt/sb-storage-server v1.0.13
+	github.com/slidebolt/sb-testkit v1.0.18
 	github.com/slidebolt/sb-virtual v1.0.16
 	google.golang.org/protobuf v1.36.11
 )
